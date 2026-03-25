@@ -58,15 +58,7 @@ export default function SetupScreen() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <View style={styles.headerRow}>
-        <Text style={styles.title}>{mode === 'solo' ? 'Quiz Yourself' : 'Quiz Others'}</Text>
-        <TouchableOpacity 
-          style={styles.addQuestionButton}
-          onPress={() => router.push('/add-question' as any)}
-        >
-          <Text style={styles.addQuestionButtonText}>+ Add Question</Text>
-        </TouchableOpacity>
-      </View>
+      <Text style={styles.title}>{mode === 'solo' ? 'Quiz Yourself' : 'Quiz Others'}</Text>
       
       <View style={styles.section}>
         <Text style={styles.label}>Select Category</Text>
@@ -196,30 +188,12 @@ const styles = StyleSheet.create({
     padding: 24,
     backgroundColor: '#F5F7FA',
   },
-  headerRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 32,
-    marginTop: 40,
-  },
   title: {
     fontSize: 32,
     fontWeight: '800',
     color: '#2D3436',
-  },
-  addQuestionButton: {
-    backgroundColor: '#EFEDFF',
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: '#6C5CE7',
-  },
-  addQuestionButtonText: {
-    color: '#6C5CE7',
-    fontSize: 14,
-    fontWeight: '700',
+    marginBottom: 32,
+    marginTop: 40,
   },
   section: {
     marginBottom: 24,

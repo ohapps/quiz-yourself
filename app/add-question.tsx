@@ -1,31 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput, Alert, ActivityIndicator } from 'react-native';
-import { Stack, useRouter } from 'expo-router';
+import { Stack, useRouter, useLocalSearchParams } from 'expo-router';
 import { Category, Difficulty } from '../types/quiz';
 import { getCategories, addQuestion } from '../lib/database';
 
 export default function AddQuestionScreen() {
   const router = useRouter();
+  const { categoryId: paramCategoryId, difficulty: paramDifficulty } = useLocalSearchParams<{ categoryId?: string, difficulty?: string }>();
+  
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const [selectedCategoryId, setSelectedCategoryId] = useState('');
+  const [selectedCategoryId, setSelectedCategoryId] = useState(paramCategoryId || '');
   const [questionText, setQuestionText] = useState('');
   const [options, setOptions] = useState<string[]>(['', '', '', '']);
   const [correctAnswerIndex, setCorrectAnswerIndex] = useState(0);
-  const [difficulty, setDifficulty] = useState<Difficulty>('Easy');
+  const [difficulty, setDifficulty] = useState<Difficulty>((paramDifficulty as Difficulty) || 'Easy');
 
   useEffect(() => {
     async function load() {
       const data = await getCategories();
       setCategories(data);
-      if (data.length > 0) {
+      if (data.length > 0 && !selectedCategoryId) {
         setSelectedCategoryId(data[0].id);
       }
       setLoading(false);
     }
     load();
-  }, []);
+  }, [selectedCategoryId]);
 
   const handleSave = async () => {
     if (!questionText.trim()) {
