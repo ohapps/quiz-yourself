@@ -48,3 +48,11 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+Features
+- setup local database to store questions and quiz history
+- add ability to create new categories and questions
+- add a random category picker
+- update quiz to try to pick questions that have not been asked before
+- logo and cleanup look
+- add AI integration to generate questions
