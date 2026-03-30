@@ -114,6 +114,26 @@ export async function deleteCategory(id: string) {
 }
 
 // Questions CRUD
+export async function getQuestion(id: string): Promise<Question | null> {
+  const db = await SQLite.openDatabaseAsync(DATABASE_NAME);
+  const result = await db.getFirstAsync<{
+    id: string,
+    question: string,
+    options: string,
+    correctAnswer: string,
+    difficulty: string,
+    category_id: string
+  }>('SELECT * FROM questions WHERE id = ?', [id]);
+
+  if (!result) return null;
+
+  return {
+    ...result,
+    options: JSON.parse(result.options),
+    difficulty: result.difficulty as Difficulty
+  } as any;
+}
+
 export async function getQuestions(categoryId?: string, difficulty?: string): Promise<Question[]> {
   const db = await SQLite.openDatabaseAsync(DATABASE_NAME);
   let query = 'SELECT * FROM questions';

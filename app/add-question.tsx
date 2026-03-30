@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput, Alert, ActivityIndicator } from 'react-native';
 import { Stack, useRouter, useLocalSearchParams } from 'expo-router';
+import { Dropdown } from 'react-native-element-dropdown';
 import { Category, Difficulty } from '../types/quiz';
-import { getCategories, addQuestion } from '../lib/database';
+import { getCategories, addQuestion, updateQuestion, getQuestion } from '../lib/database';
 
 export default function AddQuestionScreen() {
   const router = useRouter();
-  const { categoryId: paramCategoryId, difficulty: paramDifficulty } = useLocalSearchParams<{ categoryId?: string, difficulty?: string }>();
+  const { id, categoryId: paramCategoryId, difficulty: paramDifficulty } = useLocalSearchParams<{ id?: string, categoryId?: string, difficulty?: string }>();
   
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
@@ -17,44 +18,60 @@ export default function AddQuestionScreen() {
   const [correctAnswerIndex, setCorrectAnswerIndex] = useState(0);
   const [difficulty, setDifficulty] = useState<Difficulty>((paramDifficulty as Difficulty) || 'Easy');
 
+  const [isFocus, setIsFocus] = useState(false);
+
   useEffect(() => {
     async function load() {
+      // Load categories
       const data = await getCategories();
       setCategories(data);
-      if (data.length > 0 && !selectedCategoryId) {
+      
+      // If we have an ID, we are editing
+      if (id) {
+        const q = await getQuestion(id);
+        if (q) {
+          setQuestionText(q.question);
+          setOptions(q.options);
+          setDifficulty(q.difficulty);
+          const correctIdx = q.options.indexOf(q.correctAnswer);
+          setCorrectAnswerIndex(correctIdx !== -1 ? correctIdx : 0);
+          // Set category if it exists
+          const cat = data.find(c => c.questions.some(question => question.id === q.id));
+          if (cat) setSelectedCategoryId(cat.id);
+        }
+      } else if (data.length > 0 && !selectedCategoryId) {
         setSelectedCategoryId(data[0].id);
       }
+      
       setLoading(false);
     }
     load();
-  }, [selectedCategoryId]);
+  }, [id]);
 
   const handleSave = async () => {
     if (!questionText.trim()) {
       Alert.alert('Error', 'Please enter a question');
       return;
     }
-
     if (options.some(opt => !opt.trim())) {
       Alert.alert('Error', 'Please fill in all options');
       return;
     }
 
-    try {
-      await addQuestion({
-        question: questionText,
-        options: options,
-        correctAnswer: options[correctAnswerIndex],
-        difficulty: difficulty
-      }, selectedCategoryId);
-      
-      Alert.alert('Success', 'Question added successfully!', [
-        { text: 'OK', onPress: () => router.back() }
-      ]);
-    } catch (error) {
-      console.error(error);
-      Alert.alert('Error', 'Failed to save question');
+    const questionData = {
+      question: questionText,
+      options,
+      correctAnswer: options[correctAnswerIndex],
+      difficulty,
+    };
+
+    if (id) {
+      await updateQuestion(id, questionData, selectedCategoryId);
+    } else {
+      await addQuestion(questionData, selectedCategoryId);
     }
+
+    router.back();
   };
 
   const updateOption = (index: number, text: string) => {
@@ -71,88 +88,95 @@ export default function AddQuestionScreen() {
     );
   }
 
+  const dropdownData = categories.map(cat => ({ label: cat.name, value: cat.id }));
+
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <Stack.Screen options={{ title: 'Add Question' }} />
-      
-      <View style={styles.section}>
-        <Text style={styles.label}>Category</Text>
-        <View style={styles.categoryGrid}>
-          {categories.map(cat => (
-            <TouchableOpacity
-              key={cat.id}
-              style={[
-                styles.chip,
-                selectedCategoryId === cat.id && styles.chipSelected
-              ]}
-              onPress={() => setSelectedCategoryId(cat.id)}
-            >
-              <Text style={[
-                styles.chipText,
-                selectedCategoryId === cat.id && styles.chipTextSelected
-              ]}>{cat.name}</Text>
-            </TouchableOpacity>
-          ))}
+    <View style={styles.container}>
+      <Stack.Screen options={{ title: id ? 'Edit Question' : 'Add Question' }} />
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        <View style={styles.section}>
+          <Text style={styles.label}>Select Category</Text>
+          <Dropdown
+            style={[styles.dropdown, isFocus && { borderColor: '#6C5CE7' }]}
+            placeholderStyle={styles.placeholderStyle}
+            selectedTextStyle={styles.selectedTextStyle}
+            inputSearchStyle={styles.inputSearchStyle}
+            iconStyle={styles.iconStyle}
+            data={dropdownData}
+            search
+            maxHeight={300}
+            labelField="label"
+            valueField="value"
+            placeholder={!isFocus ? 'Select category' : '...'}
+            searchPlaceholder="Search..."
+            value={selectedCategoryId}
+            onFocus={() => setIsFocus(true)}
+            onBlur={() => setIsFocus(false)}
+            onChange={item => {
+              setSelectedCategoryId(item.value);
+              setIsFocus(false);
+            }}
+          />
         </View>
-      </View>
 
-      <View style={styles.section}>
-        <Text style={styles.label}>Difficulty</Text>
-        <View style={styles.difficultyGrid}>
-          {(['Easy', 'Medium', 'Hard'] as Difficulty[]).map(level => (
-            <TouchableOpacity
-              key={level}
-              style={[
-                styles.chip,
-                difficulty === level && styles.chipSelected
-              ]}
-              onPress={() => setDifficulty(level)}
-            >
-              <Text style={[
-                styles.chipText,
-                difficulty === level && styles.chipTextSelected
-              ]}>{level}</Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-      </View>
-
-      <View style={styles.section}>
-        <Text style={styles.label}>Question</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter question text..."
-          value={questionText}
-          onChangeText={setQuestionText}
-          multiline
-        />
-      </View>
-
-      <View style={styles.section}>
-        <Text style={styles.label}>Options (Select the correct one)</Text>
-        {options.map((opt, i) => (
-          <View key={i} style={styles.optionWrapper}>
-            <TouchableOpacity
-              style={[
-                styles.radio,
-                correctAnswerIndex === i && styles.radioSelected
-              ]}
-              onPress={() => setCorrectAnswerIndex(i)}
-            />
-            <TextInput
-              style={styles.optionInput}
-              placeholder={`Option ${i + 1}`}
-              value={opt}
-              onChangeText={(text) => updateOption(i, text)}
-            />
+        <View style={styles.section}>
+          <Text style={styles.label}>Difficulty</Text>
+          <View style={styles.difficultyGrid}>
+            {(['Easy', 'Medium', 'Hard'] as Difficulty[]).map(level => (
+              <TouchableOpacity
+                key={level}
+                style={[
+                  styles.chip,
+                  difficulty === level && styles.chipSelected
+                ]}
+                onPress={() => setDifficulty(level)}
+              >
+                <Text style={[
+                  styles.chipText,
+                  difficulty === level && styles.chipTextSelected
+                ]}>{level}</Text>
+              </TouchableOpacity>
+            ))}
           </View>
-        ))}
-      </View>
+        </View>
 
-      <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
-        <Text style={styles.saveButtonText}>Save Question</Text>
-      </TouchableOpacity>
-    </ScrollView>
+        <View style={styles.section}>
+          <Text style={styles.label}>Question</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter question text..."
+            value={questionText}
+            onChangeText={setQuestionText}
+            multiline
+          />
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.label}>Options (Select the correct one)</Text>
+          {options.map((opt, i) => (
+            <View key={i} style={styles.optionWrapper}>
+              <TouchableOpacity
+                style={[
+                  styles.radio,
+                  correctAnswerIndex === i && styles.radioSelected
+                ]}
+                onPress={() => setCorrectAnswerIndex(i)}
+              />
+              <TextInput
+                style={styles.optionInput}
+                placeholder={`Option ${i + 1}`}
+                value={opt}
+                onChangeText={(text) => updateOption(i, text)}
+              />
+            </View>
+          ))}
+        </View>
+
+        <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
+          <Text style={styles.saveButtonText}>{id ? 'Update Question' : 'Save Question'}</Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </View>
   );
 }
 
@@ -161,7 +185,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F5F7FA',
   },
-  content: {
+  scrollContent: {
     padding: 24,
     paddingBottom: 60,
   },
@@ -182,22 +206,42 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 1,
   },
-  categoryGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 8,
+  dropdown: {
+    height: 50,
+    backgroundColor: 'white',
+    borderRadius: 12,
+    paddingHorizontal: 16,
+    borderWidth: 2,
+    borderColor: '#DFE6E9',
+  },
+  placeholderStyle: {
+    fontSize: 16,
+    color: '#B2BEC3',
+  },
+  selectedTextStyle: {
+    fontSize: 16,
+    color: '#2D3436',
+  },
+  inputSearchStyle: {
+    height: 40,
+    fontSize: 16,
+  },
+  iconStyle: {
+    width: 20,
+    height: 20,
   },
   difficultyGrid: {
     flexDirection: 'row',
     gap: 8,
   },
   chip: {
+    flex: 1,
     backgroundColor: '#FFFFFF',
-    paddingHorizontal: 16,
     paddingVertical: 10,
     borderRadius: 12,
     borderWidth: 2,
     borderColor: '#DFE6E9',
+    alignItems: 'center',
   },
   chipSelected: {
     borderColor: '#6C5CE7',
