@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput, ActivityIndicator } from 'react-native';
 import { Stack, useRouter, useLocalSearchParams } from 'expo-router';
 import { useAtom } from 'jotai';
@@ -14,19 +14,22 @@ export default function SetupScreen() {
   
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
-  const [isFocus, setIsFocus] = useState(false);
+  const [categoryFocus, setCategoryFocus] = useState(false);
+  const [subCategoryFocus, setSubCategoryFocus] = useState(false);
 
   useEffect(() => {
     async function load() {
       const data = await getCategories();
       setCategories(data);
       
-      // Initialize config with the first category if none is selected
-      if (data.length > 0 && !config.category) {
+      const topLevelData = data.filter(c => !c.parentId);
+
+      // Initialize config with the first top-level category if none is selected
+      if (topLevelData.length > 0 && !config.category) {
         setConfig(prev => ({ 
           ...prev, 
           mode: mode || 'solo',
-          category: data[0],
+          category: topLevelData[0],
           playerCount: mode === 'group' ? 2 : 1
         }));
       } else {
@@ -36,6 +39,19 @@ export default function SetupScreen() {
     }
     load();
   }, [mode]);
+
+  const parentCategories = useMemo(() => categories.filter(c => !c.parentId), [categories]);
+  
+  // Find which top-level category is currently "active" (either directly or as parent)
+  const activeParentId = useMemo(() => {
+    if (!config.category) return null;
+    return config.category.parentId || config.category.id;
+  }, [config.category]);
+
+  const subCategories = useMemo(() => {
+    if (!activeParentId) return [];
+    return categories.filter(c => c.parentId === activeParentId);
+  }, [categories, activeParentId]);
 
   const handleStart = () => {
     if (!config.category) {
@@ -69,7 +85,11 @@ export default function SetupScreen() {
     );
   }
 
-  const dropdownData = categories.map(cat => ({ label: cat.name, value: cat.id }));
+  const parentDropdownData = parentCategories.map(cat => ({ label: cat.name, value: cat.id }));
+  const subDropdownData = [
+    { label: 'All Sub-categories', value: 'all' },
+    ...subCategories.map(cat => ({ label: cat.name, value: cat.id }))
+  ];
 
   return (
     <View style={styles.container}>
@@ -78,30 +98,59 @@ export default function SetupScreen() {
         <Text style={styles.title}>{mode === 'solo' ? 'Quiz Yourself' : 'Quiz Others'}</Text>
         
         <View style={styles.section}>
-          <Text style={styles.label}>Category</Text>
+          <Text style={styles.label}>Main Category</Text>
           <Dropdown
-            style={[styles.dropdown, isFocus && { borderColor: '#6C5CE7' }]}
+            style={[styles.dropdown, categoryFocus && { borderColor: '#6C5CE7' }]}
             placeholderStyle={styles.placeholderStyle}
             selectedTextStyle={styles.selectedTextStyle}
             inputSearchStyle={styles.inputSearchStyle}
             iconStyle={styles.iconStyle}
-            data={dropdownData}
+            data={parentDropdownData}
             search
             maxHeight={300}
             labelField="label"
             valueField="value"
-            placeholder={!isFocus ? 'Select category' : '...'}
+            placeholder={!categoryFocus ? 'Select category' : '...'}
             searchPlaceholder="Search..."
-            value={config.category?.id || ''}
-            onFocus={() => setIsFocus(true)}
-            onBlur={() => setIsFocus(false)}
+            value={activeParentId || ''}
+            onFocus={() => setCategoryFocus(true)}
+            onBlur={() => setCategoryFocus(false)}
             onChange={item => {
               const selectedCat = categories.find(c => c.id === item.value);
               setConfig(prev => ({ ...prev, category: selectedCat || null }));
-              setIsFocus(false);
+              setCategoryFocus(false);
             }}
           />
         </View>
+
+        {subCategories.length > 0 && (
+          <View style={styles.section}>
+            <Text style={styles.label}>Sub-category (Optional)</Text>
+            <Dropdown
+              style={[styles.dropdown, subCategoryFocus && { borderColor: '#6C5CE7' }]}
+              placeholderStyle={styles.placeholderStyle}
+              selectedTextStyle={styles.selectedTextStyle}
+              data={subDropdownData}
+              maxHeight={300}
+              labelField="label"
+              valueField="value"
+              placeholder="All Sub-categories"
+              value={config.category?.parentId ? config.category.id : 'all'}
+              onFocus={() => setSubCategoryFocus(true)}
+              onBlur={() => setSubCategoryFocus(false)}
+              onChange={item => {
+                if (item.value === 'all') {
+                  const parentCat = categories.find(c => c.id === activeParentId);
+                  setConfig(prev => ({ ...prev, category: parentCat || null }));
+                } else {
+                  const selectedSub = categories.find(c => c.id === item.value);
+                  setConfig(prev => ({ ...prev, category: selectedSub || null }));
+                }
+                setSubCategoryFocus(false);
+              }}
+            />
+          </View>
+        )}
 
         <View style={styles.section}>
           <Text style={styles.label}>Difficulty</Text>
@@ -216,13 +265,13 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   section: {
-    marginBottom: 32,
+    marginBottom: 24,
   },
   label: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: '700',
     color: '#636E72',
-    marginBottom: 12,
+    marginBottom: 10,
     textTransform: 'uppercase',
     letterSpacing: 1,
   },

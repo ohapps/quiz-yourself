@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput, Alert, ActivityIndicator } from 'react-native';
 import { Stack, useRouter, useLocalSearchParams } from 'expo-router';
 import { Dropdown } from 'react-native-element-dropdown';
@@ -12,21 +12,24 @@ export default function AddQuestionScreen() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const [selectedCategoryId, setSelectedCategoryId] = useState(paramCategoryId || '');
+  const [selectedParentId, setSelectedParentId] = useState('');
+  const [selectedSubId, setSelectedSubId] = useState('');
+  
   const [questionText, setQuestionText] = useState('');
   const [options, setOptions] = useState<string[]>(['', '', '', '']);
   const [correctAnswerIndex, setCorrectAnswerIndex] = useState(0);
   const [difficulty, setDifficulty] = useState<Difficulty>((paramDifficulty as Difficulty) || 'Easy');
 
-  const [isFocus, setIsFocus] = useState(false);
+  const [parentFocus, setParentFocus] = useState(false);
+  const [subFocus, setSubFocus] = useState(false);
 
   useEffect(() => {
     async function load() {
-      // Load categories
       const data = await getCategories();
       setCategories(data);
       
-      // If we have an ID, we are editing
+      const topLevel = data.filter(c => !c.parentId);
+
       if (id) {
         const q = await getQuestion(id);
         if (q) {
@@ -35,18 +38,44 @@ export default function AddQuestionScreen() {
           setDifficulty(q.difficulty);
           const correctIdx = q.options.indexOf(q.correctAnswer);
           setCorrectAnswerIndex(correctIdx !== -1 ? correctIdx : 0);
-          // Set category if it exists
-          const cat = data.find(c => c.questions.some(question => question.id === q.id));
-          if (cat) setSelectedCategoryId(cat.id);
+          
+          // Find which category this question belongs to and its parent
+          const cat = data.find(c => c.id === (q as any).category_id);
+          if (cat) {
+            if (cat.parentId) {
+              setSelectedParentId(cat.parentId);
+              setSelectedSubId(cat.id);
+            } else {
+              setSelectedParentId(cat.id);
+              setSelectedSubId('');
+            }
+          }
         }
-      } else if (data.length > 0 && !selectedCategoryId) {
-        setSelectedCategoryId(data[0].id);
+      } else if (paramCategoryId) {
+        const cat = data.find(c => c.id === paramCategoryId);
+        if (cat) {
+          if (cat.parentId) {
+            setSelectedParentId(cat.parentId);
+            setSelectedSubId(cat.id);
+          } else {
+            setSelectedParentId(cat.id);
+            setSelectedSubId('');
+          }
+        }
+      } else if (topLevel.length > 0) {
+        setSelectedParentId(topLevel[0].id);
       }
       
       setLoading(false);
     }
     load();
-  }, [id]);
+  }, [id, paramCategoryId]);
+
+  const parentCategories = useMemo(() => categories.filter(c => !c.parentId), [categories]);
+  const subCategories = useMemo(() => {
+    if (!selectedParentId) return [];
+    return categories.filter(c => c.parentId === selectedParentId);
+  }, [categories, selectedParentId]);
 
   const handleSave = async () => {
     if (!questionText.trim()) {
@@ -58,6 +87,12 @@ export default function AddQuestionScreen() {
       return;
     }
 
+    const finalCategoryId = selectedSubId || selectedParentId;
+    if (!finalCategoryId) {
+      Alert.alert('Error', 'Please select a category');
+      return;
+    }
+
     const questionData = {
       question: questionText,
       options,
@@ -66,9 +101,9 @@ export default function AddQuestionScreen() {
     };
 
     if (id) {
-      await updateQuestion(id, questionData, selectedCategoryId);
+      await updateQuestion(id, questionData, finalCategoryId);
     } else {
-      await addQuestion(questionData, selectedCategoryId);
+      await addQuestion(questionData, finalCategoryId);
     }
 
     router.back();
@@ -88,36 +123,62 @@ export default function AddQuestionScreen() {
     );
   }
 
-  const dropdownData = categories.map(cat => ({ label: cat.name, value: cat.id }));
+  const parentDropdownData = parentCategories.map(cat => ({ label: cat.name, value: cat.id }));
+  const subDropdownData = [
+    { label: 'None (Root Category)', value: 'none' },
+    ...subCategories.map(cat => ({ label: cat.name, value: cat.id }))
+  ];
 
   return (
     <View style={styles.container}>
       <Stack.Screen options={{ title: id ? 'Edit Question' : 'Add Question' }} />
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.section}>
-          <Text style={styles.label}>Select Category</Text>
+          <Text style={styles.label}>Main Category</Text>
           <Dropdown
-            style={[styles.dropdown, isFocus && { borderColor: '#6C5CE7' }]}
+            style={[styles.dropdown, parentFocus && { borderColor: '#6C5CE7' }]}
             placeholderStyle={styles.placeholderStyle}
             selectedTextStyle={styles.selectedTextStyle}
             inputSearchStyle={styles.inputSearchStyle}
-            iconStyle={styles.iconStyle}
-            data={dropdownData}
+            data={parentDropdownData}
             search
             maxHeight={300}
             labelField="label"
             valueField="value"
-            placeholder={!isFocus ? 'Select category' : '...'}
-            searchPlaceholder="Search..."
-            value={selectedCategoryId}
-            onFocus={() => setIsFocus(true)}
-            onBlur={() => setIsFocus(false)}
+            placeholder="Select category"
+            value={selectedParentId}
+            onFocus={() => setParentFocus(true)}
+            onBlur={() => setParentFocus(false)}
             onChange={item => {
-              setSelectedCategoryId(item.value);
-              setIsFocus(false);
+              setSelectedParentId(item.value);
+              setSelectedSubId(''); // Reset sub-category when parent changes
+              setParentFocus(false);
             }}
           />
         </View>
+
+        {subCategories.length > 0 && (
+          <View style={styles.section}>
+            <Text style={styles.label}>Sub-category (Optional)</Text>
+            <Dropdown
+              style={[styles.dropdown, subFocus && { borderColor: '#6C5CE7' }]}
+              placeholderStyle={styles.placeholderStyle}
+              selectedTextStyle={styles.selectedTextStyle}
+              data={subDropdownData}
+              maxHeight={300}
+              labelField="label"
+              valueField="value"
+              placeholder="Select sub-category"
+              value={selectedSubId || 'none'}
+              onFocus={() => setSubFocus(true)}
+              onBlur={() => setSubFocus(false)}
+              onChange={item => {
+                setSelectedSubId(item.value === 'none' ? '' : item.value);
+                setSubFocus(false);
+              }}
+            />
+          </View>
+        )}
 
         <View style={styles.section}>
           <Text style={styles.label}>Difficulty</Text>
@@ -199,10 +260,10 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   label: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: '700',
     color: '#636E72',
-    marginBottom: 12,
+    marginBottom: 10,
     textTransform: 'uppercase',
     letterSpacing: 1,
   },
@@ -225,10 +286,6 @@ const styles = StyleSheet.create({
   inputSearchStyle: {
     height: 40,
     fontSize: 16,
-  },
-  iconStyle: {
-    width: 20,
-    height: 20,
   },
   difficultyGrid: {
     flexDirection: 'row',

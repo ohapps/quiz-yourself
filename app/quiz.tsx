@@ -11,6 +11,7 @@ export default function QuizScreen() {
 
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [showResult, setShowResult] = useState(false);
+  const [showGroupOptions, setShowGroupOptions] = useState(false);
 
   // Initialize quiz state
   useEffect(() => {
@@ -75,6 +76,7 @@ export default function QuizScreen() {
       }));
       setSelectedOption(null);
       setShowResult(false);
+      setShowGroupOptions(false);
     } else {
       setState((prev) => ({ ...prev, isFinished: true }));
       router.push('/results');
@@ -134,6 +136,26 @@ export default function QuizScreen() {
           </View>
         ) : (
           <View style={styles.moderatorContainer}>
+            <TouchableOpacity 
+              style={styles.toggleOptionsButton} 
+              onPress={() => setShowGroupOptions(!showGroupOptions)}
+            >
+              <Text style={styles.toggleOptionsText}>
+                {showGroupOptions ? '− Hide Options' : '+ Show Options'}
+              </Text>
+            </TouchableOpacity>
+
+            {showGroupOptions && (
+              <View style={styles.groupOptionsContainer}>
+                {currentQuestion.options.map((opt, i) => (
+                  <View key={i} style={styles.groupOptionItem}>
+                    <View style={styles.optionBullet} />
+                    <Text style={styles.groupOptionText}>{opt}</Text>
+                  </View>
+                ))}
+              </View>
+            )}
+
             <View style={styles.answerBox}>
               <Text style={styles.answerLabel}>Correct Answer:</Text>
               <Text style={styles.answerText}>{currentQuestion.correctAnswer}</Text>
@@ -235,11 +257,47 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#2D3436',
   },
+  groupOptionsContainer: {
+    backgroundColor: '#FFFFFF',
+    padding: 20,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: '#DFE6E9',
+    gap: 12,
+  },
+  groupOptionItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  optionBullet: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: '#6C5CE7',
+  },
+  groupOptionText: {
+    fontSize: 16,
+    color: '#2D3436',
+    fontWeight: '500',
+  },
   optionTextSelected: {
     color: '#FFFFFF',
   },
   moderatorContainer: {
-    gap: 32,
+    gap: 16,
+  },
+  toggleOptionsButton: {
+    alignSelf: 'flex-start',
+    backgroundColor: '#EFEDFF',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 8,
+  },
+  toggleOptionsText: {
+    color: '#6C5CE7',
+    fontSize: 14,
+    fontWeight: '700',
   },
   answerBox: {
     backgroundColor: '#E6FFF9',

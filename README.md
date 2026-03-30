@@ -50,8 +50,6 @@ Join our community of developers creating universal apps.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
 
 Tasks
-- add ability to create new categories and questions
-- add sub categories
 - add a random category picker
 - update quiz to try to pick questions that have not been asked before
 - logo and cleanup look
@@ -61,4 +59,5 @@ Tasks
    - movies
    - tv shows
    - music
+- add new question types
 - verify backup process for all data

@@ -11,11 +11,24 @@ export async function initializeDatabase() {
   // Enable foreign keys
   await db.execAsync('PRAGMA foreign_keys = ON;');
 
+  // Migration: Add parent_id to categories if it doesn't exist
+  try {
+    const tableInfo = await db.getAllAsync<{ name: string }>('PRAGMA table_info(categories)');
+    const hasParentId = tableInfo.some(col => col.name === 'parent_id');
+    if (!hasParentId) {
+      await db.execAsync('ALTER TABLE categories ADD COLUMN parent_id TEXT;');
+    }
+  } catch (e) {
+    console.warn('Migration failed or table not yet created', e);
+  }
+
   // Create Categories table
   await db.execAsync(`
     CREATE TABLE IF NOT EXISTS categories (
       id TEXT PRIMARY KEY NOT NULL,
-      name TEXT NOT NULL
+      name TEXT NOT NULL,
+      parent_id TEXT,
+      FOREIGN KEY (parent_id) REFERENCES categories (id) ON DELETE CASCADE
     );
   `);
 
@@ -68,7 +81,7 @@ export async function initializeDatabase() {
 // Categories CRUD
 export async function getCategories(): Promise<Category[]> {
   const db = await SQLite.openDatabaseAsync(DATABASE_NAME);
-  const rows = await db.getAllAsync<{ id: string, name: string }>('SELECT * FROM categories');
+  const rows = await db.getAllAsync<{ id: string, name: string, parent_id: string | null }>('SELECT * FROM categories');
   
   const categories: Category[] = [];
   for (const row of rows) {
@@ -89,6 +102,7 @@ export async function getCategories(): Promise<Category[]> {
     categories.push({
       id: row.id,
       name: row.name,
+      parentId: row.parent_id || undefined,
       questions
     });
   }
@@ -96,16 +110,16 @@ export async function getCategories(): Promise<Category[]> {
   return categories;
 }
 
-export async function addCategory(name: string) {
+export async function addCategory(name: string, parentId?: string) {
   const db = await SQLite.openDatabaseAsync(DATABASE_NAME);
   const id = Crypto.randomUUID();
-  await db.runAsync('INSERT INTO categories (id, name) VALUES (?, ?)', [id, name]);
+  await db.runAsync('INSERT INTO categories (id, name, parent_id) VALUES (?, ?, ?)', [id, name, parentId || null]);
   return id;
 }
 
-export async function updateCategory(id: string, name: string) {
+export async function updateCategory(id: string, name: string, parentId?: string) {
   const db = await SQLite.openDatabaseAsync(DATABASE_NAME);
-  await db.runAsync('UPDATE categories SET name = ? WHERE id = ?', [name, id]);
+  await db.runAsync('UPDATE categories SET name = ?, parent_id = ? WHERE id = ?', [name, parentId || null, id]);
 }
 
 export async function deleteCategory(id: string) {
@@ -143,8 +157,8 @@ export async function getQuestions(categoryId?: string, difficulty?: string): Pr
     query += ' WHERE ';
     const conditions = [];
     if (categoryId) {
-      conditions.push('category_id = ?');
-      params.push(categoryId);
+      conditions.push('category_id IN (SELECT id FROM categories WHERE id = ? OR parent_id = ?)');
+      params.push(categoryId, categoryId);
     }
     if (difficulty) {
       conditions.push('difficulty = ?');

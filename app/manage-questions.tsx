@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert, ActivityIndicator } from 'react-native';
 import { Stack, useRouter, useFocusEffect } from 'expo-router';
 import { Dropdown } from 'react-native-element-dropdown';
@@ -11,23 +11,39 @@ export default function ManageQuestionsScreen() {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const [selectedCatId, setSelectedCatId] = useState<string | 'all'>('all');
+  const [selectedParentId, setSelectedParentId] = useState<string | 'all'>('all');
+  const [selectedSubId, setSelectedSubId] = useState<string | 'all'>('all');
   const [selectedDifficulty, setSelectedDifficulty] = useState<Difficulty | 'All'>('All');
 
-  const [isFocus, setIsFocus] = useState(false);
+  const [parentFocus, setParentFocus] = useState(false);
+  const [subFocus, setSubFocus] = useState(false);
+
+  const parentCategories = useMemo(() => categories.filter(c => !c.parentId), [categories]);
+  const subCategories = useMemo(() => {
+    if (selectedParentId === 'all') return [];
+    return categories.filter(c => c.parentId === selectedParentId);
+  }, [categories, selectedParentId]);
 
   const loadData = useCallback(async () => {
     setLoading(true);
     const cats = await getCategories();
     setCategories(cats);
     
-    const catId = selectedCatId === 'all' ? undefined : selectedCatId;
+    // Logic for filtering:
+    // If sub is selected, use that. 
+    // If only parent is selected, use parent (database will pull all children).
+    // If 'all' is selected for parent, use undefined.
+    let filterCatId: string | undefined = undefined;
+    if (selectedParentId !== 'all') {
+      filterCatId = (selectedSubId && selectedSubId !== 'all') ? selectedSubId : selectedParentId;
+    }
+
     const diff = selectedDifficulty === 'All' ? undefined : selectedDifficulty;
-    const qs = await getQuestions(catId, diff);
+    const qs = await getQuestions(filterCatId, diff);
     setQuestions(qs);
     
     setLoading(false);
-  }, [selectedCatId, selectedDifficulty]);
+  }, [selectedParentId, selectedSubId, selectedDifficulty]);
 
   useFocusEffect(
     useCallback(() => {
@@ -49,9 +65,14 @@ export default function ManageQuestionsScreen() {
     );
   };
 
-  const dropdownData = [
+  const parentDropdownData = [
     { label: 'All Categories', value: 'all' },
-    ...categories.map(cat => ({ label: cat.name, value: cat.id }))
+    ...parentCategories.map(cat => ({ label: cat.name, value: cat.id }))
+  ];
+
+  const subDropdownData = [
+    { label: 'All Sub-categories', value: 'all' },
+    ...subCategories.map(cat => ({ label: cat.name, value: cat.id }))
   ];
 
   return (
@@ -60,29 +81,46 @@ export default function ManageQuestionsScreen() {
       
       <View style={styles.filterSection}>
         <View style={styles.filterGroup}>
-          <Text style={styles.filterLabel}>Category</Text>
+          <Text style={styles.filterLabel}>Main Category</Text>
           <Dropdown
-            style={[styles.dropdown, isFocus && { borderColor: '#6C5CE7' }]}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            iconStyle={styles.iconStyle}
-            data={dropdownData}
+            style={[styles.dropdown, parentFocus && { borderColor: '#6C5CE7' }]}
+            data={parentDropdownData}
             search
             maxHeight={300}
             labelField="label"
             valueField="value"
-            placeholder={!isFocus ? 'Select category' : '...'}
-            searchPlaceholder="Search..."
-            value={selectedCatId}
-            onFocus={() => setIsFocus(true)}
-            onBlur={() => setIsFocus(false)}
+            placeholder="Main Category"
+            value={selectedParentId}
+            onFocus={() => setParentFocus(true)}
+            onBlur={() => setParentFocus(false)}
             onChange={item => {
-              setSelectedCatId(item.value);
-              setIsFocus(false);
+              setSelectedParentId(item.value);
+              setSelectedSubId('all');
+              setParentFocus(false);
             }}
           />
         </View>
+
+        {subCategories.length > 0 && (
+          <View style={styles.filterGroup}>
+            <Text style={styles.filterLabel}>Sub-category</Text>
+            <Dropdown
+              style={[styles.dropdown, subFocus && { borderColor: '#6C5CE7' }]}
+              data={subDropdownData}
+              maxHeight={300}
+              labelField="label"
+              valueField="value"
+              placeholder="All Sub-categories"
+              value={selectedSubId}
+              onFocus={() => setSubFocus(true)}
+              onBlur={() => setSubFocus(false)}
+              onChange={item => {
+                setSelectedSubId(item.value);
+                setSubFocus(false);
+              }}
+            />
+          </View>
+        )}
 
         <View style={styles.filterGroup}>
           <Text style={styles.filterLabel}>Difficulty</Text>
@@ -136,7 +174,7 @@ export default function ManageQuestionsScreen() {
         onPress={() => router.push({
           pathname: '/add-question',
           params: { 
-            categoryId: selectedCatId === 'all' ? undefined : selectedCatId,
+            categoryId: (selectedSubId && selectedSubId !== 'all') ? selectedSubId : (selectedParentId !== 'all' ? selectedParentId : undefined),
             difficulty: selectedDifficulty === 'All' ? undefined : selectedDifficulty
           }
         } as any)}
@@ -168,7 +206,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#F1F2F6',
   },
   filterGroup: {
-    paddingVertical: 12,
+    paddingVertical: 8,
   },
   dropdown: {
     marginHorizontal: 20,
@@ -179,34 +217,20 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#DFE6E9',
   },
-  placeholderStyle: {
-    fontSize: 16,
-    color: '#B2BEC3',
-  },
-  selectedTextStyle: {
-    fontSize: 16,
-    color: '#2D3436',
-  },
-  inputSearchStyle: {
-    height: 40,
-    fontSize: 16,
-  },
-  iconStyle: {
-    width: 20,
-    height: 20,
-  },
   filterLabel: {
     paddingHorizontal: 20,
-    fontSize: 12,
+    fontSize: 10,
     fontWeight: '700',
     color: '#B2BEC3',
     textTransform: 'uppercase',
-    marginBottom: 8,
+    letterSpacing: 0.5,
+    marginBottom: 4,
   },
   difficultyFilters: {
     flexDirection: 'row',
     paddingHorizontal: 20,
     gap: 8,
+    marginBottom: 8,
   },
   diffChip: {
     flex: 1,
