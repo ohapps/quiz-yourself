@@ -6,6 +6,7 @@ import { Dropdown } from 'react-native-element-dropdown';
 import { quizConfigAtom } from '../store/atoms';
 import { Category } from '../types/quiz';
 import { getCategories } from '../lib/database';
+import * as Haptics from 'expo-haptics';
 
 export default function SetupScreen() {
   const router = useRouter();
@@ -16,6 +17,7 @@ export default function SetupScreen() {
   const [loading, setLoading] = useState(true);
   const [categoryFocus, setCategoryFocus] = useState(false);
   const [subCategoryFocus, setSubCategoryFocus] = useState(false);
+  const [isSpinning, setIsSpinning] = useState(false);
 
   useEffect(() => {
     async function load() {
@@ -52,6 +54,62 @@ export default function SetupScreen() {
     if (!activeParentId) return [];
     return categories.filter(c => c.parentId === activeParentId);
   }, [categories, activeParentId]);
+
+  const spinCategories = async () => {
+    if (parentCategories.length === 0 || isSpinning) return;
+    
+    setIsSpinning(true);
+
+    const mainSpins = 20;
+    let finalMainCat = parentCategories[0];
+    
+    // Spin main categories
+    for (let i = 0; i < mainSpins; i++) {
+      const randomCat = parentCategories[Math.floor(Math.random() * parentCategories.length)];
+      setConfig(prev => ({ ...prev, category: randomCat }));
+      
+      try {
+        await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+      } catch {}
+      
+      const delay = 40 + (i * i * 0.5);
+      await new Promise(resolve => setTimeout(resolve, delay));
+      
+      if (i === mainSpins - 1) {
+        finalMainCat = randomCat;
+        try {
+          await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+        } catch {}
+      }
+    }
+
+    const subs = categories.filter(c => c.parentId === finalMainCat.id);
+    
+    if (subs.length > 0) {
+      await new Promise(resolve => setTimeout(resolve, 500)); // Pause before sub spin
+      
+      const subSpins = 20;
+      for (let i = 0; i < subSpins; i++) {
+        const randomSub = subs[Math.floor(Math.random() * subs.length)];
+        setConfig(prev => ({ ...prev, category: randomSub }));
+        
+        try {
+          await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+        } catch {}
+        
+        const delay = 40 + (i * i * 0.5);
+        await new Promise(resolve => setTimeout(resolve, delay));
+
+        if (i === subSpins - 1) {
+          try {
+            await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+          } catch {}
+        }
+      }
+    }
+
+    setIsSpinning(false);
+  };
 
   const handleStart = () => {
     if (!config.category) {
@@ -98,15 +156,25 @@ export default function SetupScreen() {
         <Text style={styles.title}>{mode === 'solo' ? 'Quiz Yourself' : 'Quiz Others'}</Text>
         
         <View style={styles.section}>
-          <Text style={styles.label}>Main Category</Text>
+          <View style={styles.labelRow}>
+            <Text style={styles.label}>Main Category</Text>
+            <TouchableOpacity 
+              style={[styles.randomButton, isSpinning && { opacity: 0.5 }]} 
+              onPress={spinCategories}
+              disabled={isSpinning}
+            >
+              <Text style={styles.randomButtonText}>🎲 Randomize</Text>
+            </TouchableOpacity>
+          </View>
           <Dropdown
-            style={[styles.dropdown, categoryFocus && { borderColor: '#6C5CE7' }]}
+            style={[styles.dropdown, categoryFocus && { borderColor: '#6C5CE7' }, isSpinning && styles.dropdownDisabled]}
             placeholderStyle={styles.placeholderStyle}
             selectedTextStyle={styles.selectedTextStyle}
             inputSearchStyle={styles.inputSearchStyle}
             iconStyle={styles.iconStyle}
             data={parentDropdownData}
             search
+            disable={isSpinning}
             maxHeight={300}
             labelField="label"
             valueField="value"
@@ -127,11 +195,12 @@ export default function SetupScreen() {
           <View style={styles.section}>
             <Text style={styles.label}>Sub-category (Optional)</Text>
             <Dropdown
-              style={[styles.dropdown, subCategoryFocus && { borderColor: '#6C5CE7' }]}
+              style={[styles.dropdown, subCategoryFocus && { borderColor: '#6C5CE7' }, isSpinning && styles.dropdownDisabled]}
               placeholderStyle={styles.placeholderStyle}
               selectedTextStyle={styles.selectedTextStyle}
               data={subDropdownData}
               maxHeight={300}
+              disable={isSpinning}
               labelField="label"
               valueField="value"
               placeholder="All Sub-categories"
@@ -234,7 +303,11 @@ export default function SetupScreen() {
           </>
         )}
 
-        <TouchableOpacity style={styles.startButton} onPress={handleStart}>
+        <TouchableOpacity 
+          style={[styles.startButton, isSpinning && { opacity: 0.5 }]} 
+          onPress={handleStart}
+          disabled={isSpinning}
+        >
           <Text style={styles.startButtonText}>Start Quiz</Text>
         </TouchableOpacity>
       </ScrollView>
@@ -275,6 +348,26 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 1,
   },
+  labelRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  randomButton: {
+    backgroundColor: '#FFEAA7',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#FDCB6E',
+  },
+  randomButtonText: {
+    fontSize: 12,
+    fontWeight: '800',
+    color: '#D35400',
+    textTransform: 'uppercase',
+  },
   dropdown: {
     height: 60,
     backgroundColor: 'white',
@@ -282,6 +375,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     borderWidth: 2,
     borderColor: '#DFE6E9',
+  },
+  dropdownDisabled: {
+    backgroundColor: '#F1F2F6',
+    opacity: 0.8,
   },
   placeholderStyle: {
     fontSize: 16,
