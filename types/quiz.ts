@@ -6,6 +6,7 @@ export interface Question {
   options: string[];
   correctAnswer: string;
   difficulty: Difficulty;
+  shownCount?: number;
 }
 
 export interface Category {

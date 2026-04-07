@@ -22,6 +22,17 @@ export async function initializeDatabase() {
     console.warn('Migration failed or table not yet created', e);
   }
 
+  // Migration: Add shown_count to questions if it doesn't exist
+  try {
+    const tableInfo = await db.getAllAsync<{ name: string }>('PRAGMA table_info(questions)');
+    const hasShownCount = tableInfo.some(col => col.name === 'shown_count');
+    if (!hasShownCount) {
+      await db.execAsync('ALTER TABLE questions ADD COLUMN shown_count INTEGER DEFAULT 0;');
+    }
+  } catch (e) {
+    console.warn('Migration failed or table not yet created', e);
+  }
+
   // Create Categories table
   await db.execAsync(`
     CREATE TABLE IF NOT EXISTS categories (
@@ -41,6 +52,7 @@ export async function initializeDatabase() {
       options TEXT NOT NULL, -- JSON string
       correctAnswer TEXT NOT NULL,
       difficulty TEXT NOT NULL,
+      shown_count INTEGER DEFAULT 0,
       FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE CASCADE
     );
   `);
@@ -90,13 +102,15 @@ export async function getCategories(): Promise<Category[]> {
       question: string,
       options: string,
       correctAnswer: string,
-      difficulty: string
+      difficulty: string,
+      shown_count: number
     }>('SELECT * FROM questions WHERE category_id = ?', [row.id]);
 
     const questions: Question[] = questionsRows.map(q => ({
       ...q,
       options: JSON.parse(q.options),
-      difficulty: q.difficulty as Difficulty
+      difficulty: q.difficulty as Difficulty,
+      shownCount: q.shown_count
     }));
 
     categories.push({
@@ -136,7 +150,8 @@ export async function getQuestion(id: string): Promise<Question | null> {
     options: string,
     correctAnswer: string,
     difficulty: string,
-    category_id: string
+    category_id: string,
+    shown_count: number
   }>('SELECT * FROM questions WHERE id = ?', [id]);
 
   if (!result) return null;
@@ -144,7 +159,8 @@ export async function getQuestion(id: string): Promise<Question | null> {
   return {
     ...result,
     options: JSON.parse(result.options),
-    difficulty: result.difficulty as Difficulty
+    difficulty: result.difficulty as Difficulty,
+    shownCount: result.shown_count
   } as any;
 }
 
@@ -173,13 +189,15 @@ export async function getQuestions(categoryId?: string, difficulty?: string): Pr
     options: string,
     correctAnswer: string,
     difficulty: string,
-    category_id: string
+    category_id: string,
+    shown_count: number
   }>(query, params);
 
   return rows.map(q => ({
     ...q,
     options: JSON.parse(q.options),
-    difficulty: q.difficulty as Difficulty
+    difficulty: q.difficulty as Difficulty,
+    shownCount: q.shown_count
   }));
 }
 
@@ -245,4 +263,14 @@ export async function resetDatabase() {
   await db.execAsync('DROP TABLE IF EXISTS categories;');
   await db.execAsync('DROP TABLE IF EXISTS quiz_history;');
   await initializeDatabase();
+}
+
+export async function markQuestionsAsShown(ids: string[]) {
+  if (ids.length === 0) return;
+  const db = await SQLite.openDatabaseAsync(DATABASE_NAME);
+  const placeholders = ids.map(() => '?').join(',');
+  await db.runAsync(
+    `UPDATE questions SET shown_count = COALESCE(shown_count, 0) + 1 WHERE id IN (${placeholders})`,
+    ids
+  );
 }

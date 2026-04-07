@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView, StyleProp, ViewSt
 import { useRouter } from 'expo-router';
 import { useAtom } from 'jotai';
 import { quizConfigAtom, quizStateAtom } from '../store/atoms';
+import { markQuestionsAsShown } from '../lib/database';
 
 export default function QuizScreen() {
   const router = useRouter();
@@ -20,13 +21,29 @@ export default function QuizScreen() {
       return;
     }
 
-    // Filter by difficulty, then shuffle and pick questions
+    // Filter by difficulty, then sort by shown count and random
     const filteredByDifficulty = config.category.questions.filter(
       (q) => q.difficulty === config.difficulty
     );
     
-    const shuffled = [...filteredByDifficulty].sort(() => 0.5 - Math.random());
-    const selected = shuffled.slice(0, config.questionCount);
+    const sortedByShown = filteredByDifficulty.sort((a, b) => {
+      const countA = a.shownCount || 0;
+      const countB = b.shownCount || 0;
+      if (countA !== countB) {
+        return countA - countB;
+      }
+      return 0.5 - Math.random();
+    });
+    
+    const selected = sortedByShown
+      .slice(0, config.questionCount)
+      .sort(() => 0.5 - Math.random());
+
+    // Update in-memory count and save to database
+    selected.forEach(q => {
+      q.shownCount = (q.shownCount || 0) + 1;
+    });
+    markQuestionsAsShown(selected.map(q => q.id)).catch(console.error);
 
     setState({
       currentQuestionIndex: 0,

@@ -50,8 +50,6 @@ Join our community of developers creating universal apps.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
 
 Tasks
-- add a random category picker
-- update quiz to try to pick questions that have not been asked before
 - logo and cleanup look
 - add ability to download new categories and questions with updates
 - review existing questions for duplicates and remove them
