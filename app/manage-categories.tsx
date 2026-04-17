@@ -106,7 +106,7 @@ export default function ManageCategoriesScreen() {
 
       <ScrollView contentContainerStyle={styles.scrollContent}>
         {loading ? (
-          <ActivityIndicator size="large" color="#6C5CE7" style={{ marginTop: 40 }} />
+          <ActivityIndicator size="large" color="#1a73e8" style={{ marginTop: 40 }} />
         ) : (
           categoryTree.map(parent => (
             <View key={parent.id}>
@@ -262,7 +262,7 @@ const styles = StyleSheet.create({
     color: '#2D3436',
   },
   addButton: {
-    backgroundColor: '#6C5CE7',
+    backgroundColor: '#1a73e8',
     paddingHorizontal: 20,
     height: 50,
     justifyContent: 'center',
@@ -330,7 +330,7 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   editAction: {
-    color: '#6C5CE7',
+    color: '#1a73e8',
     fontWeight: '600',
   },
   deleteAction: {
@@ -348,7 +348,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   saveAction: {
-    color: '#00B894',
+    color: '#00AAFF',
     fontWeight: '700',
   },
   cancelAction: {
@@ -360,7 +360,7 @@ const styles = StyleSheet.create({
     padding: 8,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#6C5CE7',
+    borderColor: '#1a73e8',
   },
   dropdownSmall: {
     backgroundColor: '#F5F7FA',

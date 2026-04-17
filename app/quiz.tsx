@@ -259,11 +259,11 @@ const styles = StyleSheet.create({
     borderColor: '#DFE6E9',
   },
   optionSelected: {
-    borderColor: '#6C5CE7',
+    borderColor: '#1a73e8',
   },
   optionCorrect: {
-    borderColor: '#00B894',
-    backgroundColor: '#00B894',
+    borderColor: '#00AAFF',
+    backgroundColor: '#00AAFF',
   },
   optionWrong: {
     borderColor: '#FF7675',
@@ -291,7 +291,7 @@ const styles = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: '#6C5CE7',
+    backgroundColor: '#1a73e8',
   },
   groupOptionText: {
     fontSize: 16,
@@ -306,27 +306,27 @@ const styles = StyleSheet.create({
   },
   toggleOptionsButton: {
     alignSelf: 'flex-start',
-    backgroundColor: '#EFEDFF',
+    backgroundColor: '#E8F0FE',
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 8,
   },
   toggleOptionsText: {
-    color: '#6C5CE7',
+    color: '#1a73e8',
     fontSize: 14,
     fontWeight: '700',
   },
   answerBox: {
-    backgroundColor: '#E6FFF9',
+    backgroundColor: '#E3F2FD',
     padding: 24,
     borderRadius: 16,
     borderWidth: 2,
-    borderColor: '#00B894',
+    borderColor: '#00AAFF',
   },
   answerLabel: {
     fontSize: 14,
     fontWeight: '700',
-    color: '#00B894',
+    color: '#00AAFF',
     textTransform: 'uppercase',
     marginBottom: 8,
   },
@@ -348,7 +348,7 @@ const styles = StyleSheet.create({
   playerPointButton: {
     flex: 1,
     minWidth: '45%',
-    backgroundColor: '#6C5CE7',
+    backgroundColor: '#1a73e8',
     padding: 16,
     borderRadius: 12,
     alignItems: 'center',
@@ -369,7 +369,7 @@ const styles = StyleSheet.create({
     borderTopColor: '#DFE6E9',
   },
   nextButton: {
-    backgroundColor: '#2D3436',
+    backgroundColor: '#1A2340',
     paddingVertical: 18,
     borderRadius: 16,
     alignItems: 'center',

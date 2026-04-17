@@ -83,7 +83,7 @@ export default function ManageQuestionsScreen() {
         <View style={styles.filterGroup}>
           <Text style={styles.filterLabel}>Main Category</Text>
           <Dropdown
-            style={[styles.dropdown, parentFocus && { borderColor: '#6C5CE7' }]}
+            style={[styles.dropdown, parentFocus && { borderColor: '#1a73e8' }]}
             data={parentDropdownData}
             search
             maxHeight={300}
@@ -105,7 +105,7 @@ export default function ManageQuestionsScreen() {
           <View style={styles.filterGroup}>
             <Text style={styles.filterLabel}>Sub-category</Text>
             <Dropdown
-              style={[styles.dropdown, subFocus && { borderColor: '#6C5CE7' }]}
+              style={[styles.dropdown, subFocus && { borderColor: '#1a73e8' }]}
               data={subDropdownData}
               maxHeight={300}
               labelField="label"
@@ -140,7 +140,7 @@ export default function ManageQuestionsScreen() {
 
       <ScrollView contentContainerStyle={styles.scrollContent}>
         {loading ? (
-          <ActivityIndicator size="large" color="#6C5CE7" style={{ marginTop: 40 }} />
+          <ActivityIndicator size="large" color="#1a73e8" style={{ marginTop: 40 }} />
         ) : questions.length === 0 ? (
           <View style={styles.emptyState}>
             <Text style={styles.emptyText}>No questions found.</Text>
@@ -187,7 +187,7 @@ export default function ManageQuestionsScreen() {
 
 function getDifficultyColor(diff: string) {
   switch (diff) {
-    case 'Easy': return '#00B894';
+    case 'Easy': return '#00AAFF';
     case 'Medium': return '#FDCB6E';
     case 'Hard': return '#FF7675';
     default: return '#636E72';
@@ -242,8 +242,8 @@ const styles = StyleSheet.create({
     borderColor: '#DFE6E9',
   },
   diffChipActive: {
-    backgroundColor: '#2D3436',
-    borderColor: '#2D3436',
+    backgroundColor: '#1A2340',
+    borderColor: '#1A2340',
   },
   diffChipText: {
     fontSize: 12,
@@ -293,7 +293,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   editAction: {
-    color: '#6C5CE7',
+    color: '#1a73e8',
     fontSize: 12,
     fontWeight: '700',
   },
@@ -316,7 +316,7 @@ const styles = StyleSheet.create({
   },
   correctText: {
     fontSize: 14,
-    color: '#00B894',
+    color: '#00AAFF',
     fontWeight: '700',
   },
   emptyState: {
@@ -332,11 +332,11 @@ const styles = StyleSheet.create({
     bottom: 30,
     left: 20,
     right: 20,
-    backgroundColor: '#6C5CE7',
+    backgroundColor: '#1a73e8',
     paddingVertical: 16,
     borderRadius: 16,
     alignItems: 'center',
-    shadowColor: '#6C5CE7',
+    shadowColor: '#1a73e8',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 8,

@@ -116,14 +116,14 @@ const styles = StyleSheet.create({
   scoreValue: {
     fontSize: 24,
     fontWeight: '800',
-    color: '#6C5CE7',
+    color: '#1a73e8',
   },
   buttonContainer: {
     width: '100%',
     gap: 16,
   },
   button: {
-    backgroundColor: '#6C5CE7',
+    backgroundColor: '#1a73e8',
     paddingVertical: 18,
     borderRadius: 16,
     alignItems: 'center',
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
   buttonSecondary: {
     backgroundColor: 'transparent',
     borderWidth: 2,
-    borderColor: '#6C5CE7',
+    borderColor: '#1a73e8',
   },
   buttonText: {
     color: '#FFFFFF',
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   buttonTextSecondary: {
-    color: '#6C5CE7',
+    color: '#1a73e8',
     fontSize: 18,
     fontWeight: '700',
   },

@@ -71,7 +71,7 @@ export default function HistoryScreen() {
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#6C5CE7" />
+        <ActivityIndicator size="large" color="#1a73e8" />
       </View>
     );
   }
@@ -123,7 +123,7 @@ export default function HistoryScreen() {
 
 function getDifficultyColor(diff: string) {
   switch (diff) {
-    case 'Easy': return '#00B894';
+    case 'Easy': return '#00AAFF';
     case 'Medium': return '#FDCB6E';
     case 'Hard': return '#FF7675';
     default: return '#636E72';
@@ -193,8 +193,8 @@ const styles = StyleSheet.create({
   modeTag: {
     fontSize: 10,
     fontWeight: '900',
-    color: '#6C5CE7',
-    backgroundColor: '#EFEDFF',
+    color: '#1a73e8',
+    backgroundColor: '#E8F0FE',
     paddingHorizontal: 6,
     paddingVertical: 2,
     borderRadius: 4,
@@ -242,6 +242,6 @@ const styles = StyleSheet.create({
   playerVal: {
     fontSize: 16,
     fontWeight: '800',
-    color: '#6C5CE7',
+    color: '#1a73e8',
   },
 });

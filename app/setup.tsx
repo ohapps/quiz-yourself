@@ -138,7 +138,7 @@ export default function SetupScreen() {
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#6C5CE7" />
+        <ActivityIndicator size="large" color="#1a73e8" />
       </View>
     );
   }
@@ -167,7 +167,7 @@ export default function SetupScreen() {
             </TouchableOpacity>
           </View>
           <Dropdown
-            style={[styles.dropdown, categoryFocus && { borderColor: '#6C5CE7' }, isSpinning && styles.dropdownDisabled]}
+            style={[styles.dropdown, categoryFocus && { borderColor: '#1a73e8' }, isSpinning && styles.dropdownDisabled]}
             placeholderStyle={styles.placeholderStyle}
             selectedTextStyle={styles.selectedTextStyle}
             inputSearchStyle={styles.inputSearchStyle}
@@ -195,7 +195,7 @@ export default function SetupScreen() {
           <View style={styles.section}>
             <Text style={styles.label}>Sub-category (Optional)</Text>
             <Dropdown
-              style={[styles.dropdown, subCategoryFocus && { borderColor: '#6C5CE7' }, isSpinning && styles.dropdownDisabled]}
+              style={[styles.dropdown, subCategoryFocus && { borderColor: '#1a73e8' }, isSpinning && styles.dropdownDisabled]}
               placeholderStyle={styles.placeholderStyle}
               selectedTextStyle={styles.selectedTextStyle}
               data={subDropdownData}
@@ -410,8 +410,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   chipSelected: {
-    borderColor: '#6C5CE7',
-    backgroundColor: '#EFEDFF',
+    borderColor: '#1a73e8',
+    backgroundColor: '#E8F0FE',
   },
   chipText: {
     fontSize: 16,
@@ -419,7 +419,7 @@ const styles = StyleSheet.create({
     color: '#2D3436',
   },
   chipTextSelected: {
-    color: '#6C5CE7',
+    color: '#1a73e8',
   },
   counterContainer: {
     flexDirection: 'row',
@@ -439,7 +439,7 @@ const styles = StyleSheet.create({
   counterButtonText: {
     fontSize: 24,
     fontWeight: '600',
-    color: '#6C5CE7',
+    color: '#1a73e8',
   },
   countDisplay: {
     flex: 1,
@@ -459,7 +459,7 @@ const styles = StyleSheet.create({
   playerNumber: {
     fontSize: 16,
     fontWeight: '800',
-    color: '#6C5CE7',
+    color: '#1a73e8',
     width: 30,
   },
   playerInput: {
@@ -472,12 +472,12 @@ const styles = StyleSheet.create({
     borderColor: '#DFE6E9',
   },
   startButton: {
-    backgroundColor: '#6C5CE7',
+    backgroundColor: '#1a73e8',
     paddingVertical: 18,
     borderRadius: 16,
     alignItems: 'center',
     marginTop: 16,
-    shadowColor: '#6C5CE7',
+    shadowColor: '#1a73e8',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 8,

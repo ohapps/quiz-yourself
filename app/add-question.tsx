@@ -118,7 +118,7 @@ export default function AddQuestionScreen() {
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#6C5CE7" />
+        <ActivityIndicator size="large" color="#1a73e8" />
       </View>
     );
   }
@@ -136,7 +136,7 @@ export default function AddQuestionScreen() {
         <View style={styles.section}>
           <Text style={styles.label}>Main Category</Text>
           <Dropdown
-            style={[styles.dropdown, parentFocus && { borderColor: '#6C5CE7' }]}
+            style={[styles.dropdown, parentFocus && { borderColor: '#1a73e8' }]}
             placeholderStyle={styles.placeholderStyle}
             selectedTextStyle={styles.selectedTextStyle}
             inputSearchStyle={styles.inputSearchStyle}
@@ -161,7 +161,7 @@ export default function AddQuestionScreen() {
           <View style={styles.section}>
             <Text style={styles.label}>Sub-category (Optional)</Text>
             <Dropdown
-              style={[styles.dropdown, subFocus && { borderColor: '#6C5CE7' }]}
+              style={[styles.dropdown, subFocus && { borderColor: '#1a73e8' }]}
               placeholderStyle={styles.placeholderStyle}
               selectedTextStyle={styles.selectedTextStyle}
               data={subDropdownData}
@@ -301,8 +301,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   chipSelected: {
-    borderColor: '#6C5CE7',
-    backgroundColor: '#EFEDFF',
+    borderColor: '#1a73e8',
+    backgroundColor: '#E8F0FE',
   },
   chipText: {
     fontSize: 14,
@@ -310,7 +310,7 @@ const styles = StyleSheet.create({
     color: '#2D3436',
   },
   chipTextSelected: {
-    color: '#6C5CE7',
+    color: '#1a73e8',
   },
   input: {
     backgroundColor: '#FFFFFF',
@@ -338,8 +338,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
   },
   radioSelected: {
-    borderColor: '#6C5CE7',
-    backgroundColor: '#6C5CE7',
+    borderColor: '#1a73e8',
+    backgroundColor: '#1a73e8',
     borderWidth: 6,
   },
   optionInput: {
@@ -353,12 +353,12 @@ const styles = StyleSheet.create({
     color: '#2D3436',
   },
   saveButton: {
-    backgroundColor: '#6C5CE7',
+    backgroundColor: '#1a73e8',
     paddingVertical: 18,
     borderRadius: 16,
     alignItems: 'center',
     marginTop: 20,
-    shadowColor: '#6C5CE7',
+    shadowColor: '#1a73e8',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 8,
