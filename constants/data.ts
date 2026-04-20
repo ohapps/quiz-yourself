@@ -1,5 +1,7 @@
 import { Category } from '../types/quiz';
 
+export const CONTENT_VERSION = 1;
+
 export const CATEGORIES: Category[] = [
   {
     "id": "f8d3e2a1-6c4b-4a12-8e9a-7b5d3c1e2f3a",

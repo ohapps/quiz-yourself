@@ -16,3 +16,5 @@ export const quizStateAtom = atom<QuizState>({
   isFinished: false,
   questions: [],
 });
+
+export const updateResultAtom = atom<{ newCategories: number; newQuestions: number } | null>(null);
