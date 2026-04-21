@@ -1,6 +1,6 @@
 import { Category } from '../types/quiz';
 
-export const CONTENT_VERSION = 1;
+export const CONTENT_VERSION = 2;
 
 export const CATEGORIES: Category[] = [
   {
@@ -285,7 +285,7 @@ export const CATEGORIES: Category[] = [
       },
       {
         "id": "d0577514-b194-417b-8b69-49a6dade018f",
-        "question": "What is the shape of the toy invented by Hungarian professor Ernő Rubik?",
+        "question": "What is the shape of the toy invented by Hungarian professor Ern\u0151 Rubik?",
         "options": [
           "Pyramid",
           "Sphere",
@@ -644,30 +644,6 @@ export const CATEGORIES: Category[] = [
         "difficulty": "Medium"
       },
       {
-        "id": "cbfb08e0-741a-4b5b-8af9-5c93ac9d1ac3",
-        "question": "Which country developed the AK-47 assault rifle?",
-        "options": [
-          "Poland",
-          "Soviet Union",
-          "Israel",
-          "Iran"
-        ],
-        "correctAnswer": "Soviet Union",
-        "difficulty": "Easy"
-      },
-      {
-        "id": "d1119b66-ae23-4a46-a508-f0468e46d01a",
-        "question": "Which one of the following rhythm games was made by Harmonix?",
-        "options": [
-          "Rock Band",
-          "Dance Dance Revolution",
-          "Meat Beat Mania",
-          "Guitar Hero Live"
-        ],
-        "correctAnswer": "Rock Band",
-        "difficulty": "Easy"
-      },
-      {
         "id": "5e6fef81-b4a4-4341-b3d0-84eb04164e00",
         "question": "What do the letters of the fast food chain KFC stand for?",
         "options": [
@@ -716,18 +692,6 @@ export const CATEGORIES: Category[] = [
         "difficulty": "Medium"
       },
       {
-        "id": "b51369a9-df49-4bf0-8d41-51d9c269ef50",
-        "question": "What is the name of the popular animatronic singing fish prop, singing such hits such as \"Don't Worry, Be Happy\"?",
-        "options": [
-          "Sardeen",
-          "Singing Fish",
-          "Big Billy Bass",
-          "Big Mouth Billy Bass"
-        ],
-        "correctAnswer": "Big Mouth Billy Bass",
-        "difficulty": "Medium"
-      },
-      {
         "id": "6b9a342f-9acc-48d1-8fdb-afd6e3f45117",
         "question": "What is the full title of the Prime Minister of the UK?",
         "options": [
@@ -752,27 +716,15 @@ export const CATEGORIES: Category[] = [
         "difficulty": "Hard"
       },
       {
-        "id": "32da7511-f114-4678-abf5-64e326005c1f",
-        "question": "The likeness of which president is featured on the rare $2 bill of USA currency?",
-        "options": [
-          "John Quincy Adams",
-          "Ulysses Grant",
-          "Martin Van Buren",
-          "Thomas Jefferson"
-        ],
-        "correctAnswer": "Thomas Jefferson",
-        "difficulty": "Easy"
-      },
-      {
         "id": "c483c30e-95e2-4137-bd64-88f4e3908802",
         "question": "What is the currency of Poland?",
         "options": [
           "Euro",
           "Krone",
           "Ruble",
-          "Złoty"
+          "Z\u0142oty"
         ],
-        "correctAnswer": "Złoty",
+        "correctAnswer": "Z\u0142oty",
         "difficulty": "Medium"
       },
       {
@@ -786,18 +738,6 @@ export const CATEGORIES: Category[] = [
         ],
         "correctAnswer": "Twilight Zone Tower of Terror",
         "difficulty": "Medium"
-      },
-      {
-        "id": "ff604cf9-11b2-4561-aa90-265d97eb2809",
-        "question": "Roughly how many ingested apple seeds would it take to receive a fatal dose of cyanide?",
-        "options": [
-          "2,000",
-          "20",
-          "20,000",
-          "200"
-        ],
-        "correctAnswer": "200",
-        "difficulty": "Hard"
       },
       {
         "id": "d34e5064-1cf0-46da-a37c-46adce2196d5",
@@ -872,42 +812,6 @@ export const CATEGORIES: Category[] = [
         "difficulty": "Easy"
       },
       {
-        "id": "a9c197a9-16f4-4024-b7c7-e55f2af58ac2",
-        "question": "Rolex is a company that specializes in what type of product?",
-        "options": [
-          "Sports equipment",
-          "Computers",
-          "Cars",
-          "Watches"
-        ],
-        "correctAnswer": "Watches",
-        "difficulty": "Medium"
-      },
-      {
-        "id": "4900e439-b8a3-46e7-a869-5cb16855d58d",
-        "question": "How many letters are there in the English alphabet?",
-        "options": [
-          "26",
-          "28",
-          "24",
-          "23"
-        ],
-        "correctAnswer": "26",
-        "difficulty": "Easy"
-      },
-      {
-        "id": "b97728ca-7969-4466-ba6c-e1117d8c4aa7",
-        "question": "What is the name of the extra pedal on a manual or standard transmission car?",
-        "options": [
-          "Clutch",
-          "Shifter",
-          "Booster",
-          "Parking Brake"
-        ],
-        "correctAnswer": "Clutch",
-        "difficulty": "Easy"
-      },
-      {
         "id": "2532e4ab-f097-4626-82bd-692baa4c5435",
         "question": "What is Cynophobia the fear of?",
         "options": [
@@ -956,18 +860,6 @@ export const CATEGORIES: Category[] = [
         "difficulty": "Easy"
       },
       {
-        "id": "63401fa4-0387-46c0-9704-e2c37c32bfb1",
-        "question": "What is the name of the currency used in Ethiopia?",
-        "options": [
-          "Birr",
-          "Dirham",
-          "U.S. Dollar",
-          "Rand"
-        ],
-        "correctAnswer": "Birr",
-        "difficulty": "Hard"
-      },
-      {
         "id": "c67f65e2-7715-47a5-b5b4-bcab9d94e807",
         "question": "Out of these four buildings, which one is the tallest, with a height of 1,776 ft (541.3 m)?",
         "options": [
@@ -978,18 +870,6 @@ export const CATEGORIES: Category[] = [
         ],
         "correctAnswer": "One World Trade Center, United States",
         "difficulty": "Medium"
-      },
-      {
-        "id": "24cf2124-ff2d-48e4-afe7-42049d8cc657",
-        "question": "Which of the following is not the host of a program on NPR?",
-        "options": [
-          "Ira Glass",
-          "Terry Gross",
-          "Peter Sagal",
-          "Ben Shapiro"
-        ],
-        "correctAnswer": "Ben Shapiro",
-        "difficulty": "Easy"
       },
       {
         "id": "a16debd2-b81b-4d31-ae48-2f88c217f0c1",
@@ -1052,18 +932,6 @@ export const CATEGORIES: Category[] = [
         "difficulty": "Medium"
       },
       {
-        "id": "428199f4-d184-4f35-baa3-5ff7959babbc",
-        "question": "In \"Battle Cats\", what is Moneko / MISS Moneko's critical percentage rate?",
-        "options": [
-          "20%",
-          "15%",
-          "25%",
-          "10%"
-        ],
-        "correctAnswer": "15%",
-        "difficulty": "Hard"
-      },
-      {
         "id": "8a0eb990-beb1-4a56-8836-0331dfb9830e",
         "question": "What is the real name of viral internet meme Grumpy Cat?",
         "options": [
@@ -1074,18 +942,6 @@ export const CATEGORIES: Category[] = [
         ],
         "correctAnswer": "Tardar Sauce",
         "difficulty": "Medium"
-      },
-      {
-        "id": "97223c36-35b7-4d93-89ad-168962d6ef73",
-        "question": "What is the shortest month of the year?",
-        "options": [
-          "February",
-          "December",
-          "April",
-          "September"
-        ],
-        "correctAnswer": "February",
-        "difficulty": "Easy"
       },
       {
         "id": "27fc5cff-412e-4daa-a95a-4862cdc84166",
@@ -1757,12 +1613,12 @@ export const CATEGORIES: Category[] = [
         "id": "c494a9b5-2933-4a02-b665-5111394c5039",
         "question": "The core of the Sun can reach which temperature?",
         "options": [
-          "8° Billion F (°4.4 Billion C)",
+          "8\u00b0 Billion F (\u00b04.4 Billion C)",
           "Absolute Zero (Both F and C)",
-          "938,000° F (521093.3° C)",
-          "27° Million F (15° Million C)"
+          "938,000\u00b0 F (521093.3\u00b0 C)",
+          "27\u00b0 Million F (15\u00b0 Million C)"
         ],
-        "correctAnswer": "27° Million F (15° Million C)",
+        "correctAnswer": "27\u00b0 Million F (15\u00b0 Million C)",
         "difficulty": "Hard"
       },
       {
@@ -1826,18 +1682,6 @@ export const CATEGORIES: Category[] = [
         "difficulty": "Medium"
       },
       {
-        "id": "41b50dc5-f858-498f-b610-ffa0ec3e52e9",
-        "question": "In human biology, a circadium rhythm relates to a period of roughly how many hours?",
-        "options": [
-          "16",
-          "8",
-          "24",
-          "32"
-        ],
-        "correctAnswer": "24",
-        "difficulty": "Medium"
-      },
-      {
         "id": "6c76cb3d-821d-41bd-a8ab-db386fced615",
         "question": "What is the mathematical formula of Ohm's law?",
         "options": [
@@ -1860,30 +1704,6 @@ export const CATEGORIES: Category[] = [
         ],
         "correctAnswer": "Sir Isaac Newton",
         "difficulty": "Easy"
-      },
-      {
-        "id": "825d4a9b-7f58-4ef7-8c1c-54c087ff471c",
-        "question": "Which is the most abundant element in the universe?",
-        "options": [
-          "Lithium",
-          "Helium",
-          "Oxygen",
-          "Hydrogen"
-        ],
-        "correctAnswer": "Hydrogen",
-        "difficulty": "Easy"
-      },
-      {
-        "id": "201b4c97-79bb-48ba-bad5-0bad13ea0e85",
-        "question": "How many types of quarks are there in the standard model of physics?",
-        "options": [
-          "6",
-          "2",
-          "3",
-          "4"
-        ],
-        "correctAnswer": "6",
-        "difficulty": "Hard"
       },
       {
         "id": "d5a52c75-03f3-4df9-a55a-a0b2f06253d9",
@@ -1980,18 +1800,6 @@ export const CATEGORIES: Category[] = [
         ],
         "correctAnswer": "Light amplification by stimulated emission of radiation",
         "difficulty": "Easy"
-      },
-      {
-        "id": "1bdf02f0-f54a-49e3-a94e-3d6ce4b3c203",
-        "question": "What is the standard SI unit for luminous intensity?",
-        "options": [
-          "Candela",
-          "Lumen",
-          "Faraday",
-          "Coulomb"
-        ],
-        "correctAnswer": "Candela",
-        "difficulty": "Hard"
       },
       {
         "id": "8bd247c0-d199-4c3a-b10c-003e40f069a3",
@@ -2141,25 +1949,13 @@ export const CATEGORIES: Category[] = [
         "id": "eba3d55e-e3a9-4dc5-89fc-f95708b01b81",
         "question": "At what temperature does water boil?",
         "options": [
-          "212°F",
-          "200°F",
-          "181°F",
-          "178°F"
+          "212\u00b0F",
+          "200\u00b0F",
+          "181\u00b0F",
+          "178\u00b0F"
         ],
-        "correctAnswer": "212°F",
+        "correctAnswer": "212\u00b0F",
         "difficulty": "Medium"
-      },
-      {
-        "id": "cf32e0f5-fd3b-45fc-b4f2-ac87e2c8a833",
-        "question": "The core of the Sun can reach which temperature?",
-        "options": [
-          "938,000° F (521093.3° C)",
-          "Absolute Zero (Both F and C)",
-          "8° Billion F (°4.4 Billion C)",
-          "27° Million F (15° Million C)"
-        ],
-        "correctAnswer": "27° Million F (15° Million C)",
-        "difficulty": "Hard"
       },
       {
         "id": "d45c73d5-e7b2-4493-abad-29a75ab9a9e5",
@@ -2174,18 +1970,6 @@ export const CATEGORIES: Category[] = [
         "difficulty": "Hard"
       },
       {
-        "id": "823f3df6-a7be-444e-9c05-63812ce05e13",
-        "question": "Which of these is NOT a part of the structure of a typical neuron?",
-        "options": [
-          "Islets of Langerhans",
-          "Myelin sheath",
-          "Schwann cell",
-          "Node of Ranvier"
-        ],
-        "correctAnswer": "Islets of Langerhans",
-        "difficulty": "Medium"
-      },
-      {
         "id": "3adb659e-50c4-4f28-9979-db99f7ca58ce",
         "question": "What is the Linnean name of the domestic apple tree?",
         "options": [
@@ -2198,18 +1982,6 @@ export const CATEGORIES: Category[] = [
         "difficulty": "Medium"
       },
       {
-        "id": "b4975483-bd7d-4e5d-8045-748cbe7f9419",
-        "question": "What are human nails made of?",
-        "options": [
-          "Chitin",
-          "Calcium",
-          "Bone",
-          "Keratin"
-        ],
-        "correctAnswer": "Keratin",
-        "difficulty": "Medium"
-      },
-      {
         "id": "18b2e863-9989-454d-b60b-50d0202f7e36",
         "question": "How many planets make up our Solar System?",
         "options": [
@@ -2219,18 +1991,6 @@ export const CATEGORIES: Category[] = [
           "8"
         ],
         "correctAnswer": "8",
-        "difficulty": "Easy"
-      },
-      {
-        "id": "8065f284-2b07-4e17-bc91-2062f9f33648",
-        "question": "Which type of rock is created by intense heat AND pressure?",
-        "options": [
-          "Metamorphic",
-          "Sedimentary",
-          "Diamond",
-          "Igneous"
-        ],
-        "correctAnswer": "Metamorphic",
         "difficulty": "Easy"
       },
       {
@@ -2280,18 +2040,6 @@ export const CATEGORIES: Category[] = [
         ],
         "correctAnswer": "Center Core Landing",
         "difficulty": "Medium"
-      },
-      {
-        "id": "44aa1c76-ff89-48ff-aab1-852dce5bda7e",
-        "question": "Which constellation contains the center of the Milky Way?",
-        "options": [
-          "Sagittarius",
-          "Ophiuchus",
-          "Scorpius",
-          "Capricornus"
-        ],
-        "correctAnswer": "Sagittarius",
-        "difficulty": "Hard"
       },
       {
         "id": "addc5012-5822-4f29-86e8-b07fb86a6860",
@@ -3236,18 +2984,6 @@ export const CATEGORIES: Category[] = [
         "difficulty": "Medium"
       },
       {
-        "id": "4c84ac0f-54ed-4b28-9ea5-755403d9d118",
-        "question": "After the 1516 Battle of Marj Dabiq, the Ottoman Empire took control of Jerusalem from which sultanate?",
-        "options": [
-          "Mamluk",
-          "Seljuq",
-          "Ayyubid",
-          "Ummayyad"
-        ],
-        "correctAnswer": "Mamluk",
-        "difficulty": "Hard"
-      },
-      {
         "id": "776d4062-e207-41fb-8029-5b351006ad38",
         "question": "Which of the following ancient Near Eastern peoples still exists as a modern ethnic group?",
         "options": [
@@ -3302,7 +3038,7 @@ export const CATEGORIES: Category[] = [
           "Gavrilo Princip",
           "Ferdinand Cohen-Blind",
           "Oskar Potiorek",
-          "Nedeljko Čabrinović"
+          "Nedeljko \u010cabrinovi\u0107"
         ],
         "correctAnswer": "Gavrilo Princip",
         "difficulty": "Medium"
@@ -3332,18 +3068,6 @@ export const CATEGORIES: Category[] = [
         "difficulty": "Medium"
       },
       {
-        "id": "f1ac1f95-b040-404e-baa4-8af235a293e5",
-        "question": "Against which country did the Dutch Republic fight the Eighty Years' War?",
-        "options": [
-          "Spain",
-          "France",
-          "England",
-          "Portugal"
-        ],
-        "correctAnswer": "Spain",
-        "difficulty": "Medium"
-      },
-      {
         "id": "172cc495-bf6f-41c7-bfe5-769ddcc9a844",
         "question": "What was Napoleon Bonaparte's name before he changed it?",
         "options": [
@@ -3366,18 +3090,6 @@ export const CATEGORIES: Category[] = [
         ],
         "correctAnswer": "1776",
         "difficulty": "Hard"
-      },
-      {
-        "id": "4215300d-7f31-406d-90fe-7b70d341f434",
-        "question": "Who rode on horseback to warn the Minutemen that the British were coming during the U.S. Revolutionary War?",
-        "options": [
-          "Henry Longfellow",
-          "Nathan Hale",
-          "Thomas Paine",
-          "Paul Revere"
-        ],
-        "correctAnswer": "Paul Revere",
-        "difficulty": "Easy"
       },
       {
         "id": "8768a99c-cab4-4ba0-827c-a9d1d183ea23",
@@ -3404,18 +3116,6 @@ export const CATEGORIES: Category[] = [
         "difficulty": "Hard"
       },
       {
-        "id": "bcd31c76-ce75-49c0-ae9a-0cfd2a53fe16",
-        "question": "How old was Adolf Hitler when he died?",
-        "options": [
-          "65",
-          "56",
-          "43",
-          "47"
-        ],
-        "correctAnswer": "56",
-        "difficulty": "Easy"
-      },
-      {
         "id": "75be980f-88c8-402a-8a76-d764f3252b18",
         "question": "When did the United States formally declare war on Japan, entering World War II?",
         "options": [
@@ -3437,18 +3137,6 @@ export const CATEGORIES: Category[] = [
           "75 Megatons"
         ],
         "correctAnswer": "100 Megatons",
-        "difficulty": "Medium"
-      },
-      {
-        "id": "7c8fcc08-cc3c-42d4-b45e-6af4ee74a897",
-        "question": "Who was the Prime Minister of the United Kingdom for most of World War II?",
-        "options": [
-          "Neville Chamberlain",
-          "Winston Churchill",
-          "Edward Heath",
-          "Harold Macmillan"
-        ],
-        "correctAnswer": "Winston Churchill",
         "difficulty": "Medium"
       },
       {
@@ -3497,18 +3185,6 @@ export const CATEGORIES: Category[] = [
           "Kim Il Sung"
         ],
         "correctAnswer": "Mao Zedong",
-        "difficulty": "Medium"
-      },
-      {
-        "id": "42637d4e-964e-47cf-90d4-e4890830abe1",
-        "question": "The Korean War started in what year?",
-        "options": [
-          "1912",
-          "1960",
-          "1945",
-          "1950"
-        ],
-        "correctAnswer": "1950",
         "difficulty": "Medium"
       },
       {
@@ -3596,18 +3272,6 @@ export const CATEGORIES: Category[] = [
         "difficulty": "Medium"
       },
       {
-        "id": "61ea1e4a-5709-49cd-b8cc-e8a2191191e7",
-        "question": "In what year was the M1911 pistol designed?",
-        "options": [
-          "1917",
-          "1899",
-          "1907",
-          "1911"
-        ],
-        "correctAnswer": "1911",
-        "difficulty": "Easy"
-      },
-      {
         "id": "f7b02d5e-9c89-408a-a5b4-d4827e7bf770",
         "question": "Where and when was the first cardboard box made for industrial use?",
         "options": [
@@ -3675,7 +3339,7 @@ export const CATEGORIES: Category[] = [
       },
       {
         "id": "dc96901b-bf4a-4bc4-9f7e-7857db31834f",
-        "question": "At what temperature does temp in °C equal temp in °F?",
+        "question": "At what temperature does temp in \u00b0C equal temp in \u00b0F?",
         "options": [
           "-40",
           "+40",
@@ -3939,7 +3603,7 @@ export const CATEGORIES: Category[] = [
       },
       {
         "id": "93ba9db1-5258-449b-a85a-8566be4f3722",
-        "question": "What type of angle is greater than 90°?",
+        "question": "What type of angle is greater than 90\u00b0?",
         "options": [
           "Right",
           "Acute",
@@ -4238,90 +3902,6 @@ export const CATEGORIES: Category[] = [
         "difficulty": "Medium"
       },
       {
-        "id": "111c2615-a476-4c61-b879-bec6a508c143",
-        "question": "What is the approximate value of mathematical constant e?",
-        "options": [
-          "2.72",
-          "3.14",
-          "1.62",
-          "1.41"
-        ],
-        "correctAnswer": "2.72",
-        "difficulty": "Hard"
-      },
-      {
-        "id": "fd9b86eb-10d9-4012-ac46-21df94f7df7d",
-        "question": "Which of these did mathematician Leonhard Euler NOT develop?",
-        "options": [
-          "A formula linking vertices, edges and faces on a graph",
-          "An identity linking the numbers e, pi and i",
-          "A method of solving first-order differential equations",
-          "An improvement to the Fast Fourier Transform"
-        ],
-        "correctAnswer": "An improvement to the Fast Fourier Transform",
-        "difficulty": "Hard"
-      },
-      {
-        "id": "676180a1-4387-454b-846a-9ef4bff241c0",
-        "question": "Which of the following famous mathematicians died in a duel at the age of 20?",
-        "options": [
-          "Abel",
-          "Gauss",
-          "Galois",
-          "Euler"
-        ],
-        "correctAnswer": "Galois",
-        "difficulty": "Hard"
-      },
-      {
-        "id": "298fe928-ce81-490f-9a66-aaca38065b45",
-        "question": "How many sides does a heptagon have?",
-        "options": [
-          "6",
-          "8",
-          "5",
-          "7"
-        ],
-        "correctAnswer": "7",
-        "difficulty": "Easy"
-      },
-      {
-        "id": "59454484-02e0-488f-8b78-44d20b67e61d",
-        "question": "How many sides does a pentagon have?",
-        "options": [
-          "4",
-          "6",
-          "5",
-          "9"
-        ],
-        "correctAnswer": "5",
-        "difficulty": "Easy"
-      },
-      {
-        "id": "1b0fada3-2bd6-4c34-bab9-20c92334cb12",
-        "question": "The notion of a \"set that contains all sets which do not contain themselves\" is a paradoxical idea attributed to which English philosopher?",
-        "options": [
-          "Alfred North Whitehead",
-          "John Locke",
-          "Bertrand Russel",
-          "Francis Bacon"
-        ],
-        "correctAnswer": "Bertrand Russel",
-        "difficulty": "Hard"
-      },
-      {
-        "id": "994a82bc-cb8a-43df-a870-07c34514fb37",
-        "question": "What numbers are in the 5th row of Pascal's Triangle?",
-        "options": [
-          "1 5 10 10 5 1",
-          "1 3 3 1",
-          "1 4 6 4 1",
-          "1 6 15 20 15 6 1"
-        ],
-        "correctAnswer": "1 4 6 4 1",
-        "difficulty": "Medium"
-      },
-      {
         "id": "3c9c4756-2e25-49a1-b417-f91b6d6f449c",
         "question": "Which two men are credited with independently discovering differential calculus? ",
         "options": [
@@ -4346,174 +3926,6 @@ export const CATEGORIES: Category[] = [
         "difficulty": "Medium"
       },
       {
-        "id": "ca006454-5a7a-43a1-8b10-21cfb53dc4b5",
-        "question": "To the nearest whole number, how many radians are in a whole circle?",
-        "options": [
-          "5",
-          "4",
-          "3",
-          "6"
-        ],
-        "correctAnswer": "6",
-        "difficulty": "Medium"
-      },
-      {
-        "id": "08472ccd-c22a-4dfa-bbfd-2053665fbc60",
-        "question": "What is a polygon with eight sides called?",
-        "options": [
-          "Octagon",
-          "Heptagon",
-          "Hexagon",
-          "Nanagon"
-        ],
-        "correctAnswer": "Octagon",
-        "difficulty": "Easy"
-      },
-      {
-        "id": "0d74e7e5-86d3-497a-9e64-e6a0c8058352",
-        "question": "What is the correct order of operations for solving equations?",
-        "options": [
-          "The order in which the operations are written.",
-          "Parentheses, Exponents, Addition, Substraction, Multiplication, Division",
-          "Addition, Multiplication, Division, Subtraction, Addition, Parentheses",
-          "Parentheses, Exponents, Multiplication, Division, Addition, Subtraction"
-        ],
-        "correctAnswer": "Parentheses, Exponents, Multiplication, Division, Addition, Subtraction",
-        "difficulty": "Easy"
-      },
-      {
-        "id": "dea30b1c-1db9-4449-bb95-fdc8defa39b3",
-        "question": "How many zeptometres are inside one femtometre?",
-        "options": [
-          "1,000,000",
-          "10",
-          "1000",
-          "1,000,000,000"
-        ],
-        "correctAnswer": "1,000,000",
-        "difficulty": "Hard"
-      },
-      {
-        "id": "e3c42561-e4ae-4333-9938-11a76cf4e042",
-        "question": "What Greek letter is used to signify summation?",
-        "options": [
-          "Sigma",
-          "Delta",
-          "Omega",
-          "Alpha"
-        ],
-        "correctAnswer": "Sigma",
-        "difficulty": "Medium"
-      },
-      {
-        "id": "ed9f6c1d-09ee-4946-bfb6-b473e32f62e8",
-        "question": "A mathematical constant, known as \"The Golden Ratio\", is most commonly represented by which greek letter?",
-        "options": [
-          "&Phi; (phi)",
-          "&pi; (pi)",
-          "&Psi; (psi)",
-          "&Tau; (tau)"
-        ],
-        "correctAnswer": "&Phi; (phi)",
-        "difficulty": "Medium"
-      },
-      {
-        "id": "5ace9a2e-dd5a-40e4-9970-41babd38b628",
-        "question": "What is the symbol for Displacement?",
-        "options": [
-          "r",
-          "&Delta;r",
-          "dr",
-          "Dp"
-        ],
-        "correctAnswer": "&Delta;r",
-        "difficulty": "Easy"
-      },
-      {
-        "id": "070e427b-a536-4abc-bce9-845ead1268a0",
-        "question": "Which of these probability distributions is NOT discrete?",
-        "options": [
-          "Normal",
-          "Hyper-geometric",
-          "Binomial",
-          "Poisson"
-        ],
-        "correctAnswer": "Normal",
-        "difficulty": "Medium"
-      },
-      {
-        "id": "e5029843-b40c-4e10-9a6f-eb1542646a88",
-        "question": "What is the equation for the area of a sphere?",
-        "options": [
-          "(4/3)&pi;r^3",
-          "&pi;r^4",
-          "4&pi;r^2",
-          "(1/3)&pi;hr^2"
-        ],
-        "correctAnswer": "(4/3)&pi;r^3",
-        "difficulty": "Easy"
-      },
-      {
-        "id": "2922ef4c-f430-44fd-a5da-55bc5bac6711",
-        "question": "What is the plane curve proposed by Descartes to challenge Fermat's extremum-finding techniques called?",
-        "options": [
-          "Folium of Descartes",
-          "Elliptic Paraboloid of Descartes",
-          "Cartesian Coordinates",
-          "Descarte's Helicoid"
-        ],
-        "correctAnswer": "Folium of Descartes",
-        "difficulty": "Hard"
-      },
-      {
-        "id": "9e1bc25b-9a5c-45e3-af16-30efb339e54f",
-        "question": "What is the first Mersenne prime exponent over 1000?",
-        "options": [
-          "1069",
-          "1009",
-          "2203",
-          "1279"
-        ],
-        "correctAnswer": "1279",
-        "difficulty": "Medium"
-      },
-      {
-        "id": "273dbd6c-db6b-4807-8d30-e94fd50b77fa",
-        "question": "What is the only Millennium Prize Problem that has been solved so far?",
-        "options": [
-          "Fermat's conjecture",
-          "P vs. NP problem",
-          "Poincar&eacute; conjecture",
-          "Riemann Hypothesis"
-        ],
-        "correctAnswer": "Poincar&eacute; conjecture",
-        "difficulty": "Hard"
-      },
-      {
-        "id": "dd11bae9-6a4a-46b3-8c52-bd132a16749e",
-        "question": "What is the name of a nine sided polygon?",
-        "options": [
-          "Heptagon",
-          "Hexagon",
-          "Nonagon",
-          "Octagon"
-        ],
-        "correctAnswer": "Nonagon",
-        "difficulty": "Easy"
-      },
-      {
-        "id": "35986f12-7bc2-460e-8817-ef9339496b0c",
-        "question": "The French mathematician &Eacute;variste Galois is primarily known for his work in which?",
-        "options": [
-          "Abelian Integration",
-          "Galois' Method for PDE's ",
-          "Galois' Continued Fractions",
-          "Galois Theory"
-        ],
-        "correctAnswer": "Galois Theory",
-        "difficulty": "Hard"
-      },
-      {
         "id": "e8717f30-87e2-42ea-9135-a6474e3aebd1",
         "question": "What is the smallest number that can be expressed as the sum of two positive cubes in two different ways?",
         "options": [
@@ -4524,18 +3936,6 @@ export const CATEGORIES: Category[] = [
         ],
         "correctAnswer": "1729",
         "difficulty": "Hard"
-      },
-      {
-        "id": "694be53a-0a02-4d6d-b8e4-12264a6fc168",
-        "question": "What is the least number of sides a polygon can have?",
-        "options": [
-          "3",
-          "7",
-          "1",
-          "2"
-        ],
-        "correctAnswer": "3",
-        "difficulty": "Easy"
       },
       {
         "id": "c6ff4f49-e3fa-4388-8cd9-91700eb8cc19",
@@ -4550,42 +3950,6 @@ export const CATEGORIES: Category[] = [
         "difficulty": "Hard"
       },
       {
-        "id": "2c2ddf6b-c7fb-46a3-823f-85a194369c06",
-        "question": "What are the first 6 digits of the number \"Pi\"?",
-        "options": [
-          "3.14169",
-          "3.12423",
-          "3.14159",
-          "3.25812"
-        ],
-        "correctAnswer": "3.14159",
-        "difficulty": "Medium"
-      },
-      {
-        "id": "771a7a48-55a0-4220-8501-05300e2588dd",
-        "question": "Which mathematician refused the Fields Medal?",
-        "options": [
-          "Edward Witten",
-          "Grigori Perelman",
-          "Andrew Wiles",
-          "Terence Tao"
-        ],
-        "correctAnswer": "Grigori Perelman",
-        "difficulty": "Medium"
-      },
-      {
-        "id": "3eb7387f-3930-4281-8ad3-d9c2cafe8bf8",
-        "question": "How many sides does a heptagon have?",
-        "options": [
-          "9",
-          "4",
-          "5",
-          "7"
-        ],
-        "correctAnswer": "7",
-        "difficulty": "Easy"
-      },
-      {
         "id": "6b3e7606-5ea1-4314-a3d4-9538b59a8758",
         "question": "Which of the following is not one of the seven Millennium Prize Problems?",
         "options": [
@@ -4595,54 +3959,6 @@ export const CATEGORIES: Category[] = [
           "Birch and Swinnerton-Dyer Conjecture"
         ],
         "correctAnswer": "Navi&eacute;r conjecture",
-        "difficulty": "Easy"
-      },
-      {
-        "id": "573c2c19-b4eb-4c0f-804b-f7ee49fc1ba0",
-        "question": "Which of the following mathematicians made major contributions to game theory?",
-        "options": [
-          "Leonhard Euler",
-          "Stefan Banach",
-          "Carl Friedrich Gauss",
-          "John Von Neumann"
-        ],
-        "correctAnswer": "John Von Neumann",
-        "difficulty": "Hard"
-      },
-      {
-        "id": "48ef0b0b-2b75-4737-b644-3a8fee58d98d",
-        "question": "What is the fourth digit of &pi;?",
-        "options": [
-          "4",
-          "3",
-          "2",
-          "1"
-        ],
-        "correctAnswer": "1",
-        "difficulty": "Hard"
-      },
-      {
-        "id": "4811d408-efb6-4ec1-8e5d-7ae3a118edd6",
-        "question": "In Roman Numerals, what does XL equate to?",
-        "options": [
-          "40",
-          "90",
-          "15",
-          "60"
-        ],
-        "correctAnswer": "40",
-        "difficulty": "Easy"
-      },
-      {
-        "id": "23a2ce1f-4a31-4f43-9830-02998875b6b1",
-        "question": "What's the square root of 49?",
-        "options": [
-          "9",
-          "4",
-          "7",
-          "12"
-        ],
-        "correctAnswer": "7",
         "difficulty": "Easy"
       },
       {
@@ -4658,18 +3974,6 @@ export const CATEGORIES: Category[] = [
         "difficulty": "Medium"
       },
       {
-        "id": "32478211-1c91-47cb-a638-a698d2262a1a",
-        "question": "What is the Roman numeral for 500?",
-        "options": [
-          "X",
-          "L",
-          "D",
-          "C"
-        ],
-        "correctAnswer": "D",
-        "difficulty": "Medium"
-      },
-      {
         "id": "72503b18-20fd-4d7b-a72f-138d23b859c2",
         "question": "Which greek mathematician ran through the streets of Syracuse naked while shouting \"Eureka\" after discovering the principle of displacement?",
         "options": [
@@ -4679,138 +3983,6 @@ export const CATEGORIES: Category[] = [
           "Eratosthenes"
         ],
         "correctAnswer": "Archimedes",
-        "difficulty": "Medium"
-      },
-      {
-        "id": "b716cada-84af-49f9-85b9-9c882cd4f198",
-        "question": "What is the mathematician Euler's first name?",
-        "options": [
-          "Leonhard",
-          "Lionel",
-          "Andrin",
-          "Ajan"
-        ],
-        "correctAnswer": "Leonhard",
-        "difficulty": "Easy"
-      },
-      {
-        "id": "b6ae8244-9030-4a87-9e2a-f56389f8f2a9",
-        "question": "What prime number comes next after 19?",
-        "options": [
-          "23",
-          "27",
-          "25",
-          "21"
-        ],
-        "correctAnswer": "23",
-        "difficulty": "Easy"
-      },
-      {
-        "id": "e7f4ef87-9866-4d52-89a6-27a995212985",
-        "question": "What is the derivative of Acceleration with respect to time?",
-        "options": [
-          "Jerk",
-          "Shift",
-          "Bump",
-          "Slide"
-        ],
-        "correctAnswer": "Jerk",
-        "difficulty": "Hard"
-      },
-      {
-        "id": "335e7588-cd94-42c1-9959-bf6aea9dfcef",
-        "question": "How many degrees make a full circle?",
-        "options": [
-          "180",
-          "360",
-          "90",
-          "720"
-        ],
-        "correctAnswer": "360",
-        "difficulty": "Easy"
-      },
-      {
-        "id": "61802c39-e198-445c-bd54-c6d3be36ea12",
-        "question": "At what temperature does temp in °C equal temp in °F?",
-        "options": [
-          "+40",
-          "-40",
-          "+100",
-          "0"
-        ],
-        "correctAnswer": "-40",
-        "difficulty": "Medium"
-      },
-      {
-        "id": "a3fe5bd2-e18b-4ead-b52d-e1d325af90d8",
-        "question": "How many zeros are there in a googol?",
-        "options": [
-          "1,000",
-          "10",
-          "100",
-          "1,000,000"
-        ],
-        "correctAnswer": "100",
-        "difficulty": "Medium"
-      },
-      {
-        "id": "56572a8b-f870-49c7-8e22-414d41139e52",
-        "question": "The decimal number 31 in hexadecimal would be what?",
-        "options": [
-          "1F",
-          "3D",
-          "2E",
-          "1B"
-        ],
-        "correctAnswer": "1F",
-        "difficulty": "Hard"
-      },
-      {
-        "id": "49bc70b5-c5cd-43a0-a04f-4b1d21abf914",
-        "question": "Who proved Fermat's Last Theorem?",
-        "options": [
-          "Andrew Wiles",
-          "Leonhard Euler",
-          "Carl Friedrich Gauss",
-          "Srinivasa Ramanujan"
-        ],
-        "correctAnswer": "Andrew Wiles",
-        "difficulty": "Easy"
-      },
-      {
-        "id": "69393699-0cfe-4913-a62a-cc49fd1ad7bc",
-        "question": "What type of angle is greater than 90°?",
-        "options": [
-          "Straight",
-          "Right",
-          "Acute",
-          "Obtuse"
-        ],
-        "correctAnswer": "Obtuse",
-        "difficulty": "Easy"
-      },
-      {
-        "id": "c9fbb384-4d2e-4c61-82aa-7a8aab479324",
-        "question": "What is the derivative of sin(x)",
-        "options": [
-          "csc(x)",
-          "cos(x)",
-          "-cos(x)",
-          "-sin(x)"
-        ],
-        "correctAnswer": "cos(x)",
-        "difficulty": "Medium"
-      },
-      {
-        "id": "c959f01c-ed77-4032-9962-68e67759f448",
-        "question": "What type of function is x&sup2;+2x+1?",
-        "options": [
-          "Quadratic",
-          "Rational",
-          "Linear",
-          "Exponential"
-        ],
-        "correctAnswer": "Quadratic",
         "difficulty": "Medium"
       },
       {

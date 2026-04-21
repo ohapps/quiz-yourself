@@ -362,8 +362,27 @@ export async function applyContentUpdate(): Promise<{ newCategories: number; new
     }
   }
 
+  // 3. Prune official content that is no longer in the bundle
+  // (Only if the user hasn't modified it)
+  const allBundledCatIds = CATEGORIES.map(c => c.id);
+  const allBundledQuestionIds = CATEGORIES.flatMap(c => c.questions.map(q => q.id));
+
+  const officialCats = await db.getAllAsync<{ id: string }>('SELECT id FROM categories WHERE is_official = 1 AND user_modified = 0');
+  for (const cat of officialCats) {
+    if (!allBundledCatIds.includes(cat.id)) {
+      await db.runAsync('DELETE FROM categories WHERE id = ?', [cat.id]);
+    }
+  }
+
+  const officialQs = await db.getAllAsync<{ id: string }>('SELECT id FROM questions WHERE is_official = 1 AND user_modified = 0');
+  for (const q of officialQs) {
+    if (!allBundledQuestionIds.includes(q.id)) {
+      await db.runAsync('DELETE FROM questions WHERE id = ?', [q.id]);
+    }
+  }
+
   // Backfill is_official for older data if it's the first time migration runs
-  await db.runAsync("UPDATE categories SET is_official = 1 WHERE id IN (SELECT id FROM categories WHERE is_official = 0)");
+  await db.runAsync("UPDATE categories SET is_official = 1 WHERE id IN (SELECT id FROM categories WHERE is_official = 0 AND parent_id IS NULL)");
   await db.runAsync("UPDATE questions SET is_official = 1 WHERE id IN (SELECT id FROM questions WHERE is_official = 0)");
 
   // Update version
