@@ -1,19 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
-import { resetDatabase } from '../lib/database';
+import { resetDatabase, getContentVersion } from '../lib/database';
 
 export default function ManageContentMenu() {
   const router = useRouter();
+  const [version, setVersion] = useState<number | null>(null);
+
+  useEffect(() => {
+    getContentVersion().then(setVersion);
+  }, []);
 
   const handleResetToDefaults = () => {
     Alert.alert(
       'Reset to Defaults',
-      'This will delete all custom content and reset the database to the 400 default questions. Are you sure?',
+      'This will delete all custom content and reset the database. Are you sure?',
       [
         { text: 'Cancel', style: 'cancel' },
         { text: 'Reset', style: 'destructive', onPress: async () => {
           await resetDatabase();
+          const v = await getContentVersion();
+          setVersion(v);
           Alert.alert('Success', 'Database has been reset to defaults.');
         }}
       ]
@@ -55,10 +62,16 @@ export default function ManageContentMenu() {
         >
           <View style={styles.menuContent}>
             <Text style={[styles.menuTitle, styles.dangerText]}>Reset to Defaults</Text>
-            <Text style={styles.menuSubtitle}>Restore the original 400 questions</Text>
+            <Text style={styles.menuSubtitle}>Restore the original default questions</Text>
           </View>
           <Text style={[styles.arrow, styles.dangerText]}>›</Text>
         </TouchableOpacity>
+      </View>
+
+      <View style={styles.footer}>
+        <Text style={styles.versionText}>
+          Content Version: {version ?? '...'}
+        </Text>
       </View>
     </View>
   );
@@ -117,5 +130,17 @@ const styles = StyleSheet.create({
   divider: {
     height: 12,
     backgroundColor: '#F5F7FA',
+  },
+  footer: {
+    marginTop: 'auto',
+    alignItems: 'center',
+    paddingBottom: 20,
+  },
+  versionText: {
+    fontSize: 12,
+    color: '#B2BEC3',
+    fontWeight: '600',
+    letterSpacing: 1,
+    textTransform: 'uppercase',
   },
 });

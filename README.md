@@ -50,10 +50,7 @@ Join our community of developers creating universal apps.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
 
 Tasks
-- review existing questions for duplicates and remove them
-- add new categories and questions
-   - movies
-   - tv shows
-   - music
 - add new question types
+   - images
+   - number entry
 - verify backup process for all data

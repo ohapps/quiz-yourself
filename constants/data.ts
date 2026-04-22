@@ -1,6 +1,6 @@
 import { Category } from '../types/quiz';
 
-export const CONTENT_VERSION = 2;
+export const CONTENT_VERSION = 13;
 
 export const CATEGORIES: Category[] = [
   {
@@ -1062,6 +1062,750 @@ export const CATEGORIES: Category[] = [
         ],
         "correctAnswer": "Print",
         "difficulty": "Easy"
+      },
+      {
+        "question": "What is the largest planet in our solar system?",
+        "options": [
+          "Mars",
+          "Jupiter",
+          "Saturn",
+          "Earth"
+        ],
+        "correctAnswer": "Jupiter",
+        "difficulty": "Easy",
+        "id": "222608a2-9ebf-42f0-88c3-dfd4bdc04d65"
+      },
+      {
+        "question": "Which is the longest river in the world?",
+        "options": [
+          "Amazon",
+          "Nile",
+          "Yangtze",
+          "Mississippi"
+        ],
+        "correctAnswer": "Nile",
+        "difficulty": "Easy",
+        "id": "d7ca8a0e-1fc4-44bf-9073-a7b19dafcbab"
+      },
+      {
+        "question": "Who painted the Mona Lisa?",
+        "options": [
+          "Van Gogh",
+          "Picasso",
+          "Da Vinci",
+          "Monet"
+        ],
+        "correctAnswer": "Da Vinci",
+        "difficulty": "Easy",
+        "id": "f6fc9ef2-20be-45d9-967c-cc9fe484319f"
+      },
+      {
+        "question": "What is the capital city of France?",
+        "options": [
+          "Berlin",
+          "Madrid",
+          "Rome",
+          "Paris"
+        ],
+        "correctAnswer": "Paris",
+        "difficulty": "Easy",
+        "id": "8798e0aa-5432-4b0a-8f09-1bf6e05cd44b"
+      },
+      {
+        "question": "Which gas do humans need to breathe to survive?",
+        "options": [
+          "Nitrogen",
+          "Oxygen",
+          "Hydrogen",
+          "Carbon Dioxide"
+        ],
+        "correctAnswer": "Oxygen",
+        "difficulty": "Easy",
+        "id": "0230e572-cec8-4221-9fd5-34a719bfc646"
+      },
+      {
+        "question": "How many continents are there on Earth?",
+        "options": [
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "correctAnswer": "7",
+        "difficulty": "Easy",
+        "id": "c0c650e7-5758-47a8-a41c-b03936498a10"
+      },
+      {
+        "question": "What is the hardest natural substance on Earth?",
+        "options": [
+          "Gold",
+          "Iron",
+          "Diamond",
+          "Quartz"
+        ],
+        "correctAnswer": "Diamond",
+        "difficulty": "Easy",
+        "id": "24057ff7-a009-47a2-b558-3332881d522c"
+      },
+      {
+        "question": "Which planet is known as the 'Red Planet'?",
+        "options": [
+          "Venus",
+          "Mars",
+          "Jupiter",
+          "Mercury"
+        ],
+        "correctAnswer": "Mars",
+        "difficulty": "Easy",
+        "id": "226608c4-9988-4e2f-abfe-73e98c635f33"
+      },
+      {
+        "question": "What is the currency used in Japan?",
+        "options": [
+          "Yuan",
+          "Won",
+          "Yen",
+          "Baht"
+        ],
+        "correctAnswer": "Yen",
+        "difficulty": "Medium",
+        "id": "61ecddfa-3961-4ac8-b9b4-f5d88a634dfe"
+      },
+      {
+        "question": "In what year did the Titanic sink?",
+        "options": [
+          "1905",
+          "1912",
+          "1920",
+          "1930"
+        ],
+        "correctAnswer": "1912",
+        "difficulty": "Medium",
+        "id": "5d3e4a99-35b4-40c9-95c4-117ec3321875"
+      },
+      {
+        "question": "Which country is known as the Land of the Rising Sun?",
+        "options": [
+          "China",
+          "Japan",
+          "South Korea",
+          "Thailand"
+        ],
+        "correctAnswer": "Japan",
+        "difficulty": "Medium",
+        "id": "191383ec-6c89-4e31-adc4-df1229b5b47f"
+      },
+      {
+        "question": "What is the capital of Canada?",
+        "options": [
+          "Toronto",
+          "Vancouver",
+          "Montreal",
+          "Ottawa"
+        ],
+        "correctAnswer": "Ottawa",
+        "difficulty": "Medium",
+        "id": "2e59d608-6ddc-4859-a09b-f280e9740b7f"
+      },
+      {
+        "question": "Which artist painted 'The Starry Night'?",
+        "options": [
+          "Dali",
+          "Van Gogh",
+          "Degas",
+          "Matisse"
+        ],
+        "correctAnswer": "Van Gogh",
+        "difficulty": "Medium",
+        "id": "d7327505-2325-4bf5-b340-31a7116dd908"
+      },
+      {
+        "question": "What is the largest desert in the world?",
+        "options": [
+          "Sahara",
+          "Gobi",
+          "Arabian",
+          "Antarctic"
+        ],
+        "correctAnswer": "Antarctic",
+        "difficulty": "Medium",
+        "id": "2ea85288-9452-44da-8c97-3e31e2679fbf"
+      },
+      {
+        "question": "Who was the first person to step on the moon?",
+        "options": [
+          "Buzz Aldrin",
+          "Yuri Gagarin",
+          "Neil Armstrong",
+          "Michael Collins"
+        ],
+        "correctAnswer": "Neil Armstrong",
+        "difficulty": "Medium",
+        "id": "18d858c3-c9bb-4461-92ff-494c7060a4c4"
+      },
+      {
+        "question": "Which mythological Greek god is the king of the gods?",
+        "options": [
+          "Poseidon",
+          "Hades",
+          "Zeus",
+          "Apollo"
+        ],
+        "correctAnswer": "Zeus",
+        "difficulty": "Medium",
+        "id": "93f148de-c752-464a-a6af-19fec2b65bfc"
+      },
+      {
+        "question": "What is the main gas that makes up the Earth's atmosphere?",
+        "options": [
+          "Oxygen",
+          "Nitrogen",
+          "Carbon Dioxide",
+          "Argon"
+        ],
+        "correctAnswer": "Nitrogen",
+        "difficulty": "Medium",
+        "id": "7e6a668a-6164-4f45-b7d1-684dca46689e"
+      },
+      {
+        "question": "In which century did the Renaissance begin?",
+        "options": [
+          "12th",
+          "13th",
+          "14th",
+          "15th"
+        ],
+        "correctAnswer": "14th",
+        "difficulty": "Medium",
+        "id": "725eafdd-3b80-4ffe-8b84-c6e485c70346"
+      },
+      {
+        "question": "What is the smallest prime number?",
+        "options": [
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "correctAnswer": "2",
+        "difficulty": "Medium",
+        "id": "9f3c9778-2d8e-4906-ba30-aa3580cc707a"
+      },
+      {
+        "question": "Which element has the chemical symbol 'Hg'?",
+        "options": [
+          "Helium",
+          "Hydrogen",
+          "Mercury",
+          "Hafnium"
+        ],
+        "correctAnswer": "Mercury",
+        "difficulty": "Medium",
+        "id": "b4115d8a-7de2-41d8-9b04-de3477fb127d"
+      },
+      {
+        "question": "Who wrote '1984'?",
+        "options": [
+          "Aldous Huxley",
+          "George Orwell",
+          "Ray Bradbury",
+          "J.R.R. Tolkien"
+        ],
+        "correctAnswer": "George Orwell",
+        "difficulty": "Medium",
+        "id": "f714f68c-b694-4503-8d95-bfc4b9b8e462"
+      },
+      {
+        "question": "What is the tallest mountain in the world?",
+        "options": [
+          "K2",
+          "Mount Everest",
+          "Kilimanjaro",
+          "Mount Denali"
+        ],
+        "correctAnswer": "Mount Everest",
+        "difficulty": "Medium",
+        "id": "f2e46c35-40cb-4b23-828e-674b02d9694d"
+      },
+      {
+        "question": "What is the capital of Australia?",
+        "options": [
+          "Sydney",
+          "Melbourne",
+          "Brisbane",
+          "Canberra"
+        ],
+        "correctAnswer": "Canberra",
+        "difficulty": "Medium",
+        "id": "c0903b7b-57f6-4f74-bb5a-104477692c6b"
+      },
+      {
+        "question": "Which ocean lies between Africa and Australia?",
+        "options": [
+          "Atlantic",
+          "Pacific",
+          "Indian",
+          "Arctic"
+        ],
+        "correctAnswer": "Indian",
+        "difficulty": "Medium",
+        "id": "e0e6dbea-9ba2-49d5-b8e8-8c5a58f925d0"
+      },
+      {
+        "question": "What is the national animal of Scotland?",
+        "options": [
+          "Stag",
+          "Unicorn",
+          "Eagle",
+          "Lion"
+        ],
+        "correctAnswer": "Unicorn",
+        "difficulty": "Medium",
+        "id": "f8ce51e6-2d24-4dfc-be46-0b55938d98ed"
+      },
+      {
+        "question": "What is the study of fungi called?",
+        "options": [
+          "Botany",
+          "Mycology",
+          "Entomology",
+          "Phycology"
+        ],
+        "correctAnswer": "Mycology",
+        "difficulty": "Hard",
+        "id": "0431f643-dc1d-46c1-8436-466b82c67b02"
+      },
+      {
+        "question": "Which country\u2019s flag features an AK-47 assault rifle?",
+        "options": [
+          "Angola",
+          "Mozambique",
+          "Lebanon",
+          "Haiti"
+        ],
+        "correctAnswer": "Mozambique",
+        "difficulty": "Hard",
+        "id": "dce9eeee-c69a-4f54-8d1f-cde01558b185"
+      },
+      {
+        "question": "Who is the author of 'The Odyssey'?",
+        "options": [
+          "Virgil",
+          "Homer",
+          "Sophocles",
+          "Euripides"
+        ],
+        "correctAnswer": "Homer",
+        "difficulty": "Hard",
+        "id": "ffe91ecc-ffa8-4fd1-a21a-bf18bf216f15"
+      },
+      {
+        "question": "What is the smallest prime number greater than 100?",
+        "options": [
+          "101",
+          "103",
+          "107",
+          "109"
+        ],
+        "correctAnswer": "101",
+        "difficulty": "Hard",
+        "id": "af22a9d1-18cc-4705-810f-38d4380f3d89"
+      },
+      {
+        "question": "Which volcano destroyed the city of Pompeii in 79 AD?",
+        "options": [
+          "Etna",
+          "Vesuvius",
+          "Fuji",
+          "Stromboli"
+        ],
+        "correctAnswer": "Vesuvius",
+        "difficulty": "Hard",
+        "id": "04b44f9b-626c-4372-aa44-a0d2e7636e4f"
+      },
+      {
+        "question": "What is the capital of Kazakhstan?",
+        "options": [
+          "Almaty",
+          "Astana",
+          "Tashkent",
+          "Bishkek"
+        ],
+        "correctAnswer": "Astana",
+        "difficulty": "Hard",
+        "id": "ffc5af49-6bc8-4d29-a61f-11e79dbbc1fc"
+      },
+      {
+        "question": "Who discovered the circulation of blood in the human body?",
+        "options": [
+          "Louis Pasteur",
+          "William Harvey",
+          "Marie Curie",
+          "Lister"
+        ],
+        "correctAnswer": "William Harvey",
+        "difficulty": "Hard",
+        "id": "296ccba0-b295-497d-a11d-0c44b511b27a"
+      },
+      {
+        "question": "What is the currency of Denmark?",
+        "options": [
+          "Euro",
+          "Krone",
+          "Krona",
+          "Mark"
+        ],
+        "correctAnswer": "Krone",
+        "difficulty": "Hard",
+        "id": "0f1a4a58-ed5a-47a5-b7dc-1f1906418216"
+      },
+      {
+        "question": "Which philosopher wrote 'Thus Spoke Zarathustra'?",
+        "options": [
+          "Immanuel Kant",
+          "Friedrich Nietzsche",
+          "Jean-Paul Sartre",
+          "Soren Kierkegaard"
+        ],
+        "correctAnswer": "Friedrich Nietzsche",
+        "difficulty": "Hard",
+        "id": "0fd06c54-3b15-499e-b591-3d7a3b7eb4cf"
+      },
+      {
+        "question": "What is the deepest point in the world's oceans?",
+        "options": [
+          "Tonga Trench",
+          "Mariana Trench",
+          "Philippine Trench",
+          "Puerto Rico Trench"
+        ],
+        "correctAnswer": "Mariana Trench",
+        "difficulty": "Hard",
+        "id": "2b22e935-1b38-42c9-b069-e4a0e70a083f"
+      },
+      {
+        "question": "In what year did the French Revolution begin?",
+        "options": [
+          "1776",
+          "1789",
+          "1804",
+          "1815"
+        ],
+        "correctAnswer": "1789",
+        "difficulty": "Hard",
+        "id": "905cf8c4-412f-454e-bccd-d969f2732379"
+      },
+      {
+        "question": "Which element has the highest atomic number naturally occurring on Earth?",
+        "options": [
+          "Uranium",
+          "Plutonium",
+          "Oganesson",
+          "Thorium"
+        ],
+        "correctAnswer": "Uranium",
+        "difficulty": "Hard",
+        "id": "00fa8304-908c-45bd-8b28-310c4c546b18"
+      },
+      {
+        "question": "What is the only mammal capable of true flight?",
+        "options": [
+          "Bat",
+          "Flying Squirrel",
+          "Sugar Glider",
+          "Pigeon"
+        ],
+        "correctAnswer": "Bat",
+        "difficulty": "Hard",
+        "id": "1acdbbb7-ff16-40c3-a6ad-999866fc9a5e"
+      },
+      {
+        "question": "Which city is known as the 'City of Seven Hills'?",
+        "options": [
+          "Athens",
+          "Rome",
+          "Jerusalem",
+          "Lisbon"
+        ],
+        "correctAnswer": "Rome",
+        "difficulty": "Hard",
+        "id": "1a31ef7a-396e-40a7-b9f1-898a384b4f8e"
+      },
+      {
+        "question": "What is the chemical symbol for Tungsten?",
+        "options": [
+          "T",
+          "Tu",
+          "W",
+          "Tg"
+        ],
+        "correctAnswer": "W",
+        "difficulty": "Hard",
+        "id": "06b36f6a-2e52-4adc-9a2f-1b577a0459e3"
+      },
+      {
+        "question": "Who was the first woman to win a Nobel Prize?",
+        "options": [
+          "Marie Curie",
+          "Mother Teresa",
+          "Jane Addams",
+          "Rosalind Franklin"
+        ],
+        "correctAnswer": "Marie Curie",
+        "difficulty": "Hard",
+        "id": "51e0c7d7-16a9-4c71-9baf-9b70eb5b9ed6"
+      },
+      {
+        "question": "What is the largest internal organ in the human body?",
+        "options": [
+          "Heart",
+          "Lungs",
+          "Liver",
+          "Kidneys"
+        ],
+        "correctAnswer": "Liver",
+        "difficulty": "Hard",
+        "id": "b319d06b-824a-48d6-854c-26e719bf27e7"
+      },
+      {
+        "question": "Which country has the most natural lakes?",
+        "options": [
+          "USA",
+          "Russia",
+          "Canada",
+          "Finland"
+        ],
+        "correctAnswer": "Canada",
+        "difficulty": "Hard",
+        "id": "2e2ab2d4-408a-402a-b12b-cf21756cadd0"
+      },
+      {
+        "question": "In the game of chess, which piece can only move diagonally?",
+        "options": [
+          "Rook",
+          "Bishop",
+          "Knight",
+          "Queen"
+        ],
+        "correctAnswer": "Bishop",
+        "difficulty": "Hard",
+        "id": "530096a2-1806-4aab-9a19-eff665225be0"
+      },
+      {
+        "question": "What is the name of the white part of the eye?",
+        "options": [
+          "Iris",
+          "Pupil",
+          "Sclera",
+          "Cornea"
+        ],
+        "correctAnswer": "Sclera",
+        "difficulty": "Hard",
+        "id": "4667e98a-2a6d-46aa-b9a6-e9fcd3ac3af7"
+      },
+      {
+        "question": "Who was the architect who designed St. Paul's Cathedral in London?",
+        "options": [
+          "Christopher Wren",
+          "Inigo Jones",
+          "John Vanbrugh",
+          "Nicholas Hawksmoor"
+        ],
+        "correctAnswer": "Christopher Wren",
+        "difficulty": "Hard",
+        "id": "b9916840-0ff5-4c3d-9274-3cb30869a132"
+      },
+      {
+        "question": "What is the oldest university in the world still in continuous operation?",
+        "options": [
+          "Oxford",
+          "Bologna",
+          "Cambridge",
+          "Al-Qarawiyyin"
+        ],
+        "correctAnswer": "Al-Qarawiyyin",
+        "difficulty": "Hard",
+        "id": "11676f62-ca31-4b6a-a697-47edef512fed"
+      },
+      {
+        "question": "Which fruit is known as the 'King of Fruits' in Southeast Asia?",
+        "options": [
+          "Mango",
+          "Durian",
+          "Mangosteen",
+          "Rambutan"
+        ],
+        "correctAnswer": "Durian",
+        "difficulty": "Hard",
+        "id": "258d8f9e-c42d-4014-a258-0a6055c657d6"
+      },
+      {
+        "question": "What process do plants use to convert light into energy?",
+        "options": [
+          "Respiration",
+          "Photosynthesis",
+          "Fermentation",
+          "Transpiration"
+        ],
+        "correctAnswer": "Photosynthesis",
+        "difficulty": "Hard",
+        "id": "da1a8ac6-6484-4ba0-a9dd-a393a10ba0a7"
+      },
+      {
+        "question": "In which city was the first modern Olympic Games held?",
+        "options": [
+          "Paris",
+          "London",
+          "Athens",
+          "Rome"
+        ],
+        "correctAnswer": "Athens",
+        "difficulty": "Hard",
+        "id": "1e55a2da-1690-438c-841d-ce43a61c217e"
+      },
+      {
+        "question": "Who developed the first successful polio vaccine?",
+        "options": [
+          "Albert Sabin",
+          "Jonas Salk",
+          "Louis Pasteur",
+          "Edward Jenner"
+        ],
+        "correctAnswer": "Jonas Salk",
+        "difficulty": "Hard",
+        "id": "bf3a17af-e08b-4382-b89e-e0762f34db09"
+      },
+      {
+        "question": "What is the rarest blood type in humans?",
+        "options": [
+          "O Positive",
+          "A Negative",
+          "AB Negative",
+          "B Positive"
+        ],
+        "correctAnswer": "AB Negative",
+        "difficulty": "Hard",
+        "id": "7d0e536c-0778-43a1-b828-87d3fc03f6d2"
+      },
+      {
+        "question": "Which language has the most native speakers in the world?",
+        "options": [
+          "English",
+          "Spanish",
+          "Mandarin Chinese",
+          "Hindi"
+        ],
+        "correctAnswer": "Mandarin Chinese",
+        "difficulty": "Hard",
+        "id": "21be826e-dc22-4815-aa4d-d17636951035"
+      },
+      {
+        "question": "What is the capital of Iceland?",
+        "options": [
+          "Oslo",
+          "Reykjavik",
+          "Copenhagen",
+          "Stockholm"
+        ],
+        "correctAnswer": "Reykjavik",
+        "difficulty": "Hard",
+        "id": "5c4fab15-086f-4cc5-a364-12ea0c9dfa84"
+      },
+      {
+        "question": "Who discovered Penicillin?",
+        "options": [
+          "Marie Curie",
+          "Alexander Fleming",
+          "Gregor Mendel",
+          "Louis Pasteur"
+        ],
+        "correctAnswer": "Alexander Fleming",
+        "difficulty": "Hard",
+        "id": "ebd7573f-a8cd-49ab-a09c-dbe810e283a2"
+      },
+      {
+        "question": "What is the main component of the sun?",
+        "options": [
+          "Helium",
+          "Oxygen",
+          "Hydrogen",
+          "Carbon"
+        ],
+        "correctAnswer": "Hydrogen",
+        "difficulty": "Hard",
+        "id": "a41d61e4-4363-4237-9f6d-b381f46a93cd"
+      },
+      {
+        "question": "What was the name of the first artificial satellite sent into space?",
+        "options": [
+          "Sputnik 1",
+          "Explorer 1",
+          "Vostok 1",
+          "Telstar"
+        ],
+        "correctAnswer": "Sputnik 1",
+        "difficulty": "Hard",
+        "id": "de34b893-e8c9-44c7-8956-bc297e35c5ad"
+      },
+      {
+        "question": "Which is the smallest country in the world by land area?",
+        "options": [
+          "Monaco",
+          "San Marino",
+          "Vatican City",
+          "Liechtenstein"
+        ],
+        "correctAnswer": "Vatican City",
+        "difficulty": "Hard",
+        "id": "1f9a8b6d-b99f-4ca6-a245-0f2c705c3673"
+      },
+      {
+        "question": "What is the most common gas in the Earth's atmosphere?",
+        "options": [
+          "Oxygen",
+          "Hydrogen",
+          "Nitrogen",
+          "Carbon Dioxide"
+        ],
+        "correctAnswer": "Nitrogen",
+        "difficulty": "Hard",
+        "id": "eec71b81-9822-4b0f-9b12-dbe30f39cee3"
+      },
+      {
+        "question": "Which iconic structure was gifted to the USA by France?",
+        "options": [
+          "Golden Gate Bridge",
+          "Mount Rushmore",
+          "Statue of Liberty",
+          "Empire State Building"
+        ],
+        "correctAnswer": "Statue of Liberty",
+        "difficulty": "Hard",
+        "id": "e62c73a8-d5d6-4bd9-8436-6b45cda3f21e"
+      },
+      {
+        "question": "What is the capital of Bhutan?",
+        "options": [
+          "Thimphu",
+          "Kathmandu",
+          "Dhaka",
+          "Paro"
+        ],
+        "correctAnswer": "Thimphu",
+        "difficulty": "Hard",
+        "id": "9bf12f8c-07f2-4b42-87d0-3359f82bb84d"
+      },
+      {
+        "question": "Which mathematician is known for the incompleteness theorems?",
+        "options": [
+          "David Hilbert",
+          "Alan Turing",
+          "Kurt G\u00f6del",
+          "Bertrand Russell"
+        ],
+        "correctAnswer": "Kurt G\u00f6del",
+        "difficulty": "Hard",
+        "id": "f28101d7-07f9-40e1-a29e-4520833ccddc"
       }
     ]
   },
@@ -2160,6 +2904,714 @@ export const CATEGORIES: Category[] = [
         ],
         "correctAnswer": "Sputnik 1",
         "difficulty": "Easy"
+      },
+      {
+        "question": "What is the boiling point of water in Celsius?",
+        "options": [
+          "50",
+          "100",
+          "150",
+          "200"
+        ],
+        "correctAnswer": "100",
+        "difficulty": "Easy",
+        "id": "02a1d4c5-ac7d-485a-8110-364eeb563b63"
+      },
+      {
+        "question": "What center of an atom is called?",
+        "options": [
+          "Proton",
+          "Neutron",
+          "Nucleus",
+          "Electron"
+        ],
+        "correctAnswer": "Nucleus",
+        "difficulty": "Easy",
+        "id": "b00ed9fb-103a-494a-947c-d5c48012e3ab"
+      },
+      {
+        "question": "Which planet is known as the Gas Giant?",
+        "options": [
+          "Mars",
+          "Venus",
+          "Jupiter",
+          "Mercury"
+        ],
+        "correctAnswer": "Jupiter",
+        "difficulty": "Easy",
+        "id": "96c18a83-b0f5-467b-94f6-1f584b4df894"
+      },
+      {
+        "question": "What do we call a scientist who studies stars?",
+        "options": [
+          "Biologist",
+          "Geologist",
+          "Astronomer",
+          "Chemist"
+        ],
+        "correctAnswer": "Astronomer",
+        "difficulty": "Easy",
+        "id": "3f848ffe-e947-4af3-b0a1-1ebd2379a7e1"
+      },
+      {
+        "question": "How many states of matter are commonly recognized?",
+        "options": [
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "correctAnswer": "3",
+        "difficulty": "Easy",
+        "id": "ff010729-43db-45d2-a4db-35d2029543d7"
+      },
+      {
+        "question": "What is the process of ice turning into water?",
+        "options": [
+          "Freezing",
+          "Melting",
+          "Evaporation",
+          "Condensation"
+        ],
+        "correctAnswer": "Melting",
+        "difficulty": "Easy",
+        "id": "b5707e33-cf29-4e3c-a0ec-9de788da39b2"
+      },
+      {
+        "question": "Which force pulls objects toward the Earth?",
+        "options": [
+          "Friction",
+          "Magnetism",
+          "Gravity",
+          "Elasticity"
+        ],
+        "correctAnswer": "Gravity",
+        "difficulty": "Easy",
+        "id": "95691a0d-387d-4cad-9f7c-3ddfb3d626ff"
+      },
+      {
+        "question": "What are the building blocks of life?",
+        "options": [
+          "Tissues",
+          "Organs",
+          "Cells",
+          "Bones"
+        ],
+        "correctAnswer": "Cells",
+        "difficulty": "Easy",
+        "id": "b1171ef5-010e-437e-9bfb-f2fbff92ac26"
+      },
+      {
+        "question": "Which part of the plant conducts photosynthesis?",
+        "options": [
+          "Roots",
+          "Stem",
+          "Leaf",
+          "Flower"
+        ],
+        "correctAnswer": "Leaf",
+        "difficulty": "Easy",
+        "id": "08be1c4f-0289-427d-9d20-b65a960cc0ea"
+      },
+      {
+        "question": "What is the fastest land animal?",
+        "options": [
+          "Lion",
+          "Leopard",
+          "Cheetah",
+          "Gazelle"
+        ],
+        "correctAnswer": "Cheetah",
+        "difficulty": "Easy",
+        "id": "96668830-ffdf-40ac-bd51-ca2109dc603e"
+      },
+      {
+        "question": "What gas do plants release during the day?",
+        "options": [
+          "Nitrogen",
+          "Oxygen",
+          "Carbon Dioxide",
+          "Ammonia"
+        ],
+        "correctAnswer": "Oxygen",
+        "difficulty": "Easy",
+        "id": "eeef96ba-8a92-455d-871d-aaa51afba8b4"
+      },
+      {
+        "question": "Which organ is used for breathing in fish?",
+        "options": [
+          "Lungs",
+          "Skin",
+          "Gills",
+          "Nose"
+        ],
+        "correctAnswer": "Gills",
+        "difficulty": "Easy",
+        "id": "0c44ad15-ab01-47ab-97bc-afe4c9216907"
+      },
+      {
+        "question": "What is the main source of energy for Earth?",
+        "options": [
+          "Moon",
+          "Wind",
+          "Sun",
+          "Ocean"
+        ],
+        "correctAnswer": "Sun",
+        "difficulty": "Easy",
+        "id": "e6a156cc-1445-4143-bc0f-74a0bbff3e7c"
+      },
+      {
+        "question": "How many pairs of chromosomes do humans have?",
+        "options": [
+          "20",
+          "23",
+          "25",
+          "27"
+        ],
+        "correctAnswer": "23",
+        "difficulty": "Easy",
+        "id": "14bfe838-31a6-46c9-ba3c-069253eea552"
+      },
+      {
+        "question": "Which color of light has the longest wavelength?",
+        "options": [
+          "Blue",
+          "Green",
+          "Yellow",
+          "Red"
+        ],
+        "correctAnswer": "Red",
+        "difficulty": "Easy",
+        "id": "283d40da-690e-4387-a847-f2ff6f38917d"
+      },
+      {
+        "question": "What do we call a material that charge can flow through easily?",
+        "options": [
+          "Insulator",
+          "Conductor",
+          "Semiconductor",
+          "Dielectric"
+        ],
+        "correctAnswer": "Conductor",
+        "difficulty": "Easy",
+        "id": "97b3b1e6-c4e8-4833-9353-03a83485e853"
+      },
+      {
+        "question": "What part of the atom has a negative charge?",
+        "options": [
+          "Proton",
+          "Neutron",
+          "Electron",
+          "Nucleus"
+        ],
+        "correctAnswer": "Electron",
+        "difficulty": "Easy",
+        "id": "f9a80f4d-2f78-4770-8082-107ef8c6365e"
+      },
+      {
+        "question": "Which system in the human body is responsible for moving blood?",
+        "options": [
+          "Nervous",
+          "Digestive",
+          "Circulatory",
+          "Respiratory"
+        ],
+        "correctAnswer": "Circulatory",
+        "difficulty": "Easy",
+        "id": "c23cb4f4-6f88-4512-9ea8-25533b41f6ac"
+      },
+      {
+        "question": "In what unit do we measure the intensity of sound?",
+        "options": [
+          "Watt",
+          "Hertz",
+          "Decibel",
+          "Volt"
+        ],
+        "correctAnswer": "Decibel",
+        "difficulty": "Easy",
+        "id": "13fdc522-9832-4f20-bd4e-93bb58276114"
+      },
+      {
+        "question": "What are animals that eat only plants called?",
+        "options": [
+          "Carnivores",
+          "Omnivores",
+          "Herbivores",
+          "Insectivores"
+        ],
+        "correctAnswer": "Herbivores",
+        "difficulty": "Easy",
+        "id": "039e7428-37b5-421c-a367-576b0100d8a5"
+      },
+      {
+        "question": "Which planet has the most moons?",
+        "options": [
+          "Mars",
+          "Jupiter",
+          "Saturn",
+          "Neptune"
+        ],
+        "correctAnswer": "Saturn",
+        "difficulty": "Easy",
+        "id": "7ac14613-872a-40bb-8fdb-11e7a982300d"
+      },
+      {
+        "question": "What is the chemical symbol for Gold?",
+        "options": [
+          "Gd",
+          "Go",
+          "Au",
+          "Ag"
+        ],
+        "correctAnswer": "Au",
+        "difficulty": "Easy",
+        "id": "a699fb54-6bfd-441a-8740-01197b385410"
+      },
+      {
+        "question": "What is the closest star to Earth?",
+        "options": [
+          "Alpha Centauri",
+          "Sirius",
+          "The Sun",
+          "Betelgeuse"
+        ],
+        "correctAnswer": "The Sun",
+        "difficulty": "Easy",
+        "id": "c0a59ec3-ec44-4a46-8aad-a2ac1f88ce87"
+      },
+      {
+        "question": "What is the largest species of shark?",
+        "options": [
+          "Great White",
+          "Hammerhead",
+          "Whale Shark",
+          "Bull Shark"
+        ],
+        "correctAnswer": "Whale Shark",
+        "difficulty": "Easy",
+        "id": "1abbaed9-644c-4d93-a6b7-5c7575bf1d98"
+      },
+      {
+        "question": "Which vitamin is produced when skin is exposed to sunlight?",
+        "options": [
+          "Vitamin A",
+          "Vitamin B",
+          "Vitamin C",
+          "Vitamin D"
+        ],
+        "correctAnswer": "Vitamin D",
+        "difficulty": "Easy",
+        "id": "e8351f30-92e5-4d2d-95e7-455465389089"
+      },
+      {
+        "question": "What is the most abundant gas in the Earth's atmosphere?",
+        "options": [
+          "Oxygen",
+          "Carbon Dioxide",
+          "Nitrogen",
+          "Argon"
+        ],
+        "correctAnswer": "Nitrogen",
+        "difficulty": "Medium",
+        "id": "036c63cd-6921-4cde-b647-11fcdfd62c2d"
+      },
+      {
+        "question": "Which part of the brain controls balance and coordination?",
+        "options": [
+          "Cerebrum",
+          "Cerebellum",
+          "Brainstem",
+          "Thalamus"
+        ],
+        "correctAnswer": "Cerebellum",
+        "difficulty": "Medium",
+        "id": "8c4ed7eb-ab42-4ca2-8235-07e56c9c4bf0"
+      },
+      {
+        "question": "What is the common name for the chemical compound NaCl?",
+        "options": [
+          "Sugar",
+          "Salt",
+          "Baking Soda",
+          "Bleach"
+        ],
+        "correctAnswer": "Salt",
+        "difficulty": "Medium",
+        "id": "a8135f0c-ba6a-41ec-8b5d-ecc57194a4a0"
+      },
+      {
+        "question": "Who developed the laws of motion and universal gravitation?",
+        "options": [
+          "Einstein",
+          "Newton",
+          "Galileo",
+          "Kepler"
+        ],
+        "correctAnswer": "Newton",
+        "difficulty": "Medium",
+        "id": "5b9e608b-5ea3-4321-9511-964692aa2415"
+      },
+      {
+        "question": "What type of rock is formed from cooling magma?",
+        "options": [
+          "Sedimentary",
+          "Metamorphic",
+          "Igneous",
+          "Basalt"
+        ],
+        "correctAnswer": "Igneous",
+        "difficulty": "Medium",
+        "id": "a32da871-110c-4493-bf4d-bfad621a7245"
+      },
+      {
+        "question": "What is the PH of pure water?",
+        "options": [
+          "0",
+          "5",
+          "7",
+          "14"
+        ],
+        "correctAnswer": "7",
+        "difficulty": "Medium",
+        "id": "1d5ddeaa-f328-49f0-a04f-d195594c4de2"
+      },
+      {
+        "question": "Which planet is famous for its prominent ring system?",
+        "options": [
+          "Jupiter",
+          "Uranus",
+          "Saturn",
+          "Neptune"
+        ],
+        "correctAnswer": "Saturn",
+        "difficulty": "Medium",
+        "id": "ebb47589-c0e2-4147-b219-86b92e8bb94c"
+      },
+      {
+        "question": "What is the unit of power?",
+        "options": [
+          "Joule",
+          "Watt",
+          "Volt",
+          "Ampere"
+        ],
+        "correctAnswer": "Watt",
+        "difficulty": "Medium",
+        "id": "3d3a5d6c-77b1-469b-8b3e-f58cbe6f732a"
+      },
+      {
+        "question": "What is the process by which liquid turns into gas?",
+        "options": [
+          "Condensation",
+          "Sublimation",
+          "Evaporation",
+          "Freezing"
+        ],
+        "correctAnswer": "Evaporation",
+        "difficulty": "Medium",
+        "id": "8a6d4eea-a105-4f7d-8ba9-7bf61329167b"
+      },
+      {
+        "question": "Which blood cells are responsible for fighting infection?",
+        "options": [
+          "Red Blood Cells",
+          "White Blood Cells",
+          "Platelets",
+          "Plasma"
+        ],
+        "correctAnswer": "White Blood Cells",
+        "difficulty": "Medium",
+        "id": "9bace4a2-2718-4f19-bb2f-77355029d36f"
+      },
+      {
+        "question": "What is the name of the galaxy that contains our Solar System?",
+        "options": [
+          "Andromeda",
+          "Milky Way",
+          "Sombrero",
+          "Whirlpool"
+        ],
+        "correctAnswer": "Milky Way",
+        "difficulty": "Medium",
+        "id": "2f54f921-a23e-4b5a-a33a-5b8efb5209e2"
+      },
+      {
+        "question": "What is the absolute zero temperature in Celsius?",
+        "options": [
+          "0",
+          "-100",
+          "-273.15",
+          "-300"
+        ],
+        "correctAnswer": "-273.15",
+        "difficulty": "Hard",
+        "id": "8eeb2771-1c17-4946-97cc-1ada646e8519"
+      },
+      {
+        "question": "What type of bond involves the sharing of electrons?",
+        "options": [
+          "Ionic",
+          "Covalent",
+          "Metallic",
+          "Hydrogen"
+        ],
+        "correctAnswer": "Covalent",
+        "difficulty": "Hard",
+        "id": "be8ac253-94d9-4cab-8da7-5bb0743a9085"
+      },
+      {
+        "question": "Which organelle is known as the powerhouse of the cell?",
+        "options": [
+          "Nucleus",
+          "Ribosome",
+          "Mitochondria",
+          "Golgi Body"
+        ],
+        "correctAnswer": "Mitochondria",
+        "difficulty": "Hard",
+        "id": "175ff798-b2aa-446d-a6b4-9cda6edb3311"
+      },
+      {
+        "question": "What is the constant speed of light in a vacuum (approx)?",
+        "options": [
+          "30,000 km/s",
+          "300,000 km/s",
+          "3,000,000 km/s",
+          "30,000,000 km/s"
+        ],
+        "correctAnswer": "300,000 km/s",
+        "difficulty": "Hard",
+        "id": "06be5412-9b80-4f34-ba33-fdf3093e128e"
+      },
+      {
+        "question": "Which particle is the lightest?",
+        "options": [
+          "Proton",
+          "Neutron",
+          "Electron",
+          "Alpha Particle"
+        ],
+        "correctAnswer": "Electron",
+        "difficulty": "Hard",
+        "id": "104cf5e0-fc22-4350-83cd-3b10c75d6af6"
+      },
+      {
+        "question": "What is the radioactive element used in smoke detectors?",
+        "options": [
+          "Uranium",
+          "Americium",
+          "Radon",
+          "Plutonium"
+        ],
+        "correctAnswer": "Americium",
+        "difficulty": "Hard",
+        "id": "f42de986-e9b7-4b4c-89b2-5b7a1e03327e"
+      },
+      {
+        "question": "How many elements were in the original Periodic Table published by Mendeleev?",
+        "options": [
+          "63",
+          "82",
+          "104",
+          "118"
+        ],
+        "correctAnswer": "63",
+        "difficulty": "Hard",
+        "id": "d40273c9-781b-4069-9fd8-1202bd036f25"
+      },
+      {
+        "question": "Which noble gas is third most abundant in Earth's atmosphere?",
+        "options": [
+          "Helium",
+          "Neon",
+          "Argon",
+          "Krypton"
+        ],
+        "correctAnswer": "Argon",
+        "difficulty": "Hard",
+        "id": "350e2c39-7f9b-4caa-860f-639cc982e420"
+      },
+      {
+        "question": "What is the study of the Earth's atmosphere called?",
+        "options": [
+          "Geology",
+          "Meteorology",
+          "Paleontology",
+          "Oceanography"
+        ],
+        "correctAnswer": "Meteorology",
+        "difficulty": "Hard",
+        "id": "5c7fcb7c-a689-42ae-b9af-d8c365c94d4f"
+      },
+      {
+        "question": "What is the escape velocity of Earth (approx)?",
+        "options": [
+          "5.2 km/s",
+          "8.9 km/s",
+          "11.2 km/s",
+          "15.7 km/s"
+        ],
+        "correctAnswer": "11.2 km/s",
+        "difficulty": "Hard",
+        "id": "31888493-aceb-4edd-8e82-a66ef9663fab"
+      },
+      {
+        "question": "Who discovered the structure of DNA (published with Watson)?",
+        "options": [
+          "Marie Curie",
+          "Rosalind Franklin",
+          "Francis Crick",
+          "Gregor Mendel"
+        ],
+        "correctAnswer": "Francis Crick",
+        "difficulty": "Hard",
+        "id": "75f7c259-8781-4db6-b838-f78c85e23d52"
+      },
+      {
+        "question": "What is the unit of radioactivity?",
+        "options": [
+          "Rad",
+          "Curie",
+          "Becquerel",
+          "Sievert"
+        ],
+        "correctAnswer": "Becquerel",
+        "difficulty": "Hard",
+        "id": "c6c15bd9-a95c-4142-926b-1c05c9a75e85"
+      },
+      {
+        "question": "Which metal is the best conductor of electricity at room temperature?",
+        "options": [
+          "Gold",
+          "Copper",
+          "Silver",
+          "Aluminum"
+        ],
+        "correctAnswer": "Silver",
+        "difficulty": "Hard",
+        "id": "76c94d09-75bc-43be-a3af-0512b6df95f1"
+      },
+      {
+        "question": "What is the most dense natural element?",
+        "options": [
+          "Gold",
+          "Osmium",
+          "Lead",
+          "Platinum"
+        ],
+        "correctAnswer": "Osmium",
+        "difficulty": "Hard",
+        "id": "d940b4fe-3822-473c-9daa-0350d38e5d99"
+      },
+      {
+        "question": "What type of star is the Sun?",
+        "options": [
+          "Red Giant",
+          "White Dwarf",
+          "Yellow Dwarf",
+          "Blue Supergiant"
+        ],
+        "correctAnswer": "Yellow Dwarf",
+        "difficulty": "Hard",
+        "id": "714546bf-f5bb-4b18-9112-42a5c610b348"
+      },
+      {
+        "question": "How long does it take for light from the Sun to reach Earth (approx)?",
+        "options": [
+          "1 minute",
+          "4 minutes",
+          "8 minutes",
+          "15 minutes"
+        ],
+        "correctAnswer": "8 minutes",
+        "difficulty": "Hard",
+        "id": "452a13f5-90e6-41f0-8451-ff774fd34389"
+      },
+      {
+        "question": "What is the main acid found in the human stomach?",
+        "options": [
+          "Sulfuric Acid",
+          "Nitric Acid",
+          "Hydrochloric Acid",
+          "Acetic Acid"
+        ],
+        "correctAnswer": "Hydrochloric Acid",
+        "difficulty": "Hard",
+        "id": "61f7b30f-656c-4cdd-bfdb-53bd606d3a18"
+      },
+      {
+        "question": "Which law states that energy cannot be created or destroyed?",
+        "options": [
+          "Newton's First Law",
+          "Law of Gravity",
+          "First Law of Thermodynamics",
+          "Boyles Law"
+        ],
+        "correctAnswer": "First Law of Thermodynamics",
+        "difficulty": "Hard",
+        "id": "49167dee-69fe-463d-8054-805bac70df80"
+      },
+      {
+        "question": "What is the largest known structure in the universe?",
+        "options": [
+          "The Milky Way",
+          "Sloan Great Wall",
+          "Hercules-Corona Borealis Great Wall",
+          "Bootes Void"
+        ],
+        "correctAnswer": "Hercules-Corona Borealis Great Wall",
+        "difficulty": "Hard",
+        "id": "31db3784-24de-45ec-b651-21fda0285604"
+      },
+      {
+        "question": "Which gas is produced during the fermentation of glucose?",
+        "options": [
+          "Oxygen",
+          "Carbon Dioxide",
+          "Nitrogen",
+          "Methane"
+        ],
+        "correctAnswer": "Carbon Dioxide",
+        "difficulty": "Hard",
+        "id": "d2992fa6-ff0e-4b33-98c7-10ca5889d41c"
+      },
+      {
+        "question": "What is the hardest bone in the human body?",
+        "options": [
+          "Femur",
+          "Jawbone",
+          "Skull",
+          "Teeth"
+        ],
+        "correctAnswer": "Jawbone",
+        "difficulty": "Hard",
+        "id": "dd7e6e3b-53bb-47ed-b375-de1dfb63fc8f"
+      },
+      {
+        "question": "What is the rarest naturally occurring element on Earth?",
+        "options": [
+          "Astatine",
+          "Francium",
+          "Plutonium",
+          "Uranium"
+        ],
+        "correctAnswer": "Astatine",
+        "difficulty": "Hard",
+        "id": "857f1918-82eb-465d-b39b-98184e7e82f8"
+      },
+      {
+        "question": "Which subatomic particle is made of three quarks?",
+        "options": [
+          "Electron",
+          "Neutrino",
+          "Proton",
+          "Photon"
+        ],
+        "correctAnswer": "Proton",
+        "difficulty": "Hard",
+        "id": "8d857c2c-8c7a-49fd-bee7-e15e330b0e19"
       }
     ]
   },
@@ -3282,6 +4734,690 @@ export const CATEGORIES: Category[] = [
         ],
         "correctAnswer": "England, 1817",
         "difficulty": "Medium"
+      },
+      {
+        "question": "In what year did the American Civil War end?",
+        "options": [
+          "1860",
+          "1865",
+          "1870",
+          "1875"
+        ],
+        "correctAnswer": "1865",
+        "difficulty": "Easy",
+        "id": "d7a2b373-bda7-4b79-ae64-faf8e279e92f"
+      },
+      {
+        "question": "Which country built the Great Wall?",
+        "options": [
+          "Japan",
+          "India",
+          "China",
+          "Russia"
+        ],
+        "correctAnswer": "China",
+        "difficulty": "Easy",
+        "id": "abf464cc-e1e0-4015-83d1-62fc3a5ce5be"
+      },
+      {
+        "question": "Who was the queen of Ancient Egypt famous for her beauty?",
+        "options": [
+          "Nefertiti",
+          "Cleopatra",
+          "Hatshepsut",
+          "Arsinoe"
+        ],
+        "correctAnswer": "Cleopatra",
+        "difficulty": "Easy",
+        "id": "e84bd979-ace8-448d-8597-7251f25b6749"
+      },
+      {
+        "question": "Which ocean did the Titanic sink in?",
+        "options": [
+          "Pacific",
+          "Atlantic",
+          "Indian",
+          "Arctic"
+        ],
+        "correctAnswer": "Atlantic",
+        "difficulty": "Easy",
+        "id": "e3a6938c-68f4-4fb3-a025-774df9030cb8"
+      },
+      {
+        "question": "Who was the primary author of the Declaration of Independence?",
+        "options": [
+          "George Washington",
+          "Thomas Jefferson",
+          "John Hancock",
+          "Benjamin Franklin"
+        ],
+        "correctAnswer": "Thomas Jefferson",
+        "difficulty": "Easy",
+        "id": "95eaec6f-2e69-4b90-bfa2-2be3e8cdb8b8"
+      },
+      {
+        "question": "What ancient civilization built the pyramids?",
+        "options": [
+          "Mayans",
+          "Romans",
+          "Greeks",
+          "Egyptians"
+        ],
+        "correctAnswer": "Egyptians",
+        "difficulty": "Easy",
+        "id": "6f03cb25-6ddf-484b-a4a4-5ed2698646b3"
+      },
+      {
+        "question": "The Taj Mahal is located in which country?",
+        "options": [
+          "Pakistan",
+          "India",
+          "Bangladesh",
+          "Iran"
+        ],
+        "correctAnswer": "India",
+        "difficulty": "Easy",
+        "id": "8f593985-cd62-492f-b0fd-d30b7db4004e"
+      },
+      {
+        "question": "Which Japanese city was the first to be hit by an atomic bomb?",
+        "options": [
+          "Nagasaki",
+          "Tokyo",
+          "Hiroshima",
+          "Osaka"
+        ],
+        "correctAnswer": "Hiroshima",
+        "difficulty": "Easy",
+        "id": "03cdf143-f0ef-4065-90a3-cb617434b627"
+      },
+      {
+        "question": "Who was the leader of the Civil Rights Movement in the US?",
+        "options": [
+          "Abraham Lincoln",
+          "Martin Luther King Jr.",
+          "Malcolm X",
+          "Rosa Parks"
+        ],
+        "correctAnswer": "Martin Luther King Jr.",
+        "difficulty": "Easy",
+        "id": "51551253-56c8-4ca3-b9c3-647d920ac250"
+      },
+      {
+        "question": "What is the name of the era of Japanese history with Samurai?",
+        "options": [
+          "Meiji",
+          "Edo",
+          "Shogun",
+          "Nara"
+        ],
+        "correctAnswer": "Edo",
+        "difficulty": "Easy",
+        "id": "6ec78551-bf5c-4c2c-8e8b-73775f7887b4"
+      },
+      {
+        "question": "Which empire was ruled by Julius Caesar?",
+        "options": [
+          "Greek",
+          "British",
+          "Roman",
+          "Persian"
+        ],
+        "correctAnswer": "Roman",
+        "difficulty": "Easy",
+        "id": "f8d13557-816b-4ab4-9383-16e01581b949"
+      },
+      {
+        "question": "Who was the nurse known as the 'Lady with the Lamp'?",
+        "options": [
+          "Florence Nightingale",
+          "Clara Barton",
+          "Mother Teresa",
+          "Marie Curie"
+        ],
+        "correctAnswer": "Florence Nightingale",
+        "difficulty": "Easy",
+        "id": "93d9ec00-2f7f-4d2b-927d-1c2c361dc48f"
+      },
+      {
+        "question": "Which country was divided into East and West after WWII?",
+        "options": [
+          "France",
+          "Germany",
+          "Italy",
+          "Poland"
+        ],
+        "correctAnswer": "Germany",
+        "difficulty": "Easy",
+        "id": "1c5522df-f497-4f52-bfed-832e37dc4ff9"
+      },
+      {
+        "question": "What was the name of the ship that brought the Pilgrims to America?",
+        "options": [
+          "The Endeavour",
+          "The Santa Maria",
+          "The Mayflower",
+          "The Beagle"
+        ],
+        "correctAnswer": "The Mayflower",
+        "difficulty": "Easy",
+        "id": "980904fc-46b5-4f80-bb03-a985ac534861"
+      },
+      {
+        "question": "Who was the first female pilot to fly solo across the Atlantic?",
+        "options": [
+          "Bessie Coleman",
+          "Harriet Quimby",
+          "Amelia Earhart",
+          "Amy Johnson"
+        ],
+        "correctAnswer": "Amelia Earhart",
+        "difficulty": "Easy",
+        "id": "36e4581e-a5cd-410c-a8ef-9c5409d895ad"
+      },
+      {
+        "question": "Which war was fought between the North and South in the USA?",
+        "options": [
+          "WWI",
+          "WWII",
+          "Civil War",
+          "Revolutionary War"
+        ],
+        "correctAnswer": "Civil War",
+        "difficulty": "Easy",
+        "id": "99d8b32a-044e-4d05-8ba8-c5d1ff6d1b38"
+      },
+      {
+        "question": "What was the main weapon used by knights in the Middle Ages?",
+        "options": [
+          "Gun",
+          "Bow",
+          "Sword",
+          "Axe"
+        ],
+        "correctAnswer": "Sword",
+        "difficulty": "Easy",
+        "id": "8e8437a1-5ea7-4f7c-9c94-bd73b2179c8c"
+      },
+      {
+        "question": "Who was the legendary king of the Round Table?",
+        "options": [
+          "King David",
+          "King Solomon",
+          "King Arthur",
+          "King Louis"
+        ],
+        "correctAnswer": "King Arthur",
+        "difficulty": "Easy",
+        "id": "3d8cbac1-6a4c-43bb-a2c5-2a1d1b5a0147"
+      },
+      {
+        "question": "Which country hosted the first modern Olympics in 1896?",
+        "options": [
+          "France",
+          "USA",
+          "Greece",
+          "Germany"
+        ],
+        "correctAnswer": "Greece",
+        "difficulty": "Easy",
+        "id": "0d437ad7-4ed2-4fdd-b58f-f23d1f50f3b3"
+      },
+      {
+        "question": "In what year did the Berlin Wall fall?",
+        "options": [
+          "1985",
+          "1989",
+          "1991",
+          "1993"
+        ],
+        "correctAnswer": "1989",
+        "difficulty": "Easy",
+        "id": "7175f75d-f57a-4ee6-85ec-187cad25b99c"
+      },
+      {
+        "question": "What was the name given to the systemic genocide of Jews in WWII?",
+        "options": [
+          "The Pogrom",
+          "The Inquisition",
+          "The Holocaust",
+          "The Purge"
+        ],
+        "correctAnswer": "The Holocaust",
+        "difficulty": "Easy",
+        "id": "51fb636a-07a5-457a-8bf3-860390646f7d"
+      },
+      {
+        "question": "Who discovered America in 1492 (traditionally)?",
+        "options": [
+          "Marco Polo",
+          "Amerigo Vespucci",
+          "Christopher Columbus",
+          "Leif Erikson"
+        ],
+        "correctAnswer": "Christopher Columbus",
+        "difficulty": "Easy",
+        "id": "763decf5-981c-4318-8d61-fcdddea7efe3"
+      },
+      {
+        "question": "Which South American empire was conquered by Pizarro?",
+        "options": [
+          "Aztec",
+          "Maya",
+          "Inca",
+          "Olmec"
+        ],
+        "correctAnswer": "Inca",
+        "difficulty": "Easy",
+        "id": "b190db64-5462-43fb-a073-68a343d74df4"
+      },
+      {
+        "question": "What was the language of the Roman Empire?",
+        "options": [
+          "Greek",
+          "Latin",
+          "French",
+          "Italian"
+        ],
+        "correctAnswer": "Latin",
+        "difficulty": "Easy",
+        "id": "0ba4f22c-23e0-4e1d-b67c-b90137309624"
+      },
+      {
+        "question": "Who was the first woman to be Prime Minister of the UK?",
+        "options": [
+          "Theresa May",
+          "Margaret Thatcher",
+          "Indira Gandhi",
+          "Golda Meir"
+        ],
+        "correctAnswer": "Margaret Thatcher",
+        "difficulty": "Medium",
+        "id": "9f3f87ff-cead-4b68-b40b-3df4e0ad1715"
+      },
+      {
+        "question": "What was the name of the treaty that ended WWI?",
+        "options": [
+          "Paris",
+          "Ghent",
+          "Versailles",
+          "London"
+        ],
+        "correctAnswer": "Versailles",
+        "difficulty": "Medium",
+        "id": "73e03bae-ea5a-43cc-b8bb-0252be35e28b"
+      },
+      {
+        "question": "Which US President issued the Emancipation Proclamation?",
+        "options": [
+          "George Washington",
+          "Thomas Jefferson",
+          "Abraham Lincoln",
+          "Andrew Jackson"
+        ],
+        "correctAnswer": "Abraham Lincoln",
+        "difficulty": "Medium",
+        "id": "16d9dd98-ea0d-4385-bdce-7fc1025a15b9"
+      },
+      {
+        "question": "The Magna Carta was signed in which year?",
+        "options": [
+          "1066",
+          "1185",
+          "1215",
+          "1342"
+        ],
+        "correctAnswer": "1215",
+        "difficulty": "Medium",
+        "id": "ed3418f9-20e0-4b73-90f4-39ff4f0b4a87"
+      },
+      {
+        "question": "Who founded the Mongol Empire?",
+        "options": [
+          "Kublai Khan",
+          "Genghis Khan",
+          "Attila the Hun",
+          "Timur"
+        ],
+        "correctAnswer": "Genghis Khan",
+        "difficulty": "Medium",
+        "id": "01ef0c21-78d7-4b96-9474-2225259b18ed"
+      },
+      {
+        "question": "Who was the final Shogun of Japan?",
+        "options": [
+          "Tokugawa Ieyasu",
+          "Oda Nobunaga",
+          "Tokugawa Yoshinobu",
+          "Toyotomi Hideyoshi"
+        ],
+        "correctAnswer": "Tokugawa Yoshinobu",
+        "difficulty": "Hard",
+        "id": "1164f9de-a037-4386-a031-d3dde4814243"
+      },
+      {
+        "question": "In what year was the Magna Carta signed?",
+        "options": [
+          "1199",
+          "1205",
+          "1215",
+          "1220"
+        ],
+        "correctAnswer": "1215",
+        "difficulty": "Hard",
+        "id": "87c95b77-3257-4d7e-bae3-efec9701b539"
+      },
+      {
+        "question": "Who was the first Emperor of a unified China?",
+        "options": [
+          "Han Wudi",
+          "Qin Shi Huang",
+          "Kublai Khan",
+          "Sun Yat-sen"
+        ],
+        "correctAnswer": "Qin Shi Huang",
+        "difficulty": "Hard",
+        "id": "c0b76aaf-d1e6-4508-84d7-60ded7263d4f"
+      },
+      {
+        "question": "Which Russian Tsar was known for westernizing Russia?",
+        "options": [
+          "Ivan the Terrible",
+          "Nicholas II",
+          "Peter the Great",
+          "Alexander I"
+        ],
+        "correctAnswer": "Peter the Great",
+        "difficulty": "Hard",
+        "id": "ca099194-e41b-4217-ba4b-e2ed720ded72"
+      },
+      {
+        "question": "The Hundred Years' War was fought between which two countries?",
+        "options": [
+          "France and Spain",
+          "England and France",
+          "Germany and Italy",
+          "England and Spain"
+        ],
+        "correctAnswer": "England and France",
+        "difficulty": "Hard",
+        "id": "74df815f-7be1-4ccc-be1e-e1c96223ebac"
+      },
+      {
+        "question": "Who was the first human to orbit the Earth?",
+        "options": [
+          "Neil Armstrong",
+          "Yuri Gagarin",
+          "John Glenn",
+          "Buzz Aldrin"
+        ],
+        "correctAnswer": "Yuri Gagarin",
+        "difficulty": "Hard",
+        "id": "e06ee54d-e595-48db-8aab-28d2417fb433"
+      },
+      {
+        "question": "Which agreement divided the 'New World' between Spain and Portugal in 1494?",
+        "options": [
+          "Treaty of Paris",
+          "Treaty of Versailles",
+          "Treaty of Tordesillas",
+          "Treaty of Utrecht"
+        ],
+        "correctAnswer": "Treaty of Tordesillas",
+        "difficulty": "Hard",
+        "id": "009a1749-483c-4e13-9092-90f1be0e44de"
+      },
+      {
+        "question": "In which city did the 1917 October Revolution begin?",
+        "options": [
+          "Moscow",
+          "St. Petersburg",
+          "Kiev",
+          "Odessa"
+        ],
+        "correctAnswer": "St. Petersburg",
+        "difficulty": "Hard",
+        "id": "ddeda210-1158-44c6-9baa-91273d682abe"
+      },
+      {
+        "question": "Who was the Prime Minister of Canada during WWII?",
+        "options": [
+          "Lester B. Pearson",
+          "John Diefenbaker",
+          "William Lyon Mackenzie King",
+          "Pierre Trudeau"
+        ],
+        "correctAnswer": "William Lyon Mackenzie King",
+        "difficulty": "Hard",
+        "id": "b59e0b96-a812-4b6d-9361-dfccba970b13"
+      },
+      {
+        "question": "Which battle is often cited as the turning point in the Pacific during WWII?",
+        "options": [
+          "Iwo Jima",
+          "Midway",
+          "Okinawa",
+          "Pearl Harbor"
+        ],
+        "correctAnswer": "Midway",
+        "difficulty": "Hard",
+        "id": "0a907fb7-28b4-4a39-870f-f34bad2257e6"
+      },
+      {
+        "question": "Who was the king of England during the American Revolution?",
+        "options": [
+          "George II",
+          "George III",
+          "George IV",
+          "William IV"
+        ],
+        "correctAnswer": "George III",
+        "difficulty": "Hard",
+        "id": "28f758f0-84e9-49dc-a073-9968d06cb4b2"
+      },
+      {
+        "question": "The Byzantine Empire was the continuation of which ancient empire?",
+        "options": [
+          "Greek",
+          "Roman",
+          "Persian",
+          "Egyptian"
+        ],
+        "correctAnswer": "Roman",
+        "difficulty": "Hard",
+        "id": "74b00cf7-0356-4c64-8a37-962575436b5e"
+      },
+      {
+        "question": "Which African leader spent 27 years in prison before becoming President?",
+        "options": [
+          "Robert Mugabe",
+          "Kofi Annan",
+          "Nelson Mandela",
+          "Desmond Tutu"
+        ],
+        "correctAnswer": "Nelson Mandela",
+        "difficulty": "Hard",
+        "id": "86fb165b-edde-48eb-90fc-9859100747da"
+      },
+      {
+        "question": "Who founded the Ottoman Empire?",
+        "options": [
+          "Osman I",
+          "Suleiman the Magnificent",
+          "Mehmed II",
+          "Selim I"
+        ],
+        "correctAnswer": "Osman I",
+        "difficulty": "Hard",
+        "id": "fd102df2-2f4f-4a92-9f2e-8d4793a81f04"
+      },
+      {
+        "question": "What was the name of the route that connected China and the Roman Empire?",
+        "options": [
+          "The Tea Road",
+          "The Spice Route",
+          "The Silk Road",
+          "The Gold Trail"
+        ],
+        "correctAnswer": "The Silk Road",
+        "difficulty": "Hard",
+        "id": "982ce068-b257-4baf-af64-87d3c5fca3ea"
+      },
+      {
+        "question": "Who was the first female Pharaoh of Egypt?",
+        "options": [
+          "Nefertiti",
+          "Cleopatra",
+          "Hatshepsut",
+          "Twosret"
+        ],
+        "correctAnswer": "Hatshepsut",
+        "difficulty": "Hard",
+        "id": "8df6b866-20b9-4dca-bdee-5df5e3b32440"
+      },
+      {
+        "question": "The Peloponnesian War was fought between Athens and which other city-state?",
+        "options": [
+          "Sparta",
+          "Corinth",
+          "Thebes",
+          "Argos"
+        ],
+        "correctAnswer": "Sparta",
+        "difficulty": "Hard",
+        "id": "54de560d-8618-4b28-9096-9067c1d07571"
+      },
+      {
+        "question": "In which city was the first modern stock exchange established?",
+        "options": [
+          "London",
+          "Amsterdam",
+          "New York",
+          "Paris"
+        ],
+        "correctAnswer": "Amsterdam",
+        "difficulty": "Hard",
+        "id": "d8c418eb-c510-4dfa-9e26-be29edd2737e"
+      },
+      {
+        "question": "Who was the last monarch of the House of Tudor?",
+        "options": [
+          "Henry VIII",
+          "Mary I",
+          "Elizabeth I",
+          "Edward VI"
+        ],
+        "correctAnswer": "Elizabeth I",
+        "difficulty": "Hard",
+        "id": "2fa46c3a-6606-4afb-a2b9-a5aa4f3767bf"
+      },
+      {
+        "question": "The Rosetta Stone helped decipher which ancient writing system?",
+        "options": [
+          "Cuneiform",
+          "Hieroglyphics",
+          "Sanskrit",
+          "Linear B"
+        ],
+        "correctAnswer": "Hieroglyphics",
+        "difficulty": "Hard",
+        "id": "e20558f1-8d27-4a56-bb90-0b854d3e7f9d"
+      },
+      {
+        "question": "Which war was fought over the succession to the Spanish throne in the early 18th century?",
+        "options": [
+          "War of the Roses",
+          "Thirty Years' War",
+          "War of the Spanish Succession",
+          "Seven Years' War"
+        ],
+        "correctAnswer": "War of the Spanish Succession",
+        "difficulty": "Hard",
+        "id": "ac79673d-267d-4b80-858b-56c35040cca2"
+      },
+      {
+        "question": "Who was the founder of the first Persian Empire (Achaemenid)?",
+        "options": [
+          "Darius the Great",
+          "Xerxes I",
+          "Cyrus the Great",
+          "Artaxerxes I"
+        ],
+        "correctAnswer": "Cyrus the Great",
+        "difficulty": "Hard",
+        "id": "29b5f5b4-3c22-4695-9885-0d0327704356"
+      },
+      {
+        "question": "What was the name of the era of social and economic reform in the US under FDR?",
+        "options": [
+          "The Fair Deal",
+          "The New Deal",
+          "The Great Society",
+          "The Square Deal"
+        ],
+        "correctAnswer": "The New Deal",
+        "difficulty": "Hard",
+        "id": "e567d68f-fea5-4dd3-b281-525c0463751e"
+      },
+      {
+        "question": "Which treaty ended the Thirty Years' War in 1648?",
+        "options": [
+          "Peace of Augsburg",
+          "Peace of Westphalia",
+          "Treaty of Utrecht",
+          "Treaty of M\u00fcnster"
+        ],
+        "correctAnswer": "Peace of Westphalia",
+        "difficulty": "Hard",
+        "id": "d4cfcb8f-fe2c-4d73-961a-2c14ed6f143c"
+      },
+      {
+        "question": "Who was the leader of the Soviet Union during the Cuban Missile Crisis?",
+        "options": [
+          "Stalin",
+          "Khrushchev",
+          "Brezhnev",
+          "Gorbachev"
+        ],
+        "correctAnswer": "Khrushchev",
+        "difficulty": "Hard",
+        "id": "fc8f7ea5-d040-4932-bc67-0d2ce4f1dd91"
+      },
+      {
+        "question": "The Opium Wars were fought between China and which other country?",
+        "options": [
+          "France",
+          "Japan",
+          "Great Britain",
+          "Portugal"
+        ],
+        "correctAnswer": "Great Britain",
+        "difficulty": "Hard",
+        "id": "107a0ef9-b26c-4568-aeff-e2ac0e3205b5"
+      },
+      {
+        "question": "Who was the first King of Belgium?",
+        "options": [
+          "Leopold I",
+          "Albert I",
+          "Baudouin",
+          "Leopold II"
+        ],
+        "correctAnswer": "Leopold I",
+        "difficulty": "Hard",
+        "id": "2dea3cd5-4c29-4522-a0aa-9f53ac8d4be4"
+      },
+      {
+        "question": "In what year did the Magna Carta first get issued?",
+        "options": [
+          "1215",
+          "1066",
+          "1492",
+          "1776"
+        ],
+        "correctAnswer": "1215",
+        "difficulty": "Easy",
+        "id": "b9678414-89f1-4f61-957f-5397bd650bc9"
       }
     ]
   },
@@ -3996,6 +6132,6516 @@ export const CATEGORIES: Category[] = [
         ],
         "correctAnswer": "90",
         "difficulty": "Medium"
+      },
+      {
+        "question": "What is 7 + 8?",
+        "options": [
+          "13",
+          "14",
+          "15",
+          "16"
+        ],
+        "correctAnswer": "15",
+        "difficulty": "Easy",
+        "id": "af7e721f-6433-4678-9162-3d97a9a65347"
+      },
+      {
+        "question": "What is 12 - 5?",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "correctAnswer": "7",
+        "difficulty": "Easy",
+        "id": "7411a11b-d1f2-4505-8547-a551fec7c5b1"
+      },
+      {
+        "question": "What is 4 x 6?",
+        "options": [
+          "20",
+          "22",
+          "24",
+          "26"
+        ],
+        "correctAnswer": "24",
+        "difficulty": "Easy",
+        "id": "3a046bd7-bb87-492e-a12a-e2cfb6281def"
+      },
+      {
+        "question": "What is 20 / 4?",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "correctAnswer": "5",
+        "difficulty": "Easy",
+        "id": "98cd3d04-49f7-495d-bd92-6f12b41cae83"
+      },
+      {
+        "question": "How many sides does a triangle have?",
+        "options": [
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "correctAnswer": "3",
+        "difficulty": "Easy",
+        "id": "a4120db5-d001-4464-92de-62bc757567ed"
+      },
+      {
+        "question": "What is the square root of 9?",
+        "options": [
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "correctAnswer": "3",
+        "difficulty": "Easy",
+        "id": "6a181a46-e1e9-47ba-a33b-a4398c31841c"
+      },
+      {
+        "question": "What is 50% of 100?",
+        "options": [
+          "25",
+          "40",
+          "50",
+          "60"
+        ],
+        "correctAnswer": "50",
+        "difficulty": "Easy",
+        "id": "24764368-0d80-4f53-b7c0-a5f456d94b17"
+      },
+      {
+        "question": "What is 10 x 10?",
+        "options": [
+          "10",
+          "100",
+          "1000",
+          "10000"
+        ],
+        "correctAnswer": "100",
+        "difficulty": "Easy",
+        "id": "76a9d37d-c903-4c68-a737-0b6ef5164e01"
+      },
+      {
+        "question": "What is 15 + 25?",
+        "options": [
+          "35",
+          "40",
+          "45",
+          "50"
+        ],
+        "correctAnswer": "40",
+        "difficulty": "Easy",
+        "id": "2ee5a674-f675-4b14-a654-f9f26cb6e6be"
+      },
+      {
+        "question": "How many sides does a rectangle have?",
+        "options": [
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "correctAnswer": "4",
+        "difficulty": "Easy",
+        "id": "192477f0-6163-4323-8340-ed611dec47f3"
+      },
+      {
+        "question": "What is 1/2 as a decimal?",
+        "options": [
+          "0.2",
+          "0.4",
+          "0.5",
+          "0.6"
+        ],
+        "correctAnswer": "0.5",
+        "difficulty": "Easy",
+        "id": "22d0130a-6950-4227-b0f8-299d745ba5e6"
+      },
+      {
+        "question": "What is 2 x 2 x 2?",
+        "options": [
+          "4",
+          "6",
+          "8",
+          "10"
+        ],
+        "correctAnswer": "8",
+        "difficulty": "Easy",
+        "id": "853fa841-2413-4387-9608-e51697b9382d"
+      },
+      {
+        "question": "What is 100 - 45?",
+        "options": [
+          "45",
+          "50",
+          "55",
+          "65"
+        ],
+        "correctAnswer": "55",
+        "difficulty": "Easy",
+        "id": "b5ade2f9-9c4b-4e2d-817c-a53d80c1e430"
+      },
+      {
+        "question": "What is 3 squared?",
+        "options": [
+          "6",
+          "9",
+          "12",
+          "15"
+        ],
+        "correctAnswer": "9",
+        "difficulty": "Easy",
+        "id": "4c13b4fc-d4bf-4b78-b636-bf0bcedcc416"
+      },
+      {
+        "question": "What is 1/4 as a percentage?",
+        "options": [
+          "10%",
+          "20%",
+          "25%",
+          "50%"
+        ],
+        "correctAnswer": "25%",
+        "difficulty": "Easy",
+        "id": "7f714233-a09d-4069-9cc8-f07429726673"
+      },
+      {
+        "question": "What is 9 + 10?",
+        "options": [
+          "18",
+          "19",
+          "20",
+          "21"
+        ],
+        "correctAnswer": "19",
+        "difficulty": "Easy",
+        "id": "5869520c-7cad-43db-bd5d-02640784302e"
+      },
+      {
+        "question": "What is 7 x 7?",
+        "options": [
+          "35",
+          "42",
+          "49",
+          "56"
+        ],
+        "correctAnswer": "49",
+        "difficulty": "Easy",
+        "id": "b7c45fdf-851e-4315-a9ba-7aa4b9721718"
+      },
+      {
+        "question": "What is 81 / 9?",
+        "options": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "correctAnswer": "9",
+        "difficulty": "Easy",
+        "id": "213a29a9-9bc8-4c94-86e7-6f8ea9e21b54"
+      },
+      {
+        "question": "How many degrees are in a right angle?",
+        "options": [
+          "45",
+          "90",
+          "180",
+          "360"
+        ],
+        "correctAnswer": "90",
+        "difficulty": "Easy",
+        "id": "ef3f5f7f-ebab-4495-a645-a98f2d2c692e"
+      },
+      {
+        "question": "What is 5 x 0?",
+        "options": [
+          "0",
+          "1",
+          "5",
+          "10"
+        ],
+        "correctAnswer": "0",
+        "difficulty": "Easy",
+        "id": "85b3ee47-43cc-46bf-bbcf-eb54dbc8e4bc"
+      },
+      {
+        "question": "What is the next number: 2, 4, 6, 8, ...?",
+        "options": [
+          "9",
+          "10",
+          "11",
+          "12"
+        ],
+        "correctAnswer": "10",
+        "difficulty": "Easy",
+        "id": "79646e03-891a-4652-816c-86bff81193cc"
+      },
+      {
+        "question": "What is 1/3 of 9?",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "correctAnswer": "3",
+        "difficulty": "Easy",
+        "id": "ddea1cf4-2285-4795-8347-703cd23c6458"
+      },
+      {
+        "question": "What is 100 / 10?",
+        "options": [
+          "1",
+          "10",
+          "100",
+          "1000"
+        ],
+        "correctAnswer": "10",
+        "difficulty": "Easy",
+        "id": "e90ce341-495d-478b-910c-aca4488da48b"
+      },
+      {
+        "question": "What is 11 + 22?",
+        "options": [
+          "31",
+          "33",
+          "35",
+          "37"
+        ],
+        "correctAnswer": "33",
+        "difficulty": "Easy",
+        "id": "7e1d66ed-0dc6-457a-b021-b949409f51cc"
+      },
+      {
+        "question": "What is 6 x 3?",
+        "options": [
+          "12",
+          "15",
+          "18",
+          "21"
+        ],
+        "correctAnswer": "18",
+        "difficulty": "Easy",
+        "id": "d4566cb4-9eec-4b6e-847f-5765bc53bbf7"
+      },
+      {
+        "question": "What is 1000 - 1?",
+        "options": [
+          "99",
+          "990",
+          "999",
+          "1001"
+        ],
+        "correctAnswer": "999",
+        "difficulty": "Easy",
+        "id": "45106ccd-3bb3-4330-ba15-178fd9d683f8"
+      },
+      {
+        "question": "What is 5 + 5 + 5 + 5?",
+        "options": [
+          "15",
+          "20",
+          "25",
+          "30"
+        ],
+        "correctAnswer": "20",
+        "difficulty": "Easy",
+        "id": "842348f6-399b-4e8e-bad9-cfd791be6102"
+      },
+      {
+        "question": "What is the square root of 144?",
+        "options": [
+          "10",
+          "11",
+          "12",
+          "14"
+        ],
+        "correctAnswer": "12",
+        "difficulty": "Medium",
+        "id": "8cceaaa8-2e4e-4f9d-93de-56cd782424c2"
+      },
+      {
+        "question": "What is 2 to the power of 5?",
+        "options": [
+          "16",
+          "25",
+          "32",
+          "64"
+        ],
+        "correctAnswer": "32",
+        "difficulty": "Medium",
+        "id": "4258fd5f-5815-4ff8-9880-75a8336c9ae2"
+      },
+      {
+        "question": "What is (12 + 8) / 4?",
+        "options": [
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "correctAnswer": "5",
+        "difficulty": "Medium",
+        "id": "b7d18faf-5460-4d18-90f2-64676a9a3da6"
+      },
+      {
+        "question": "What is 0.75 as a fraction?",
+        "options": [
+          "1/4",
+          "1/2",
+          "3/4",
+          "4/5"
+        ],
+        "correctAnswer": "3/4",
+        "difficulty": "Medium",
+        "id": "a8802d0b-54e2-440a-8d26-b8e3e6f6205b"
+      },
+      {
+        "question": "What is the area of a rectangle with length 5 and width 4?",
+        "options": [
+          "9",
+          "18",
+          "20",
+          "25"
+        ],
+        "correctAnswer": "20",
+        "difficulty": "Medium",
+        "id": "96011cf4-db64-41d8-8fb5-dc4f8811c006"
+      },
+      {
+        "question": "What is 15% of 200?",
+        "options": [
+          "20",
+          "25",
+          "30",
+          "35"
+        ],
+        "correctAnswer": "30",
+        "difficulty": "Medium",
+        "id": "8a2a083c-2052-4dbb-8d56-9008b87db5cf"
+      },
+      {
+        "question": "What is 3 cubed?",
+        "options": [
+          "9",
+          "18",
+          "27",
+          "81"
+        ],
+        "correctAnswer": "27",
+        "difficulty": "Medium",
+        "id": "06ecda9e-87d7-4656-b3d4-6b84ac6252ed"
+      },
+      {
+        "question": "If x + 5 = 12, what is x?",
+        "options": [
+          "5",
+          "7",
+          "12",
+          "17"
+        ],
+        "correctAnswer": "7",
+        "difficulty": "Medium",
+        "id": "3862d831-2e00-4e81-8925-3b52da209fbe"
+      },
+      {
+        "question": "What is the circumference of a circle with radius 1? (approx)",
+        "options": [
+          "3.14",
+          "6.28",
+          "9.42",
+          "12.56"
+        ],
+        "correctAnswer": "6.28",
+        "difficulty": "Medium",
+        "id": "e0252324-e72a-4558-9081-f0ad46fe722d"
+      },
+      {
+        "question": "How many degrees are in a triangle?",
+        "options": [
+          "90",
+          "180",
+          "270",
+          "360"
+        ],
+        "correctAnswer": "180",
+        "difficulty": "Medium",
+        "id": "19dd42d9-875f-4a16-8328-c856a7ed9bca"
+      },
+      {
+        "question": "What is 1/3 + 1/3?",
+        "options": [
+          "1/6",
+          "2/6",
+          "2/3",
+          "1/9"
+        ],
+        "correctAnswer": "2/3",
+        "difficulty": "Medium",
+        "id": "e96d0909-3d2a-4182-8696-0256259cb36d"
+      },
+      {
+        "question": "What is 10 squared plus 5 squared?",
+        "options": [
+          "105",
+          "115",
+          "125",
+          "150"
+        ],
+        "correctAnswer": "125",
+        "difficulty": "Medium",
+        "id": "595f2c42-5051-4259-b35a-8db3bca1a6a3"
+      },
+      {
+        "question": "What is 1000 / 8?",
+        "options": [
+          "110",
+          "120",
+          "125",
+          "150"
+        ],
+        "correctAnswer": "125",
+        "difficulty": "Medium",
+        "id": "3696c2bf-5dd7-4103-b9a9-184a747d4973"
+      },
+      {
+        "question": "What is 2.5 times 4?",
+        "options": [
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "correctAnswer": "10",
+        "difficulty": "Medium",
+        "id": "f7349789-a90f-4835-b8bd-dddce3a713a9"
+      },
+      {
+        "question": "What is the mode of the dataset: 2, 3, 3, 4, 5?",
+        "options": [
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "correctAnswer": "3",
+        "difficulty": "Medium",
+        "id": "56467e4a-7403-422f-baee-119f6ba0ff19"
+      },
+      {
+        "question": "What is the median of: 1, 3, 5?",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "correctAnswer": "3",
+        "difficulty": "Medium",
+        "id": "293abbf1-3167-4cd1-a852-e0b87c4ca309"
+      },
+      {
+        "question": "How many minutes are in 2.5 hours?",
+        "options": [
+          "120",
+          "140",
+          "150",
+          "160"
+        ],
+        "correctAnswer": "150",
+        "difficulty": "Medium",
+        "id": "c59e19d4-da98-4cf2-adee-1026831c5a61"
+      },
+      {
+        "question": "What is 99 + 99?",
+        "options": [
+          "188",
+          "196",
+          "198",
+          "200"
+        ],
+        "correctAnswer": "198",
+        "difficulty": "Medium",
+        "id": "6b6a690f-75b9-4f98-88ce-dc2810fd5e06"
+      },
+      {
+        "question": "What is 13 x 4?",
+        "options": [
+          "42",
+          "52",
+          "62",
+          "72"
+        ],
+        "correctAnswer": "52",
+        "difficulty": "Medium",
+        "id": "1aca7934-410d-446d-a48c-bcc27cc4e187"
+      },
+      {
+        "question": "What is the value of Pi to 2 decimal places?",
+        "options": [
+          "3.12",
+          "3.14",
+          "3.16",
+          "3.18"
+        ],
+        "correctAnswer": "3.14",
+        "difficulty": "Medium",
+        "id": "19621f33-7642-4458-bc91-44df1ecd0753"
+      },
+      {
+        "question": "What is 1/5 of 100?",
+        "options": [
+          "10",
+          "20",
+          "25",
+          "30"
+        ],
+        "correctAnswer": "20",
+        "difficulty": "Medium",
+        "id": "706ea99a-441f-4316-a488-8ab681f9df9c"
+      },
+      {
+        "question": "If x - 10 = 50, what is x?",
+        "options": [
+          "40",
+          "50",
+          "60",
+          "70"
+        ],
+        "correctAnswer": "60",
+        "difficulty": "Medium",
+        "id": "19c761b0-ed1d-41bd-a62f-2f2d2f8ec416"
+      },
+      {
+        "question": "What is 20 x 20?",
+        "options": [
+          "200",
+          "400",
+          "800",
+          "4000"
+        ],
+        "correctAnswer": "400",
+        "difficulty": "Medium",
+        "id": "0f1a8acd-5169-4739-bace-c1fd152a1f9a"
+      },
+      {
+        "question": "How many degrees are in a hexagon?",
+        "options": [
+          "360",
+          "540",
+          "720",
+          "900"
+        ],
+        "correctAnswer": "720",
+        "difficulty": "Medium",
+        "id": "89b66bf8-c7c7-47b0-9896-23a43cedbba3"
+      },
+      {
+        "question": "What is the prime factorization of 10?",
+        "options": [
+          "2x5",
+          "2x2x2",
+          "1x10",
+          "5x5"
+        ],
+        "correctAnswer": "2x5",
+        "difficulty": "Medium",
+        "id": "67b1dc45-451a-4529-87fb-c672b4ca068a"
+      },
+      {
+        "question": "What is 0.1 x 0.1?",
+        "options": [
+          "0.01",
+          "0.1",
+          "1",
+          "10"
+        ],
+        "correctAnswer": "0.01",
+        "difficulty": "Medium",
+        "id": "64f0c341-c96f-4963-a4e3-fb1d7b5dc138"
+      },
+      {
+        "question": "What is the next number: 1, 4, 9, 16, ...?",
+        "options": [
+          "20",
+          "24",
+          "25",
+          "30"
+        ],
+        "correctAnswer": "25",
+        "difficulty": "Medium",
+        "id": "abb05cf5-0c43-4b97-ab80-91828a305e33"
+      },
+      {
+        "question": "What is 5! (5 factorial)?",
+        "options": [
+          "25",
+          "60",
+          "120",
+          "240"
+        ],
+        "correctAnswer": "120",
+        "difficulty": "Medium",
+        "id": "3eecdc5a-bc76-4cc7-bb9a-8b71c2c724b7"
+      },
+      {
+        "question": "How many centimeters are in 1.5 meters?",
+        "options": [
+          "15",
+          "150",
+          "1500",
+          "15000"
+        ],
+        "correctAnswer": "150",
+        "difficulty": "Medium",
+        "id": "f789aef0-435d-45b3-a475-206728fef4cb"
+      },
+      {
+        "question": "What is the derivative of x squared?",
+        "options": [
+          "x",
+          "2x",
+          "x^2",
+          "2"
+        ],
+        "correctAnswer": "2x",
+        "difficulty": "Hard",
+        "id": "a34e7d15-198b-4d1c-8afb-5b592cd58dbf"
+      },
+      {
+        "question": "What is the integral of 1/x dx?",
+        "options": [
+          "x",
+          "ln(x)",
+          "e^x",
+          "1"
+        ],
+        "correctAnswer": "ln(x)",
+        "difficulty": "Hard",
+        "id": "3f09ddcc-bda7-4803-bc4c-e5419d42424f"
+      },
+      {
+        "question": "What is the sum of angles in an n-sided polygon?",
+        "options": [
+          "(n-1)180",
+          "(n-2)180",
+          "n180",
+          "360"
+        ],
+        "correctAnswer": "(n-2)180",
+        "difficulty": "Hard",
+        "id": "52b0a2b0-cb97-463e-8e8e-0cc12b011a30"
+      },
+      {
+        "question": "What is the log base 10 of 1000?",
+        "options": [
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "correctAnswer": "3",
+        "difficulty": "Hard",
+        "id": "20698aa1-c08b-438d-8f0d-6ab6f6e602f4"
+      },
+      {
+        "question": "What is the value of e (approx)?",
+        "options": [
+          "2.14",
+          "2.72",
+          "3.14",
+          "1.61"
+        ],
+        "correctAnswer": "2.72",
+        "difficulty": "Hard",
+        "id": "e2ba76b9-5c44-431c-93b6-403ddaf47ccd"
+      },
+      {
+        "question": "What is the Pythagorean triple for 3 and 4?",
+        "options": [
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "correctAnswer": "5",
+        "difficulty": "Hard",
+        "id": "ff36bd3d-178a-42f8-b5d9-03dc2777da00"
+      },
+      {
+        "question": "What is the limit of 1/x as x approaches infinity?",
+        "options": [
+          "0",
+          "1",
+          "Infinity",
+          "Undefined"
+        ],
+        "correctAnswer": "0",
+        "difficulty": "Hard",
+        "id": "25666e70-5308-428d-bbab-8e649b30e157"
+      },
+      {
+        "question": "If log(x) = 2, what is x?",
+        "options": [
+          "10",
+          "20",
+          "100",
+          "200"
+        ],
+        "correctAnswer": "100",
+        "difficulty": "Hard",
+        "id": "6f9192a7-66ba-4ca5-a4c4-3197084529b4"
+      },
+      {
+        "question": "What is the slope of the line y = 3x + 5?",
+        "options": [
+          "3",
+          "5",
+          "8",
+          "-3"
+        ],
+        "correctAnswer": "3",
+        "difficulty": "Hard",
+        "id": "f595f1b3-a14f-48d8-bd4c-7b5b57629c81"
+      },
+      {
+        "question": "What is the area of a circle with radius r?",
+        "options": [
+          "2*pi*r",
+          "pi*r^2",
+          "pi*d",
+          "2*pi*r^2"
+        ],
+        "correctAnswer": "pi*r^2",
+        "difficulty": "Hard",
+        "id": "22f5e006-53ea-49a2-b10e-089571544109"
+      },
+      {
+        "question": "Who is the father of Geometry?",
+        "options": [
+          "Pythagoras",
+          "Euclid",
+          "Archimedes",
+          "Newton"
+        ],
+        "correctAnswer": "Euclid",
+        "difficulty": "Hard",
+        "id": "2018331e-2c50-4659-85fa-94cdbe7ddbfd"
+      },
+      {
+        "question": "What is the identity matrix in 2x2?",
+        "options": [
+          "[[1,0],[0,1]]",
+          "[[0,1],[1,0]]",
+          "[[1,1],[1,1]]",
+          "[[0,0],[0,0]]"
+        ],
+        "correctAnswer": "[[1,0],[0,1]]",
+        "difficulty": "Hard",
+        "id": "3980e27b-7e3d-4ee9-bf63-9c6039b55877"
+      },
+      {
+        "question": "What is the sine of 90 degrees?",
+        "options": [
+          "0",
+          "0.5",
+          "1",
+          "Infinity"
+        ],
+        "correctAnswer": "1",
+        "difficulty": "Hard",
+        "id": "afe9f487-4361-4408-87b4-4f01587cc435"
+      },
+      {
+        "question": "What is the cosine of 0 degrees?",
+        "options": [
+          "0",
+          "0.5",
+          "1",
+          "-1"
+        ],
+        "correctAnswer": "1",
+        "difficulty": "Hard",
+        "id": "30b70ca0-c7bd-4ee4-998a-7ca96b6dfc57"
+      },
+      {
+        "question": "What is the value of i squared in complex numbers?",
+        "options": [
+          "1",
+          "-1",
+          "0",
+          "i"
+        ],
+        "correctAnswer": "-1",
+        "difficulty": "Hard",
+        "id": "fccd8faa-0e8c-4f14-bef0-6eadaf0d0111"
+      },
+      {
+        "question": "How many permutations of 3 items are there?",
+        "options": [
+          "3",
+          "6",
+          "9",
+          "1"
+        ],
+        "correctAnswer": "6",
+        "difficulty": "Hard",
+        "id": "086d042c-1452-4552-9962-c7abe1c49c92"
+      },
+      {
+        "question": "What is the Golden Ratio (approx)?",
+        "options": [
+          "1.41",
+          "1.62",
+          "2.72",
+          "3.14"
+        ],
+        "correctAnswer": "1.62",
+        "difficulty": "Hard",
+        "id": "143e1774-beb1-4b74-9122-a890f013daa9"
+      },
+      {
+        "question": "What is the formula for the volume of a sphere?",
+        "options": [
+          "4/3*pi*r^3",
+          "pi*r^2",
+          "4/2*pi*r^2",
+          "2/3*pi*r^3"
+        ],
+        "correctAnswer": "4/3*pi*r^3",
+        "difficulty": "Hard",
+        "id": "01876d60-8058-47f5-9584-1aa38aabbe38"
+      },
+      {
+        "question": "What is the derivative of ln(x)?",
+        "options": [
+          "1/x",
+          "x",
+          "e^x",
+          "ln(x)"
+        ],
+        "correctAnswer": "1/x",
+        "difficulty": "Hard",
+        "id": "e9205458-4b87-4d08-af3c-5257e3da59a1"
+      },
+      {
+        "question": "What is the derivative of e^x?",
+        "options": [
+          "e^x",
+          "xe^(x-1)",
+          "ln(x)",
+          "1"
+        ],
+        "correctAnswer": "e^x",
+        "difficulty": "Hard",
+        "id": "d30cc22a-e171-4e90-97c9-0c5e1d51099d"
+      },
+      {
+        "question": "What is the sum of the first 100 integers?",
+        "options": [
+          "5000",
+          "5050",
+          "5100",
+          "5150"
+        ],
+        "correctAnswer": "5050",
+        "difficulty": "Hard",
+        "id": "33c36ba3-8d8d-44e6-904e-9793fdf0a1ab"
+      },
+      {
+        "question": "What is the discriminant of the quadratic equation ax^2 + bx + c = 0?",
+        "options": [
+          "b^2 - 4ac",
+          "4ac - b^2",
+          "b - 4ac",
+          "2a - b"
+        ],
+        "correctAnswer": "b^2 - 4ac",
+        "difficulty": "Hard",
+        "id": "fa80b700-1507-40b4-bffc-fa2e360c57eb"
+      },
+      {
+        "question": "What is the value of log2(8)?",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "correctAnswer": "3",
+        "difficulty": "Hard",
+        "id": "d298daff-e4fd-45ef-9861-910a588783f7"
+      },
+      {
+        "question": "What is the volume of a cube with side 3?",
+        "options": [
+          "9",
+          "18",
+          "27",
+          "81"
+        ],
+        "correctAnswer": "27",
+        "difficulty": "Hard",
+        "id": "2beba128-7c35-4bef-81be-f8bb4c494059"
+      },
+      {
+        "question": "What is the hypotenuse of a right triangle with sides 5 and 12?",
+        "options": [
+          "13",
+          "14",
+          "15",
+          "17"
+        ],
+        "correctAnswer": "13",
+        "difficulty": "Hard",
+        "id": "30360c61-ae90-4077-9f19-62857fb6e4bb"
+      },
+      {
+        "question": "What is the probability of rolling a 7 with two six-sided dice?",
+        "options": [
+          "1/6",
+          "1/12",
+          "1/36",
+          "7/36"
+        ],
+        "correctAnswer": "1/6",
+        "difficulty": "Hard",
+        "id": "64cd0649-0de9-460d-85d3-f2193010f819"
+      },
+      {
+        "question": "How many subsets does a set of 4 elements have?",
+        "options": [
+          "4",
+          "8",
+          "16",
+          "32"
+        ],
+        "correctAnswer": "16",
+        "difficulty": "Hard",
+        "id": "09e00b77-1c05-4491-baba-614e12a1bcbc"
+      },
+      {
+        "question": "What is the value of 10! / 8!?",
+        "options": [
+          "90",
+          "80",
+          "100",
+          "72"
+        ],
+        "correctAnswer": "90",
+        "difficulty": "Hard",
+        "id": "01803f0d-4fea-45cf-a427-6ca4086ced86"
+      },
+      {
+        "question": "What is the angle between the hands of a clock at 3:00?",
+        "options": [
+          "45",
+          "90",
+          "120",
+          "180"
+        ],
+        "correctAnswer": "90",
+        "difficulty": "Hard",
+        "id": "5a4b6054-9585-471b-a283-b3f27df4db4b"
+      },
+      {
+        "question": "What is the binary representation of 10?",
+        "options": [
+          "1010",
+          "1100",
+          "1001",
+          "1111"
+        ],
+        "correctAnswer": "1010",
+        "difficulty": "Hard",
+        "id": "642a4d29-dbef-48e7-b554-7cdb7b2d25ff"
+      },
+      {
+        "question": "What is the hexadecimal value for 15?",
+        "options": [
+          "A",
+          "B",
+          "E",
+          "F"
+        ],
+        "correctAnswer": "F",
+        "difficulty": "Hard",
+        "id": "75c40d55-c140-4623-ae4c-4605bbcb1d56"
+      },
+      {
+        "question": "What is the sum of the first 5 prime numbers?",
+        "options": [
+          "18",
+          "28",
+          "26",
+          "25"
+        ],
+        "correctAnswer": "28",
+        "difficulty": "Hard",
+        "id": "7ccd82d5-9379-474a-8623-223514c63444"
+      },
+      {
+        "question": "How many vertices does a cube have?",
+        "options": [
+          "4",
+          "6",
+          "8",
+          "12"
+        ],
+        "correctAnswer": "8",
+        "difficulty": "Hard",
+        "id": "93770c52-2842-4228-934c-683aef4cc225"
+      },
+      {
+        "question": "What is the value of the square root of 2 (approx)?",
+        "options": [
+          "1.31",
+          "1.41",
+          "1.51",
+          "1.61"
+        ],
+        "correctAnswer": "1.41",
+        "difficulty": "Hard",
+        "id": "ebc3ee4a-23ac-48c1-9655-89dd552dc1f0"
+      },
+      {
+        "question": "What is 10 plus 10?",
+        "options": [
+          "10",
+          "20",
+          "30",
+          "40"
+        ],
+        "correctAnswer": "20",
+        "difficulty": "Easy",
+        "id": "38811246-6f99-4d46-8fad-11345644bb1b"
+      }
+    ]
+  },
+  {
+    "id": "987a9a34-f8d6-4451-b03b-0de193f46fc9",
+    "name": "Movies",
+    "questions": [
+      {
+        "question": "What is the name of the kingdom where Elsa and Anna live in Frozen?",
+        "options": [
+          "Arendelle",
+          "Genovia",
+          "Corona",
+          "Aldovia"
+        ],
+        "correctAnswer": "Arendelle",
+        "difficulty": "Easy",
+        "id": "90fdaeaa-9042-440a-9388-19dfb4e0603d"
+      },
+      {
+        "question": "Which actor played the character of Jack Sparrow in Pirates of the Caribbean?",
+        "options": [
+          "Orlando Bloom",
+          "Johnny Depp",
+          "Brad Pitt",
+          "Tom Cruise"
+        ],
+        "correctAnswer": "Johnny Depp",
+        "difficulty": "Easy",
+        "id": "b42a8876-2216-4398-8c9d-2529a67db37f"
+      },
+      {
+        "question": "What is the name of the giant gorilla that climbs the Empire State Building?",
+        "options": [
+          "Mighty Joe Young",
+          "King Kong",
+          "Godzilla",
+          "George"
+        ],
+        "correctAnswer": "King Kong",
+        "difficulty": "Easy",
+        "id": "3e18efe9-157e-465a-bdcb-e57685c19c64"
+      },
+      {
+        "question": "In the movie 'The Lion King', what kind of animal is Pumbaa?",
+        "options": [
+          "Meerkat",
+          "Lion",
+          "Warthog",
+          "Hyena"
+        ],
+        "correctAnswer": "Warthog",
+        "difficulty": "Easy",
+        "id": "263d01f8-b584-490a-bd09-3a5b00dd24f4"
+      },
+      {
+        "question": "Who is the lead actor in 'Mission: Impossible'?",
+        "options": [
+          "Matt Damon",
+          "Tom Cruise",
+          "Bruce Willis",
+          "Harrison Ford"
+        ],
+        "correctAnswer": "Tom Cruise",
+        "difficulty": "Easy",
+        "id": "9d3bcfe2-4fb2-4636-bf06-99a42e73bbb0"
+      },
+      {
+        "question": "What is the name of the toy cowboy in 'Toy Story'?",
+        "options": [
+          "Buzz",
+          "Woody",
+          "Rex",
+          "Slinky"
+        ],
+        "correctAnswer": "Woody",
+        "difficulty": "Easy",
+        "id": "c2fe803e-5edb-4b2b-adff-a243604cdf5c"
+      },
+      {
+        "question": "Which superhero is also known as Tony Stark?",
+        "options": [
+          "Captain America",
+          "Iron Man",
+          "Thor",
+          "Spider-Man"
+        ],
+        "correctAnswer": "Iron Man",
+        "difficulty": "Easy",
+        "id": "5dc02894-7f73-45ae-a61e-203650864e86"
+      },
+      {
+        "question": "In 'Harry Potter', what house is Harry in?",
+        "options": [
+          "Slytherin",
+          "Hufflepuff",
+          "Gryffindor",
+          "Ravenclaw"
+        ],
+        "correctAnswer": "Gryffindor",
+        "difficulty": "Easy",
+        "id": "3afd0a30-f954-46ac-98d9-8c232b5be0ac"
+      },
+      {
+        "question": "What is the title of the first 'Star Wars' movie released in 1977?",
+        "options": [
+          "The Empire Strikes Back",
+          "Return of the Jedi",
+          "A New Hope",
+          "The Phantom Menace"
+        ],
+        "correctAnswer": "A New Hope",
+        "difficulty": "Easy",
+        "id": "320f8dcf-54fa-45c8-8e5b-43cd8b061821"
+      },
+      {
+        "question": "Who is the voice of Shrek?",
+        "options": [
+          "Eddie Murphy",
+          "Mike Myers",
+          "Cameron Diaz",
+          "John Cleese"
+        ],
+        "correctAnswer": "Mike Myers",
+        "difficulty": "Easy",
+        "id": "51a79fa7-649d-4714-95fe-bb5ce13e16a9"
+      },
+      {
+        "question": "What is the name of the fictional city where Batman lives?",
+        "options": [
+          "Metropolis",
+          "Gotham City",
+          "Central City",
+          "Star City"
+        ],
+        "correctAnswer": "Gotham City",
+        "difficulty": "Easy",
+        "id": "f3cbde20-5d40-4de7-9154-bd36b8a25524"
+      },
+      {
+        "question": "In 'The Wizard of Oz', what color are Dorothy's slippers?",
+        "options": [
+          "Red",
+          "Silver",
+          "Gold",
+          "Blue"
+        ],
+        "correctAnswer": "Red",
+        "difficulty": "Easy",
+        "id": "5a39ad4d-1e61-4b02-9513-e33167140e81"
+      },
+      {
+        "question": "Who played the Grinch in the 2000 live-action movie?",
+        "options": [
+          "Jim Carrey",
+          "Danny DeVito",
+          "Bill Murray",
+          "Jack Black"
+        ],
+        "correctAnswer": "Jim Carrey",
+        "difficulty": "Easy",
+        "id": "482dc894-d7e9-4896-8e34-915e36940a98"
+      },
+      {
+        "question": "What kind of fish is Nemo in 'Finding Nemo'?",
+        "options": [
+          "Goldfish",
+          "Clownfish",
+          "Blue Tang",
+          "Shark"
+        ],
+        "correctAnswer": "Clownfish",
+        "difficulty": "Easy",
+        "id": "add843e6-8768-4022-b711-707071de414e"
+      },
+      {
+        "question": "Which movie features the song 'Hakuna Matata'?",
+        "options": [
+          "Aladdin",
+          "The Lion King",
+          "Tarzan",
+          "Mulan"
+        ],
+        "correctAnswer": "The Lion King",
+        "difficulty": "Easy",
+        "id": "99d9b8d6-264e-4af8-a2c6-7405718cb888"
+      },
+      {
+        "question": "What is the name of the school Harry Potter attends?",
+        "options": [
+          "Eton",
+          "Hogwarts",
+          "Durmstrang",
+          "Beauxbatons"
+        ],
+        "correctAnswer": "Hogwarts",
+        "difficulty": "Easy",
+        "id": "eb33e847-9fc0-41bb-b060-0d588916ddc8"
+      },
+      {
+        "question": "Who is the main protagonist in 'The Hunger Games' series?",
+        "options": [
+          "Hermione Granger",
+          "Katniss Everdeen",
+          "Tris Prior",
+          "Bella Swan"
+        ],
+        "correctAnswer": "Katniss Everdeen",
+        "difficulty": "Easy",
+        "id": "1d5ffc96-4a85-43bd-8717-5a2550378746"
+      },
+      {
+        "question": "Which planet is Superman from?",
+        "options": [
+          "Mars",
+          "Krypton",
+          "Venus",
+          "Jupiter"
+        ],
+        "correctAnswer": "Krypton",
+        "difficulty": "Easy",
+        "id": "e14a95ba-5080-4002-aa39-2c6e449720e2"
+      },
+      {
+        "question": "In 'Beauty and the Beast', what is the name of the clock?",
+        "options": [
+          "Lumiere",
+          "Cogsworth",
+          "Mrs. Potts",
+          "Chip"
+        ],
+        "correctAnswer": "Cogsworth",
+        "difficulty": "Easy",
+        "id": "2fe433c1-4e90-47ab-8830-b4919ec9f396"
+      },
+      {
+        "question": "What is the name of the fastest ship in the galaxy in 'Star Wars'?",
+        "options": [
+          "Enterprise",
+          "Millennium Falcon",
+          "TIE Fighter",
+          "X-Wing"
+        ],
+        "correctAnswer": "Millennium Falcon",
+        "difficulty": "Easy",
+        "id": "7d42587b-2dde-49e0-b545-1f5bf4648a19"
+      },
+      {
+        "question": "Who directed the movie 'Jurassic Park'?",
+        "options": [
+          "James Cameron",
+          "Steven Spielberg",
+          "George Lucas",
+          "Christopher Nolan"
+        ],
+        "correctAnswer": "Steven Spielberg",
+        "difficulty": "Easy",
+        "id": "ba3c60b7-ea57-4eee-82b6-c4130013a82b"
+      },
+      {
+        "question": "What is the name of the snowman in 'Frozen'?",
+        "options": [
+          "Sven",
+          "Kristoff",
+          "Olaf",
+          "Hans"
+        ],
+        "correctAnswer": "Olaf",
+        "difficulty": "Easy",
+        "id": "cccc222f-4a64-41fd-bcc0-bb37933a264b"
+      },
+      {
+        "question": "In 'The Matrix', what color pill does Neo take?",
+        "options": [
+          "Blue",
+          "Red",
+          "Green",
+          "Yellow"
+        ],
+        "correctAnswer": "Red",
+        "difficulty": "Easy",
+        "id": "f1f83b3e-cf48-4c48-a7f4-0489b1fe1a65"
+      },
+      {
+        "question": "What is the name of the dog in 'Up'?",
+        "options": [
+          "Russell",
+          "Dug",
+          "Kevin",
+          "Carl"
+        ],
+        "correctAnswer": "Dug",
+        "difficulty": "Easy",
+        "id": "0aeadea4-fcad-45e0-a110-372b4c3d8e4c"
+      },
+      {
+        "question": "Which actress played Hermione Granger in 'Harry Potter'?",
+        "options": [
+          "Emma Stone",
+          "Emma Watson",
+          "Jennifer Lawrence",
+          "Scarlett Johansson"
+        ],
+        "correctAnswer": "Emma Watson",
+        "difficulty": "Easy",
+        "id": "a73ac423-411b-4f69-a468-d0e7fda1ebda"
+      },
+      {
+        "question": "What is the capital of Panem in 'The Hunger Games'?",
+        "options": [
+          "District 12",
+          "The Capitol",
+          "District 1",
+          "Panem City"
+        ],
+        "correctAnswer": "The Capitol",
+        "difficulty": "Easy",
+        "id": "eb64251c-1699-4dfe-8a44-842e7722a7c9"
+      },
+      {
+        "question": "Who is the villain in 'The Little Mermaid'?",
+        "options": [
+          "Maleficent",
+          "Ursula",
+          "Cruella de Vil",
+          "Scar"
+        ],
+        "correctAnswer": "Ursula",
+        "difficulty": "Easy",
+        "id": "d95e4388-efe4-435a-9823-74335bc87087"
+      },
+      {
+        "question": "What is the name of the prince in 'Snow White'?",
+        "options": [
+          "Prince Charming",
+          "Prince Eric",
+          "The Prince",
+          "Prince Naveen"
+        ],
+        "correctAnswer": "The Prince",
+        "difficulty": "Easy",
+        "id": "91aaea74-29a2-4fee-81ea-35f7d2c29a54"
+      },
+      {
+        "question": "In 'Moana', who is the demigod voiced by Dwayne Johnson?",
+        "options": [
+          "Maui",
+          "Hercules",
+          "Zeus",
+          "Thor"
+        ],
+        "correctAnswer": "Maui",
+        "difficulty": "Easy",
+        "id": "06d70848-ce2e-4aa9-84eb-a27b14ac8c97"
+      },
+      {
+        "question": "What do the Avengers eat in the post-credits scene of the first 'Avengers' movie?",
+        "options": [
+          "Pizza",
+          "Shawarma",
+          "Burgers",
+          "Tacos"
+        ],
+        "correctAnswer": "Shawarma",
+        "difficulty": "Easy",
+        "id": "73c663de-756b-4454-9ab5-d6a7c4dd1b5b"
+      },
+      {
+        "question": "Which movie features a character named Forrest Gump?",
+        "options": [
+          "Cast Away",
+          "Forrest Gump",
+          "Saving Private Ryan",
+          "Apollo 13"
+        ],
+        "correctAnswer": "Forrest Gump",
+        "difficulty": "Easy",
+        "id": "23c748ac-c0a7-4291-a38b-67ddaee90493"
+      },
+      {
+        "question": "What is the name of the raccoon in 'Guardians of the Galaxy'?",
+        "options": [
+          "Groot",
+          "Rocket",
+          "Star-Lord",
+          "Drax"
+        ],
+        "correctAnswer": "Rocket",
+        "difficulty": "Easy",
+        "id": "a0860640-2ae8-4a82-87dd-d649bbf85266"
+      },
+      {
+        "question": "In 'Inside Out', which emotion is yellow?",
+        "options": [
+          "Sadness",
+          "Anger",
+          "Joy",
+          "Fear"
+        ],
+        "correctAnswer": "Joy",
+        "difficulty": "Easy",
+        "id": "e76163bc-a6f5-4554-81b6-c1cc426d5bb3"
+      },
+      {
+        "question": "What is the name of the woodworker who created Pinocchio?",
+        "options": [
+          "Gepetto",
+          "Antonio",
+          "Mario",
+          "Luigi"
+        ],
+        "correctAnswer": "Gepetto",
+        "difficulty": "Easy",
+        "id": "f6974e8f-c3b6-4215-874c-416c221f97c4"
+      },
+      {
+        "question": "Which movie is set on a luxury ocean liner that hits an iceberg?",
+        "options": [
+          "Titanic",
+          "The Poseidon Adventure",
+          "Speed 2",
+          "Jaws"
+        ],
+        "correctAnswer": "Titanic",
+        "difficulty": "Easy",
+        "id": "7bc9e5bb-31df-42fb-877f-bc6db1a748aa"
+      },
+      {
+        "question": "What is the name of the main shark in 'Jaws'?",
+        "options": [
+          "Bruce",
+          "Sharky",
+          "Fin",
+          "Great White"
+        ],
+        "correctAnswer": "Bruce",
+        "difficulty": "Easy",
+        "id": "33a2a9b9-7568-4ba4-8708-761ba1f9510a"
+      },
+      {
+        "question": "In 'The Incredibles', what is Dash's superpower?",
+        "options": [
+          "Invisibility",
+          "Strength",
+          "Speed",
+          "Elasticity"
+        ],
+        "correctAnswer": "Speed",
+        "difficulty": "Easy",
+        "id": "c8af9c62-99f4-4fb9-a3dd-cede6a760888"
+      },
+      {
+        "question": "Which movie features a friendly ghost named Casper?",
+        "options": [
+          "Beetlejuice",
+          "Ghostbusters",
+          "Casper",
+          "Hocus Pocus"
+        ],
+        "correctAnswer": "Casper",
+        "difficulty": "Easy",
+        "id": "48ab27d1-1aa0-49c1-8ffb-9055dc3d2f62"
+      },
+      {
+        "question": "What is the name of the jungle in 'The Jungle Book'?",
+        "options": [
+          "Deep Jungle",
+          "Seoni Jungle",
+          "Amazon",
+          "Everglades"
+        ],
+        "correctAnswer": "Seoni Jungle",
+        "difficulty": "Easy",
+        "id": "14d56e16-28c8-4361-baea-d1e310afe89f"
+      },
+      {
+        "question": "Who plays the character of Katniss Everdeen?",
+        "options": [
+          "Emma Stone",
+          "Jennifer Lawrence",
+          "Shailene Woodley",
+          "Chlo\u00eb Grace Moretz"
+        ],
+        "correctAnswer": "Jennifer Lawrence",
+        "difficulty": "Easy",
+        "id": "f461b23f-a9be-42ae-bfc6-5b42a12f532b"
+      },
+      {
+        "question": "In 'Despicable Me', what are the small yellow creatures called?",
+        "options": [
+          "Smurfs",
+          "Goblins",
+          "Minions",
+          "Lemmings"
+        ],
+        "correctAnswer": "Minions",
+        "difficulty": "Easy",
+        "id": "39979a69-0ef1-467d-9de8-73dec8c67d21"
+      },
+      {
+        "question": "What animal is Po in 'Kung Fu Panda'?",
+        "options": [
+          "Tiger",
+          "Panda",
+          "Monkey",
+          "Crane"
+        ],
+        "correctAnswer": "Panda",
+        "difficulty": "Easy",
+        "id": "2e4d05e9-8e5a-445d-8912-ce11b901d958"
+      },
+      {
+        "question": "Which move involves a magical board game that comes to life?",
+        "options": [
+          "Zathura",
+          "Jumanji",
+          "Monopoly",
+          "Clue"
+        ],
+        "correctAnswer": "Jumanji",
+        "difficulty": "Easy",
+        "id": "5a8ba004-b614-4447-a7e6-e679875294f0"
+      },
+      {
+        "question": "Who is the main robot character in 'WALL-E'?",
+        "options": [
+          "EVE",
+          "WALL-E",
+          "R2-D2",
+          "C-3PO"
+        ],
+        "correctAnswer": "WALL-E",
+        "difficulty": "Easy",
+        "id": "24b46b12-1178-4c35-bb8e-42dcf5dd0dc4"
+      },
+      {
+        "question": "In 'The Cars' movie, what is Lightning McQueen's number?",
+        "options": [
+          "43",
+          "51",
+          "95",
+          "82"
+        ],
+        "correctAnswer": "95",
+        "difficulty": "Easy",
+        "id": "c27f8f12-afee-473e-bd5e-3a4c48bc3740"
+      },
+      {
+        "question": "What is the name of the coffee shop in 'Friends' (wait, that's TV)? Which movie has a character named 'Legolas'?",
+        "options": [
+          "Harry Potter",
+          "Lord of the Rings",
+          "The Hobbit",
+          "Star Wars"
+        ],
+        "correctAnswer": "Lord of the Rings",
+        "difficulty": "Easy",
+        "id": "81ab7fe4-c801-43d7-91d2-7ee083613394"
+      },
+      {
+        "question": "In 'Ratatouille', what kind of animal is Remy?",
+        "options": [
+          "Mouse",
+          "Rat",
+          "Hamster",
+          "Gopher"
+        ],
+        "correctAnswer": "Rat",
+        "difficulty": "Easy",
+        "id": "c2c34d8f-36d9-4804-9a1b-46349c0d0c92"
+      },
+      {
+        "question": "What is the name of the school in 'Grease'?",
+        "options": [
+          "Rydell High",
+          "North High",
+          "East High",
+          "West High"
+        ],
+        "correctAnswer": "Rydell High",
+        "difficulty": "Easy",
+        "id": "f868052d-564d-4dc4-96ad-b1938f88d383"
+      },
+      {
+        "question": "Who is the 'King of the Monsters'?",
+        "options": [
+          "King Kong",
+          "Godzilla",
+          "Rodan",
+          "Mothra"
+        ],
+        "correctAnswer": "Godzilla",
+        "difficulty": "Easy",
+        "id": "88a062a1-e668-4f01-bd7e-4a13777c18ce"
+      },
+      {
+        "question": "Which movie features a ' flux capacitor'?",
+        "options": [
+          "Back to the Future",
+          "Star Trek",
+          "The Terminator",
+          "RoboCop"
+        ],
+        "correctAnswer": "Back to the Future",
+        "difficulty": "Easy",
+        "id": "248fdfde-fdbe-4d9f-931e-eca3d52caa1c"
+      },
+      {
+        "question": "In 'Pulp Fiction', what is inside the briefcase?",
+        "options": [
+          "Gold",
+          "Diamonds",
+          "God's Soul",
+          "It's never revealed"
+        ],
+        "correctAnswer": "It's never revealed",
+        "difficulty": "Medium",
+        "id": "7273bda6-11c1-4e8c-9329-42957af68402"
+      },
+      {
+        "question": "Who directed the 2010 film 'Inception'?",
+        "options": [
+          "Steven Spielberg",
+          "Christopher Nolan",
+          "Martin Scorsese",
+          "Quentin Tarantino"
+        ],
+        "correctAnswer": "Christopher Nolan",
+        "difficulty": "Medium",
+        "id": "a33962c2-fcbe-4b0e-9c8b-f5cab0dce2d3"
+      },
+      {
+        "question": "Which movie won the first Academy Award for Best Picture?",
+        "options": [
+          "The Jazz Singer",
+          "Wings",
+          "Sunrise",
+          "Metropolis"
+        ],
+        "correctAnswer": "Wings",
+        "difficulty": "Medium",
+        "id": "4cfebc4e-1f33-484f-8ff3-0cfb37cf03cf"
+      },
+      {
+        "question": "What is the name of the protagonist in 'The Shawshank Redemption'?",
+        "options": [
+          "Red",
+          "Andy Dufresne",
+          "Brooks Hatlen",
+          "Samuel Norton"
+        ],
+        "correctAnswer": "Andy Dufresne",
+        "difficulty": "Medium",
+        "id": "6a4699d2-0f86-40e6-9fe0-c852c9594b13"
+      },
+      {
+        "question": "In 'Fight Club', what is the first rule?",
+        "options": [
+          "No hitting in the face",
+          "You do not talk about Fight Club",
+          "Only two guys to a fight",
+          "No shirts, no shoes"
+        ],
+        "correctAnswer": "You do not talk about Fight Club",
+        "difficulty": "Medium",
+        "id": "4f583be3-8889-45c4-8f02-3beaa05da621"
+      },
+      {
+        "question": "Which actor starred as 'The Terminator' in the 1984 film?",
+        "options": [
+          "Sylvester Stallone",
+          "Arnold Schwarzenegger",
+          "Bruce Willis",
+          "Jean-Claude Van Damme"
+        ],
+        "correctAnswer": "Arnold Schwarzenegger",
+        "difficulty": "Medium",
+        "id": "b06e6161-6835-42a3-a640-e5cc9e202a10"
+      },
+      {
+        "question": "What is the highest-grossing film of all time (unadjusted for inflation)?",
+        "options": [
+          "Titanic",
+          "Avatar",
+          "Avengers: Endgame",
+          "Star Wars: The Force Awakens"
+        ],
+        "correctAnswer": "Avatar",
+        "difficulty": "Medium",
+        "id": "f40761cf-03ff-47f0-baad-cabc8bc0dd18"
+      },
+      {
+        "question": "Which horror movie features a character named Pennywise?",
+        "options": [
+          "Halloween",
+          "It",
+          "Friday the 13th",
+          "A Nightmare on Elm Street"
+        ],
+        "correctAnswer": "It",
+        "difficulty": "Medium",
+        "id": "d7b07bd0-d64d-4ca6-a45c-33413c1f3e1f"
+      },
+      {
+        "question": "In 'Forrest Gump', what does Forrest's mother say life is like?",
+        "options": [
+          "A river",
+          "A box of chocolates",
+          "A miracle",
+          "A race"
+        ],
+        "correctAnswer": "A box of chocolates",
+        "difficulty": "Medium",
+        "id": "86d9140b-5aa1-4c0d-9dde-5ad0788caad2"
+      },
+      {
+        "question": "Who played the character of Joker in 'The Dark Knight'?",
+        "options": [
+          "Jack Nicholson",
+          "Jared Leto",
+          "Heath Ledger",
+          "Joaquin Phoenix"
+        ],
+        "correctAnswer": "Heath Ledger",
+        "difficulty": "Medium",
+        "id": "a61aac82-faea-417d-b7a9-2d949fc0c4de"
+      },
+      {
+        "question": "In which movie did Audrey Hepburn play Holly Golightly?",
+        "options": [
+          "Roman Holiday",
+          "Sabrina",
+          "Breakfast at Tiffany's",
+          "My Fair Lady"
+        ],
+        "correctAnswer": "Breakfast at Tiffany's",
+        "difficulty": "Medium",
+        "id": "9dae809e-26a5-49f8-9423-dcb59f315409"
+      },
+      {
+        "question": "Which movie features the line, 'Here's looking at you, kid'?",
+        "options": [
+          "Casablanca",
+          "Gone with the Wind",
+          "Citizen Kane",
+          "The Godfather"
+        ],
+        "correctAnswer": "Casablanca",
+        "difficulty": "Medium",
+        "id": "25afcafe-af59-4ffb-9089-4fc5c7f177e5"
+      },
+      {
+        "question": "Who directed 'Psycho'?",
+        "options": [
+          "Alfred Hitchcock",
+          "Stanley Kubrick",
+          "Billy Wilder",
+          "Orson Welles"
+        ],
+        "correctAnswer": "Alfred Hitchcock",
+        "difficulty": "Medium",
+        "id": "dc6b2d10-cdb2-4b14-81ea-885256bbb5e4"
+      },
+      {
+        "question": "What was the first feature-length animated movie ever released?",
+        "options": [
+          "Pinocchio",
+          "Snow White and the Seven Dwarfs",
+          "Bambi",
+          "Dumbo"
+        ],
+        "correctAnswer": "Snow White and the Seven Dwarfs",
+        "difficulty": "Medium",
+        "id": "61cfd7d7-c03c-4e54-959d-97993da85197"
+      },
+      {
+        "question": "Which movie features a doll named Chucky?",
+        "options": [
+          "Child's Play",
+          "Annabelle",
+          "Dead Silence",
+          "Saw"
+        ],
+        "correctAnswer": "Child's Play",
+        "difficulty": "Medium",
+        "id": "62099581-f74f-4e44-8c85-c74525c31c39"
+      },
+      {
+        "question": "In 'The Godfather', what is the name of the head of the family?",
+        "options": [
+          "Sonny Corleone",
+          "Michael Corleone",
+          "Vito Corleone",
+          "Fredo Corleone"
+        ],
+        "correctAnswer": "Vito Corleone",
+        "difficulty": "Medium",
+        "id": "e4be7a9e-e47e-4057-945b-e4bf468afa29"
+      },
+      {
+        "question": "Which actor won an Oscar for 'The Revenant'?",
+        "options": [
+          "Brad Pitt",
+          "Leonardo DiCaprio",
+          "Tom Hardy",
+          "Christian Bale"
+        ],
+        "correctAnswer": "Leonardo DiCaprio",
+        "difficulty": "Medium",
+        "id": "24366d2a-a149-4f54-97e1-adbe7f316e1a"
+      },
+      {
+        "question": "What is the name of the fictional African country in 'Black Panther'?",
+        "options": [
+          "Zamunda",
+          "Wakanda",
+          "Genosha",
+          "Latveria"
+        ],
+        "correctAnswer": "Wakanda",
+        "difficulty": "Medium",
+        "id": "1e47414e-2947-46cf-b407-f7988b5cef0d"
+      },
+      {
+        "question": "Which move features a character named 'Anton Chigurh'?",
+        "options": [
+          "No Country for Old Men",
+          "The Departed",
+          "Fargo",
+          "Sicario"
+        ],
+        "correctAnswer": "No Country for Old Men",
+        "difficulty": "Medium",
+        "id": "6a3cd11b-e6b7-4b6e-b239-b4000508a194"
+      },
+      {
+        "question": "Who is the director of 'The Grand Budapest Hotel'?",
+        "options": [
+          "Wes Anderson",
+          "Paul Thomas Anderson",
+          "Quentin Tarantino",
+          "Coen Brothers"
+        ],
+        "correctAnswer": "Wes Anderson",
+        "difficulty": "Medium",
+        "id": "88b2b410-daed-4b69-9e2d-795fae21f62e"
+      },
+      {
+        "question": "Which movie features the famous shower scene?",
+        "options": [
+          "The Birds",
+          "Psycho",
+          "Vertigo",
+          "Rear Window"
+        ],
+        "correctAnswer": "Psycho",
+        "difficulty": "Medium",
+        "id": "5af58f7d-7ac2-4c75-b9a9-b2b0d3277aff"
+      },
+      {
+        "question": "What is the name of the computer in '2001: A Space Odyssey'?",
+        "options": [
+          "Gerty",
+          "HAL 9000",
+          "Mother",
+          "Jarvis"
+        ],
+        "correctAnswer": "HAL 9000",
+        "difficulty": "Medium",
+        "id": "e511b5cf-3140-48a8-98a3-00a2b65d85f7"
+      },
+      {
+        "question": "In 'The Silence of the Lambs', what is the name of the serial killer Andy/Buffalo Bill?",
+        "options": [
+          "Hannibal Lecter",
+          "Jame Gumb",
+          "Norman Bates",
+          "Francis Dolarhyde"
+        ],
+        "correctAnswer": "Jame Gumb",
+        "difficulty": "Medium",
+        "id": "007c7404-77c7-45e3-90c9-d78b41cc1042"
+      },
+      {
+        "question": "Who played the character of Neo in 'The Matrix'?",
+        "options": [
+          "Keanu Reeves",
+          "Laurence Fishburne",
+          "Hugo Weaving",
+          "Carrie-Anne Moss"
+        ],
+        "correctAnswer": "Keanu Reeves",
+        "difficulty": "Medium",
+        "id": "8c6e0ede-44d9-4a8f-9f06-19f3d5ff42c5"
+      },
+      {
+        "question": "Which movie features a character named 'Travis Bickle'?",
+        "options": [
+          "Taxi Driver",
+          "Raging Bull",
+          "Goodfellas",
+          "Mean Streets"
+        ],
+        "correctAnswer": "Taxi Driver",
+        "difficulty": "Medium",
+        "id": "db70687a-4675-4f5f-bea9-4eeabf3b596c"
+      },
+      {
+        "question": "In 'Schindler's List', what color is the girl's coat in an otherwise black-and-white scene?",
+        "options": [
+          "Blue",
+          "Red",
+          "Yellow",
+          "Green"
+        ],
+        "correctAnswer": "Red",
+        "difficulty": "Medium",
+        "id": "d7fe7503-a3df-4d6c-b29d-e685516e0955"
+      },
+      {
+        "question": "Who directed 'Parasite'?",
+        "options": [
+          "Park Chan-wook",
+          "Bong Joon-ho",
+          "Hirokazu Kore-eda",
+          "Ang Lee"
+        ],
+        "correctAnswer": "Bong Joon-ho",
+        "difficulty": "Medium",
+        "id": "aec2de8a-2631-4f11-9674-617106c246be"
+      },
+      {
+        "question": "Which movie is based on a Stephen King novella titled 'Rita Hayworth and Shawshank Redemption'?",
+        "options": [
+          "The Green Mile",
+          "Stand By Me",
+          "The Shawshank Redemption",
+          "Misery"
+        ],
+        "correctAnswer": "The Shawshank Redemption",
+        "difficulty": "Medium",
+        "id": "1e537ed0-86df-401c-9925-f1009cbb230a"
+      },
+      {
+        "question": "What is the name of the main character in 'Gran Torino'?",
+        "options": [
+          "Walter Sobchak",
+          "Walt Kowalski",
+          "Dirty Harry",
+          "Bill Munny"
+        ],
+        "correctAnswer": "Walt Kowalski",
+        "difficulty": "Medium",
+        "id": "e5fd1106-b836-4fde-8be5-9e6f39246994"
+      },
+      {
+        "question": "Which movie features a character named 'Verbal Kint'?",
+        "options": [
+          "The Usual Suspects",
+          "Seven",
+          "L.A. Confidential",
+          "Heat"
+        ],
+        "correctAnswer": "The Usual Suspects",
+        "difficulty": "Medium",
+        "id": "2957a3d2-0d18-47d2-9976-7290585ebbe4"
+      },
+      {
+        "question": "Who directed 'Blade Runner' (1982)?",
+        "options": [
+          "Ridley Scott",
+          "James Cameron",
+          "Denis Villeneuve",
+          "John Carpenter"
+        ],
+        "correctAnswer": "Ridley Scott",
+        "difficulty": "Medium",
+        "id": "d33fafc2-9177-4c25-9ad7-dfabde582d82"
+      },
+      {
+        "question": "What is the name of the island in 'Jurassic Park'?",
+        "options": [
+          "Isla Nublar",
+          "Isla Sorna",
+          "Skull Island",
+          "Amity Island"
+        ],
+        "correctAnswer": "Isla Nublar",
+        "difficulty": "Medium",
+        "id": "3e4d579b-3b0c-46b6-b38e-b51928199414"
+      },
+      {
+        "question": "Which movie features a soundtrack composed entirely by Daft Punk?",
+        "options": [
+          "Interstellar",
+          "Tron: Legacy",
+          "The Social Network",
+          "Drive"
+        ],
+        "correctAnswer": "Tron: Legacy",
+        "difficulty": "Medium",
+        "id": "b7a47baf-a83a-40d9-b1b1-16e3141f4a2e"
+      },
+      {
+        "question": "Who played the character of 'Hannibal Lecter' in 'The Silence of the Lambs'?",
+        "options": [
+          "Mads Mikkelsen",
+          "Anthony Hopkins",
+          "Brian Cox",
+          "Jeremy Irons"
+        ],
+        "correctAnswer": "Anthony Hopkins",
+        "difficulty": "Medium",
+        "id": "705ec818-c51d-49f2-9510-e7ef98c06d7d"
+      },
+      {
+        "question": "In 'Big', what toy does Josh Baskin pitch to the toy company?",
+        "options": [
+          "A basketball set",
+          "A electronic comic book",
+          "A transformable building",
+          "A talking doll"
+        ],
+        "correctAnswer": "A transformable building",
+        "difficulty": "Medium",
+        "id": "1de6f7d0-fa12-4507-8e6d-2b8db85f5a2e"
+      },
+      {
+        "question": "Which movie features the quote: 'I love the smell of napalm in the morning'?",
+        "options": [
+          "Full Metal Jacket",
+          "Platoon",
+          "Apocalypse Now",
+          "The Deer Hunter"
+        ],
+        "correctAnswer": "Apocalypse Now",
+        "difficulty": "Medium",
+        "id": "c08fca6c-6ca4-4170-ac4f-94e77b6a3b13"
+      },
+      {
+        "question": "What is the name of the high school in 'The Breakfast Club'?",
+        "options": [
+          "Shermer High School",
+          "Rydell High",
+          "North Hills High",
+          "Westridge High"
+        ],
+        "correctAnswer": "Shermer High School",
+        "difficulty": "Medium",
+        "id": "807aae1f-7c20-4a20-8861-18ffc3db4b09"
+      },
+      {
+        "question": "Who directed 'Django Unchained'?",
+        "options": [
+          "Robert Rodriguez",
+          "Quentin Tarantino",
+          "Samuel L. Jackson",
+          "Spike Lee"
+        ],
+        "correctAnswer": "Quentin Tarantino",
+        "difficulty": "Medium",
+        "id": "778be861-4ca8-4e1c-90d4-cb03a240ba7e"
+      },
+      {
+        "question": "In 'Up', what is the name of the bird Carl and Russell find?",
+        "options": [
+          "Dug",
+          "Kevin",
+          "Charles",
+          "Beta"
+        ],
+        "correctAnswer": "Kevin",
+        "difficulty": "Medium",
+        "id": "b6204fe3-4000-4862-9cfb-c8456318a692"
+      },
+      {
+        "question": "Which movie features a character named 'Truman Burbank'?",
+        "options": [
+          "Eternal Sunshine",
+          "The Truman Show",
+          "Man on the Moon",
+          "The Mask"
+        ],
+        "correctAnswer": "The Truman Show",
+        "difficulty": "Medium",
+        "id": "f34f048b-1bb8-4052-9f75-66784e8d1a65"
+      },
+      {
+        "question": "What is the name of the protagonist in 'The Big Lebowski'?",
+        "options": [
+          "Walter",
+          "The Dude",
+          "Donny",
+          "Jesus"
+        ],
+        "correctAnswer": "The Dude",
+        "difficulty": "Medium",
+        "id": "9659b6bf-4658-45fa-878c-64dfb343c17d"
+      },
+      {
+        "question": "Who directed the 1994 film 'Leon: The Professional'?",
+        "options": [
+          "Jean Reno",
+          "Luc Besson",
+          "Jean-Pierre Jeunet",
+          "Gaspar Noe"
+        ],
+        "correctAnswer": "Luc Besson",
+        "difficulty": "Medium",
+        "id": "2412ed9a-552e-4974-9acc-1690eb7f6615"
+      },
+      {
+        "question": "In 'Whiplash', what instrument does Andrew Neiman play?",
+        "options": [
+          "Piano",
+          "Trumpet",
+          "Drums",
+          "Saxophone"
+        ],
+        "correctAnswer": "Drums",
+        "difficulty": "Medium",
+        "id": "6b1aa191-52e4-4da7-bd24-dfbfb8bb299c"
+      },
+      {
+        "question": "Which movie features 'The Overlook Hotel'?",
+        "options": [
+          "Misery",
+          "The Shining",
+          "Carrie",
+          "Sleep Doctor"
+        ],
+        "correctAnswer": "The Shining",
+        "difficulty": "Medium",
+        "id": "2706e73b-fb17-46ff-8345-ac9ef4d06349"
+      },
+      {
+        "question": "What was the name of the Orca in 'Free Willy'?",
+        "options": [
+          "Shamu",
+          "Keiko",
+          "Willy",
+          "Tilikum"
+        ],
+        "correctAnswer": "Keiko",
+        "difficulty": "Medium",
+        "id": "6fa187ca-66da-4b0f-85b2-0cd38fcae7b1"
+      },
+      {
+        "question": "Who played 'Jack Twist' in 'Brokeback Mountain'?",
+        "options": [
+          "Heath Ledger",
+          "Jake Gyllenhaal",
+          "Matt Damon",
+          "Ben Affleck"
+        ],
+        "correctAnswer": "Jake Gyllenhaal",
+        "difficulty": "Medium",
+        "id": "3e04c8f9-75b0-4ef2-a663-47c4c68dcf28"
+      },
+      {
+        "question": "In 'The 6th Sense', what secret does Cole Sear tell Dr. Crowe?",
+        "options": [
+          "He is a ghost",
+          "He sees dead people",
+          "He killed his father",
+          "He can move objects"
+        ],
+        "correctAnswer": "He sees dead people",
+        "difficulty": "Medium",
+        "id": "6c6689c5-6e87-4188-8bf8-76f509ee568e"
+      },
+      {
+        "question": "Which movie features the song 'Mrs. Robinson'?",
+        "options": [
+          "The Graduate",
+          "Midnight Cowboy",
+          "Rain Man",
+          "Easy Rider"
+        ],
+        "correctAnswer": "The Graduate",
+        "difficulty": "Medium",
+        "id": "233380bd-3afb-42d6-90f2-11fec40d6eaa"
+      },
+      {
+        "question": "Who directed 'Lady Bird' (2017)?",
+        "options": [
+          "Greta Gerwig",
+          "Sofia Coppola",
+          "Chlo\u00eb Zhao",
+          "Emerald Fennell"
+        ],
+        "correctAnswer": "Greta Gerwig",
+        "difficulty": "Medium",
+        "id": "f2972c40-34a1-48b6-8caf-ec4e61dae8f4"
+      },
+      {
+        "question": "In 'Reservoir Dogs', what is Mr. Brown's name in real life (writer/director)?",
+        "options": [
+          "Steve Buscemi",
+          "Quentin Tarantino",
+          "Harvey Keitel",
+          "Tim Roth"
+        ],
+        "correctAnswer": "Quentin Tarantino",
+        "difficulty": "Medium",
+        "id": "2c23a464-57f6-4dd8-b026-bda6466359ff"
+      },
+      {
+        "question": "Which film holds the record for the most Oscar nominations without a single win (11 nominations)?",
+        "options": [
+          "The Color Purple",
+          "The Turning Point",
+          "Both A and B",
+          "Neither A nor B"
+        ],
+        "correctAnswer": "Both A and B",
+        "difficulty": "Hard",
+        "id": "04597b46-7fec-4dc7-be3b-69dc4a12e9f4"
+      },
+      {
+        "question": "In 'The Godfather', what is the first name of the character played by Al Pacino?",
+        "options": [
+          "Sonny",
+          "Fredo",
+          "Michael",
+          "Tom"
+        ],
+        "correctAnswer": "Michael",
+        "difficulty": "Hard",
+        "id": "6439f2ca-a792-481b-9948-598c239ae67c"
+      },
+      {
+        "question": "Who directed the 1927 silent masterpiece 'Metropolis'?",
+        "options": [
+          "F.W. Murnau",
+          "Fritz Lang",
+          "Robert Wiene",
+          "Sergei Eisenstein"
+        ],
+        "correctAnswer": "Fritz Lang",
+        "difficulty": "Hard",
+        "id": "e652a6a8-3693-491a-b25d-5dd1ff8fb1cf"
+      },
+      {
+        "question": "In 'Apocalypse Now', Marlon Brando plays which character?",
+        "options": [
+          "Captain Willard",
+          "Colonel Kurtz",
+          "Kilgore",
+          "Chef"
+        ],
+        "correctAnswer": "Colonel Kurtz",
+        "difficulty": "Hard",
+        "id": "10dc66c5-1097-4779-ab8e-cb834cd8c7c8"
+      },
+      {
+        "question": "Which actress played the title character in 'Mary Poppins' (1964)?",
+        "options": [
+          "Julie Andrews",
+          "Audrey Hepburn",
+          "Shirley MacLaine",
+          "Debbie Reynolds"
+        ],
+        "correctAnswer": "Julie Andrews",
+        "difficulty": "Hard",
+        "id": "c1751087-08b3-40c9-a2f8-4b11e7404b61"
+      },
+      {
+        "question": "Which movie features the character 'Keyser S\u00f6ze'?",
+        "options": [
+          "The Usual Suspects",
+          "Seven",
+          "L.A. Confidential",
+          "Reservoir Dogs"
+        ],
+        "correctAnswer": "The Usual Suspects",
+        "difficulty": "Hard",
+        "id": "d1d709af-e618-4dd5-aa62-2117bd1c7a07"
+      },
+      {
+        "question": "Who won the Best Director Oscar for 'Pulp Fiction'?",
+        "options": [
+          "Quentin Tarantino",
+          "Actually, he didn't win",
+          "Steven Spielberg",
+          "Robert Zemeckis"
+        ],
+        "correctAnswer": "Actually, he didn't win",
+        "difficulty": "Hard",
+        "id": "c6a2c8ed-68aa-4afa-be8f-e3d38662235d"
+      },
+      {
+        "question": "Which film was the first to be rated X in the US and still win Best Picture?",
+        "options": [
+          "Midnight Cowboy",
+          "The Exorcist",
+          "A Clockwork Orange",
+          "Last Tango in Paris"
+        ],
+        "correctAnswer": "Midnight Cowboy",
+        "difficulty": "Hard",
+        "id": "68092019-5f8a-4e41-a7a8-71965caf7740"
+      },
+      {
+        "question": "Who composed the score for 'The Good, the Bad and the Ugly'?",
+        "options": [
+          "John Williams",
+          "Ennio Morricone",
+          "Hans Zimmer",
+          "Bernard Herrmann"
+        ],
+        "correctAnswer": "Ennio Morricone",
+        "difficulty": "Hard",
+        "id": "9769ec12-ab09-4ff3-8587-036f94edaed3"
+      },
+      {
+        "question": "In the movie 'Alien', what is the name of the ship?",
+        "options": [
+          "Discovery One",
+          "Nostromo",
+          "Sulaco",
+          "Prometheus"
+        ],
+        "correctAnswer": "Nostromo",
+        "difficulty": "Hard",
+        "id": "cb51d05a-94ea-4c99-85b5-926cc8b80c3c"
+      },
+      {
+        "question": "Who played the character of 'Rick Blaine' in 'Casablanca'?",
+        "options": [
+          "Humphrey Bogart",
+          "Cary Grant",
+          "Clark Gable",
+          "James Stewart"
+        ],
+        "correctAnswer": "Humphrey Bogart",
+        "difficulty": "Hard",
+        "id": "aab1b2f9-ce12-461c-a56a-a552c2e79d2d"
+      },
+      {
+        "question": "Which director is known for the 'Three Colors' trilogy?",
+        "options": [
+          "Krzysztof Kie\u015blowski",
+          "Ingmar Bergman",
+          "Andrei Tarkovsky",
+          "Jean-Luc Godard"
+        ],
+        "correctAnswer": "Krzysztof Kie\u015blowski",
+        "difficulty": "Hard",
+        "id": "f768d398-266f-49e6-a3d3-ae595ff2539f"
+      },
+      {
+        "question": "What is the name of the robot child in 'A.I. Artificial Intelligence'?",
+        "options": [
+          "Teddy",
+          "David",
+          "Gigolo Joe",
+          "Monica"
+        ],
+        "correctAnswer": "David",
+        "difficulty": "Hard",
+        "id": "deaf3d2c-c0e7-493c-bb90-1349cab6fc86"
+      },
+      {
+        "question": "Who played the lead role in 'The Elephant Man' (1980)?",
+        "options": [
+          "Anthony Hopkins",
+          "John Hurt",
+          "John Gielgud",
+          "Anne Bancroft"
+        ],
+        "correctAnswer": "John Hurt",
+        "difficulty": "Hard",
+        "id": "12e06528-9cd5-4777-92ca-abd0fdd92902"
+      },
+      {
+        "question": "In what year was the first 'Star Trek' feature film released?",
+        "options": [
+          "1977",
+          "1979",
+          "1982",
+          "1984"
+        ],
+        "correctAnswer": "1979",
+        "difficulty": "Hard",
+        "id": "286e7da7-d721-4b11-9693-7fa16036c096"
+      },
+      {
+        "question": "Which movie features the 'Wilhelm Scream' for the first time in the 1950s?",
+        "options": [
+          "Distant Drums",
+          "Star Wars",
+          "Raiders of the Lost Ark",
+          "The Charge at Feather River"
+        ],
+        "correctAnswer": "Distant Drums",
+        "difficulty": "Hard",
+        "id": "8933f7b9-e8a0-4472-a62d-43b28e16088a"
+      },
+      {
+        "question": "Who directed the 1968 film 'Night of the Living Dead'?",
+        "options": [
+          "George A. Romero",
+          "John Carpenter",
+          "Wes Craven",
+          "Tobe Hooper"
+        ],
+        "correctAnswer": "George A. Romero",
+        "difficulty": "Hard",
+        "id": "ee8370ce-32f6-4d7f-a6bc-22ae3a965943"
+      },
+      {
+        "question": "What is the name of the fictional setting in 'The Truman Show'?",
+        "options": [
+          "Seahaven",
+          "Pleasantville",
+          "Westview",
+          "Stepford"
+        ],
+        "correctAnswer": "Seahaven",
+        "difficulty": "Hard",
+        "id": "255e8bb0-709c-42f1-b35f-6f07e188096b"
+      },
+      {
+        "question": "Which movie features the line, 'All those moments will be lost in time, like tears in rain'?",
+        "options": [
+          "Star Wars",
+          "Blade Runner",
+          "Terminator",
+          "Solaris"
+        ],
+        "correctAnswer": "Blade Runner",
+        "difficulty": "Hard",
+        "id": "8725a0e5-9a27-490f-a237-4722ffcc2a96"
+      },
+      {
+        "question": "Who won the Best Actress Oscar for 'The Silence of the Lambs'?",
+        "options": [
+          "Jodie Foster",
+          "Julianne Moore",
+          "Frances McDormand",
+          "Meryl Streep"
+        ],
+        "correctAnswer": "Jodie Foster",
+        "difficulty": "Hard",
+        "id": "ea2ee499-5b10-46ab-8d65-c1094ad6279d"
+      },
+      {
+        "question": "In '2001: A Space Odyssey', what does HAL 9000 sing as he is being deactivated?",
+        "options": [
+          "Daisy Bell",
+          "Twinkle Twinkle",
+          "London Bridge",
+          "Row Your Boat"
+        ],
+        "correctAnswer": "Daisy Bell",
+        "difficulty": "Hard",
+        "id": "29e5f546-3538-4327-b320-7fc94a5c91ec"
+      },
+      {
+        "question": "Who directed 'Eyes Wide Shut'?",
+        "options": [
+          "Stanley Kubrick",
+          "Martin Scorsese",
+          "Steven Soderbergh",
+          "Sidney Lumet"
+        ],
+        "correctAnswer": "Stanley Kubrick",
+        "difficulty": "Hard",
+        "id": "a1fef9ed-90e9-4220-80fa-0a4f5550da73"
+      },
+      {
+        "question": "Which movie features the character 'Deckard'?",
+        "options": [
+          "Blade Runner",
+          "Indiana Jones",
+          "Witness",
+          "The Fugitive"
+        ],
+        "correctAnswer": "Blade Runner",
+        "difficulty": "Hard",
+        "id": "f84bef2d-7ae8-4f0b-a39a-76550aa60636"
+      },
+      {
+        "question": "What is the name of the high school in 'Heathers'?",
+        "options": [
+          "Westerburg High",
+          "Rydell High",
+          "Shermer High",
+          "North Shore High"
+        ],
+        "correctAnswer": "Westerburg High",
+        "difficulty": "Hard",
+        "id": "c28ecc11-ea94-4044-a3f5-38e39c50c73d"
+      },
+      {
+        "question": "Who directed 'Oldboy' (2003)?",
+        "options": [
+          "Park Chan-wook",
+          "Bong Joon-ho",
+          "Kim Jee-woon",
+          "Takashi Miike"
+        ],
+        "correctAnswer": "Park Chan-wook",
+        "difficulty": "Hard",
+        "id": "147f09c3-ab0c-442b-bfb1-d903bd109e3b"
+      },
+      {
+        "question": "In 'Mulholland Drive', what is the name of the blue club?",
+        "options": [
+          "Silencio",
+          "Lumiere",
+          "Azure",
+          "Nightmare"
+        ],
+        "correctAnswer": "Silencio",
+        "difficulty": "Hard",
+        "id": "7475938b-9ec6-4ac3-8341-93b2a6681777"
+      },
+      {
+        "question": "Which movie features a character called 'The Man with No Name'?",
+        "options": [
+          "A Fistful of Dollars",
+          "Unforgiven",
+          "The Searchers",
+          "True Grit"
+        ],
+        "correctAnswer": "A Fistful of Dollars",
+        "difficulty": "Hard",
+        "id": "902454bf-e22a-4c3c-ac05-53fbf4ae36fc"
+      },
+      {
+        "question": "Who played the character of 'Atticus Finch' in 'To Kill a Mockingbird'?",
+        "options": [
+          "Gregory Peck",
+          "Henry Fonda",
+          "James Stewart",
+          "Charlton Heston"
+        ],
+        "correctAnswer": "Gregory Peck",
+        "difficulty": "Hard",
+        "id": "edddc9c7-0ddd-412f-a463-47602626ae16"
+      },
+      {
+        "question": "In 'The Seventh Seal', what does the Knight challenge Death to?",
+        "options": [
+          "Cards",
+          "Chess",
+          "Darts",
+          "Riddles"
+        ],
+        "correctAnswer": "Chess",
+        "difficulty": "Hard",
+        "id": "cf76f8b7-1c5e-44ab-ab15-0752e3295f84"
+      },
+      {
+        "question": "Which movie has a protagonist named 'Buster' who is a silent film projectionist?",
+        "options": [
+          "Sherlock Jr.",
+          "The General",
+          "City Lights",
+          "Modern Times"
+        ],
+        "correctAnswer": "Sherlock Jr.",
+        "difficulty": "Hard",
+        "id": "9caa20d8-0c73-4daa-8b6b-961849648874"
+      },
+      {
+        "question": "Who directed the 1963 film '8 1/2'?",
+        "options": [
+          "Federico Fellini",
+          "Michelangelo Antonioni",
+          "Luchino Visconti",
+          "Pier Paolo Pasolini"
+        ],
+        "correctAnswer": "Federico Fellini",
+        "difficulty": "Hard",
+        "id": "67afb409-0886-4225-a19d-4300cf5f6acd"
+      },
+      {
+        "question": "What is the name of the mountain in 'Close Encounters of the Third Kind'?",
+        "options": [
+          "Mount Whitney",
+          "Devils Tower",
+          "Mount Rainier",
+          "Pikes Peak"
+        ],
+        "correctAnswer": "Devils Tower",
+        "difficulty": "Hard",
+        "id": "aa507f28-e2fd-442b-8c9b-b9a367694799"
+      },
+      {
+        "question": "Which movie won the Best Picture Oscar in 1977, beating 'Star Wars'?",
+        "options": [
+          "Annie Hall",
+          "The Deer Hunter",
+          "Rocky",
+          "Taxi Driver"
+        ],
+        "correctAnswer": "Annie Hall",
+        "difficulty": "Hard",
+        "id": "52e05fca-f435-46c5-8528-21ec264da722"
+      },
+      {
+        "question": "Who played 'Margo Channing' in 'All About Eve'?",
+        "options": [
+          "Bette Davis",
+          "Anne Baxter",
+          "Joan Crawford",
+          "Greer Garson"
+        ],
+        "correctAnswer": "Bette Davis",
+        "difficulty": "Hard",
+        "id": "4fdc54ac-33c3-4e02-81ce-9940d626ff41"
+      },
+      {
+        "question": "In 'Eraserhead', what is the baby's name?",
+        "options": [
+          "Henry Jr.",
+          "Spike",
+          "It's never named",
+          "Jack"
+        ],
+        "correctAnswer": "It's never named",
+        "difficulty": "Hard",
+        "id": "cc76a7d8-ee73-4849-be96-35c2ad309467"
+      },
+      {
+        "question": "Which director is known for the 'Pusher' trilogy?",
+        "options": [
+          "Nicolas Winding Refn",
+          "Lars von Trier",
+          "Thomas Vinterberg",
+          "Susanne Bier"
+        ],
+        "correctAnswer": "Nicolas Winding Refn",
+        "difficulty": "Hard",
+        "id": "1294acf4-fd01-44fb-8f2f-eeef9b7850b7"
+      },
+      {
+        "question": "In 'The Great Escape', what are the nicknames of the three tunnels?",
+        "options": [
+          "Tom, Dick, and Harry",
+          "Moe, Larry, and Curly",
+          "Snap, Crackle, and Pop",
+          "A, B, and C"
+        ],
+        "correctAnswer": "Tom, Dick, and Harry",
+        "difficulty": "Hard",
+        "id": "7c043498-02ac-467e-8764-01a0d9def92b"
+      },
+      {
+        "question": "Who directed 'Double Indemnity'?",
+        "options": [
+          "Billy Wilder",
+          "Alfred Hitchcock",
+          "Otto Preminger",
+          "John Huston"
+        ],
+        "correctAnswer": "Billy Wilder",
+        "difficulty": "Hard",
+        "id": "1cdf6150-d1b9-4b8f-939c-a6ab2b47b8af"
+      },
+      {
+        "question": "Which movie features the character 'Nurse Ratched'?",
+        "options": [
+          "One Flew Over the Cuckoo's Nest",
+          "The Snake Pit",
+          "Girl, Interrupted",
+          "Shock Corridor"
+        ],
+        "correctAnswer": "One Flew Over the Cuckoo's Nest",
+        "difficulty": "Hard",
+        "id": "32e6a76d-133a-46a6-b2bc-504952bd177a"
+      },
+      {
+        "question": "Who played 'Gilda' in the 1946 film noir?",
+        "options": [
+          "Rita Hayworth",
+          "Lauren Bacall",
+          "Ava Gardner",
+          "Lana Turner"
+        ],
+        "correctAnswer": "Rita Hayworth",
+        "difficulty": "Hard",
+        "id": "58d0ffa3-0341-417b-b3b5-5bc783040bb8"
+      },
+      {
+        "question": "In 'Stalker' (1979), who directed the film?",
+        "options": [
+          "Andrei Tarkovsky",
+          "Sergei Parajanov",
+          "Mikhail Kalatozov",
+          "Elem Klimov"
+        ],
+        "correctAnswer": "Andrei Tarkovsky",
+        "difficulty": "Hard",
+        "id": "43ffd7ea-27fc-4196-a6cd-a9fb0c3a85d3"
+      },
+      {
+        "question": "Which movie features a 'Lector' who is NOT Hannibal (played by Brian Cox)?",
+        "options": [
+          "Manhunter",
+          "Red Dragon",
+          "Hannibal",
+          "The Silence of the Lambs"
+        ],
+        "correctAnswer": "Manhunter",
+        "difficulty": "Hard",
+        "id": "6b78b0d5-58ae-4961-b382-7af3273604b5"
+      },
+      {
+        "question": "Who directed 'Breathless' (1960)?",
+        "options": [
+          "Jean-Luc Godard",
+          "Fran\u00e7ois Truffaut",
+          "Claude Chabrol",
+          "Eric Rohmer"
+        ],
+        "correctAnswer": "Jean-Luc Godard",
+        "difficulty": "Hard",
+        "id": "b7d633a4-4baf-4739-8839-afd020763464"
+      },
+      {
+        "question": "In 'The 400 Blows', what is the name of the main boy?",
+        "options": [
+          "Antoine Doinel",
+          "Francois",
+          "Jean-Pierre",
+          "Victor"
+        ],
+        "correctAnswer": "Antoine Doinel",
+        "difficulty": "Hard",
+        "id": "bb3d24ff-7c55-47ee-b6f6-c2591e2cbdc5"
+      },
+      {
+        "question": "Who played 'Norma Desmond' in 'Sunset Boulevard'?",
+        "options": [
+          "Gloria Swanson",
+          "Bette Davis",
+          "Joan Crawford",
+          "Marlene Dietrich"
+        ],
+        "correctAnswer": "Gloria Swanson",
+        "difficulty": "Hard",
+        "id": "cfa1fa05-4616-4eda-b8f4-dcbb785b8062"
+      },
+      {
+        "question": "Which character in 'Reservoir Dogs' survives till the end (presumably)?",
+        "options": [
+          "Mr. Pink",
+          "Mr. White",
+          "Mr. Orange",
+          "Mr. Blonde"
+        ],
+        "correctAnswer": "Mr. Pink",
+        "difficulty": "Hard",
+        "id": "c7a4e682-bdf6-4681-910e-5fbf20c8b908"
+      },
+      {
+        "question": "What is the name of the cat in 'Alien'?",
+        "options": [
+          "Jonesy",
+          "Kitty",
+          "Spot",
+          "Ripley"
+        ],
+        "correctAnswer": "Jonesy",
+        "difficulty": "Hard",
+        "id": "83a2a585-a77f-4ff5-9fe6-d208bc4ed41f"
+      },
+      {
+        "question": "Who directed 'M' (1931)?",
+        "options": [
+          "Fritz Lang",
+          "G.W. Pabst",
+          "F.W. Murnau",
+          "Ernst Lubitsch"
+        ],
+        "correctAnswer": "Fritz Lang",
+        "difficulty": "Hard",
+        "id": "b2c00545-3736-465d-b7e3-b596091b4a00"
+      },
+      {
+        "question": "In 'The Big Sleep', who played Philip Marlowe?",
+        "options": [
+          "Humphrey Bogart",
+          "Robert Mitchum",
+          "Dick Powell",
+          "James Caan"
+        ],
+        "correctAnswer": "Humphrey Bogart",
+        "difficulty": "Hard",
+        "id": "fad23a48-1011-4ac1-be9d-82d3aba15511"
+      },
+      {
+        "question": "What is the name of the hotel in 'The Shining'?",
+        "options": [
+          "The Overlook",
+          "The Majestic",
+          "The Grand",
+          "The Stanley"
+        ],
+        "correctAnswer": "The Overlook",
+        "difficulty": "Hard",
+        "id": "be55c4a6-3b81-4403-b378-98cb7103f554"
+      }
+    ]
+  },
+  {
+    "id": "4286bd72-3342-4d7a-b8b1-54e21ec3ccfa",
+    "name": "TV Shows",
+    "questions": [
+      {
+        "question": "In 'The Simpsons', what is the name of the father?",
+        "options": [
+          "Homer",
+          "Bart",
+          "Ned",
+          "Barney"
+        ],
+        "correctAnswer": "Homer",
+        "difficulty": "Easy",
+        "id": "91715abf-9990-48eb-8783-0ebdb53e9591"
+      },
+      {
+        "question": "Which TV show features a chemistry teacher named Walter White?",
+        "options": [
+          "The Wire",
+          "Breaking Bad",
+          "Mad Men",
+          "Ozark"
+        ],
+        "correctAnswer": "Breaking Bad",
+        "difficulty": "Easy",
+        "id": "e17f1521-f9d4-482d-a2df-0d64ea35d7a5"
+      },
+      {
+        "question": "What is the name of the coffee shop in 'Friends'?",
+        "options": [
+          "Central Perk",
+          "Monk's Cafe",
+          "The Pie Hole",
+          "Jittery Joe's"
+        ],
+        "correctAnswer": "Central Perk",
+        "difficulty": "Easy",
+        "id": "47d3e78a-bbaf-47f7-af8e-60290424c659"
+      },
+      {
+        "question": "In 'Stranger Things', what is Eleven's favorite food?",
+        "options": [
+          "Pizza",
+          "Burgers",
+          "Eggo Waffles",
+          "Ice Cream"
+        ],
+        "correctAnswer": "Eggo Waffles",
+        "difficulty": "Easy",
+        "id": "bcd530e4-464d-4db2-a2b4-bf7e2c1f7f34"
+      },
+      {
+        "question": "Which animated show features a character named Peter Griffin?",
+        "options": [
+          "The Simpsons",
+          "South Park",
+          "Family Guy",
+          "American Dad!"
+        ],
+        "correctAnswer": "Family Guy",
+        "difficulty": "Easy",
+        "id": "e5aeea99-07b2-4de6-82f2-d98bc5f5b70a"
+      },
+      {
+        "question": "What is the name of the fictional setting in 'The Office' (US)?",
+        "options": [
+          "Scranton",
+          "Pawnee",
+          "Dunder",
+          "Sunnyvale"
+        ],
+        "correctAnswer": "Scranton",
+        "difficulty": "Easy",
+        "id": "d7ca6133-27c4-4491-95f6-3bceb958ffbf"
+      },
+      {
+        "question": "In 'Game of Thrones', what is the name of Jon Snow's direwolf?",
+        "options": [
+          "Grey Wind",
+          "Summer",
+          "Ghost",
+          "Nymeria"
+        ],
+        "correctAnswer": "Ghost",
+        "difficulty": "Easy",
+        "id": "57306c52-80e4-4cec-8212-44668e87653c"
+      },
+      {
+        "question": "Which superhero team does Robin lead in 'Teen Titans'?",
+        "options": [
+          "Justice League",
+          "Teen Titans",
+          "Avengers",
+          "X-Men"
+        ],
+        "correctAnswer": "Teen Titans",
+        "difficulty": "Easy",
+        "id": "e230bd11-c5c4-43a3-b156-449b5c4c74b0"
+      },
+      {
+        "question": "In 'SpongeBob SquarePants', where does SpongeBob live?",
+        "options": [
+          "A Rock",
+          "A Pineapple",
+          "An Anchor",
+          "A Shell"
+        ],
+        "correctAnswer": "A Pineapple",
+        "difficulty": "Easy",
+        "id": "9d0d6dcc-eb8a-4913-bdf8-6c05896be6c7"
+      },
+      {
+        "question": "What is the name of the doctor in 'Doctor Who'?",
+        "options": [
+          "The Doctor",
+          "Doctor What",
+          "Doctor Who",
+          "John Smith"
+        ],
+        "correctAnswer": "The Doctor",
+        "difficulty": "Easy",
+        "id": "2486e411-26df-494b-8bcf-bb88f36af12d"
+      },
+      {
+        "question": "Which sitcom features characters named Jerry, George, Elaine, and Kramer?",
+        "options": [
+          "Friends",
+          "Seinfeld",
+          "Cheers",
+          "Frasier"
+        ],
+        "correctAnswer": "Seinfeld",
+        "difficulty": "Easy",
+        "id": "6c527c9a-1d93-41ca-9f4b-0b1dac87174b"
+      },
+      {
+        "question": "In 'The Big Bang Theory', what is Sheldon's catchphrase?",
+        "options": [
+          "Bazinga!",
+          "Bingo!",
+          "Booyah!",
+          "Zing!"
+        ],
+        "correctAnswer": "Bazinga!",
+        "difficulty": "Easy",
+        "id": "b82de635-ca26-4f44-9acb-d48a98e98661"
+      },
+      {
+        "question": "What is the name of the main family in 'Modern Family'?",
+        "options": [
+          "The Griffins",
+          "The Pritchetts",
+          "The Dunphys",
+          "Both B and C"
+        ],
+        "correctAnswer": "Both B and C",
+        "difficulty": "Easy",
+        "id": "c9d02f1a-c008-4ec3-86ba-d9f0d394e8ff"
+      },
+      {
+        "question": "In 'Pok\u00e9mon', who is Ash Ketchum's first Pok\u00e9mon?",
+        "options": [
+          "Charmander",
+          "Squirtle",
+          "Bulbasaur",
+          "Pikachu"
+        ],
+        "correctAnswer": "Pikachu",
+        "difficulty": "Easy",
+        "id": "0ee06899-bf30-4a68-9032-8dc6daf3b6dd"
+      },
+      {
+        "question": "Which show is set in the fictional town of Pawnee, Indiana?",
+        "options": [
+          "The Office",
+          "Parks and Recreation",
+          "30 Rock",
+          "Community"
+        ],
+        "correctAnswer": "Parks and Recreation",
+        "difficulty": "Easy",
+        "id": "84f95c04-e73d-4409-b114-5ec8b0ddaaba"
+      },
+      {
+        "question": "What kind of animal is Scooby-Doo?",
+        "options": [
+          "Great Dane",
+          "Golden Retriever",
+          "German Shepherd",
+          "Beagle"
+        ],
+        "correctAnswer": "Great Dane",
+        "difficulty": "Easy",
+        "id": "5d23dd17-6b45-4824-ad63-1992985e336f"
+      },
+      {
+        "question": "In 'How I Met Your Mother', what is Barney Stinson's favorite word?",
+        "options": [
+          "Legendary",
+          "Awesome",
+          "Suit-up",
+          "Wait-for-it"
+        ],
+        "correctAnswer": "Legendary",
+        "difficulty": "Easy",
+        "id": "6fd9fc41-e25d-40f3-8484-6f2f5b8d4957"
+      },
+      {
+        "question": "Which medical drama is set at Grey Sloan Memorial Hospital?",
+        "options": [
+          "ER",
+          "House",
+          "Grey's Anatomy",
+          "Scrubs"
+        ],
+        "correctAnswer": "Grey's Anatomy",
+        "difficulty": "Easy",
+        "id": "70768b27-aa64-43f4-a9f5-65121b491b40"
+      },
+      {
+        "question": "In 'The Mandalorian', what is the real name of 'Baby Yoda'?",
+        "options": [
+          "Grogu",
+          "Yoda Jr.",
+          "The Child",
+          "Gorgu"
+        ],
+        "correctAnswer": "Grogu",
+        "difficulty": "Easy",
+        "id": "79e21454-6f91-4df0-aa48-75e72efc8574"
+      },
+      {
+        "question": "What is the name of the paper company in 'The Office'?",
+        "options": [
+          "Wernham Hogg",
+          "Dunder Mifflin",
+          "Staples",
+          "Paper Co."
+        ],
+        "correctAnswer": "Dunder Mifflin",
+        "difficulty": "Easy",
+        "id": "1d462dee-deee-4513-9c4a-49dd71633764"
+      },
+      {
+        "question": "Which show features a talking dog named Brian?",
+        "options": [
+          "Family Guy",
+          "The Simpsons",
+          "Futurama",
+          "South Park"
+        ],
+        "correctAnswer": "Family Guy",
+        "difficulty": "Easy",
+        "id": "42aeb234-cfca-408d-8fd5-b4ac2c24c9db"
+      },
+      {
+        "question": "In 'Avatar: The Last Airbender', what element can Aang build first?",
+        "options": [
+          "Fire",
+          "Water",
+          "Earth",
+          "Air"
+        ],
+        "correctAnswer": "Air",
+        "difficulty": "Easy",
+        "id": "2086c411-8640-4555-b7a4-37efc881e277"
+      },
+      {
+        "question": "What is the name of the high school in 'Glee'?",
+        "options": [
+          "McKinley High",
+          "North High",
+          "East High",
+          "West High"
+        ],
+        "correctAnswer": "McKinley High",
+        "difficulty": "Easy",
+        "id": "fc9774ba-68f8-45fe-a4d6-6774afab2271"
+      },
+      {
+        "question": "Which series features a serial killer who works for the police as a blood splatter analyst?",
+        "options": [
+          "Criminal Minds",
+          "Dexter",
+          "The Mentalist",
+          "Psych"
+        ],
+        "correctAnswer": "Dexter",
+        "difficulty": "Easy",
+        "id": "77b5b4f2-8c0e-42a2-bba7-d5771e75fed8"
+      },
+      {
+        "question": "In 'Futurama', what is Fry's first name?",
+        "options": [
+          "Leela",
+          "Philip",
+          "Bender",
+          "Hubert"
+        ],
+        "correctAnswer": "Philip",
+        "difficulty": "Easy",
+        "id": "5cae9bd4-bc28-4728-9dbf-adb9f38fb8fc"
+      },
+      {
+        "question": "What is the name of the fictional town in 'South Park'?",
+        "options": [
+          "North Park",
+          "Springfield",
+          "South Park",
+          "Quahog"
+        ],
+        "correctAnswer": "South Park",
+        "difficulty": "Easy",
+        "id": "7e7f40a8-7310-440d-a326-463c4a1928c0"
+      },
+      {
+        "question": "Which show follows the survivors of a plane crash on a mysterious island?",
+        "options": [
+          "Lost",
+          "Survivor",
+          "The 100",
+          "Manifest"
+        ],
+        "correctAnswer": "Lost",
+        "difficulty": "Easy",
+        "id": "92a05d92-d08a-4f4c-84b1-c8c07b99a9ff"
+      },
+      {
+        "question": "In 'The Crown', who is the main subject?",
+        "options": [
+          "Queen Elizabeth II",
+          "Princess Diana",
+          "King Charles",
+          "Queen Victoria"
+        ],
+        "correctAnswer": "Queen Elizabeth II",
+        "difficulty": "Easy",
+        "id": "0f25c117-23be-4c0e-8739-9dec6948e0b9"
+      },
+      {
+        "question": "What is the name of the spaceship in 'Star Trek: The Next Generation'?",
+        "options": [
+          "Voyager",
+          "Discovery",
+          "Enterprise-D",
+          "Defiant"
+        ],
+        "correctAnswer": "Enterprise-D",
+        "difficulty": "Easy",
+        "id": "2941c612-724c-4463-983f-5eb8272b8a5f"
+      },
+      {
+        "question": "In 'Sherlock', who plays Sherlock Holmes?",
+        "options": [
+          "Martin Freeman",
+          "Benedict Cumberbatch",
+          "Robert Downey Jr.",
+          "Henry Cavill"
+        ],
+        "correctAnswer": "Benedict Cumberbatch",
+        "difficulty": "Easy",
+        "id": "59b8dee8-e57f-42a7-8142-cd2e75335738"
+      },
+      {
+        "question": "Which show features a 'Central Perk' rival 'The Daily Grind' (just kidding, it's Central Perk)? Which show is about a fancy ad agency in the 1960s?",
+        "options": [
+          "Mad Men",
+          "The Newsroom",
+          "Suits",
+          "Boardwalk Empire"
+        ],
+        "correctAnswer": "Mad Men",
+        "difficulty": "Easy",
+        "id": "533ecb3d-4e16-4f97-84c8-7d40d7dcc5d9"
+      },
+      {
+        "question": "In 'The Witcher', what is the name of the main character?",
+        "options": [
+          "Jaskier",
+          "Geralt of Rivia",
+          "Yennefer",
+          "Ciri"
+        ],
+        "correctAnswer": "Geralt of Rivia",
+        "difficulty": "Easy",
+        "id": "ea197946-a342-4b27-b387-c77836bccffa"
+      },
+      {
+        "question": "What is the name of the bar in 'Cheers'?",
+        "options": [
+          "Puzzles",
+          "Cheers",
+          "MacLaren's",
+          "The Drunken Clam"
+        ],
+        "correctAnswer": "Cheers",
+        "difficulty": "Easy",
+        "id": "b3cce883-5094-478f-95ac-225f3cbd4a86"
+      },
+      {
+        "question": "In 'Brooklyn Nine-Nine', what is the name of the precinct?",
+        "options": [
+          "99th",
+          "10th",
+          "21st",
+          "5th"
+        ],
+        "correctAnswer": "99th",
+        "difficulty": "Easy",
+        "id": "fc540f0d-abb6-49bc-a64d-649af7bbd902"
+      },
+      {
+        "question": "Which show features a girl named Buffy who fights vampires?",
+        "options": [
+          "Charmed",
+          "Buffy the Vampire Slayer",
+          "The Vampire Diaries",
+          "Supernatural"
+        ],
+        "correctAnswer": "Buffy the Vampire Slayer",
+        "difficulty": "Easy",
+        "id": "d93a0fe3-6040-4567-a819-94ef8c4d13e6"
+      },
+      {
+        "question": "In 'Ted Lasso', which country does Ted move to?",
+        "options": [
+          "USA",
+          "UK",
+          "Canada",
+          "Australia"
+        ],
+        "correctAnswer": "UK",
+        "difficulty": "Easy",
+        "id": "f9bea579-e313-4b02-8fed-9d2c4afe151e"
+      },
+      {
+        "question": "What is the name of the main kingdom in 'Game of Thrones'?",
+        "options": [
+          "Westeros",
+          "Essos",
+          "Winterfell",
+          "King's Landing"
+        ],
+        "correctAnswer": "Westeros",
+        "difficulty": "Easy",
+        "id": "d7ad3ce6-4bdd-4928-af8d-fe76051403c1"
+      },
+      {
+        "question": "Which show is about a family of polygamists in Utah?",
+        "options": [
+          "Big Love",
+          "Sister Wives",
+          "The Mormons",
+          "Utah Blues"
+        ],
+        "correctAnswer": "Big Love",
+        "difficulty": "Easy",
+        "id": "a9edb7a3-3daf-4540-b3ee-8a5106b01476"
+      },
+      {
+        "question": "In 'The Umbrella Academy', how many children were adopted by Reginald Hargreeves?",
+        "options": [
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "correctAnswer": "7",
+        "difficulty": "Easy",
+        "id": "d0905f13-5f11-4de4-b81d-53c2cbce15fd"
+      },
+      {
+        "question": "What is the name of the cat in 'The Simpsons'?",
+        "options": [
+          "Snowball II",
+          "Santa's Little Helper",
+          "Scratchy",
+          "Garfield"
+        ],
+        "correctAnswer": "Snowball II",
+        "difficulty": "Easy",
+        "id": "df4f0b61-b7cc-4ba1-ba2c-3d2c964910c8"
+      },
+      {
+        "question": "Which show features a high school teacher turned drug dealer?",
+        "options": [
+          "Breaking Bad",
+          "The Wire",
+          "Better Call Saul",
+          "Weeds"
+        ],
+        "correctAnswer": "Breaking Bad",
+        "difficulty": "Easy",
+        "id": "855b7cec-c1cb-4617-8fc7-0fd92401815c"
+      },
+      {
+        "question": "In 'Rick and Morty', what relation is Morty to Rick?",
+        "options": [
+          "Son",
+          "Grandson",
+          "Nephew",
+          "Brother"
+        ],
+        "correctAnswer": "Grandson",
+        "difficulty": "Easy",
+        "id": "4da36dac-63d3-460c-9676-fb1a2d554995"
+      },
+      {
+        "question": "What is the name of the island in 'SpongeBob'?",
+        "options": [
+          "Bikini Bottom",
+          "Shell Island",
+          "Coral City",
+          "Bubble Town"
+        ],
+        "correctAnswer": "Bikini Bottom",
+        "difficulty": "Easy",
+        "id": "6fdb3051-994d-47e1-b141-b5ba259cd726"
+      },
+      {
+        "question": "Which show involves a 'Master of None'?",
+        "options": [
+          "Master of None",
+          "Atlanta",
+          "Ramy",
+          "Girls"
+        ],
+        "correctAnswer": "Master of None",
+        "difficulty": "Easy",
+        "id": "674d3446-03f8-4eff-a804-304a2c2eb384"
+      },
+      {
+        "question": "In 'The Boys', what is the name of the leader of The Seven?",
+        "options": [
+          "Homelander",
+          "The Deep",
+          "A-Train",
+          "Starlight"
+        ],
+        "correctAnswer": "Homelander",
+        "difficulty": "Easy",
+        "id": "6d46a6aa-27dd-49fd-a82e-0ac40eb0890b"
+      },
+      {
+        "question": "What is the name of the high school in 'Saved by the Bell'?",
+        "options": [
+          "Bayside High",
+          "Valley High",
+          "Rydell High",
+          "Westside High"
+        ],
+        "correctAnswer": "Bayside High",
+        "difficulty": "Easy",
+        "id": "aad1926a-0a94-4735-a0fb-c25e0b00020a"
+      },
+      {
+        "question": "Which show features a group of nerds who live in Pasadena?",
+        "options": [
+          "The Big Bang Theory",
+          "Silicon Valley",
+          "Community",
+          "IT Crowd"
+        ],
+        "correctAnswer": "The Big Bang Theory",
+        "difficulty": "Easy",
+        "id": "c6bc7791-41fe-4a6d-85a4-6b8e6fda0a36"
+      },
+      {
+        "question": "In 'Peaky Blinders', what is the last name of the main family?",
+        "options": [
+          "Shelby",
+          "Gray",
+          "Solomons",
+          "Gold"
+        ],
+        "correctAnswer": "Shelby",
+        "difficulty": "Easy",
+        "id": "17506472-7bbe-4c73-a480-c9b469977a7d"
+      },
+      {
+        "question": "What is the name of the fictional town in 'Twin Peaks'?",
+        "options": [
+          "Twin Peaks",
+          "Riverdale",
+          "Wayward Pines",
+          "Bright Falls"
+        ],
+        "correctAnswer": "Twin Peaks",
+        "difficulty": "Easy",
+        "id": "cf4ffdac-270a-4e6b-959d-363cf69620c3"
+      },
+      {
+        "question": "Which show is about a group of kids on bicycles in the 80s?",
+        "options": [
+          "Stranger Things",
+          "Dark",
+          "Paper Girls",
+          "Goonies"
+        ],
+        "correctAnswer": "Stranger Things",
+        "difficulty": "Easy",
+        "id": "b767b07c-03bd-4144-a425-79cdb29ddc4d"
+      },
+      {
+        "question": "In 'Breaking Bad', what is the street name of Walter White's product?",
+        "options": [
+          "Blue Ice",
+          "Sky Blue",
+          "Blue Sky",
+          "Crystal Blue"
+        ],
+        "correctAnswer": "Blue Sky",
+        "difficulty": "Medium",
+        "id": "bb93399f-6281-4d4a-b47a-203cbb6f579c"
+      },
+      {
+        "question": "Which actor plays 'Raymond Reddington' in 'The Blacklist'?",
+        "options": [
+          "James Spader",
+          "Bryan Cranston",
+          "Jon Hamm",
+          "Kevin Spacey"
+        ],
+        "correctAnswer": "James Spader",
+        "difficulty": "Medium",
+        "id": "605f1aff-d54b-4860-aab0-39aa2bbe3659"
+      },
+      {
+        "question": "In 'Parks and Recreation', what is Leslie Knope's favorite food?",
+        "options": [
+          "Pizza",
+          "Burgers",
+          "Waffles",
+          "Paella"
+        ],
+        "correctAnswer": "Waffles",
+        "difficulty": "Medium",
+        "id": "84bc396a-0db2-4553-859e-42248a1c6b2c"
+      },
+      {
+        "question": "Which show features a bar called 'Paddy's Pub'?",
+        "options": [
+          "It's Always Sunny",
+          "Cheers",
+          "Shameless",
+          "Rescue Me"
+        ],
+        "correctAnswer": "It's Always Sunny",
+        "difficulty": "Medium",
+        "id": "27d24d34-7ea0-4f6f-b95f-8cbcb658de7f"
+      },
+      {
+        "question": "In 'The Wire', which city is the setting?",
+        "options": [
+          "Detroit",
+          "Baltimore",
+          "Chicago",
+          "Philadelphia"
+        ],
+        "correctAnswer": "Baltimore",
+        "difficulty": "Medium",
+        "id": "5f985ef1-2590-4e70-9e91-86ae0dadbab2"
+      },
+      {
+        "question": "Who created the show 'Succession'?",
+        "options": [
+          "Jesse Armstrong",
+          "Adam McKay",
+          "David Simon",
+          "Matthew Weiner"
+        ],
+        "correctAnswer": "Jesse Armstrong",
+        "difficulty": "Medium",
+        "id": "fbfbf91a-aa41-48cb-b897-7a45be144e0b"
+      },
+      {
+        "question": "In 'Mad Men', what is Don Draper's real name?",
+        "options": [
+          "Dick Whitman",
+          "Bobbie Barrett",
+          "Harry Crane",
+          "Roger Sterling"
+        ],
+        "correctAnswer": "Dick Whitman",
+        "difficulty": "Medium",
+        "id": "c08a764a-0476-4d3c-8f13-b4370a664958"
+      },
+      {
+        "question": "Which show is set in the fictional town of 'Stars Hollow'?",
+        "options": [
+          "Gilmore Girls",
+          "One Tree Hill",
+          "The O.C.",
+          "Dawson's Creek"
+        ],
+        "correctAnswer": "Gilmore Girls",
+        "difficulty": "Medium",
+        "id": "e386a0ce-99d7-4072-bb86-381653f80158"
+      },
+      {
+        "question": "In 'The Sopranos', what is the name of Tony's therapist?",
+        "options": [
+          "Dr. Melfi",
+          "Dr. Katz",
+          "Dr. Phil",
+          "Dr. Crane"
+        ],
+        "correctAnswer": "Dr. Melfi",
+        "difficulty": "Medium",
+        "id": "d3c27c80-521c-49b9-a244-d30b8372531b"
+      },
+      {
+        "question": "Which show features a 'Smoke Monster'?",
+        "options": [
+          "Lost",
+          "The Leftovers",
+          "Fringe",
+          "Manifest"
+        ],
+        "correctAnswer": "Lost",
+        "difficulty": "Medium",
+        "id": "2594cadb-97f1-4ff8-a6af-e90dba3b775e"
+      },
+      {
+        "question": "In 'Community', what is the name of the community college?",
+        "options": [
+          "Greendale",
+          "City College",
+          "Northfield",
+          "Riverside"
+        ],
+        "correctAnswer": "Greendale",
+        "difficulty": "Medium",
+        "id": "f657252d-a00f-42dc-83e2-e7e89d1098bc"
+      },
+      {
+        "question": "Who plays 'Selina Meyer' in 'Veep'?",
+        "options": [
+          "Julia Louis-Dreyfus",
+          "Amy Poehler",
+          "Tina Fey",
+          "Maya Rudolph"
+        ],
+        "correctAnswer": "Julia Louis-Dreyfus",
+        "difficulty": "Medium",
+        "id": "f63faeaa-507e-4439-a553-39a860b0a64d"
+      },
+      {
+        "question": "In 'The Good Place', what is Chidi's profession?",
+        "options": [
+          "Ethics Professor",
+          "Lawyer",
+          "Doctor",
+          "Scientist"
+        ],
+        "correctAnswer": "Ethics Professor",
+        "difficulty": "Medium",
+        "id": "92045c2c-81b8-4210-9fac-bd0d346a4e0c"
+      },
+      {
+        "question": "Which show is about a blind lawyer who is a superhero by night?",
+        "options": [
+          "Daredevil",
+          "Luke Cage",
+          "Iron Fist",
+          "Jessica Jones"
+        ],
+        "correctAnswer": "Daredevil",
+        "difficulty": "Medium",
+        "id": "b9bdf460-cb40-4d94-b9d9-22fc1de7d1b1"
+      },
+      {
+        "question": "In 'Seinfeld', what is Kramer's first name?",
+        "options": [
+          "Cosmo",
+          "Newman",
+          "George",
+          "Art"
+        ],
+        "correctAnswer": "Cosmo",
+        "difficulty": "Medium",
+        "id": "16f42f6e-c8dd-49d6-b125-d5a25259b9a6"
+      },
+      {
+        "question": "Which show features a character named 'Eleven'?",
+        "options": [
+          "Stranger Things",
+          "The 100",
+          "Westworld",
+          "Black Mirror"
+        ],
+        "correctAnswer": "Stranger Things",
+        "difficulty": "Medium",
+        "id": "f5837e99-4158-46c7-9902-2809512ba48b"
+      },
+      {
+        "question": "In 'The Last of Us', what is the name of the fungus causing the outbreak?",
+        "options": [
+          "Cordyceps",
+          "Mycela",
+          "Fungi-X",
+          "Bloater"
+        ],
+        "correctAnswer": "Cordyceps",
+        "difficulty": "Medium",
+        "id": "2091b5b6-af7b-4fa2-952d-b32f31a7f560"
+      },
+      {
+        "question": "Which show is about a tech company called 'Pied Piper'?",
+        "options": [
+          "Silicon Valley",
+          "The IT Crowd",
+          "Halt and Catch Fire",
+          "Startup"
+        ],
+        "correctAnswer": "Silicon Valley",
+        "difficulty": "Medium",
+        "id": "50b1bc1a-d4f6-464a-8ca9-4e24bca599da"
+      },
+      {
+        "question": "In 'Better Call Saul', what was Jimmy McGill's nickname in Cicero?",
+        "options": [
+          "Slippin' Jimmy",
+          "Fast Jimmy",
+          "The Hustler",
+          "Magic Man"
+        ],
+        "correctAnswer": "Slippin' Jimmy",
+        "difficulty": "Medium",
+        "id": "538fddc2-ea63-49f8-9cf8-3babfb8e4969"
+      },
+      {
+        "question": "Who created 'Atlanta'?",
+        "options": [
+          "Donald Glover",
+          "Hiro Murai",
+          "Jordan Peele",
+          "Issa Rae"
+        ],
+        "correctAnswer": "Donald Glover",
+        "difficulty": "Medium",
+        "id": "764e3cf1-7030-48e6-b73d-84a83e42e33c"
+      },
+      {
+        "question": "In 'Succession', what is the name of the Roy family company?",
+        "options": [
+          "Pearsons",
+          "Waystar Royco",
+          "Ewing Oil",
+          "Sterling Cooper"
+        ],
+        "correctAnswer": "Waystar Royco",
+        "difficulty": "Medium",
+        "id": "13a16d54-a665-4127-b5b9-4e8389662f00"
+      },
+      {
+        "question": "Which show is set in the 1920s during Prohibition in Atlantic City?",
+        "options": [
+          "Boardwalk Empire",
+          "Peaky Blinders",
+          "Vinyl",
+          "Babylon Berlin"
+        ],
+        "correctAnswer": "Boardwalk Empire",
+        "difficulty": "Medium",
+        "id": "a27adffa-a0d3-495b-b445-8c4ee0c70742"
+      },
+      {
+        "question": "In 'Dark', what is the name of the town?",
+        "options": [
+          "Winden",
+          "Darmstadt",
+          "Bonn",
+          "Mainz"
+        ],
+        "correctAnswer": "Winden",
+        "difficulty": "Medium",
+        "id": "f8ee6460-292f-4371-8908-18c489b47e67"
+      },
+      {
+        "question": "Which show features a 'Yellowstone' ranch?",
+        "options": [
+          "Yellowstone",
+          "1883",
+          "Longmire",
+          "Justified"
+        ],
+        "correctAnswer": "Yellowstone",
+        "difficulty": "Medium",
+        "id": "46d4d9e1-dc40-4008-b138-f2a683452690"
+      },
+      {
+        "question": "In 'The Bear', what is Carmy's real first name?",
+        "options": [
+          "Carmen",
+          "Carmine",
+          "Carl",
+          "Caleb"
+        ],
+        "correctAnswer": "Carmen",
+        "difficulty": "Medium",
+        "id": "620301c2-6719-4124-9f72-bf34fa9eee0f"
+      },
+      {
+        "question": "Which show is a spin-off of 'The Vampire Diaries'?",
+        "options": [
+          "The Originals",
+          "Legacies",
+          "Both A and B",
+          "Neither"
+        ],
+        "correctAnswer": "Both A and B",
+        "difficulty": "Medium",
+        "id": "7f25b61c-1515-4e10-80cb-a6c87850e373"
+      },
+      {
+        "question": "In 'Mr. Robot', what is Elliot Alderson's daytime job?",
+        "options": [
+          "Cybersecurity Engineer",
+          "Software Developer",
+          "IT Consultant",
+          "Hacker"
+        ],
+        "correctAnswer": "Cybersecurity Engineer",
+        "difficulty": "Medium",
+        "id": "1a09b11a-8081-4a15-aec9-831db7a7c27d"
+      },
+      {
+        "question": "Which show features a character named 'Omar Little'?",
+        "options": [
+          "The Wire",
+          "Treme",
+          "The Deuce",
+          "Narcos"
+        ],
+        "correctAnswer": "The Wire",
+        "difficulty": "Medium",
+        "id": "4e2479da-0510-46b1-b272-dd16f2c56147"
+      },
+      {
+        "question": "In 'Fargo' (TV series), which season is set in 1979?",
+        "options": [
+          "Season 1",
+          "Season 2",
+          "Season 3",
+          "Season 4"
+        ],
+        "correctAnswer": "Season 2",
+        "difficulty": "Medium",
+        "id": "09cc5df1-a484-4a78-9b68-dd4af6a9a5f7"
+      },
+      {
+        "question": "Who plays 'Rust Cohle' in 'True Detective' Season 1?",
+        "options": [
+          "Matthew McConaughey",
+          "Woody Harrelson",
+          "Colin Farrell",
+          "Mahershala Ali"
+        ],
+        "correctAnswer": "Matthew McConaughey",
+        "difficulty": "Medium",
+        "id": "600ed8f5-358b-468d-818c-86a5d97fcc99"
+      },
+      {
+        "question": "In 'Bojack Horseman', what kind of animal is Princess Carolyn?",
+        "options": [
+          "Cat",
+          "Dog",
+          "Horse",
+          "Rabbit"
+        ],
+        "correctAnswer": "Cat",
+        "difficulty": "Medium",
+        "id": "cd51cda0-5562-4b3d-96e7-684e0b5f7570"
+      },
+      {
+        "question": "Which show is about a Russian spy couple living in the US?",
+        "options": [
+          "The Americans",
+          "The Spies",
+          "Homeland",
+          "Sleeping Cells"
+        ],
+        "correctAnswer": "The Americans",
+        "difficulty": "Medium",
+        "id": "e01c30e0-0035-4263-905e-f9af6cea158d"
+      },
+      {
+        "question": "In 'House of Cards' (US), what is Frank Underwood's home state?",
+        "options": [
+          "South Carolina",
+          "Georgia",
+          "Virginia",
+          "Maryland"
+        ],
+        "correctAnswer": "South Carolina",
+        "difficulty": "Medium",
+        "id": "97dde139-e726-4f3e-874b-1fa7c5b6e225"
+      },
+      {
+        "question": "Which show features 'The Red Wedding'?",
+        "options": [
+          "Game of Thrones",
+          "The Witcher",
+          "Vikings",
+          "The Last Kingdom"
+        ],
+        "correctAnswer": "Game of Thrones",
+        "difficulty": "Medium",
+        "id": "7c1588db-fcc9-4a9c-bf17-c0c6d32d6bb2"
+      },
+      {
+        "question": "In 'Mindhunter', which real-life killer is a recurring character in Season 1?",
+        "options": [
+          "Ed Kemper",
+          "Charles Manson",
+          "Ted Bundy",
+          "BTK"
+        ],
+        "correctAnswer": "Ed Kemper",
+        "difficulty": "Medium",
+        "id": "1d7d39a8-4b0c-4af6-8b92-2e1693e080de"
+      },
+      {
+        "question": "Who created 'The Handmaid's Tale' (as a TV series developer)?",
+        "options": [
+          "Bruce Miller",
+          "Margaret Atwood",
+          "Reed Morano",
+          "Elisabeth Moss"
+        ],
+        "correctAnswer": "Bruce Miller",
+        "difficulty": "Medium",
+        "id": "e3c94958-3139-4f60-aa12-83127665c8d2"
+      },
+      {
+        "question": "In 'Narcos', which real-life figure is the focus of Season 1 and 2?",
+        "options": [
+          "Pablo Escobar",
+          "El Chapo",
+          "Felix Gallardo",
+          "Gilberto Rodriguez"
+        ],
+        "correctAnswer": "Pablo Escobar",
+        "difficulty": "Medium",
+        "id": "5364cf6b-238b-4d47-a8b9-e7a6bf1416ad"
+      },
+      {
+        "question": "Which show is about a group of advertising executives in the 1960s?",
+        "options": [
+          "Mad Men",
+          "The Men",
+          "Ad House",
+          "Sixty-Five"
+        ],
+        "correctAnswer": "Mad Men",
+        "difficulty": "Medium",
+        "id": "aface0cc-f837-4e79-aa01-e107aaefc034"
+      },
+      {
+        "question": "In 'Ozark', what is Marty Byrde's original profession?",
+        "options": [
+          "Financial Advisor",
+          "Accountant",
+          "Lawyer",
+          "Banker"
+        ],
+        "correctAnswer": "Financial Advisor",
+        "difficulty": "Medium",
+        "id": "00da3c4a-f71e-4a6f-83cb-de79a4bc78fd"
+      },
+      {
+        "question": "Which show features a 'Tate House' in Season 1?",
+        "options": [
+          "American Horror Story",
+          "Haunting of Hill House",
+          "Midnight Mass",
+          "Ratched"
+        ],
+        "correctAnswer": "American Horror Story",
+        "difficulty": "Medium",
+        "id": "4dfa78d9-9850-4e58-9b13-b267828b0183"
+      },
+      {
+        "question": "In 'Chernobyl' (miniseries), what is the name of the scientist played by Jared Harris?",
+        "options": [
+          "Valery Legasov",
+          "Boris Shcherbina",
+          "Anatoly Dyatlov",
+          "Igor Kostin"
+        ],
+        "correctAnswer": "Valery Legasov",
+        "difficulty": "Medium",
+        "id": "801cf52e-077d-4163-9266-31c70f419e9b"
+      },
+      {
+        "question": "Which show is about the Silicon Valley tech boom in the 80s?",
+        "options": [
+          "Halt and Catch Fire",
+          "Silicon Valley",
+          "The IT Crowd",
+          "Loaded"
+        ],
+        "correctAnswer": "Halt and Catch Fire",
+        "difficulty": "Medium",
+        "id": "8fc9c050-0905-42b9-9b9d-8caa30a4ce4b"
+      },
+      {
+        "question": "In 'The Crown', who played Princess Diana in Season 4?",
+        "options": [
+          "Emma Corrin",
+          "Elizabeth Debicki",
+          "Claire Foy",
+          "Olivia Colman"
+        ],
+        "correctAnswer": "Emma Corrin",
+        "difficulty": "Medium",
+        "id": "c16583ef-03c5-4433-a79f-3815fee95051"
+      },
+      {
+        "question": "Which show is set in the fictional town of 'Hawkins'?",
+        "options": [
+          "Stranger Things",
+          "Haven",
+          "Castle Rock",
+          "Wayward Pines"
+        ],
+        "correctAnswer": "Stranger Things",
+        "difficulty": "Medium",
+        "id": "1b71cbac-f012-4ec8-a17e-369fee326d28"
+      },
+      {
+        "question": "In 'Fleabag', what is the name of the priest (as usually referred to by fans)?",
+        "options": [
+          "The Hot Priest",
+          "Father John",
+          "The Holy One",
+          "Priest X"
+        ],
+        "correctAnswer": "The Hot Priest",
+        "difficulty": "Medium",
+        "id": "dd79be90-8cbf-40e8-8589-c8076c087aaf"
+      },
+      {
+        "question": "Who created 'Black Mirror'?",
+        "options": [
+          "Charlie Brooker",
+          "Annabel Jones",
+          "Jesse Armstrong",
+          "Alex Garland"
+        ],
+        "correctAnswer": "Charlie Brooker",
+        "difficulty": "Medium",
+        "id": "06f6deff-c877-4ad3-82ef-3a58b5b95517"
+      },
+      {
+        "question": "In 'Sons of Anarchy', what city is the HQ in?",
+        "options": [
+          "Charming",
+          "Stockton",
+          "Oakland",
+          "Lodi"
+        ],
+        "correctAnswer": "Charming",
+        "difficulty": "Medium",
+        "id": "d6d4c11e-8d64-4c4a-81b0-d1258e8be0fd"
+      },
+      {
+        "question": "Which show is a direct parody of 'Star Trek'?",
+        "options": [
+          "The Orville",
+          "Star Trek: Lower Decks",
+          "Galaxy Quest",
+          "Avenue 5"
+        ],
+        "correctAnswer": "The Orville",
+        "difficulty": "Medium",
+        "id": "73c11557-8361-46fd-8aa6-5c1cd5ce65a8"
+      },
+      {
+        "question": "In 'Beef' (2023), what is the name of Steven Yeun's character?",
+        "options": [
+          "Danny Cho",
+          "Paul Cho",
+          "Isaac Cho",
+          "Bong Cho"
+        ],
+        "correctAnswer": "Danny Cho",
+        "difficulty": "Medium",
+        "id": "5d90e4fb-ca06-42d5-b1be-d0e547457770"
+      },
+      {
+        "question": "Which show involves a 'Lighthouse' in Season 6 (and it's a major plot point)?",
+        "options": [
+          "Lost",
+          "The Flash",
+          "Arrow",
+          "Fringe"
+        ],
+        "correctAnswer": "Lost",
+        "difficulty": "Medium",
+        "id": "ac379c63-048f-4ad7-976a-c85ea52c539e"
+      },
+      {
+        "question": "In 'The Wire', what is the real name of the character known as 'Prop Joe'?",
+        "options": [
+          "Joseph Stewart",
+          "Joe Prop",
+          "Joseph Little",
+          "Joe Jackson"
+        ],
+        "correctAnswer": "Joseph Stewart",
+        "difficulty": "Hard",
+        "id": "e2fc75d8-db4c-4441-82b4-38207ab09e0b"
+      },
+      {
+        "question": "Which character in 'Game of Thrones' was played by three different actors across the series?",
+        "options": [
+          "The Mountain",
+          "Beric Dondarrion",
+          "Tommen Baratheon",
+          "Actually all of them"
+        ],
+        "correctAnswer": "Actually all of them",
+        "difficulty": "Hard",
+        "id": "c2604da4-cb3d-450e-8de8-9974add46320"
+      },
+      {
+        "question": "In 'Breaking Bad', how many people did Walter White directly kill (personally)?",
+        "options": [
+          "Over 10",
+          "Exactly 5",
+          "Wait, let's say roughly 200 including the plane?",
+          "No, personally, it's roughly 10"
+        ],
+        "correctAnswer": "No, personally, it's roughly 10",
+        "difficulty": "Hard",
+        "id": "5004790b-2c43-4423-bd0d-d4f05239921c"
+      },
+      {
+        "question": "Who was the first choice to play 'Michael Scott' in 'The Office' (US) before Steve Carell?",
+        "options": [
+          "Paul Giamatti",
+          "Rainn Wilson",
+          "Bob Odenkirk",
+          "Rick Moranis"
+        ],
+        "correctAnswer": "Paul Giamatti",
+        "difficulty": "Hard",
+        "id": "a0cd3a02-0c88-4280-bcf8-aab90a4d4581"
+      },
+      {
+        "question": "In 'Friends', what is Chandler Bing's middle name?",
+        "options": [
+          "Muriel",
+          "Francis",
+          "Geoffrey",
+          "Eustace"
+        ],
+        "correctAnswer": "Muriel",
+        "difficulty": "Hard",
+        "id": "281d7f9f-b273-4660-ad58-f344c031e752"
+      },
+      {
+        "question": "What is the name of the planet where the first 'Doctor Who' story took place?",
+        "options": [
+          "Tardis",
+          "Skaro",
+          "Earth",
+          "Gallifrey"
+        ],
+        "correctAnswer": "Earth",
+        "difficulty": "Hard",
+        "id": "5752dc79-0c3c-4a24-9ef9-2f92cf382726"
+      },
+      {
+        "question": "In 'M*A*S*H', what does the asterisk stand for?",
+        "options": [
+          "Nothing",
+          "Multiplier",
+          "Medical",
+          "Actually it separates the letters"
+        ],
+        "correctAnswer": "Actually it separates the letters",
+        "difficulty": "Hard",
+        "id": "edd82340-2745-47fb-a5a8-5a55991fc99a"
+      },
+      {
+        "question": "Who is the only actor to appear in both the original and the reboot of 'Battlestar Galactica'?",
+        "options": [
+          "Richard Hatch",
+          "Dirk Benedict",
+          "Edward James Olmos",
+          "Katee Sackhoff"
+        ],
+        "correctAnswer": "Richard Hatch",
+        "difficulty": "Hard",
+        "id": "3243b040-4509-4971-b955-d228707ae647"
+      },
+      {
+        "question": "In 'Twin Peaks', what is the full name of the Log Lady?",
+        "options": [
+          "Margaret Lanterman",
+          "Laura Palmer",
+          "Josie Packard",
+          "Shelly Johnson"
+        ],
+        "correctAnswer": "Margaret Lanterman",
+        "difficulty": "Hard",
+        "id": "8160dda1-1ff8-4fa5-b9f1-b04fef501fb0"
+      },
+      {
+        "question": "What was the first music video ever played on MTV?",
+        "options": [
+          "Video Killed the Radio Star",
+          "Money for Nothing",
+          "Thriller",
+          "Beat It"
+        ],
+        "correctAnswer": "Video Killed the Radio Star",
+        "difficulty": "Hard",
+        "id": "16b293da-33d1-40fc-9a86-05387a20cbb2"
+      },
+      {
+        "question": "In 'Mad Men', what is the name of Peggy's child that she gives up for adoption?",
+        "options": [
+          "Unnamed",
+          "Don",
+          "Abraham",
+          "Kevin"
+        ],
+        "correctAnswer": "Abraham",
+        "difficulty": "Hard",
+        "id": "b9bd0f4d-3cf1-47be-831d-009572447e12"
+      },
+      {
+        "question": "Which show features a fictional sport called 'Blernsball'?",
+        "options": [
+          "Futurama",
+          "The Simpsons",
+          "Rick and Morty",
+          "Solar Opposites"
+        ],
+        "correctAnswer": "Futurama",
+        "difficulty": "Hard",
+        "id": "e5334d3c-5e87-4e7b-a09f-ad38ab0a0013"
+      },
+      {
+        "question": "In 'The Sopranos', what is the name of the yacht Tony owns in the later seasons?",
+        "options": [
+          "Stugots",
+          "Stugots II",
+          "The Boss",
+          "Jersey Girl"
+        ],
+        "correctAnswer": "Stugots II",
+        "difficulty": "Hard",
+        "id": "78890122-110d-42fa-9e4d-3b71c16ac953"
+      },
+      {
+        "question": "Who was the creator of 'The Twilight Zone' (original)?",
+        "options": [
+          "Rod Serling",
+          "Gene Roddenberry",
+          "Alfred Hitchcock",
+          "Richard Matheson"
+        ],
+        "correctAnswer": "Rod Serling",
+        "difficulty": "Hard",
+        "id": "7398febc-7221-4b30-b96e-c5506e36580e"
+      },
+      {
+        "question": "In 'Buffy the Vampire Slayer', what was the name of the library where the Scooby Gang hung out?",
+        "options": [
+          "Sunnydale High Library",
+          "The Magic Box",
+          "The Bronze",
+          "Giles' Archive"
+        ],
+        "correctAnswer": "Sunnydale High Library",
+        "difficulty": "Hard",
+        "id": "03ccc565-5050-4dfc-a52c-4e9079514041"
+      },
+      {
+        "question": "Which character in 'South Park' has died the most times?",
+        "options": [
+          "Kenny",
+          "Cartman",
+          "Kyle",
+          "Butters"
+        ],
+        "correctAnswer": "Kenny",
+        "difficulty": "Hard",
+        "id": "e98b833e-2fbe-49b2-9985-7beec3a4e8c8"
+      },
+      {
+        "question": "In 'Lost', what are the numbers?",
+        "options": [
+          "4 8 15 16 23 42",
+          "4 8 12 16 20 24",
+          "1 2 3 4 5 6",
+          "10 20 30 40 50 60"
+        ],
+        "correctAnswer": "4 8 15 16 23 42",
+        "difficulty": "Hard",
+        "id": "e11dd0fd-924c-4685-92a3-1f24c73322c7"
+      },
+      {
+        "question": "Who directed the 'Ozymandias' episode of 'Breaking Bad'?",
+        "options": [
+          "Rian Johnson",
+          "Vince Gilligan",
+          "Michelle MacLaren",
+          "Adam Bernstein"
+        ],
+        "correctAnswer": "Rian Johnson",
+        "difficulty": "Hard",
+        "id": "4aca24f4-89e0-41cc-95be-a13a8219dd82"
+      },
+      {
+        "question": "In 'Seinfeld', what was the name of the 'urban legend' mailman played by Wayne Knight?",
+        "options": [
+          "Newman",
+          "Kramer",
+          "Vandelay",
+          "Bob"
+        ],
+        "correctAnswer": "Newman",
+        "difficulty": "Hard",
+        "id": "6517e571-97e8-4963-9da1-220606eaad91"
+      },
+      {
+        "question": "What was the name of the fictional town in 'Schitt's Creek' before the family moved there?",
+        "options": [
+          "New York",
+          "They always lived in Schitt's Creek",
+          "Toronto",
+          "It's never specified"
+        ],
+        "correctAnswer": "It's never specified",
+        "difficulty": "Hard",
+        "id": "4205cb72-bd98-4c73-91be-ad3c2d40cd52"
+      },
+      {
+        "question": "In 'Arrested Development', what is the name of the company?",
+        "options": [
+          "Bluth Company",
+          "Staircar Corp",
+          "Banana Stand Inc.",
+          "Oshman"
+        ],
+        "correctAnswer": "Bluth Company",
+        "difficulty": "Hard",
+        "id": "214b6f61-2690-478f-bc04-970b22b84b00"
+      },
+      {
+        "question": "Who was the first host of 'Saturday Night Live'?",
+        "options": [
+          "George Carlin",
+          "Richard Pryor",
+          "Steve Martin",
+          "Chevy Chase"
+        ],
+        "correctAnswer": "George Carlin",
+        "difficulty": "Hard",
+        "id": "2b8ee88b-f734-4511-98d1-909a97f78333"
+      },
+      {
+        "question": "In 'The Big Bang Theory', what is the address of the apartment building?",
+        "options": [
+          "2311 North Los Robles Avenue",
+          "123 Pasadena Ave",
+          "456 Nerd St",
+          "101 Comic Way"
+        ],
+        "correctAnswer": "2311 North Los Robles Avenue",
+        "difficulty": "Hard",
+        "id": "d2d785c4-7ce1-4fc7-b0d0-72c4852c86f7"
+      },
+      {
+        "question": "Which show had a spin-off called 'Joey'?",
+        "options": [
+          "Friends",
+          "ER",
+          "Cheers",
+          "Frasier"
+        ],
+        "correctAnswer": "Friends",
+        "difficulty": "Hard",
+        "id": "d4ab6c3b-e0c5-4bba-b997-26d8996a8fc2"
+      },
+      {
+        "question": "In 'Stargate SG-1', what does the 'G' in 'SG' stand for?",
+        "options": [
+          "Group",
+          "Gate",
+          "General",
+          "Guard"
+        ],
+        "correctAnswer": "Group",
+        "difficulty": "Hard",
+        "id": "f10dad76-6cf8-4f16-b862-0f8b65a9eeba"
+      },
+      {
+        "question": "Who played 'The Man in Black' in 'Westworld' (HBO)?",
+        "options": [
+          "Ed Harris",
+          "Anthony Hopkins",
+          "Jeffrey Wright",
+          "James Marsden"
+        ],
+        "correctAnswer": "Ed Harris",
+        "difficulty": "Hard",
+        "id": "91a4b28c-971a-4ecf-a2db-229478b0f505"
+      },
+      {
+        "question": "In 'Downton Abbey', what is the actual name of the character 'Lord Grantham'?",
+        "options": [
+          "Robert Crawley",
+          "Matthew Crawley",
+          "Thomas Barrow",
+          "Harold Levinson"
+        ],
+        "correctAnswer": "Robert Crawley",
+        "difficulty": "Hard",
+        "id": "20a0a319-4645-496f-83ee-35394f2c125f"
+      },
+      {
+        "question": "What is the name of the cafe in 'Frasier'?",
+        "options": [
+          "Cafe Nervosa",
+          "Cheers",
+          "Monk's",
+          "Central Perk"
+        ],
+        "correctAnswer": "Cafe Nervosa",
+        "difficulty": "Hard",
+        "id": "a0e46d51-9e39-4fd1-a966-468efd24e39f"
+      },
+      {
+        "question": "In 'The 100', what is the name of the artificial intelligence that destroyed the world?",
+        "options": [
+          "A.L.I.E.",
+          "S.H.O.D.A.N.",
+          "H.A.L.",
+          "C.O.R.T.A.N.A."
+        ],
+        "correctAnswer": "A.L.I.E.",
+        "difficulty": "Hard",
+        "id": "92c91c26-3d04-4048-a254-a6c78b151db3"
+      },
+      {
+        "question": "Who created the show 'Community'?",
+        "options": [
+          "Dan Harmon",
+          "Justin Roiland",
+          "Mike Schur",
+          "Greg Daniels"
+        ],
+        "correctAnswer": "Dan Harmon",
+        "difficulty": "Hard",
+        "id": "97ef7811-b589-4e69-b17e-5f47c43a2c95"
+      },
+      {
+        "question": "In 'Parks and Recreation', what is the name of the band Andy Dwyer fronted?",
+        "options": [
+          "Mouse Rat",
+          "Rat Mouse",
+          "Snake Juice",
+          "Scrott"
+        ],
+        "correctAnswer": "Mouse Rat",
+        "difficulty": "Hard",
+        "id": "d4243ba6-d5db-48b5-ac60-f18e633bf014"
+      },
+      {
+        "question": "Which show features a fictional sitcom titled 'Horsin' Around'?",
+        "options": [
+          "Bojack Horseman",
+          "F is for Family",
+          "Tuca & Bertie",
+          "Big Mouth"
+        ],
+        "correctAnswer": "Bojack Horseman",
+        "difficulty": "Hard",
+        "id": "e566743a-3cca-4499-ac51-b6ca4a474294"
+      },
+      {
+        "question": "In 'Better Call Saul', who is Kim Wexler's primary employer in Season 1?",
+        "options": [
+          "HHM",
+          "Davis & Main",
+          "Gus Fring",
+          "Wexler & McGill"
+        ],
+        "correctAnswer": "HHM",
+        "difficulty": "Hard",
+        "id": "36e26856-b8ad-4c6a-9893-fd185995d363"
+      },
+      {
+        "question": "What is the name of the character played by David Duchovny in 'Twin Peaks'?",
+        "options": [
+          "Denise Bryson",
+          "Fox Mulder",
+          "Hank Moody",
+          "Dale Cooper"
+        ],
+        "correctAnswer": "Denise Bryson",
+        "difficulty": "Hard",
+        "id": "170c9d84-3099-48b1-8c64-97b262a2a306"
+      },
+      {
+        "question": "In 'The Good Place', how many iterations of 'The Neighborhood' were there before Team Cockroach figured it out?",
+        "options": [
+          "802",
+          "1",
+          "12",
+          "55"
+        ],
+        "correctAnswer": "802",
+        "difficulty": "Hard",
+        "id": "6000e539-b866-4218-aa7a-6ac772ce6602"
+      },
+      {
+        "question": "Who was the 'Gossip Girl' in the original series?",
+        "options": [
+          "Dan Humphrey",
+          "Serena van der Woodsen",
+          "Blair Waldorf",
+          "Chuck Bass"
+        ],
+        "correctAnswer": "Dan Humphrey",
+        "difficulty": "Hard",
+        "id": "0fdd530b-0482-495b-a625-bdcc678bad43"
+      },
+      {
+        "question": "In 'Rectify', how many years did Daniel Holden spend on death row?",
+        "options": [
+          "19",
+          "25",
+          "10",
+          "15"
+        ],
+        "correctAnswer": "19",
+        "difficulty": "Hard",
+        "id": "13e79425-1677-4909-8348-8ff8210bcf9f"
+      },
+      {
+        "question": "What was the name of the bar in 'Cheers' spin-off 'Frasier' (actually, it wasn't there)? In 'Frasier', what is the name of the dog?",
+        "options": [
+          "Eddie",
+          "Moose",
+          "Buddy",
+          "Rex"
+        ],
+        "correctAnswer": "Eddie",
+        "difficulty": "Hard",
+        "id": "6c94d125-3912-42de-ba89-832212c9ef07"
+      },
+      {
+        "question": "In 'Black Mirror', what is the title of the first-ever episode?",
+        "options": [
+          "The National Anthem",
+          "San Junipero",
+          "The Waldo Moment",
+          "White Bear"
+        ],
+        "correctAnswer": "The National Anthem",
+        "difficulty": "Hard",
+        "id": "0c03ae1c-9f82-424f-9fd7-bb8a1cc0fdf1"
+      },
+      {
+        "question": "Which show's pilot was directed by Martin Scorsese?",
+        "options": [
+          "Boardwalk Empire",
+          "The Sopranos",
+          "The Wire",
+          "Mad Men"
+        ],
+        "correctAnswer": "Boardwalk Empire",
+        "difficulty": "Hard",
+        "id": "b28585f8-47e5-4a78-8e01-d4e128172326"
+      },
+      {
+        "question": "In 'The Leftovers', what percentage of the world's population disappeared?",
+        "options": [
+          "2%",
+          "10%",
+          "50%",
+          "0.5%"
+        ],
+        "correctAnswer": "2%",
+        "difficulty": "Hard",
+        "id": "23544590-6606-4e17-82a6-1c26f4a656eb"
+      },
+      {
+        "question": "Who played 'The Master' in David Tennant's final episodes?",
+        "options": [
+          "John Simm",
+          "Derek Jacobi",
+          "Michelle Gomez",
+          "Sacha Dhawan"
+        ],
+        "correctAnswer": "John Simm",
+        "difficulty": "Hard",
+        "id": "342639f7-7e68-414f-a06b-03ef01d774bc"
+      },
+      {
+        "question": "In 'Succession', what is the name of the cruise ship scandal?",
+        "options": [
+          "Brightstar",
+          "Wolfstar",
+          "Mo's Scapegoat",
+          "Wait, it's just 'Cruises'"
+        ],
+        "correctAnswer": "Brightstar",
+        "difficulty": "Hard",
+        "id": "4a6c0b62-3150-4465-bdf7-6f502be8f513"
+      },
+      {
+        "question": "What is the name of the town in 'Home Improvement'?",
+        "options": [
+          "Detroit",
+          "Bloomfield Hills",
+          "Ann Arbor",
+          "Lansing"
+        ],
+        "correctAnswer": "Detroit",
+        "difficulty": "Hard",
+        "id": "bc1a7596-5ce5-4098-9b25-95036201cff2"
+      },
+      {
+        "question": "In 'The Office' (US), who is the father of Jan's baby?",
+        "options": [
+          "Kevin",
+          "Astrid",
+          "Hunter",
+          "A Sperm Donor"
+        ],
+        "correctAnswer": "A Sperm Donor",
+        "difficulty": "Hard",
+        "id": "edac5391-2427-41e9-a188-4ca39a6bd638"
+      },
+      {
+        "question": "Who was the first person to win 'Survivor' (US)?",
+        "options": [
+          "Richard Hatch",
+          "Kelly Wiglesworth",
+          "Rudy Boesch",
+          "Susan Hawk"
+        ],
+        "correctAnswer": "Richard Hatch",
+        "difficulty": "Hard",
+        "id": "8126a417-ed40-43bf-96cb-d53cb811cd3b"
+      },
+      {
+        "question": "In 'Breaking Bad', what is the name of the laundromat that hides the superlab?",
+        "options": [
+          "Lavanderia Brillante",
+          "Los Pollos Hermanos",
+          "A1 Car Wash",
+          "Vamonos Pests"
+        ],
+        "correctAnswer": "Lavanderia Brillante",
+        "difficulty": "Hard",
+        "id": "980a83bc-45cb-492c-8ea4-49f2f24f77ce"
+      },
+      {
+        "question": "What is the name of the fictional setting in 'The Expanse' (beyond Earth/Mars)?",
+        "options": [
+          "The Belt",
+          "Tycho Station",
+          "Ceres",
+          "The Void"
+        ],
+        "correctAnswer": "The Belt",
+        "difficulty": "Hard",
+        "id": "2d90a644-9132-4325-8521-8a9dca90b89e"
+      },
+      {
+        "question": "In 'Smallville', what was the name of the high school newspaper?",
+        "options": [
+          "The Torch",
+          "The Planet",
+          "The Daily Quip",
+          "Smallville Star"
+        ],
+        "correctAnswer": "The Torch",
+        "difficulty": "Hard",
+        "id": "3f8561f7-fa90-49cf-8460-b8b1fc67f881"
+      },
+      {
+        "question": "Who directed the pilot episode of 'Lost'?",
+        "options": [
+          "J.J. Abrams",
+          "Damon Lindelof",
+          "Carlton Cuse",
+          "Jack Bender"
+        ],
+        "correctAnswer": "J.J. Abrams",
+        "difficulty": "Hard",
+        "id": "e3d3b7b7-e1be-418f-825a-05961294fa75"
+      }
+    ]
+  },
+  {
+    "id": "da0e6d36-e754-47e1-bb9e-48e5bddaf7e6",
+    "name": "Music",
+    "questions": [
+      {
+        "question": "Who is known as the 'King of Pop'?",
+        "options": [
+          "Elvis Presley",
+          "Michael Jackson",
+          "Prince",
+          "Justin Bieber"
+        ],
+        "correctAnswer": "Michael Jackson",
+        "difficulty": "Easy",
+        "id": "778523c8-63b7-468f-96c9-eb6a952d43a6"
+      },
+      {
+        "question": "Which band recorded the hit song 'Yellow Submarine'?",
+        "options": [
+          "The Rolling Stones",
+          "The Beatles",
+          "The Who",
+          "The Kinks"
+        ],
+        "correctAnswer": "The Beatles",
+        "difficulty": "Easy",
+        "id": "979ce5ff-db69-4e43-bd33-3b3a1339eedf"
+      },
+      {
+        "question": "What is the name of Beyonc\u00e9's fan base?",
+        "options": [
+          "The Army",
+          "The BeyHive",
+          "The Beliebers",
+          "The Little Monsters"
+        ],
+        "correctAnswer": "The BeyHive",
+        "difficulty": "Easy",
+        "id": "9e779bee-8641-4364-8925-e077f9f74bbd"
+      },
+      {
+        "question": "Which singer is known for the hit song 'Hello'?",
+        "options": [
+          "Adele",
+          "Taylor Swift",
+          "Rihanna",
+          "Katy Perry"
+        ],
+        "correctAnswer": "Adele",
+        "difficulty": "Easy",
+        "id": "bce36e02-9536-4e93-b8d9-21a88463ec4f"
+      },
+      {
+        "question": "How many strings are usually on a standard guitar?",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "correctAnswer": "6",
+        "difficulty": "Easy",
+        "id": "dd87bbf9-dc9d-4588-8511-add2c2d1151d"
+      },
+      {
+        "question": "Which artist is known as the 'Rocket Man'?",
+        "options": [
+          "David Bowie",
+          "Elton John",
+          "Billy Joel",
+          "Freddie Mercury"
+        ],
+        "correctAnswer": "Elton John",
+        "difficulty": "Easy",
+        "id": "80c02ea0-f4e2-4600-8caf-96026e6c30f2"
+      },
+      {
+        "question": "What is the name of the lead singer of Queen?",
+        "options": [
+          "Freddie Mercury",
+          "Brian May",
+          "Roger Taylor",
+          "John Deacon"
+        ],
+        "correctAnswer": "Freddie Mercury",
+        "difficulty": "Easy",
+        "id": "4f88bfe8-c46a-4de0-ab37-5bdb29bc3afe"
+      },
+      {
+        "question": "Which country is the birthplace of the reggae music genre?",
+        "options": [
+          "USA",
+          "Jamaica",
+          "Cuba",
+          "Brazil"
+        ],
+        "correctAnswer": "Jamaica",
+        "difficulty": "Easy",
+        "id": "51161db6-3d34-4b78-9e0e-65554b3d2cfa"
+      },
+      {
+        "question": "What is the name of the singer who released the album 'Midnights' in 2022?",
+        "options": [
+          "Adele",
+          "Taylor Swift",
+          "Harry Styles",
+          "Dua Lipa"
+        ],
+        "correctAnswer": "Taylor Swift",
+        "difficulty": "Easy",
+        "id": "529e1ed8-8965-4afb-aec7-b10b2c377c99"
+      },
+      {
+        "question": "Which instrument does Lizzo play?",
+        "options": [
+          "Violin",
+          "Flute",
+          "Saxophone",
+          "Trumpet"
+        ],
+        "correctAnswer": "Flute",
+        "difficulty": "Easy",
+        "id": "f96e3432-ea17-441c-be83-f34ee1457ff5"
+      },
+      {
+        "question": "Who is the 'Material Girl'?",
+        "options": [
+          "Madonna",
+          "Cyndi Lauper",
+          "Cher",
+          "Janet Jackson"
+        ],
+        "correctAnswer": "Madonna",
+        "difficulty": "Easy",
+        "id": "1dbfda51-8280-4958-a8c9-44a940bbbd24"
+      },
+      {
+        "question": "Which band had a hit with 'Stairway to Heaven'?",
+        "options": [
+          "Led Zeppelin",
+          "Pink Floyd",
+          "Deep Purple",
+          "Black Sabbath"
+        ],
+        "correctAnswer": "Led Zeppelin",
+        "difficulty": "Easy",
+        "id": "33d97ad3-7ffa-4de2-9a97-43d54783568b"
+      },
+      {
+        "question": "What is the real name of the rapper Eminem?",
+        "options": [
+          "Marshall Mathers",
+          "Curtis Jackson",
+          "Shawn Carter",
+          "Calvin Broadus"
+        ],
+        "correctAnswer": "Marshall Mathers",
+        "difficulty": "Easy",
+        "id": "54ed0521-1e71-44b9-8838-e4182d0b940e"
+      },
+      {
+        "question": "Which singer is known as the 'Queen of Soul'?",
+        "options": [
+          "Diana Ross",
+          "Aretha Franklin",
+          "Tina Turner",
+          "Whitney Houston"
+        ],
+        "correctAnswer": "Aretha Franklin",
+        "difficulty": "Easy",
+        "id": "1a7069d2-82fe-461e-92e3-f157c228713d"
+      },
+      {
+        "question": "Which artist released the 2010 hit 'Baby'?",
+        "options": [
+          "Nick Jonas",
+          "Justin Bieber",
+          "Shawn Mendes",
+          "Zayn Malik"
+        ],
+        "correctAnswer": "Justin Bieber",
+        "difficulty": "Easy",
+        "id": "67c397eb-b73e-4173-ba00-aa6722d2699c"
+      },
+      {
+        "question": "What instrument is Ringo Starr famous for playing?",
+        "options": [
+          "Guitar",
+          "Bass",
+          "Drums",
+          "Keyboard"
+        ],
+        "correctAnswer": "Drums",
+        "difficulty": "Easy",
+        "id": "88486a1b-ce85-42cd-a99d-66a901ec05ac"
+      },
+      {
+        "question": "Who sang 'I Will Always Love You' for the movie 'The Bodyguard'?",
+        "options": [
+          "Celine Dion",
+          "Whitney Houston",
+          "Mariah Carey",
+          "Dolly Parton"
+        ],
+        "correctAnswer": "Whitney Houston",
+        "difficulty": "Easy",
+        "id": "ab61f42b-7690-47cf-9c23-143b8abd8284"
+      },
+      {
+        "question": "Which band released the album 'The Dark Side of the Moon'?",
+        "options": [
+          "The Doors",
+          "Pink Floyd",
+          "The Eagles",
+          "U2"
+        ],
+        "correctAnswer": "Pink Floyd",
+        "difficulty": "Easy",
+        "id": "ccf24a2f-b6d2-4d53-98aa-1f2d2257fa50"
+      },
+      {
+        "question": "Who is the lead singer of the Rolling Stones?",
+        "options": [
+          "Keith Richards",
+          "Mick Jagger",
+          "Ronnie Wood",
+          "Charlie Watts"
+        ],
+        "correctAnswer": "Mick Jagger",
+        "difficulty": "Easy",
+        "id": "4f2a1ba7-9400-4742-804f-5cab6d591d7f"
+      },
+      {
+        "question": "What is the Stage Name of the singer Stefani Germanotta?",
+        "options": [
+          "Katy Perry",
+          "Lady Gaga",
+          "Lana Del Rey",
+          "Halsey"
+        ],
+        "correctAnswer": "Lady Gaga",
+        "difficulty": "Easy",
+        "id": "d8c4f17d-dc22-4b83-a0b9-d2832ea37c4b"
+      },
+      {
+        "question": "Which artist is famous for the hit 'Purple Rain'?",
+        "options": [
+          "Prince",
+          "Michael Jackson",
+          "Rick James",
+          "Stevie Wonder"
+        ],
+        "correctAnswer": "Prince",
+        "difficulty": "Easy",
+        "id": "e1586fcb-2927-4377-aeaa-e603edd97039"
+      },
+      {
+        "question": "What is the name of the K-pop group that released 'Butter'?",
+        "options": [
+          "EXO",
+          "BTS",
+          "Blackpink",
+          "Twice"
+        ],
+        "correctAnswer": "BTS",
+        "difficulty": "Easy",
+        "id": "5439a18d-bad5-4032-a33b-bf4d33aea3f3"
+      },
+      {
+        "question": "Which composer wrote the 'Moonlight Sonata'?",
+        "options": [
+          "Mozart",
+          "Beethoven",
+          "Bach",
+          "Chopin"
+        ],
+        "correctAnswer": "Beethoven",
+        "difficulty": "Easy",
+        "id": "cd6412f6-1b6c-4243-97a8-5fe49974ee24"
+      },
+      {
+        "question": "What is the highest female singing voice?",
+        "options": [
+          "Alto",
+          "Soprano",
+          "Mezzo",
+          "Contralto"
+        ],
+        "correctAnswer": "Soprano",
+        "difficulty": "Easy",
+        "id": "ff30c93e-00d7-40be-859d-4d31facfdfc7"
+      },
+      {
+        "question": "Which genre is associated with Dr. Dre and Snoop Dogg?",
+        "options": [
+          "Rock",
+          "Country",
+          "Hip Hop",
+          "Jazz"
+        ],
+        "correctAnswer": "Hip Hop",
+        "difficulty": "Easy",
+        "id": "c60b9af6-9694-4f90-964f-42a642b9fd7d"
+      },
+      {
+        "question": "Who was the 'Piano Man'?",
+        "options": [
+          "Billy Joel",
+          "Elton John",
+          "Ray Charles",
+          "Stevie Wonder"
+        ],
+        "correctAnswer": "Billy Joel",
+        "difficulty": "Easy",
+        "id": "515215bf-896e-4b36-ad70-83fc4a973abc"
+      },
+      {
+        "question": "Which member of One Direction released 'Watermelon Sugar'?",
+        "options": [
+          "Zayn Malik",
+          "Niall Horan",
+          "Harry Styles",
+          "Liam Payne"
+        ],
+        "correctAnswer": "Harry Styles",
+        "difficulty": "Easy",
+        "id": "23a1b647-256e-4c77-91f0-0328e1da52ce"
+      },
+      {
+        "question": "What is the name of the lead singer of Aerosmith?",
+        "options": [
+          "Steven Tyler",
+          "Mick Jagger",
+          "Jon Bon Jovi",
+          "Axl Rose"
+        ],
+        "correctAnswer": "Steven Tyler",
+        "difficulty": "Easy",
+        "id": "5fda4a52-6375-4570-bbfd-55d9fa3c5636"
+      },
+      {
+        "question": "Which city is known as the 'Music City' in the USA?",
+        "options": [
+          "Memphis",
+          "Nashville",
+          "Austin",
+          "New Orleans"
+        ],
+        "correctAnswer": "Nashville",
+        "difficulty": "Easy",
+        "id": "0a6329a1-c521-4821-8ffa-982096c3a121"
+      },
+      {
+        "question": "In what decade were the Beatles most active?",
+        "options": [
+          "1950s",
+          "1960s",
+          "1970s",
+          "1980s"
+        ],
+        "correctAnswer": "1960s",
+        "difficulty": "Easy",
+        "id": "243de513-549f-4a81-ad18-28925439d7b6"
+      },
+      {
+        "question": "What is the name of Billie Eilish's brother and producer?",
+        "options": [
+          "Finneas",
+          "Caleb",
+          "Liam",
+          "Mason"
+        ],
+        "correctAnswer": "Finneas",
+        "difficulty": "Easy",
+        "id": "a7eb56d3-04a4-48cd-9a55-9025fce211a4"
+      },
+      {
+        "question": "Which artist is known for the 2019 hit 'Old Town Road'?",
+        "options": [
+          "Lil Nas X",
+          "Post Malone",
+          "Drake",
+          "Kendrick Lamar"
+        ],
+        "correctAnswer": "Lil Nas X",
+        "difficulty": "Easy",
+        "id": "a787303b-90fb-446e-9e5f-1e22cfc55402"
+      },
+      {
+        "question": "Who sang 'Rolling in the Deep'?",
+        "options": [
+          "Adele",
+          "Rihanna",
+          "Beyonc\u00e9",
+          "Sia"
+        ],
+        "correctAnswer": "Adele",
+        "difficulty": "Easy",
+        "id": "c67f551e-04f4-4b2a-897a-d49cda5abcc7"
+      },
+      {
+        "question": "What is the smallest instrument in a string quartet?",
+        "options": [
+          "Viola",
+          "Violoncello",
+          "Violin",
+          "Double Bass"
+        ],
+        "correctAnswer": "Violin",
+        "difficulty": "Easy",
+        "id": "b2c4a343-e3f4-459d-8dad-ac9355ad3173"
+      },
+      {
+        "question": "Which country did the band ABBA come from?",
+        "options": [
+          "Norway",
+          "Denmark",
+          "Sweden",
+          "Iceland"
+        ],
+        "correctAnswer": "Sweden",
+        "difficulty": "Easy",
+        "id": "cab9e372-8b8e-4a4d-b41d-6ae28cac3f41"
+      },
+      {
+        "question": "Who is North West's father?",
+        "options": [
+          "Jay-Z",
+          "Kanye West",
+          "Travis Scott",
+          "ASAP Rocky"
+        ],
+        "correctAnswer": "Kanye West",
+        "difficulty": "Easy",
+        "id": "de2127ad-88e5-44e3-81ae-e51271f9b038"
+      },
+      {
+        "question": "Which singer is known as 'The Boss'?",
+        "options": [
+          "Bob Dylan",
+          "Bruce Springsteen",
+          "Elvis Presley",
+          "Frank Sinatra"
+        ],
+        "correctAnswer": "Bruce Springsteen",
+        "difficulty": "Easy",
+        "id": "eaf3ebfc-231a-4046-9336-fb660003a753"
+      },
+      {
+        "question": "What is the title of Taylor Swift's first album?",
+        "options": [
+          "Fearless",
+          "Taylor Swift",
+          "Red",
+          "Speak Now"
+        ],
+        "correctAnswer": "Taylor Swift",
+        "difficulty": "Easy",
+        "id": "b4a271e2-d0df-442b-b701-07a63865f8da"
+      },
+      {
+        "question": "Which instrument has 88 keys?",
+        "options": [
+          "Organ",
+          "Piano",
+          "Synthesizer",
+          "Harpsichord"
+        ],
+        "correctAnswer": "Piano",
+        "difficulty": "Easy",
+        "id": "1ebfeee4-3b14-4426-beb0-9affcfae3a9d"
+      },
+      {
+        "question": "Who is the lead singer of Coldplay?",
+        "options": [
+          "Chris Martin",
+          "Guy Berryman",
+          "Will Champion",
+          "Jonny Buckland"
+        ],
+        "correctAnswer": "Chris Martin",
+        "difficulty": "Easy",
+        "id": "4d79337f-8e46-4a05-b124-e478c5a7647c"
+      },
+      {
+        "question": "Which genre is Dolly Parton known for?",
+        "options": [
+          "Rock",
+          "Pop",
+          "Country",
+          "Jazz"
+        ],
+        "correctAnswer": "Country",
+        "difficulty": "Easy",
+        "id": "fbe14bc3-062c-4df4-9bb9-ba263aabf6c4"
+      },
+      {
+        "question": "What was Whitney Houston's nickname?",
+        "options": [
+          "The Voice",
+          "Queen of Pop",
+          "Nippy",
+          "Diva"
+        ],
+        "correctAnswer": "The Voice",
+        "difficulty": "Easy",
+        "id": "bfbe8719-192d-4aa6-a20c-2b305a039f1f"
+      },
+      {
+        "question": "Which band had members with names like Ginger Spice and Posh Spice?",
+        "options": [
+          "Little Mix",
+          "Destiny's Child",
+          "The Spice Girls",
+          "Girls Aloud"
+        ],
+        "correctAnswer": "The Spice Girls",
+        "difficulty": "Easy",
+        "id": "648e4bb4-7343-47ca-8fbe-21f38e3acb0f"
+      },
+      {
+        "question": "What is the name of the guitar-like instrument used in Hawaiian music?",
+        "options": [
+          "Banjo",
+          "Ukulele",
+          "Mandolin",
+          "Sitar"
+        ],
+        "correctAnswer": "Ukulele",
+        "difficulty": "Easy",
+        "id": "df395e36-ca26-43f0-ab5c-72fc2d0d2056"
+      },
+      {
+        "question": "Who is the 'Queen of Pop'?",
+        "options": [
+          "Lady Gaga",
+          "Madonna",
+          "Britney Spears",
+          "Beyonc\u00e9"
+        ],
+        "correctAnswer": "Madonna",
+        "difficulty": "Easy",
+        "id": "2073fdbd-d349-49fa-b607-b0d96de23a56"
+      },
+      {
+        "question": "Which rapper's real name is Shawn Carter?",
+        "options": [
+          "50 Cent",
+          "Jay-Z",
+          "Drake",
+          "Lil Wayne"
+        ],
+        "correctAnswer": "Jay-Z",
+        "difficulty": "Easy",
+        "id": "e5304125-26ea-40eb-a00a-da26080b6d9f"
+      },
+      {
+        "question": "Which song is famously associated with the movie 'Frozen'?",
+        "options": [
+          "Let It Go",
+          "Into the Unknown",
+          "A Whole New World",
+          "Circle of Life"
+        ],
+        "correctAnswer": "Let It Go",
+        "difficulty": "Easy",
+        "id": "003c52a9-21dd-4d0a-ac20-24c067c46131"
+      },
+      {
+        "question": "In what country was Justin Bieber born?",
+        "options": [
+          "USA",
+          "Canada",
+          "UK",
+          "Australia"
+        ],
+        "correctAnswer": "Canada",
+        "difficulty": "Easy",
+        "id": "945f2320-066a-4139-8670-7e5b5f91cab9"
+      },
+      {
+        "question": "Which artist is known as the 'Prince of Darkness' in heavy metal?",
+        "options": [
+          "Alice Cooper",
+          "Ozzy Osbourne",
+          "Marilyn Manson",
+          "Rob Zombie"
+        ],
+        "correctAnswer": "Ozzy Osbourne",
+        "difficulty": "Easy",
+        "id": "80c2b237-924a-4b9c-a24a-bf159fd45ec5"
+      },
+      {
+        "question": "What is the name of the rock band that includes the edges of U2?",
+        "options": [
+          "U2",
+          "The Edge",
+          "Bono",
+          "REM"
+        ],
+        "correctAnswer": "U2",
+        "difficulty": "Easy",
+        "id": "e2cdd36c-844e-469a-87ed-308fc949d1b5"
+      },
+      {
+        "question": "Which singer-songwriter wrote 'Bridge Over Troubled Water'?",
+        "options": [
+          "Paul Simon",
+          "James Taylor",
+          "Joni Mitchell",
+          "Bob Dylan"
+        ],
+        "correctAnswer": "Paul Simon",
+        "difficulty": "Medium",
+        "id": "857f2185-9576-4c92-b183-f7dfd6a9a230"
+      },
+      {
+        "question": "What was the name of the band Freddie Mercury was in before Queen?",
+        "options": [
+          "Smile",
+          "Rainbow",
+          "Lace",
+          "The Hectics"
+        ],
+        "correctAnswer": "Smile",
+        "difficulty": "Medium",
+        "id": "116937b6-0b7d-4c43-a56a-c74cdef78dc6"
+      },
+      {
+        "question": "Which jazz musician was nicknamed 'Satchmo'?",
+        "options": [
+          "Miles Davis",
+          "Louis Armstrong",
+          "Duke Ellington",
+          "Charlie Parker"
+        ],
+        "correctAnswer": "Louis Armstrong",
+        "difficulty": "Medium",
+        "id": "50def430-f944-4173-ae0c-62255d2d2817"
+      },
+      {
+        "question": "In what year did Elvis Presley die?",
+        "options": [
+          "1975",
+          "1977",
+          "1979",
+          "1981"
+        ],
+        "correctAnswer": "1977",
+        "difficulty": "Medium",
+        "id": "8bb667ca-c79f-49ac-8008-baed6c000f56"
+      },
+      {
+        "question": "Which album is the best-selling of all time in the UK?",
+        "options": [
+          "Thriller",
+          "Greatest Hits (Queen)",
+          "Sgt. Pepper's",
+          "Rumours"
+        ],
+        "correctAnswer": "Greatest Hits (Queen)",
+        "difficulty": "Medium",
+        "id": "8f1ae6e3-39b4-456f-96a6-cc8eadb750af"
+      },
+      {
+        "question": "Who won the first season of 'American Idol'?",
+        "options": [
+          "Kelly Clarkson",
+          "Carrie Underwood",
+          "Jennifer Hudson",
+          "Adam Lambert"
+        ],
+        "correctAnswer": "Kelly Clarkson",
+        "difficulty": "Medium",
+        "id": "8f4390c7-c54b-45f9-a384-37f97a645628"
+      },
+      {
+        "question": "Which artist released the album 'Back to Black'?",
+        "options": [
+          "Adele",
+          "Amy Winehouse",
+          "Duffy",
+          "Lana Del Rey"
+        ],
+        "correctAnswer": "Amy Winehouse",
+        "difficulty": "Medium",
+        "id": "4956af2f-df1d-4d9c-ac31-5565292b0cee"
+      },
+      {
+        "question": "What is the real name of the rapper Cardi B?",
+        "options": [
+          "Belcalis Alm\u00e1nzar",
+          "Onika Maraj",
+          "Amala Dlamini",
+          "Destiny Hope"
+        ],
+        "correctAnswer": "Belcalis Alm\u00e1nzar",
+        "difficulty": "Medium",
+        "id": "bdaa25a8-3ea5-47d9-a4ff-1c8757135c14"
+      },
+      {
+        "question": "Which band's name was inspired by a type of mud found in the Southern US?",
+        "options": [
+          "Lynyrd Skynyrd",
+          "The Black Crowes",
+          "Muddy Waters",
+          "Creedence Clearwater"
+        ],
+        "correctAnswer": "Creedence Clearwater",
+        "difficulty": "Medium",
+        "id": "5f18b58e-399e-426d-b899-cc7478ffffca"
+      },
+      {
+        "question": "Who is the lead singer of the band Radiohead?",
+        "options": [
+          "Thom Yorke",
+          "Jonny Greenwood",
+          "Matt Bellamy",
+          "Chris Martin"
+        ],
+        "correctAnswer": "Thom Yorke",
+        "difficulty": "Medium",
+        "id": "f38c8ca3-154b-4f90-8304-b557adccb9bd"
+      },
+      {
+        "question": "Which composer's 5th Symphony is known for its 'da-da-da-dum' opening?",
+        "options": [
+          "Mozart",
+          "Beethoven",
+          "Brahms",
+          "Tchaikovsky"
+        ],
+        "correctAnswer": "Beethoven",
+        "difficulty": "Medium",
+        "id": "3bd649c1-cdf1-480c-85c3-8960e9277b26"
+      },
+      {
+        "question": "What was the name of the Beatles' manager?",
+        "options": [
+          "George Martin",
+          "Brian Epstein",
+          "Andrew Loog Oldham",
+          "Peter Grant"
+        ],
+        "correctAnswer": "Brian Epstein",
+        "difficulty": "Medium",
+        "id": "fafab25a-df57-43b7-88f4-ebc3011356dd"
+      },
+      {
+        "question": "Which singer starred in the 2018 movie 'A Star Is Born'?",
+        "options": [
+          "Lady Gaga",
+          "Rihanna",
+          "Beyonc\u00e9",
+          "Katy Perry"
+        ],
+        "correctAnswer": "Lady Gaga",
+        "difficulty": "Medium",
+        "id": "19602582-58b4-467b-8b93-d4dc851561d7"
+      },
+      {
+        "question": "How many members are in the band BTS?",
+        "options": [
+          "5",
+          "7",
+          "9",
+          "11"
+        ],
+        "correctAnswer": "7",
+        "difficulty": "Medium",
+        "id": "f459958d-f94c-4918-8f0a-8d0dddf0ab17"
+      },
+      {
+        "question": "Which pop star's father is a famous country singer named Billy Ray?",
+        "options": [
+          "Taylor Swift",
+          "Miley Cyrus",
+          "Demi Lovato",
+          "Selena Gomez"
+        ],
+        "correctAnswer": "Miley Cyrus",
+        "difficulty": "Medium",
+        "id": "98cbdb2c-0bb2-4533-9cd6-e9f5fe127800"
+      },
+      {
+        "question": "What is the title of the world's most-viewed music video on YouTube (as of 2023)?",
+        "options": [
+          "Despacito",
+          "Shape of You",
+          "Baby Shark Dance",
+          "Gangnam Style"
+        ],
+        "correctAnswer": "Baby Shark Dance",
+        "difficulty": "Medium",
+        "id": "4514bb0d-fc1c-4d7a-9749-9ccf8c171eb8"
+      },
+      {
+        "question": "Which music festival was held on Max Yasgur's farm in 1969?",
+        "options": [
+          "Woodstock",
+          "Coachella",
+          "Glastonbury",
+          "Burning Man"
+        ],
+        "correctAnswer": "Woodstock",
+        "difficulty": "Medium",
+        "id": "a2825c21-a476-411b-9251-8b55bf43bb9a"
+      },
+      {
+        "question": "Who is the lead singer of the rock band Foo Fighters?",
+        "options": [
+          "Kurt Cobain",
+          "Dave Grohl",
+          "Eddie Vedder",
+          "Chris Cornell"
+        ],
+        "correctAnswer": "Dave Grohl",
+        "difficulty": "Medium",
+        "id": "e8509796-e9a4-4a27-a7d4-2922f24ee7dc"
+      },
+      {
+        "question": "Which female artist has the most Grammy wins of all time?",
+        "options": [
+          "Aretha Franklin",
+          "Alison Krauss",
+          "Beyonc\u00e9",
+          "Adele"
+        ],
+        "correctAnswer": "Beyonc\u00e9",
+        "difficulty": "Medium",
+        "id": "f1e29684-3905-4225-bd3d-bdb7eb5cb1c4"
+      },
+      {
+        "question": "What was the name of Kurt Cobain's wife?",
+        "options": [
+          "Courtney Love",
+          "Kim Gordon",
+          "Gwen Stefani",
+          "Yoko Ono"
+        ],
+        "correctAnswer": "Courtney Love",
+        "difficulty": "Medium",
+        "id": "9ae9c1ac-6497-43ee-929d-223655c3d672"
+      },
+      {
+        "question": "Which classical composer became deaf in later life?",
+        "options": [
+          "Bach",
+          "Handel",
+          "Beethoven",
+          "Vivaldi"
+        ],
+        "correctAnswer": "Beethoven",
+        "difficulty": "Medium",
+        "id": "09b8c8fc-88a1-4b26-8557-9a0459f83ff7"
+      },
+      {
+        "question": "What is the name of the stage persona of singer Marshall Mathers?",
+        "options": [
+          "Dr. Dre",
+          "Eminem",
+          "Snoop Dogg",
+          "Ice Cube"
+        ],
+        "correctAnswer": "Eminem",
+        "difficulty": "Medium",
+        "id": "9a6b7422-c18d-4e71-a6e1-51c5ae7d7d91"
+      },
+      {
+        "question": "Which country music legend was known as 'The Man in Black'?",
+        "options": [
+          "Willie Nelson",
+          "Johnny Cash",
+          "Waylon Jennings",
+          "Kenny Rogers"
+        ],
+        "correctAnswer": "Johnny Cash",
+        "difficulty": "Medium",
+        "id": "33bc2c41-1755-4673-93b2-488fe614fa7e"
+      },
+      {
+        "question": "Who was the lead singer of the band Nirvana?",
+        "options": [
+          "Dave Grohl",
+          "Krist Novoselic",
+          "Kurt Cobain",
+          "Pat Smear"
+        ],
+        "correctAnswer": "Kurt Cobain",
+        "difficulty": "Medium",
+        "id": "9688f9bf-bdce-4213-a0a1-449a2b85f745"
+      },
+      {
+        "question": "Which hit song by Queen features the Galileos?",
+        "options": [
+          "Bohemian Rhapsody",
+          "Under Pressure",
+          "Killer Queen",
+          "Don't Stop Me Now"
+        ],
+        "correctAnswer": "Bohemian Rhapsody",
+        "difficulty": "Medium",
+        "id": "5b1dd257-6369-43c1-a0c3-7ea17c2362d9"
+      },
+      {
+        "question": "What subgenre of rock did bands like Nirvana and Soundgarden belong to?",
+        "options": [
+          "Punk",
+          "Heavy Metal",
+          "Grunge",
+          "Alternative"
+        ],
+        "correctAnswer": "Grunge",
+        "difficulty": "Medium",
+        "id": "feb1004b-c685-4087-a82c-a132fcd36f94"
+      },
+      {
+        "question": "Which singer-songwriter's real name is Robert Zimmerman?",
+        "options": [
+          "Neil Young",
+          "Bob Dylan",
+          "Paul Simon",
+          "Van Morrison"
+        ],
+        "correctAnswer": "Bob Dylan",
+        "difficulty": "Medium",
+        "id": "c019f0f8-2a76-4bb1-835e-f30f891df671"
+      },
+      {
+        "question": "What was the first music video with a budget over $1 million?",
+        "options": [
+          "Thriller",
+          "Scream",
+          "Beat It",
+          "Bad"
+        ],
+        "correctAnswer": "Thriller",
+        "difficulty": "Medium",
+        "id": "0fec5db4-f028-47ae-9acd-ea8f5d94338a"
+      },
+      {
+        "question": "Which pop group's name is an acronym of the members' first names?",
+        "options": [
+          "NSync",
+          "ABBA",
+          "Bananarama",
+          "Steps"
+        ],
+        "correctAnswer": "ABBA",
+        "difficulty": "Medium",
+        "id": "5c497b99-a9a8-4a98-8633-51df5fb15710"
+      },
+      {
+        "question": "Who is North West's mother?",
+        "options": [
+          "Kim Kardashian",
+          "Kris Jenner",
+          "Kylie Jenner",
+          "Kendall Jenner"
+        ],
+        "correctAnswer": "Kim Kardashian",
+        "difficulty": "Medium",
+        "id": "d892e25d-71c7-4d44-b231-9e714b2fbfa9"
+      },
+      {
+        "question": "Which artist is known for the 2013 hit 'Royals'?",
+        "options": [
+          "Lorde",
+          "Lana Del Rey",
+          "Sia",
+          "Charli XCX"
+        ],
+        "correctAnswer": "Lorde",
+        "difficulty": "Medium",
+        "id": "510228d9-8d71-428a-846b-a08a5f11d43a"
+      },
+      {
+        "question": "Which heavy metal band was fronted by Ozzy Osbourne?",
+        "options": [
+          "Iron Maiden",
+          "Black Sabbath",
+          "Metallica",
+          "Megadeth"
+        ],
+        "correctAnswer": "Black Sabbath",
+        "difficulty": "Medium",
+        "id": "332dd7c1-8424-4dd1-a650-fab55ec79135"
+      },
+      {
+        "question": "Which electronic music duo wore robot helmets?",
+        "options": [
+          "The Chemical Brothers",
+          "Daft Punk",
+          "Justice",
+          "Disclosure"
+        ],
+        "correctAnswer": "Daft Punk",
+        "difficulty": "Medium",
+        "id": "cfd75bf9-d684-4efe-afea-616b8caef741"
+      },
+      {
+        "question": "What is the name of the singer of 'Born to Run'?",
+        "options": [
+          "Bruce Springsteen",
+          "Bob Seger",
+          "Billy Joel",
+          "John Mellencamp"
+        ],
+        "correctAnswer": "Bruce Springsteen",
+        "difficulty": "Medium",
+        "id": "a3cfbdd2-dd2a-4bfd-8579-214fa086e964"
+      },
+      {
+        "question": "Which artist is known for the album 'Purple Rain'?",
+        "options": [
+          "Prince",
+          "Madonna",
+          "Lionel Richie",
+          "Stevie Wonder"
+        ],
+        "correctAnswer": "Prince",
+        "difficulty": "Medium",
+        "id": "e21c983a-6bd2-43f0-87b7-64325999a2b3"
+      },
+      {
+        "question": "Who is the lead singer of the Red Hot Chili Peppers?",
+        "options": [
+          "Anthony Kiedis",
+          "Flea",
+          "Chad Smith",
+          "John Frusciante"
+        ],
+        "correctAnswer": "Anthony Kiedis",
+        "difficulty": "Medium",
+        "id": "414a698c-acc1-48a4-a608-d4ed245414ce"
+      },
+      {
+        "question": "What is the standard tuning of a guitar (from low to high)?",
+        "options": [
+          "EADGBE",
+          "DADGBE",
+          "EADGbe",
+          "CGDAEB"
+        ],
+        "correctAnswer": "EADGBE",
+        "difficulty": "Medium",
+        "id": "590be479-6bbd-4f43-9085-5b27b110014d"
+      },
+      {
+        "question": "Which 1970s disco group featured the song 'Stayin' Alive'?",
+        "options": [
+          "ABBA",
+          "Bee Gees",
+          "Village People",
+          "Chic"
+        ],
+        "correctAnswer": "Bee Gees",
+        "difficulty": "Medium",
+        "id": "590bbc2f-ed4e-4c5a-b750-6a8f1dd76dd3"
+      },
+      {
+        "question": "Who is the 'Goddess of Pop'?",
+        "options": [
+          "Cher",
+          "Tina Turner",
+          "Barbra Streisand",
+          "Celine Dion"
+        ],
+        "correctAnswer": "Cher",
+        "difficulty": "Medium",
+        "id": "38576913-e445-4dbc-ab4c-86fb915555ec"
+      },
+      {
+        "question": "Which singer is known for her 5-octave vocal range and 'whistle register'?",
+        "options": [
+          "Whitney Houston",
+          "Mariah Carey",
+          "Ariana Grande",
+          "Celine Dion"
+        ],
+        "correctAnswer": "Mariah Carey",
+        "difficulty": "Medium",
+        "id": "b2c3b691-6198-41f3-938b-91c909b89ee7"
+      },
+      {
+        "question": "What was the name of the girl group Beyonc\u00e9 was in before her solo career?",
+        "options": [
+          "Destiny's Child",
+          "The Supremes",
+          "TLC",
+          "En Vogue"
+        ],
+        "correctAnswer": "Destiny's Child",
+        "difficulty": "Medium",
+        "id": "70d1817a-1747-430b-9b9f-b08166444a66"
+      },
+      {
+        "question": "Which artist released the album 'Folklore' in 2020?",
+        "options": [
+          "Adele",
+          "Taylor Swift",
+          "Lorde",
+          "Phoebe Bridgers"
+        ],
+        "correctAnswer": "Taylor Swift",
+        "difficulty": "Medium",
+        "id": "7460ea84-81eb-447f-a727-bf2f18cfc244"
+      },
+      {
+        "question": "Who is the lead singer of the band Maroon 5?",
+        "options": [
+          "Adam Levine",
+          "Ryan Tedder",
+          "John Mayer",
+          "Bruno Mars"
+        ],
+        "correctAnswer": "Adam Levine",
+        "difficulty": "Medium",
+        "id": "68211a27-03b3-4ca1-b201-a1516ab61410"
+      },
+      {
+        "question": "Which iconic lead singer was also known as 'Macca'?",
+        "options": [
+          "Mick Jagger",
+          "Paul McCartney",
+          "David Bowie",
+          "Elton John"
+        ],
+        "correctAnswer": "Paul McCartney",
+        "difficulty": "Medium",
+        "id": "1bccfdb5-4866-4f31-b9cd-f572bf99b833"
+      },
+      {
+        "question": "In what city was hip hop born?",
+        "options": [
+          "Brooklyn",
+          "The Bronx",
+          "Harlem",
+          "Queens"
+        ],
+        "correctAnswer": "The Bronx",
+        "difficulty": "Medium",
+        "id": "46573ce1-6e1e-4c12-b6f5-30f26317cde8"
+      },
+      {
+        "question": "Which pop star is often called the 'Princess of Pop'?",
+        "options": [
+          "Britney Spears",
+          "Christina Aguilera",
+          "Katy Perry",
+          "Ariana Grande"
+        ],
+        "correctAnswer": "Britney Spears",
+        "difficulty": "Medium",
+        "id": "fc8b2029-7190-4582-aeff-5c33eb549205"
+      },
+      {
+        "question": "Who sang the theme song for the 2012 Bond film 'Skyfall'?",
+        "options": [
+          "Adele",
+          "Sam Smith",
+          "Billie Eilish",
+          "Alicia Keys"
+        ],
+        "correctAnswer": "Adele",
+        "difficulty": "Medium",
+        "id": "d697c50d-0399-440f-b626-6aa0566b0a45"
+      },
+      {
+        "question": "Which band's lineup included Freddie Mercury, Brian May, Roger Taylor, and John Deacon?",
+        "options": [
+          "Queen",
+          "Led Zeppelin",
+          "The Who",
+          "Genesis"
+        ],
+        "correctAnswer": "Queen",
+        "difficulty": "Medium",
+        "id": "1d3a377f-05b4-44d0-8fe0-9934ba970e1b"
+      },
+      {
+        "question": "What is the stage name of the rapper Onika Tanya Maraj-Petty?",
+        "options": [
+          "Cardi B",
+          "Nicki Minaj",
+          "Megan Thee Stallion",
+          "Doja Cat"
+        ],
+        "correctAnswer": "Nicki Minaj",
+        "difficulty": "Medium",
+        "id": "27eddc67-a4a9-488a-a551-6febfa6b550f"
+      },
+      {
+        "question": "Which legendary singer starred in the move 'Jailhouse Rock'?",
+        "options": [
+          "Elvis Presley",
+          "Johnny Cash",
+          "Frank Sinatra",
+          "Jerry Lee Lewis"
+        ],
+        "correctAnswer": "Elvis Presley",
+        "difficulty": "Medium",
+        "id": "f3c4fe71-a67f-41dd-b5ff-adcefe596657"
+      },
+      {
+        "question": "What is the title of the first commercial rap single ever released (1979)?",
+        "options": [
+          "Rapper's Delight",
+          "King Tim III",
+          "The Message",
+          "Planet Rock"
+        ],
+        "correctAnswer": "King Tim III",
+        "difficulty": "Hard",
+        "id": "a029ef5e-c1c3-4de0-8862-deea88863832"
+      },
+      {
+        "question": "Which composer's 'Rite of Spring' caused a riot at its 1913 premiere?",
+        "options": [
+          "Stravinsky",
+          "Shoenberg",
+          "Puccini",
+          "Debussy"
+        ],
+        "correctAnswer": "Stravinsky",
+        "difficulty": "Hard",
+        "id": "4fea3d9e-fa8a-4918-b0f4-04a571a9c8a4"
+      },
+      {
+        "question": "In what year was the first Woodstock festival held?",
+        "options": [
+          "1967",
+          "1968",
+          "1969",
+          "1970"
+        ],
+        "correctAnswer": "1969",
+        "difficulty": "Hard",
+        "id": "1f560fd0-7336-4c3b-84a9-c92a5818161a"
+      },
+      {
+        "question": "Which artist is the only one to have a #1 hit in the 1960s, 70s, 80s, and 90s?",
+        "options": [
+          "Cher",
+          "Madonna",
+          "Elton John",
+          "Michael Jackson"
+        ],
+        "correctAnswer": "Cher",
+        "difficulty": "Hard",
+        "id": "6fa51fce-db2f-4274-9fda-4260a01fb58b"
+      },
+      {
+        "question": "What was the name of the record label founded by Berry Gordy Jr. in 1959?",
+        "options": [
+          "Motown",
+          "Stax",
+          "Atlantic",
+          "Chess"
+        ],
+        "correctAnswer": "Motown",
+        "difficulty": "Hard",
+        "id": "a3471fd1-f5ba-494f-99a0-e8db7a907736"
+      },
+      {
+        "question": "Which famous guitarist died the same day as Janis Joplin (wait, no)? Which guitarist was known as 'Slowhand'?",
+        "options": [
+          "Jimi Hendrix",
+          "Eric Clapton",
+          "Jimmy Page",
+          "Jeff Beck"
+        ],
+        "correctAnswer": "Eric Clapton",
+        "difficulty": "Hard",
+        "id": "66933a12-7586-457e-9852-ce2c9b44ec06"
+      },
+      {
+        "question": "In the song 'American Pie', who is the 'jester' rumored to be?",
+        "options": [
+          "Elvis",
+          "Bob Dylan",
+          "Mick Jagger",
+          "Michael Jackson"
+        ],
+        "correctAnswer": "Bob Dylan",
+        "difficulty": "Hard",
+        "id": "1c3458a9-fd3f-4c4b-9128-542f21e4fd89"
+      },
+      {
+        "question": "Who was the first female artist to reach #1 on the Billboard 200 with an album (1961)?",
+        "options": [
+          "Judy Garland",
+          "Patsy Cline",
+          "Ella Fitzgerald",
+          "Aretha Franklin"
+        ],
+        "correctAnswer": "Judy Garland",
+        "difficulty": "Hard",
+        "id": "82ffb399-12fd-45cc-b615-d59f0db4a9f6"
+      },
+      {
+        "question": "What was the real name of the rapper The Notorious B.I.G.?",
+        "options": [
+          "Christopher Wallace",
+          "Tupac Shakur",
+          "Sean Combs",
+          "Andre Young"
+        ],
+        "correctAnswer": "Christopher Wallace",
+        "difficulty": "Hard",
+        "id": "d642c3b7-bd6c-415e-abac-33639da77ec9"
+      },
+      {
+        "question": "Which classical era composer wrote the 'Jupiter Symphony'?",
+        "options": [
+          "Mozart",
+          "Haydn",
+          "Beethoven",
+          "Gluck"
+        ],
+        "correctAnswer": "Mozart",
+        "difficulty": "Hard",
+        "id": "5367ec5e-3c3a-4cad-b30a-87d0ac28e556"
+      },
+      {
+        "question": "In what city was the grunge movement of the early 90s centered?",
+        "options": [
+          "Portland",
+          "Seattle",
+          "San Francisco",
+          "Olympia"
+        ],
+        "correctAnswer": "Seattle",
+        "difficulty": "Hard",
+        "id": "a573d930-17a9-4a8a-9c68-4e4e55acdfb5"
+      },
+      {
+        "question": "Which album spent the most weeks (741) on the Billboard 200 chart?",
+        "options": [
+          "Dark Side of the Moon",
+          "The Wall",
+          "Rumours",
+          "Back in Black"
+        ],
+        "correctAnswer": "Dark Side of the Moon",
+        "difficulty": "Hard",
+        "id": "79d74720-6880-40e0-b36b-860d9ded037a"
+      },
+      {
+        "question": "Who is the only person to be inducted into the Rock and Roll Hall of Fame three times?",
+        "options": [
+          "Paul McCartney",
+          "Eric Clapton",
+          "John Lennon",
+          "Mick Jagger"
+        ],
+        "correctAnswer": "Eric Clapton",
+        "difficulty": "Hard",
+        "id": "de03b63c-4617-42ee-b423-7a804b587e63"
+      },
+      {
+        "question": "Which singer had a hit with 'Hallelujah', originally written by Leonard Cohen?",
+        "options": [
+          "Jeff Buckley",
+          "Rufus Wainwright",
+          "Alexandra Burke",
+          "k.d. lang"
+        ],
+        "correctAnswer": "Jeff Buckley",
+        "difficulty": "Hard",
+        "id": "df454071-82d4-4fe2-8d82-95efa4be80c8"
+      },
+      {
+        "question": "What is the name of the tool used by a conductor to keep time?",
+        "options": [
+          "Wand",
+          "Stick",
+          "Baton",
+          "Rod"
+        ],
+        "correctAnswer": "Baton",
+        "difficulty": "Hard",
+        "id": "354ddee6-0884-4887-a300-0b10c47f85fb"
+      },
+      {
+        "question": "In complex music theory, what note is the enharmonic equivalent of F-sharp?",
+        "options": [
+          "G-flat",
+          "E-sharp",
+          "G-sharp",
+          "E-flat"
+        ],
+        "correctAnswer": "G-flat",
+        "difficulty": "Hard",
+        "id": "257c3df0-a697-4698-a971-d102abef046a"
+      },
+      {
+        "question": "Who was the first woman to win the Album of the Year Grammy twice as a lead artist?",
+        "options": [
+          "Taylor Swift",
+          "Adele",
+          "Alison Krauss",
+          "Stevie Nicks"
+        ],
+        "correctAnswer": "Taylor Swift",
+        "difficulty": "Hard",
+        "id": "b07621b1-1ec3-4038-acb6-a191a03e2435"
+      },
+      {
+        "question": "What is the name of the debut album by Guns N' Roses?",
+        "options": [
+          "Appetite for Destruction",
+          "Use Your Illusion I",
+          "GNR Lies",
+          "Chinese Democracy"
+        ],
+        "correctAnswer": "Appetite for Destruction",
+        "difficulty": "Hard",
+        "id": "74060def-c845-4f53-882b-94029afe361b"
+      },
+      {
+        "question": "Which artist holds the record for the most Billboard Hot 100 entries of all time?",
+        "options": [
+          "Drake",
+          "The Beatles",
+          "Elvis",
+          "Taylor Swift"
+        ],
+        "correctAnswer": "Drake",
+        "difficulty": "Hard",
+        "id": "48412ed2-43b8-47af-ad1d-40a3f4f4bb21"
+      },
+      {
+        "question": "Who is the lead singer of the band Muse?",
+        "options": [
+          "Matt Bellamy",
+          "Chris Wolstenholme",
+          "Dominic Howard",
+          "Matt Helders"
+        ],
+        "correctAnswer": "Matt Bellamy",
+        "difficulty": "Hard",
+        "id": "b22aec0c-104a-431c-9085-e5cc8b258a6d"
+      },
+      {
+        "question": "Which member of the Beatles was the first to release a solo album?",
+        "options": [
+          "George Harrison",
+          "John Lennon",
+          "Paul McCartney",
+          "Ringo Starr"
+        ],
+        "correctAnswer": "George Harrison",
+        "difficulty": "Hard",
+        "id": "9884d39e-bfaf-460b-ad58-c13cfcb8eb17"
+      },
+      {
+        "question": "What was the name of the band fronted by Dave Grohl before Foo Fighters?",
+        "options": [
+          "Nirvana",
+          "Scream",
+          "QOTSA",
+          "No, he was in Nirvana, but Foo Fighters was the first one he fronted"
+        ],
+        "correctAnswer": "No, he was in Nirvana, but Foo Fighters was the first one he fronted",
+        "difficulty": "Hard",
+        "id": "4e385198-1c0b-42c2-96b3-4cb378d43c53"
+      },
+      {
+        "question": "Who wrote the opera 'The Marriage of Figaro'?",
+        "options": [
+          "Mozart",
+          "Verdi",
+          "Wagner",
+          "Rossini"
+        ],
+        "correctAnswer": "Mozart",
+        "difficulty": "Hard",
+        "id": "f1707501-b5d3-4359-8a5c-65703efdb107"
+      },
+      {
+        "question": "Which electronic instrument was used in the Beach Boys' 'Good Vibrations'?",
+        "options": [
+          "Theremin",
+          "Tannerin",
+          "Moog",
+          "Mellotron"
+        ],
+        "correctAnswer": "Tannerin",
+        "difficulty": "Hard",
+        "id": "3d8b3727-a211-4dfd-b27f-c6c18138fb54"
+      },
+      {
+        "question": "Which artist's legal name is Richard Melville Hall?",
+        "options": [
+          "Moby",
+          "Skrillex",
+          "Deadmau5",
+          "Brian Eno"
+        ],
+        "correctAnswer": "Moby",
+        "difficulty": "Hard",
+        "id": "1b45d96e-896d-452f-902b-7b11de8cc0a3"
+      },
+      {
+        "question": "In what year did the King of Pop, Michael Jackson, pass away?",
+        "options": [
+          "2007",
+          "2008",
+          "2009",
+          "2010"
+        ],
+        "correctAnswer": "2009",
+        "difficulty": "Hard",
+        "id": "296623f3-3926-4e8d-be5d-6f3dd963d446"
+      },
+      {
+        "question": "Which R&B singer's career was the focus of the 2018 documentary 'Whitney'?",
+        "options": [
+          "Whitney Houston",
+          "Mary J. Blige",
+          "Faith Evans",
+          "Toni Braxton"
+        ],
+        "correctAnswer": "Whitney Houston",
+        "difficulty": "Hard",
+        "id": "308fc47a-2cdb-4e51-8852-ddd2ddac16a2"
+      },
+      {
+        "question": "Who is the lead singer of the band Paramore?",
+        "options": [
+          "Hayley Williams",
+          "Amy Lee",
+          "Avril Lavigne",
+          "Gwen Stefani"
+        ],
+        "correctAnswer": "Hayley Williams",
+        "difficulty": "Hard",
+        "id": "caa7a219-522e-4459-908a-49d2b1edb377"
+      },
+      {
+        "question": "What was the name of the sub-category for 'Best Hard Rock/Metal Performance' that Jethro Tull famously won against Metallica (1989)?",
+        "options": [
+          "Grammy",
+          "Oscar",
+          "Brit",
+          "Mercury"
+        ],
+        "correctAnswer": "Grammy",
+        "difficulty": "Hard",
+        "id": "4fff2b13-94b8-4e81-9a11-3a0b1801e6c5"
+      },
+      {
+        "question": "Which jazz pioneer recorded the album 'Kind of Blue'?",
+        "options": [
+          "Miles Davis",
+          "John Coltrane",
+          "Bill Evans",
+          "Thelonious Monk"
+        ],
+        "correctAnswer": "Miles Davis",
+        "difficulty": "Hard",
+        "id": "d1eb2949-1f49-4eac-8964-f79cd46407d0"
+      },
+      {
+        "question": "What is the interval between two C notes on a piano called?",
+        "options": [
+          "Fifth",
+          "Octave",
+          "Third",
+          "Seventh"
+        ],
+        "correctAnswer": "Octave",
+        "difficulty": "Hard",
+        "id": "469d1a19-09ef-4083-b059-7b31d11da4a3"
+      },
+      {
+        "question": "Who directed the 1983 music video for 'Thriller'?",
+        "options": [
+          "John Landis",
+          "Steven Spielberg",
+          "Martin Scorsese",
+          "Spike Jonze"
+        ],
+        "correctAnswer": "John Landis",
+        "difficulty": "Hard",
+        "id": "57176cd1-7091-4ae2-b2e0-1e7b3515170a"
+      },
+      {
+        "question": "Which artist is known as the 'Godfather of Soul'?",
+        "options": [
+          "James Brown",
+          "Ray Charles",
+          "Sam Cooke",
+          "Otis Redding"
+        ],
+        "correctAnswer": "James Brown",
+        "difficulty": "Hard",
+        "id": "0a0256a5-d9cf-440a-840a-c8dfda653217"
+      },
+      {
+        "question": "What was the name of the band fronted by Gwen Stefani before her solo career?",
+        "options": [
+          "No Doubt",
+          "Garbage",
+          "Hole",
+          "Veruca Salt"
+        ],
+        "correctAnswer": "No Doubt",
+        "difficulty": "Hard",
+        "id": "55d23bb8-73a9-492c-b011-de09593e91ff"
+      },
+      {
+        "question": "Which composer is often called the 'King of Ragtime'?",
+        "options": [
+          "Scott Joplin",
+          "George Gershwin",
+          "Duke Ellington",
+          "Jelly Roll Morton"
+        ],
+        "correctAnswer": "Scott Joplin",
+        "difficulty": "Hard",
+        "id": "4ad5f887-1b7c-4c62-afed-fcb5da8e583e"
+      },
+      {
+        "question": "In what country did the Eurovision Song Contest start?",
+        "options": [
+          "France",
+          "Switzerland",
+          "UK",
+          "Germany"
+        ],
+        "correctAnswer": "Switzerland",
+        "difficulty": "Hard",
+        "id": "241a22d9-9dbf-46d2-8e28-a301bcc9a90c"
+      },
+      {
+        "question": "Who was the bass player for the band Sex Pistols after Glen Matlock?",
+        "options": [
+          "Sid Vicious",
+          "John Lydon",
+          "Steve Jones",
+          "Paul Cook"
+        ],
+        "correctAnswer": "Sid Vicious",
+        "difficulty": "Hard",
+        "id": "833b41b6-3f94-4d01-a99a-9a676591e684"
+      },
+      {
+        "question": "What is the name of the largest pipe organ in the world by size?",
+        "options": [
+          "Boardwalk Hall Auditorium Organ",
+          "Wanamaker Organ",
+          "Sydney Opera House Organ",
+          "The Great Organ of St. Sulpice"
+        ],
+        "correctAnswer": "Boardwalk Hall Auditorium Organ",
+        "difficulty": "Hard",
+        "id": "408be552-d1d6-4860-b62f-e4180a0e8bf9"
+      },
+      {
+        "question": "Which singer-songwriter's 2016 Nobel Prize in Literature was a landmark event?",
+        "options": [
+          "Bob Dylan",
+          "Leonard Cohen",
+          "Joni Mitchell",
+          "Neil Young"
+        ],
+        "correctAnswer": "Bob Dylan",
+        "difficulty": "Hard",
+        "id": "4fa9045a-762e-4ba1-9605-1cbe045c6702"
+      },
+      {
+        "question": "What is the name of the lead singer of the band Led Zeppelin?",
+        "options": [
+          "Robert Plant",
+          "Jimmy Page",
+          "John Paul Jones",
+          "John Bonham"
+        ],
+        "correctAnswer": "Robert Plant",
+        "difficulty": "Hard",
+        "id": "3e6dddee-be40-4361-be55-73640aaab3d7"
+      },
+      {
+        "question": "Which composer wrote 'The Four Seasons'?",
+        "options": [
+          "Vivaldi",
+          "Handel",
+          "Bach",
+          "Mozart"
+        ],
+        "correctAnswer": "Vivaldi",
+        "difficulty": "Hard",
+        "id": "df89b0a5-b2f9-4cca-87f4-664f19124e5c"
+      },
+      {
+        "question": "Who was the first hip-hop artist to win a Pulitzer Prize for Music (2018)?",
+        "options": [
+          "Kendrick Lamar",
+          "Jay-Z",
+          "Eminem",
+          "Kanye West"
+        ],
+        "correctAnswer": "Kendrick Lamar",
+        "difficulty": "Hard",
+        "id": "ceed8cc2-c742-4b0c-82c1-3e3cdb536ad3"
+      },
+      {
+        "question": "What is the name of the jazz trumpet player known for his 'bent' trumpet and puffed cheeks?",
+        "options": [
+          "Louis Armstrong",
+          "Dizzy Gillespie",
+          "Chet Baker",
+          "Wynton Marsalis"
+        ],
+        "correctAnswer": "Dizzy Gillespie",
+        "difficulty": "Hard",
+        "id": "feb39e4e-2066-4b1c-a9dd-b3f23dc762c4"
+      },
+      {
+        "question": "Which Fleetwood Mac album was released in 1977 and sold over 40 million copies?",
+        "options": [
+          "Fleetwood Mac",
+          "Rumours",
+          "Tusk",
+          "Mirage"
+        ],
+        "correctAnswer": "Rumours",
+        "difficulty": "Hard",
+        "id": "be7b32ca-d09d-46f9-8961-85f71941326b"
+      },
+      {
+        "question": "What was the stage name of the singer Richard Wayne Penniman?",
+        "options": [
+          "Little Richard",
+          "Chuck Berry",
+          "Fats Domino",
+          "James Brown"
+        ],
+        "correctAnswer": "Little Richard",
+        "difficulty": "Hard",
+        "id": "d519ddcf-0e78-4a30-843a-12a0adadefa6"
+      },
+      {
+        "question": "Who is the lead singer of the band Pearl Jam?",
+        "options": [
+          "Eddie Vedder",
+          "Chris Cornell",
+          "Scott Weiland",
+          "Layne Staley"
+        ],
+        "correctAnswer": "Eddie Vedder",
+        "difficulty": "Hard",
+        "id": "125e0058-a84a-4410-ae7a-209b0f22468d"
+      },
+      {
+        "question": "In what year was the iPod first released by Apple?",
+        "options": [
+          "1999",
+          "2000",
+          "2001",
+          "2002"
+        ],
+        "correctAnswer": "2001",
+        "difficulty": "Hard",
+        "id": "d7cebc89-f588-4fc0-9534-697a0c24126d"
+      },
+      {
+        "question": "Which artist's fans are known as 'Swifties'?",
+        "options": [
+          "Adele",
+          "Taylor Swift",
+          "Katy Perry",
+          "Rihanna"
+        ],
+        "correctAnswer": "Taylor Swift",
+        "difficulty": "Hard",
+        "id": "339878b4-9fe7-4b17-886b-c101f9c38b50"
+      },
+      {
+        "question": "What was the name of the record label founded by Jay-Z and Damon Dash?",
+        "options": [
+          "Roc-A-Fella",
+          "Ruff Ryders",
+          "Bad Boy",
+          "Def Jam"
+        ],
+        "correctAnswer": "Roc-A-Fella",
+        "difficulty": "Hard",
+        "id": "f742060e-666a-49e3-9a63-540cee25e5ff"
+      },
+      {
+        "question": "Who was the only member of ZZ Top without a beard (until recently)?",
+        "options": [
+          "Frank Beard",
+          "Billy Gibbons",
+          "Dusty Hill",
+          "Actually, all had beards"
+        ],
+        "correctAnswer": "Frank Beard",
+        "difficulty": "Hard",
+        "id": "d120b589-dcaf-4f92-bfc9-ec93b5647c1b"
       }
     ]
   }

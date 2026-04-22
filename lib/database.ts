@@ -393,3 +393,11 @@ export async function applyContentUpdate(): Promise<{ newCategories: number; new
 
   return { newCategories: newCategoriesCount, newQuestions: newQuestionsCount };
 }
+
+export async function getContentVersion(): Promise<number> {
+  const db = await SQLite.openDatabaseAsync(DATABASE_NAME);
+  const result = await db.getFirstAsync<{ value: string }>(
+    "SELECT value FROM app_metadata WHERE key = 'content_version'"
+  );
+  return result ? parseInt(result.value) : 0;
+}
