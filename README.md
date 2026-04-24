@@ -56,3 +56,4 @@ Tasks
    - images
    - number entry
 - verify backup process for all data
+- investigate local-first libraries for data storage and sync

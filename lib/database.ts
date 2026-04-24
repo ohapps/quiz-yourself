@@ -11,6 +11,53 @@ export async function initializeDatabase() {
   // Enable foreign keys
   await db.execAsync('PRAGMA foreign_keys = ON;');
 
+  // 1. Create Tables First (if they don't exist)
+  await db.execAsync(`
+    CREATE TABLE IF NOT EXISTS categories (
+      id TEXT PRIMARY KEY NOT NULL,
+      name TEXT NOT NULL,
+      parent_id TEXT,
+      is_official INTEGER DEFAULT 0,
+      user_modified INTEGER DEFAULT 0,
+      FOREIGN KEY (parent_id) REFERENCES categories (id) ON DELETE CASCADE
+    );
+  `);
+
+  await db.execAsync(`
+    CREATE TABLE IF NOT EXISTS questions (
+      id TEXT PRIMARY KEY NOT NULL,
+      category_id TEXT NOT NULL,
+      question TEXT NOT NULL,
+      options TEXT NOT NULL, -- JSON string
+      correctAnswer TEXT NOT NULL,
+      difficulty TEXT NOT NULL,
+      shown_count INTEGER DEFAULT 0,
+      is_official INTEGER DEFAULT 0,
+      user_modified INTEGER DEFAULT 0,
+      FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE CASCADE
+    );
+  `);
+
+  await db.execAsync(`
+    CREATE TABLE IF NOT EXISTS quiz_history (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      date TEXT NOT NULL,
+      mode TEXT NOT NULL,
+      category_id TEXT NOT NULL,
+      difficulty TEXT NOT NULL,
+      player_count INTEGER NOT NULL,
+      score_data TEXT NOT NULL -- JSON string of player scores
+    );
+  `);
+
+  await db.execAsync(`
+    CREATE TABLE IF NOT EXISTS app_metadata (
+      key TEXT PRIMARY KEY NOT NULL,
+      value TEXT NOT NULL
+    );
+  `);
+
+  // 2. Run Migrations for existing users (adding columns that might be missing)
   // Migration: Add parent_id to categories if it doesn't exist
   try {
     const tableInfo = await db.getAllAsync<{ name: string }>('PRAGMA table_info(categories)');
@@ -19,7 +66,7 @@ export async function initializeDatabase() {
       await db.execAsync('ALTER TABLE categories ADD COLUMN parent_id TEXT;');
     }
   } catch (e) {
-    console.warn('Migration failed or table not yet created', e);
+    console.warn('Migration failed for parent_id', e);
   }
 
   // Migration: Add shown_count to questions if it doesn't exist
@@ -30,7 +77,7 @@ export async function initializeDatabase() {
       await db.execAsync('ALTER TABLE questions ADD COLUMN shown_count INTEGER DEFAULT 0;');
     }
   } catch (e) {
-    console.warn('Migration failed or table not yet created', e);
+    console.warn('Migration failed for shown_count', e);
   }
 
   // Migration: Add is_official and user_modified
@@ -51,53 +98,8 @@ export async function initializeDatabase() {
       await db.execAsync('ALTER TABLE questions ADD COLUMN user_modified INTEGER DEFAULT 0;');
     }
   } catch (e) {
-    console.warn('Migration failed for new columns', e);
+    console.warn('Migration failed for official/modified columns', e);
   }
-
-  // Create Categories table
-  await db.execAsync(`
-    CREATE TABLE IF NOT EXISTS categories (
-      id TEXT PRIMARY KEY NOT NULL,
-      name TEXT NOT NULL,
-      parent_id TEXT,
-      FOREIGN KEY (parent_id) REFERENCES categories (id) ON DELETE CASCADE
-    );
-  `);
-
-  // Create Questions table
-  await db.execAsync(`
-    CREATE TABLE IF NOT EXISTS questions (
-      id TEXT PRIMARY KEY NOT NULL,
-      category_id TEXT NOT NULL,
-      question TEXT NOT NULL,
-      options TEXT NOT NULL, -- JSON string
-      correctAnswer TEXT NOT NULL,
-      difficulty TEXT NOT NULL,
-      shown_count INTEGER DEFAULT 0,
-      FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE CASCADE
-    );
-  `);
-
-  // Create Quiz History table
-  await db.execAsync(`
-    CREATE TABLE IF NOT EXISTS quiz_history (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      date TEXT NOT NULL,
-      mode TEXT NOT NULL,
-      category_id TEXT NOT NULL,
-      difficulty TEXT NOT NULL,
-      player_count INTEGER NOT NULL,
-      score_data TEXT NOT NULL -- JSON string of player scores
-    );
-  `);
-
-  // Create App Metadata table
-  await db.execAsync(`
-    CREATE TABLE IF NOT EXISTS app_metadata (
-      key TEXT PRIMARY KEY NOT NULL,
-      value TEXT NOT NULL
-    );
-  `);
 
   // Seed data if empty
   const categoryCount = await db.getFirstAsync<{ count: number }>('SELECT COUNT(*) as count FROM categories');
