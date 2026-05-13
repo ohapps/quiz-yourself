@@ -52,6 +52,8 @@ Join our community of developers creating universal apps.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
 
 Tasks
+- fix issue with entering names on setup screen
+- use remote server for data
 - add new question types
    - images
    - number entry
