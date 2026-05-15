@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert, ActivityIndicator } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
 import { resetDatabase, getContentVersion } from '../lib/database';
+import { checkForUpdates } from '../lib/sync';
 
 export default function ManageContentMenu() {
   const router = useRouter();
   const [version, setVersion] = useState<number | null>(null);
+  const [isSyncing, setIsSyncing] = useState(false);
 
   useEffect(() => {
     getContentVersion().then(setVersion);
@@ -25,6 +27,26 @@ export default function ManageContentMenu() {
         }}
       ]
     );
+  };
+
+  const handleSync = async () => {
+    setIsSyncing(true);
+    try {
+      const result = await checkForUpdates();
+      if (result.updated) {
+        Alert.alert('Success', `Synced successfully. Added ${result.newCategories} categories and ${result.newQuestions} questions.`);
+        const v = await getContentVersion();
+        setVersion(v);
+      } else if (result.error) {
+        Alert.alert('Error', result.error);
+      } else {
+        Alert.alert('Up to date', 'You already have the latest content.');
+      }
+    } catch (error: any) {
+      Alert.alert('Error', error.message || 'Failed to sync content.');
+    } finally {
+      setIsSyncing(false);
+    }
   };
 
   return (
@@ -52,6 +74,22 @@ export default function ManageContentMenu() {
             <Text style={styles.menuSubtitle}>Browse and manage all your trivia questions</Text>
           </View>
           <Text style={styles.arrow}>›</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity 
+          style={styles.menuItem} 
+          onPress={handleSync}
+          disabled={isSyncing}
+        >
+          <View style={styles.menuContent}>
+            <Text style={styles.menuTitle}>Sync Content</Text>
+            <Text style={styles.menuSubtitle}>Download latest questions from the cloud</Text>
+          </View>
+          {isSyncing ? (
+            <ActivityIndicator size="small" color="#B2BEC3" style={{ marginLeft: 10 }} />
+          ) : (
+            <Text style={styles.arrow}>›</Text>
+          )}
         </TouchableOpacity>
 
         <View style={styles.divider} />

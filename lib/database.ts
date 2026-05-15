@@ -1,6 +1,5 @@
 import * as SQLite from 'expo-sqlite';
 import * as Crypto from 'expo-crypto';
-import { CATEGORIES, CONTENT_VERSION } from '../constants/data';
 import { Category, Question, Difficulty } from '../types/quiz';
 
 const DATABASE_NAME = 'quiz_yourself.db';
@@ -57,30 +56,25 @@ export async function initializeDatabase() {
     );
   `);
 
-  // 2. Run Migrations for existing users (adding columns that might be missing)
-  // Migration: Add parent_id to categories if it doesn't exist
+  // 2. Run Migrations for existing users
   try {
     const tableInfo = await db.getAllAsync<{ name: string }>('PRAGMA table_info(categories)');
-    const hasParentId = tableInfo.some(col => col.name === 'parent_id');
-    if (!hasParentId) {
+    if (!tableInfo.some(col => col.name === 'parent_id')) {
       await db.execAsync('ALTER TABLE categories ADD COLUMN parent_id TEXT;');
     }
   } catch (e) {
     console.warn('Migration failed for parent_id', e);
   }
 
-  // Migration: Add shown_count to questions if it doesn't exist
   try {
     const tableInfo = await db.getAllAsync<{ name: string }>('PRAGMA table_info(questions)');
-    const hasShownCount = tableInfo.some(col => col.name === 'shown_count');
-    if (!hasShownCount) {
+    if (!tableInfo.some(col => col.name === 'shown_count')) {
       await db.execAsync('ALTER TABLE questions ADD COLUMN shown_count INTEGER DEFAULT 0;');
     }
   } catch (e) {
     console.warn('Migration failed for shown_count', e);
   }
 
-  // Migration: Add is_official and user_modified
   try {
     const catInfo = await db.getAllAsync<{ name: string }>('PRAGMA table_info(categories)');
     if (!catInfo.some(col => col.name === 'is_official')) {
@@ -99,25 +93,6 @@ export async function initializeDatabase() {
     }
   } catch (e) {
     console.warn('Migration failed for official/modified columns', e);
-  }
-
-  // Seed data if empty
-  const categoryCount = await db.getFirstAsync<{ count: number }>('SELECT COUNT(*) as count FROM categories');
-  
-  if (categoryCount?.count === 0) {
-    console.log('Seeding initial data...');
-    for (const cat of CATEGORIES) {
-      await db.runAsync('INSERT INTO categories (id, name, is_official) VALUES (?, ?, ?)', [cat.id, cat.name, 1]);
-      for (const q of cat.questions) {
-        await db.runAsync(
-          'INSERT INTO questions (id, category_id, question, options, correctAnswer, difficulty, is_official) VALUES (?, ?, ?, ?, ?, ?, ?)',
-          [q.id, cat.id, q.question, JSON.stringify(q.options), q.correctAnswer, q.difficulty, 1]
-        );
-      }
-    }
-    // Set initial version
-    await db.runAsync('INSERT OR REPLACE INTO app_metadata (key, value) VALUES (?, ?)', ['content_version', String(CONTENT_VERSION)]);
-    console.log('Seeding complete.');
   }
 
   return db;
@@ -308,7 +283,7 @@ export async function markQuestionsAsShown(ids: string[]) {
   );
 }
 
-export async function applyContentUpdate(): Promise<{ newCategories: number; newQuestions: number }> {
+export async function applyContentUpdate(providedCategories: Category[], providedVersion: number): Promise<{ newCategories: number; newQuestions: number }> {
   const db = await SQLite.openDatabaseAsync(DATABASE_NAME);
 
   // Check current applied version
@@ -317,14 +292,14 @@ export async function applyContentUpdate(): Promise<{ newCategories: number; new
   );
   const appliedVersion = meta ? parseInt(meta.value) : 0;
 
-  if (appliedVersion >= CONTENT_VERSION) {
+  if (appliedVersion >= providedVersion) {
     return { newCategories: 0, newQuestions: 0 };
   }
 
   let newCategoriesCount = 0;
   let newQuestionsCount = 0;
 
-  for (const cat of CATEGORIES) {
+  for (const cat of providedCategories) {
     // 1. Check/Upsert category
     const existingCat = await db.getFirstAsync<{ user_modified: number }>(
       'SELECT user_modified FROM categories WHERE id = ?', [cat.id]
@@ -364,33 +339,28 @@ export async function applyContentUpdate(): Promise<{ newCategories: number; new
     }
   }
 
-  // 3. Prune official content that is no longer in the bundle
-  // (Only if the user hasn't modified it)
-  const allBundledCatIds = CATEGORIES.map(c => c.id);
-  const allBundledQuestionIds = CATEGORIES.flatMap(c => c.questions.map(q => q.id));
+  // 3. Prune official content that is no longer in the set
+  const allIdsCat = providedCategories.map(c => c.id);
+  const allIdsQuestion = providedCategories.flatMap(c => c.questions.map(q => q.id));
 
   const officialCats = await db.getAllAsync<{ id: string }>('SELECT id FROM categories WHERE is_official = 1 AND user_modified = 0');
   for (const cat of officialCats) {
-    if (!allBundledCatIds.includes(cat.id)) {
+    if (!allIdsCat.includes(cat.id)) {
       await db.runAsync('DELETE FROM categories WHERE id = ?', [cat.id]);
     }
   }
 
   const officialQs = await db.getAllAsync<{ id: string }>('SELECT id FROM questions WHERE is_official = 1 AND user_modified = 0');
   for (const q of officialQs) {
-    if (!allBundledQuestionIds.includes(q.id)) {
+    if (!allIdsQuestion.includes(q.id)) {
       await db.runAsync('DELETE FROM questions WHERE id = ?', [q.id]);
     }
   }
 
-  // Backfill is_official for older data if it's the first time migration runs
-  await db.runAsync("UPDATE categories SET is_official = 1 WHERE id IN (SELECT id FROM categories WHERE is_official = 0 AND parent_id IS NULL)");
-  await db.runAsync("UPDATE questions SET is_official = 1 WHERE id IN (SELECT id FROM questions WHERE is_official = 0)");
-
   // Update version
   await db.runAsync(
     "INSERT OR REPLACE INTO app_metadata (key, value) VALUES (?, ?)",
-    ['content_version', String(CONTENT_VERSION)]
+    ['content_version', String(providedVersion)]
   );
 
   return { newCategories: newCategoriesCount, newQuestions: newQuestionsCount };
