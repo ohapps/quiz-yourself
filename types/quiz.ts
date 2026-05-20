@@ -7,6 +7,7 @@ export interface Question {
   correctAnswer: string;
   difficulty: Difficulty;
   shownCount?: number;
+  imageUrl?: string;
 }
 
 export interface Category {

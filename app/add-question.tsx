@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput, Alert, ActivityIndicator } from 'react-native';
 import { Stack, useRouter, useLocalSearchParams } from 'expo-router';
+import { Image } from 'expo-image';
 import { Dropdown } from 'react-native-element-dropdown';
 import { Category, Difficulty } from '../types/quiz';
 import { getCategories, addQuestion, updateQuestion, getQuestion } from '../lib/database';
@@ -16,6 +17,7 @@ export default function AddQuestionScreen() {
   const [selectedSubId, setSelectedSubId] = useState('');
   
   const [questionText, setQuestionText] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
   const [options, setOptions] = useState<string[]>(['', '', '', '']);
   const [correctAnswerIndex, setCorrectAnswerIndex] = useState(0);
   const [difficulty, setDifficulty] = useState<Difficulty>((paramDifficulty as Difficulty) || 'Easy');
@@ -34,6 +36,7 @@ export default function AddQuestionScreen() {
         const q = await getQuestion(id);
         if (q) {
           setQuestionText(q.question);
+          setImageUrl(q.imageUrl || '');
           setOptions(q.options);
           setDifficulty(q.difficulty);
           const correctIdx = q.options.indexOf(q.correctAnswer);
@@ -98,12 +101,17 @@ export default function AddQuestionScreen() {
       options,
       correctAnswer: options[correctAnswerIndex],
       difficulty,
+      imageUrl: imageUrl.trim() || undefined,
     };
 
     if (id) {
       await updateQuestion(id, questionData, finalCategoryId);
     } else {
       await addQuestion(questionData, finalCategoryId);
+    }
+
+    if (imageUrl.trim()) {
+      Image.prefetch(imageUrl.trim()).catch(e => console.warn('Saved image prefetch failed:', e));
     }
 
     router.back();
@@ -209,6 +217,18 @@ export default function AddQuestionScreen() {
             value={questionText}
             onChangeText={setQuestionText}
             multiline
+          />
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.label}>Image URL (Optional)</Text>
+          <TextInput
+            style={styles.inputSingle}
+            placeholder="Enter image URL..."
+            value={imageUrl}
+            onChangeText={setImageUrl}
+            autoCapitalize="none"
+            keyboardType="url"
           />
         </View>
 
@@ -322,6 +342,15 @@ const styles = StyleSheet.create({
     color: '#2D3436',
     minHeight: 100,
     textAlignVertical: 'top',
+  },
+  inputSingle: {
+    backgroundColor: '#FFFFFF',
+    padding: 16,
+    borderRadius: 12,
+    fontSize: 16,
+    borderWidth: 2,
+    borderColor: '#DFE6E9',
+    color: '#2D3436',
   },
   optionWrapper: {
     flexDirection: 'row',

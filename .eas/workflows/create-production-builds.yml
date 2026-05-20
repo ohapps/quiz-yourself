@@ -1,5 +1,10 @@
 name: Create Production Builds
 
+on:
+  push:
+    branches:
+      - main
+
 jobs:
   build_android:
     type: build # This job type creates a production build for Android
@@ -9,3 +14,11 @@ jobs:
     type: build # This job type creates a production build for iOS
     params:
       platform: ios
+      profile: production
+
+  submit_ios:
+    name: Submit to TestFlight
+    needs: [build_ios]
+    type: testflight
+    params:
+      build_id: ${{ needs.build_ios.outputs.build_id }}

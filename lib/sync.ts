@@ -1,5 +1,6 @@
 import { getContentVersion, applyContentUpdate } from './database';
 import { Category } from '../types/quiz';
+import { Image } from 'expo-image';
 
 const SYNC_URL = 'https://quiz-yourself-admin.ohapps.com/api/content';
 
@@ -35,6 +36,23 @@ export async function checkForUpdates(): Promise<SyncResult> {
     }
     
     const result = await applyContentUpdate(categories, newVersion);
+    
+    // Extract and prefetch all image URLs in the background for offline use
+    try {
+      const urls: string[] = [];
+      categories.forEach(cat => {
+        cat.questions.forEach(q => {
+          if (q.imageUrl) {
+            urls.push(q.imageUrl);
+          }
+        });
+      });
+      if (urls.length > 0) {
+        Image.prefetch(urls).catch(e => console.warn('Sync images prefetch failed:', e));
+      }
+    } catch (e) {
+      console.warn('Failed to extract/prefetch sync images:', e);
+    }
     
     return {
       updated: true,

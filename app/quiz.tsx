@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, StyleProp, ViewStyle, TextStyle } from 'react-native';
+import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import { useAtom } from 'jotai';
 import { quizConfigAtom, quizStateAtom } from '../store/atoms';
@@ -12,7 +13,8 @@ export default function QuizScreen() {
 
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [showResult, setShowResult] = useState(false);
-  const [showGroupOptions, setShowGroupOptions] = useState(false);
+  const [showGroupOptions, setShowGroupOptions] = useState(true);
+  const [showGroupAnswer, setShowGroupAnswer] = useState(true);
 
   // Initialize quiz state
   useEffect(() => {
@@ -93,7 +95,6 @@ export default function QuizScreen() {
       }));
       setSelectedOption(null);
       setShowResult(false);
-      setShowGroupOptions(false);
     } else {
       setState((prev) => ({ ...prev, isFinished: true }));
       router.push('/results');
@@ -103,19 +104,64 @@ export default function QuizScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.progress}>
-          Question {state.currentQuestionIndex + 1} of {state.questions.length}
-        </Text>
-        {config.mode === 'group' && (
-          <View style={styles.scoresRow}>
-            {state.playerScores.map((ps) => (
-              <Text key={ps.id} style={styles.scoreText}>{ps.name}: {ps.score}</Text>
-            ))}
+        <View style={styles.headerContent}>
+          <View style={styles.headerLeftColumn}>
+            <Text style={styles.progress}>
+              Question {state.currentQuestionIndex + 1} of {state.questions.length}
+            </Text>
+            {config.mode === 'group' && (
+              <View style={styles.scoresRow}>
+                {state.playerScores.map((ps) => (
+                  <Text key={ps.id} style={styles.scoreText}>{ps.name}: {ps.score}</Text>
+                ))}
+              </View>
+            )}
           </View>
-        )}
+
+          {config.mode === 'group' && (
+            <View style={styles.headerTogglesColumn}>
+              <TouchableOpacity 
+                style={[
+                  styles.headerToggleAnswerButton,
+                  showGroupAnswer ? styles.headerToggleAnswerButtonActive : styles.headerToggleAnswerButtonInactive
+                ]} 
+                onPress={() => setShowGroupAnswer(!showGroupAnswer)}
+              >
+                <Text style={[
+                  styles.headerToggleAnswerText,
+                  showGroupAnswer ? styles.headerToggleAnswerTextActive : styles.headerToggleAnswerTextInactive
+                ]}>
+                  {showGroupAnswer ? 'Answer: Shown' : 'Answer: Hidden'}
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity 
+                style={[
+                  styles.headerToggleAnswerButton,
+                  showGroupOptions ? styles.headerToggleAnswerButtonActive : styles.headerToggleAnswerButtonInactive
+                ]} 
+                onPress={() => setShowGroupOptions(!showGroupOptions)}
+              >
+                <Text style={[
+                  styles.headerToggleAnswerText,
+                  showGroupOptions ? styles.headerToggleAnswerTextActive : styles.headerToggleAnswerTextInactive
+                ]}>
+                  {showGroupOptions ? 'Options: Shown' : 'Options: Hidden'}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          )}
+        </View>
       </View>
 
       <ScrollView contentContainerStyle={styles.content}>
+        {currentQuestion.imageUrl && (
+          <Image 
+            source={{ uri: currentQuestion.imageUrl }} 
+            style={styles.questionImage} 
+            contentFit="contain"
+          />
+        )}
         <Text style={styles.questionText}>{currentQuestion.question}</Text>
 
         {config.mode === 'solo' ? (
@@ -153,14 +199,6 @@ export default function QuizScreen() {
           </View>
         ) : (
           <View style={styles.moderatorContainer}>
-            <TouchableOpacity 
-              style={styles.toggleOptionsButton} 
-              onPress={() => setShowGroupOptions(!showGroupOptions)}
-            >
-              <Text style={styles.toggleOptionsText}>
-                {showGroupOptions ? '− Hide Options' : '+ Show Options'}
-              </Text>
-            </TouchableOpacity>
 
             {showGroupOptions && (
               <View style={styles.groupOptionsContainer}>
@@ -173,10 +211,12 @@ export default function QuizScreen() {
               </View>
             )}
 
-            <View style={styles.answerBox}>
-              <Text style={styles.answerLabel}>Correct Answer:</Text>
-              <Text style={styles.answerText}>{currentQuestion.correctAnswer}</Text>
-            </View>
+            {showGroupAnswer && (
+              <View style={styles.answerBox}>
+                <Text style={styles.answerLabel}>Correct Answer:</Text>
+                <Text style={styles.answerText}>{currentQuestion.correctAnswer}</Text>
+              </View>
+            )}
             
             <Text style={styles.label}>Award point to:</Text>
             <View style={styles.playerButtonsGrid}>
@@ -213,9 +253,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5F7FA',
   },
   header: {
-    paddingTop: 60,
+    paddingTop: 16,
     paddingHorizontal: 24,
-    paddingBottom: 20,
+    paddingBottom: 16,
     backgroundColor: '#FFFFFF',
     borderBottomWidth: 1,
     borderBottomColor: '#DFE6E9',
@@ -226,11 +266,11 @@ const styles = StyleSheet.create({
     color: '#636E72',
     textTransform: 'uppercase',
     letterSpacing: 1,
-    marginBottom: 8,
   },
   scoresRow: {
     flexDirection: 'row',
-    gap: 16,
+    flexWrap: 'wrap',
+    gap: 12,
   },
   scoreText: {
     fontSize: 16,
@@ -304,17 +344,10 @@ const styles = StyleSheet.create({
   moderatorContainer: {
     gap: 16,
   },
-  toggleOptionsButton: {
-    alignSelf: 'flex-start',
-    backgroundColor: '#E8F0FE',
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 8,
-  },
-  toggleOptionsText: {
-    color: '#1a73e8',
-    fontSize: 14,
-    fontWeight: '700',
+  headerTogglesColumn: {
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+    gap: 6,
   },
   answerBox: {
     backgroundColor: '#E3F2FD',
@@ -357,6 +390,46 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 16,
     fontWeight: '700',
+  },
+  questionImage: {
+    width: '100%',
+    height: 220,
+    borderRadius: 16,
+    marginBottom: 20,
+    backgroundColor: '#E4E7EB',
+  },
+  headerContent: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  headerLeftColumn: {
+    flex: 1,
+    flexDirection: 'column',
+    gap: 6,
+    marginRight: 16,
+  },
+  headerToggleAnswerButton: {
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 6,
+  },
+  headerToggleAnswerButtonActive: {
+    backgroundColor: '#E6F4EA',
+  },
+  headerToggleAnswerButtonInactive: {
+    backgroundColor: '#F1F3F4',
+  },
+  headerToggleAnswerText: {
+    fontSize: 10,
+    fontWeight: '700',
+    textTransform: 'uppercase',
+  },
+  headerToggleAnswerTextActive: {
+    color: '#137333',
+  },
+  headerToggleAnswerTextInactive: {
+    color: '#5F6368',
   },
   footer: {
     position: 'absolute',
