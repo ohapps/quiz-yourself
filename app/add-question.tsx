@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput, Alert,
 import { Stack, useRouter, useLocalSearchParams } from 'expo-router';
 import { Image } from 'expo-image';
 import { Dropdown } from 'react-native-element-dropdown';
-import { Category, Difficulty } from '../types/quiz';
+import { Category, Difficulty, QuestionType } from '../types/quiz';
 import { getCategories, addQuestion, updateQuestion, getQuestion } from '../lib/database';
 
 export default function AddQuestionScreen() {
@@ -21,6 +21,8 @@ export default function AddQuestionScreen() {
   const [options, setOptions] = useState<string[]>(['', '', '', '']);
   const [correctAnswerIndex, setCorrectAnswerIndex] = useState(0);
   const [difficulty, setDifficulty] = useState<Difficulty>((paramDifficulty as Difficulty) || 'Easy');
+  const [questionType, setQuestionType] = useState<QuestionType>('multiple_choice');
+  const [exactAnswerText, setExactAnswerText] = useState('');
 
   const [parentFocus, setParentFocus] = useState(false);
   const [subFocus, setSubFocus] = useState(false);
@@ -37,10 +39,16 @@ export default function AddQuestionScreen() {
         if (q) {
           setQuestionText(q.question);
           setImageUrl(q.imageUrl || '');
-          setOptions(q.options);
           setDifficulty(q.difficulty);
-          const correctIdx = q.options.indexOf(q.correctAnswer);
-          setCorrectAnswerIndex(correctIdx !== -1 ? correctIdx : 0);
+          const qType = q.type || 'multiple_choice';
+          setQuestionType(qType);
+          if (qType === 'numeric') {
+            setExactAnswerText(q.correctAnswer);
+          } else {
+            setOptions(q.options && q.options.length ? q.options : ['', '', '', '']);
+            const correctIdx = q.options ? q.options.indexOf(q.correctAnswer) : -1;
+            setCorrectAnswerIndex(correctIdx !== -1 ? correctIdx : 0);
+          }
           
           // Find which category this question belongs to and its parent
           const cat = data.find(c => c.id === (q as any).category_id);
@@ -85,8 +93,12 @@ export default function AddQuestionScreen() {
       Alert.alert('Error', 'Please enter a question');
       return;
     }
-    if (options.some(opt => !opt.trim())) {
+    if (questionType === 'multiple_choice' && options.some(opt => !opt.trim())) {
       Alert.alert('Error', 'Please fill in all options');
+      return;
+    }
+    if (questionType === 'numeric' && !exactAnswerText.trim()) {
+      Alert.alert('Error', 'Please enter the correct answer');
       return;
     }
 
@@ -98,10 +110,11 @@ export default function AddQuestionScreen() {
 
     const questionData = {
       question: questionText,
-      options,
-      correctAnswer: options[correctAnswerIndex],
+      options: questionType === 'numeric' ? [] : options,
+      correctAnswer: questionType === 'numeric' ? exactAnswerText.trim() : options[correctAnswerIndex],
       difficulty,
       imageUrl: imageUrl.trim() || undefined,
+      type: questionType,
     };
 
     if (id) {
@@ -210,6 +223,29 @@ export default function AddQuestionScreen() {
         </View>
 
         <View style={styles.section}>
+          <Text style={styles.label}>Question Type</Text>
+          <View style={styles.difficultyGrid}>
+            {(['multiple_choice', 'numeric'] as QuestionType[]).map(type => (
+              <TouchableOpacity
+                key={type}
+                style={[
+                  styles.chip,
+                  questionType === type && styles.chipSelected
+                ]}
+                onPress={() => setQuestionType(type)}
+              >
+                <Text style={[
+                  styles.chipText,
+                  questionType === type && styles.chipTextSelected
+                ]}>
+                  {type === 'multiple_choice' ? 'Multiple Choice' : 'Numeric'}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
+
+        <View style={styles.section}>
           <Text style={styles.label}>Question</Text>
           <TextInput
             style={styles.input}
@@ -232,26 +268,39 @@ export default function AddQuestionScreen() {
           />
         </View>
 
-        <View style={styles.section}>
-          <Text style={styles.label}>Options (Select the correct one)</Text>
-          {options.map((opt, i) => (
-            <View key={i} style={styles.optionWrapper}>
-              <TouchableOpacity
-                style={[
-                  styles.radio,
-                  correctAnswerIndex === i && styles.radioSelected
-                ]}
-                onPress={() => setCorrectAnswerIndex(i)}
-              />
-              <TextInput
-                style={styles.optionInput}
-                placeholder={`Option ${i + 1}`}
-                value={opt}
-                onChangeText={(text) => updateOption(i, text)}
-              />
-            </View>
-          ))}
-        </View>
+        {questionType === 'multiple_choice' ? (
+          <View style={styles.section}>
+            <Text style={styles.label}>Options (Select the correct one)</Text>
+            {options.map((opt, i) => (
+              <View key={i} style={styles.optionWrapper}>
+                <TouchableOpacity
+                  style={[
+                    styles.radio,
+                    correctAnswerIndex === i && styles.radioSelected
+                  ]}
+                  onPress={() => setCorrectAnswerIndex(i)}
+                />
+                <TextInput
+                  style={styles.optionInput}
+                  placeholder={`Option ${i + 1}`}
+                  value={opt}
+                  onChangeText={(text) => updateOption(i, text)}
+                />
+              </View>
+            ))}
+          </View>
+        ) : (
+          <View style={styles.section}>
+            <Text style={styles.label}>Correct Answer (Numeric)</Text>
+            <TextInput
+              style={styles.inputSingle}
+              placeholder="Enter numeric answer..."
+              value={exactAnswerText}
+              onChangeText={setExactAnswerText}
+              keyboardType="numeric"
+            />
+          </View>
+        )}
 
         <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
           <Text style={styles.saveButtonText}>{id ? 'Update Question' : 'Save Question'}</Text>

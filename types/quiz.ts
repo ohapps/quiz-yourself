@@ -1,8 +1,10 @@
 export type Difficulty = 'Easy' | 'Medium' | 'Hard';
+export type QuestionType = 'multiple_choice' | 'numeric';
 
 export interface Question {
   id: string;
   question: string;
+  type?: QuestionType;
   options: string[];
   correctAnswer: string;
   difficulty: Difficulty;

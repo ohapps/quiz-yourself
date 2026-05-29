@@ -149,8 +149,15 @@ export default function ManageQuestionsScreen() {
           questions.map(q => (
             <View key={q.id} style={styles.qCard}>
               <View style={styles.qHeader}>
-                <View style={[styles.diffTag, { backgroundColor: getDifficultyColor(q.difficulty) }]}>
-                  <Text style={styles.diffText}>{q.difficulty}</Text>
+                <View style={styles.tagRow}>
+                  <View style={[styles.diffTag, { backgroundColor: getDifficultyColor(q.difficulty) }]}>
+                    <Text style={styles.diffText}>{q.difficulty}</Text>
+                  </View>
+                  <View style={[styles.typeTag, { backgroundColor: q.type === 'numeric' ? '#6C5CE7' : '#00B894' }]}>
+                    <Text style={styles.typeText}>
+                      {q.type === 'numeric' ? 'Numeric' : 'Multiple Choice'}
+                    </Text>
+                  </View>
                 </View>
                 <View style={styles.headerActions}>
                   <TouchableOpacity onPress={() => router.push({ pathname: '/add-question', params: { id: q.id } } as any)}>
@@ -346,5 +353,21 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 16,
     fontWeight: '800',
+  },
+  tagRow: {
+    flexDirection: 'row',
+    gap: 6,
+    alignItems: 'center',
+  },
+  typeTag: {
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 6,
+  },
+  typeText: {
+    color: '#FFFFFF',
+    fontSize: 10,
+    fontWeight: '800',
+    textTransform: 'uppercase',
   },
 });

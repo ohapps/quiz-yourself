@@ -52,9 +52,10 @@ Join our community of developers creating universal apps.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
 
 Tasks
-- add new question types
-   - images
+- add new question types   
    - number entry
 - investigate local-first libraries for data storage and sync
 - add favorites categories option
 - add a progress tracker
+- add abiity to report issue with system generated questions
+

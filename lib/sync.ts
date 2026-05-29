@@ -1,8 +1,25 @@
 import { getContentVersion, applyContentUpdate } from './database';
 import { Category } from '../types/quiz';
 import { Image } from 'expo-image';
+import Constants from 'expo-constants';
 
-const SYNC_URL = 'https://quiz-yourself-admin.ohapps.com/api/content';
+const getSyncUrl = (): string => {
+  if (__DEV__) {
+    // In local development, resolve the host machine's IP (necessary for physical devices and emulators)
+    // expoConfig?.hostUri is usually formatted as IP:PORT (e.g., 192.168.1.5:8081)
+    const hostUri = Constants.expoConfig?.hostUri;
+    if (hostUri) {
+      const host = hostUri.split(':')[0];
+      return `http://${host}:3000/api/content`;
+    }
+    // Fallback if hostUri is unavailable (e.g., web builds)
+    return 'http://localhost:3000/api/content';
+  }
+  return 'https://quiz-yourself-admin.ohapps.com/api/content';
+};
+
+const SYNC_URL = getSyncUrl();
+
 
 export interface SyncResult {
   updated: boolean;

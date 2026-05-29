@@ -1,10 +1,12 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, StyleProp, ViewStyle, TextStyle } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import { useAtom } from 'jotai';
 import { quizConfigAtom, quizStateAtom } from '../store/atoms';
 import { markQuestionsAsShown } from '../lib/database';
+import { NumericEntry } from '../components/NumericEntry';
+import { MultipleChoice } from '../components/MultipleChoice';
 
 export default function QuizScreen() {
   const router = useRouter();
@@ -15,6 +17,8 @@ export default function QuizScreen() {
   const [showResult, setShowResult] = useState(false);
   const [showGroupOptions, setShowGroupOptions] = useState(true);
   const [showGroupAnswer, setShowGroupAnswer] = useState(true);
+  const [typedAnswer, setTypedAnswer] = useState('');
+  const [submittedAnswer, setSubmittedAnswer] = useState<string | null>(null);
 
   // Initialize quiz state
   useEffect(() => {
@@ -59,6 +63,11 @@ export default function QuizScreen() {
     });
   }, []);
 
+  useEffect(() => {
+    setTypedAnswer('');
+    setSubmittedAnswer(null);
+  }, [state.currentQuestionIndex]);
+
   const currentQuestion = state.questions[state.currentQuestionIndex];
 
   if (!currentQuestion) return null;
@@ -69,6 +78,22 @@ export default function QuizScreen() {
     setShowResult(true);
 
     if (option === currentQuestion.correctAnswer) {
+      setState((prev) => ({
+        ...prev,
+        playerScores: prev.playerScores.map((ps, i) => 
+          i === 0 ? { ...ps, score: ps.score + 1 } : ps
+        ),
+      }));
+    }
+  };
+
+  const handleExactAnswerSubmit = (answer: string) => {
+    if (showResult) return;
+    setSubmittedAnswer(answer);
+    setShowResult(true);
+
+    const isCorrect = answer.trim().toLowerCase() === currentQuestion.correctAnswer.trim().toLowerCase();
+    if (isCorrect) {
       setState((prev) => ({
         ...prev,
         playerScores: prev.playerScores.map((ps, i) => 
@@ -135,20 +160,22 @@ export default function QuizScreen() {
                 </Text>
               </TouchableOpacity>
 
-              <TouchableOpacity 
-                style={[
-                  styles.headerToggleAnswerButton,
-                  showGroupOptions ? styles.headerToggleAnswerButtonActive : styles.headerToggleAnswerButtonInactive
-                ]} 
-                onPress={() => setShowGroupOptions(!showGroupOptions)}
-              >
-                <Text style={[
-                  styles.headerToggleAnswerText,
-                  showGroupOptions ? styles.headerToggleAnswerTextActive : styles.headerToggleAnswerTextInactive
-                ]}>
-                  {showGroupOptions ? 'Options: Shown' : 'Options: Hidden'}
-                </Text>
-              </TouchableOpacity>
+              {currentQuestion.type !== 'numeric' && (
+                <TouchableOpacity 
+                  style={[
+                    styles.headerToggleAnswerButton,
+                    showGroupOptions ? styles.headerToggleAnswerButtonActive : styles.headerToggleAnswerButtonInactive
+                  ]} 
+                  onPress={() => setShowGroupOptions(!showGroupOptions)}
+                >
+                  <Text style={[
+                    styles.headerToggleAnswerText,
+                    showGroupOptions ? styles.headerToggleAnswerTextActive : styles.headerToggleAnswerTextInactive
+                  ]}>
+                    {showGroupOptions ? 'Options: Shown' : 'Options: Hidden'}
+                  </Text>
+                </TouchableOpacity>
+              )}
             </View>
           )}
         </View>
@@ -165,42 +192,35 @@ export default function QuizScreen() {
         <Text style={styles.questionText}>{currentQuestion.question}</Text>
 
         {config.mode === 'solo' ? (
-          <View style={styles.optionsContainer}>
-            {currentQuestion.options.map((option) => {
-              const isCorrect = option === currentQuestion.correctAnswer;
-              const isSelected = option === selectedOption;
-              
-              let optionStyle: StyleProp<ViewStyle> = styles.option;
-              let textStyle: StyleProp<TextStyle> = styles.optionText;
-
-              if (showResult) {
-                if (isCorrect) {
-                  optionStyle = [styles.option, styles.optionCorrect];
-                  textStyle = [styles.optionText, styles.optionTextSelected];
-                } else if (isSelected) {
-                  optionStyle = [styles.option, styles.optionWrong];
-                  textStyle = [styles.optionText, styles.optionTextSelected];
-                }
-              } else if (isSelected) {
-                optionStyle = [styles.option, styles.optionSelected];
-              }
-
-              return (
-                <TouchableOpacity
-                  key={option}
-                  style={optionStyle}
-                  onPress={() => handleSoloAnswer(option)}
-                  disabled={showResult}
-                >
-                  <Text style={textStyle}>{option}</Text>
-                </TouchableOpacity>
-              );
-            })}
-          </View>
+          currentQuestion.type === 'numeric' ? (
+            <View style={styles.optionsContainer}>
+              <NumericEntry
+                typedAnswer={typedAnswer}
+                submittedAnswer={submittedAnswer}
+                showResult={showResult}
+                correctAnswer={currentQuestion.correctAnswer}
+                onDigitPress={(digit) => setTypedAnswer(prev => {
+                  if (digit === '.' && prev.includes('.')) return prev;
+                  return prev + digit;
+                })}
+                onBackspace={() => setTypedAnswer(prev => prev.slice(0, -1))}
+                onSubmit={() => handleExactAnswerSubmit(typedAnswer)}
+              />
+            </View>
+          ) : (
+            <View style={styles.optionsContainer}>
+              <MultipleChoice
+                options={currentQuestion.options}
+                correctAnswer={currentQuestion.correctAnswer}
+                selectedOption={selectedOption}
+                showResult={showResult}
+                onSelect={handleSoloAnswer}
+              />
+            </View>
+          )
         ) : (
           <View style={styles.moderatorContainer}>
-
-            {showGroupOptions && (
+            {currentQuestion.type !== 'numeric' && showGroupOptions && (
               <View style={styles.groupOptionsContainer}>
                 {currentQuestion.options.map((opt, i) => (
                   <View key={i} style={styles.groupOptionItem}>
@@ -291,29 +311,6 @@ const styles = StyleSheet.create({
   optionsContainer: {
     gap: 16,
   },
-  option: {
-    backgroundColor: '#FFFFFF',
-    padding: 20,
-    borderRadius: 16,
-    borderWidth: 2,
-    borderColor: '#DFE6E9',
-  },
-  optionSelected: {
-    borderColor: '#1a73e8',
-  },
-  optionCorrect: {
-    borderColor: '#00AAFF',
-    backgroundColor: '#00AAFF',
-  },
-  optionWrong: {
-    borderColor: '#FF7675',
-    backgroundColor: '#FF7675',
-  },
-  optionText: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#2D3436',
-  },
   groupOptionsContainer: {
     backgroundColor: '#FFFFFF',
     padding: 20,
@@ -337,9 +334,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#2D3436',
     fontWeight: '500',
-  },
-  optionTextSelected: {
-    color: '#FFFFFF',
   },
   moderatorContainer: {
     gap: 16,

@@ -1,6 +1,6 @@
 import * as SQLite from 'expo-sqlite';
 import * as Crypto from 'expo-crypto';
-import { Category, Question, Difficulty } from '../types/quiz';
+import { Category, Question, Difficulty, QuestionType } from '../types/quiz';
 
 const DATABASE_NAME = 'quiz_yourself.db';
 
@@ -34,6 +34,7 @@ export async function initializeDatabase() {
       is_official INTEGER DEFAULT 0,
       user_modified INTEGER DEFAULT 0,
       image_url TEXT,
+      type TEXT DEFAULT 'multiple_choice',
       FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE CASCADE
     );
   `);
@@ -105,6 +106,15 @@ export async function initializeDatabase() {
     console.warn('Migration failed for image_url column', e);
   }
 
+  try {
+    const qInfo = await db.getAllAsync<{ name: string }>('PRAGMA table_info(questions)');
+    if (!qInfo.some(col => col.name === 'type')) {
+      await db.execAsync("ALTER TABLE questions ADD COLUMN type TEXT DEFAULT 'multiple_choice';");
+    }
+  } catch (e) {
+    console.warn('Migration failed for type column', e);
+  }
+
   return db;
 }
 
@@ -122,7 +132,8 @@ export async function getCategories(): Promise<Category[]> {
       correctAnswer: string,
       difficulty: string,
       shown_count: number,
-      image_url: string | null
+      image_url: string | null,
+      type: string | null
     }>('SELECT * FROM questions WHERE category_id = ?', [row.id]);
 
     const questions: Question[] = questionsRows.map(q => ({
@@ -130,7 +141,8 @@ export async function getCategories(): Promise<Category[]> {
       options: JSON.parse(q.options),
       difficulty: q.difficulty as Difficulty,
       shownCount: q.shown_count,
-      imageUrl: q.image_url || undefined
+      imageUrl: q.image_url || undefined,
+      type: (q.type as QuestionType) || 'multiple_choice'
     }));
 
     categories.push({
@@ -172,7 +184,8 @@ export async function getQuestion(id: string): Promise<Question | null> {
     difficulty: string,
     category_id: string,
     shown_count: number,
-    image_url: string | null
+    image_url: string | null,
+    type: string | null
   }>('SELECT * FROM questions WHERE id = ?', [id]);
 
   if (!result) return null;
@@ -182,7 +195,8 @@ export async function getQuestion(id: string): Promise<Question | null> {
     options: JSON.parse(result.options),
     difficulty: result.difficulty as Difficulty,
     shownCount: result.shown_count,
-    imageUrl: result.image_url || undefined
+    imageUrl: result.image_url || undefined,
+    type: (result.type as QuestionType) || 'multiple_choice'
   } as any;
 }
 
@@ -213,7 +227,8 @@ export async function getQuestions(categoryId?: string, difficulty?: string): Pr
     difficulty: string,
     category_id: string,
     shown_count: number,
-    image_url: string | null
+    image_url: string | null,
+    type: string | null
   }>(query, params);
 
   return rows.map(q => ({
@@ -221,7 +236,8 @@ export async function getQuestions(categoryId?: string, difficulty?: string): Pr
     options: JSON.parse(q.options),
     difficulty: q.difficulty as Difficulty,
     shownCount: q.shown_count,
-    imageUrl: q.image_url || undefined
+    imageUrl: q.image_url || undefined,
+    type: (q.type as QuestionType) || 'multiple_choice'
   }));
 }
 
@@ -229,8 +245,8 @@ export async function addQuestion(question: Omit<Question, 'id'>, categoryId: st
   const db = await SQLite.openDatabaseAsync(DATABASE_NAME);
   const id = Crypto.randomUUID();
   await db.runAsync(
-    'INSERT INTO questions (id, category_id, question, options, correctAnswer, difficulty, image_url) VALUES (?, ?, ?, ?, ?, ?, ?)',
-    [id, categoryId, question.question, JSON.stringify(question.options), question.correctAnswer, question.difficulty, question.imageUrl || null]
+    'INSERT INTO questions (id, category_id, question, options, correctAnswer, difficulty, image_url, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+    [id, categoryId, question.question, JSON.stringify(question.options), question.correctAnswer, question.difficulty, question.imageUrl || null, question.type || 'multiple_choice']
   );
   return id;
 }
@@ -238,8 +254,8 @@ export async function addQuestion(question: Omit<Question, 'id'>, categoryId: st
 export async function updateQuestion(id: string, question: Omit<Question, 'id'>, categoryId: string) {
   const db = await SQLite.openDatabaseAsync(DATABASE_NAME);
   await db.runAsync(
-    'UPDATE questions SET category_id = ?, question = ?, options = ?, correctAnswer = ?, difficulty = ?, image_url = ?, user_modified = 1 WHERE id = ?',
-    [categoryId, question.question, JSON.stringify(question.options), question.correctAnswer, question.difficulty, question.imageUrl || null, id]
+    'UPDATE questions SET category_id = ?, question = ?, options = ?, correctAnswer = ?, difficulty = ?, image_url = ?, type = ?, user_modified = 1 WHERE id = ?',
+    [categoryId, question.question, JSON.stringify(question.options), question.correctAnswer, question.difficulty, question.imageUrl || null, question.type || 'multiple_choice', id]
   );
 }
 
@@ -342,14 +358,14 @@ export async function applyContentUpdate(providedCategories: Category[], provide
 
       if (!existingQ) {
         await db.runAsync(
-          'INSERT INTO questions (id, category_id, question, options, correctAnswer, difficulty, is_official, image_url) VALUES (?, ?, ?, ?, ?, ?, 1, ?)',
-          [q.id, cat.id, q.question, JSON.stringify(q.options), q.correctAnswer, q.difficulty, q.imageUrl || null]
+          'INSERT INTO questions (id, category_id, question, options, correctAnswer, difficulty, is_official, image_url, type) VALUES (?, ?, ?, ?, ?, ?, 1, ?, ?)',
+          [q.id, cat.id, q.question, JSON.stringify(q.options), q.correctAnswer, q.difficulty, q.imageUrl || null, q.type || 'multiple_choice']
         );
         newQuestionsCount++;
       } else if (existingQ.user_modified === 0) {
         await db.runAsync(
-          'UPDATE questions SET category_id = ?, question = ?, options = ?, correctAnswer = ?, difficulty = ?, image_url = ? WHERE id = ?',
-          [cat.id, q.question, JSON.stringify(q.options), q.correctAnswer, q.difficulty, q.imageUrl || null, q.id]
+          'UPDATE questions SET category_id = ?, question = ?, options = ?, correctAnswer = ?, difficulty = ?, image_url = ?, type = ? WHERE id = ?',
+          [cat.id, q.question, JSON.stringify(q.options), q.correctAnswer, q.difficulty, q.imageUrl || null, q.type || 'multiple_choice', q.id]
         );
       }
     }

@@ -77,6 +77,41 @@ To share the app with others or test it as a standalone app:
 
 ---
 
+## Option 4: TestFlight / App Store Distribution (Production)
+
+To distribute your app to testers via Apple TestFlight (or submit to the App Store):
+
+### 1. Build and Auto-Submit in One Step
+The simplest way is to build the production profile and submit it directly in one command:
+```bash
+eas build --platform ios --profile production --auto-submit
+```
+Once the cloud build finishes, EAS will automatically submit it to Apple.
+
+### 2. Submit an Already Built Archive
+If you have already built a production version and want to upload it to TestFlight, you do not need to rebuild the app.
+
+#### Method A: Interactive Selection
+Run the submit command:
+```bash
+eas submit --platform ios
+```
+When prompted, select **"Select a build from EAS"**. The CLI will fetch your recent builds and let you choose which one to upload.
+
+#### Method B: Submit via Build ID
+If you know the specific EAS Build ID (found in your console terminal logs or on the [Expo Dashboard](https://expo.dev)):
+```bash
+eas submit --platform ios --id <YOUR_BUILD_ID>
+```
+
+#### Method C: Submit via File URL
+If you have a direct URL to the build file (`.ipa`):
+```bash
+eas submit --platform ios --url <URL_TO_IPA_FILE>
+```
+
+---
+
 ## Build Expiration (iOS)
 
 On iOS, buildings have different expiration rules depending on how they were signed:
