@@ -8,7 +8,6 @@ interface NumericEntryProps {
   correctAnswer: string;
   onDigitPress: (digit: string) => void;
   onBackspace: () => void;
-  onSubmit: () => void;
 }
 
 export function NumericEntry({
@@ -18,43 +17,38 @@ export function NumericEntry({
   correctAnswer,
   onDigitPress,
   onBackspace,
-  onSubmit,
 }: NumericEntryProps) {
   const isCorrect = showResult && (submittedAnswer || '').trim().toLowerCase() === correctAnswer.trim().toLowerCase();
 
   return (
     <>
-      {showResult && (
+      <View style={styles.numpadDisplay}>
+        <Text style={styles.numpadDisplayText}>{typedAnswer || '0'}</Text>
+      </View>
+      {showResult ? (
         <View style={[styles.feedbackBox, isCorrect ? styles.feedbackBoxCorrect : styles.feedbackBoxWrong]}>
           <Text style={styles.feedbackLabel}>{isCorrect ? '✨ Correct!' : '❌ Incorrect'}</Text>
           {!isCorrect && (
             <Text style={styles.feedbackCorrectText}>Correct Answer: {correctAnswer}</Text>
           )}
         </View>
-      )}
-      <View style={styles.numpadDisplay}>
-        <Text style={styles.numpadDisplayText}>{typedAnswer || '0'}</Text>
-      </View>
-      <View style={styles.numpadGrid}>
-        {['1','2','3','4','5','6','7','8','9'].map((digit) => (
-          <TouchableOpacity key={digit} style={[styles.numpadButton, showResult && styles.numpadButtonDisabled]} onPress={() => onDigitPress(digit)} disabled={showResult}>
-            <Text style={[styles.numpadButtonText, showResult && styles.numpadButtonTextDisabled]}>{digit}</Text>
+      ) : (
+        <View style={styles.numpadGrid}>
+          {['1','2','3','4','5','6','7','8','9'].map((digit) => (
+            <TouchableOpacity key={digit} style={styles.numpadButton} onPress={() => onDigitPress(digit)}>
+              <Text style={styles.numpadButtonText}>{digit}</Text>
+            </TouchableOpacity>
+          ))}
+          <TouchableOpacity style={styles.numpadButton} onPress={() => onDigitPress('.')}>
+            <Text style={styles.numpadButtonText}>.</Text>
           </TouchableOpacity>
-        ))}
-        <TouchableOpacity style={[styles.numpadButton, showResult && styles.numpadButtonDisabled]} onPress={() => onDigitPress('.')} disabled={showResult}>
-          <Text style={[styles.numpadButtonText, showResult && styles.numpadButtonTextDisabled]}>.</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.numpadButton, showResult && styles.numpadButtonDisabled]} onPress={() => onDigitPress('0')} disabled={showResult}>
-          <Text style={[styles.numpadButtonText, showResult && styles.numpadButtonTextDisabled]}>0</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.numpadButton, showResult && styles.numpadButtonDisabled]} onPress={onBackspace} disabled={showResult}>
-          <Text style={[styles.numpadButtonText, showResult && styles.numpadButtonTextDisabled]}>⌫</Text>
-        </TouchableOpacity>
-      </View>
-      {!showResult && (
-        <TouchableOpacity style={styles.submitButton} onPress={onSubmit}>
-          <Text style={styles.submitButtonText}>Submit Answer</Text>
-        </TouchableOpacity>
+          <TouchableOpacity style={styles.numpadButton} onPress={() => onDigitPress('0')}>
+            <Text style={styles.numpadButtonText}>0</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.numpadButton} onPress={onBackspace}>
+            <Text style={styles.numpadButtonText}>⌫</Text>
+          </TouchableOpacity>
+        </View>
       )}
     </>
   );
@@ -96,33 +90,15 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: '#2D3436',
   },
-  numpadButtonDisabled: {
-    opacity: 0.4,
-  },
-  numpadButtonTextDisabled: {
-    color: '#636E72',
-  },
-  submitButton: {
-    backgroundColor: '#1a73e8',
-    paddingVertical: 16,
-    borderRadius: 12,
-    alignItems: 'center',
-    shadowColor: '#1a73e8',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 6,
-    elevation: 4,
-  },
-  submitButtonText: {
-    color: '#FFFFFF',
-    fontSize: 16,
-    fontWeight: '700',
-  },
   feedbackBox: {
-    padding: 20,
+    paddingVertical: 16,
+    paddingHorizontal: 24,
     borderRadius: 16,
     borderWidth: 2,
     marginBottom: 16,
+    minHeight: 160,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   feedbackBoxCorrect: {
     backgroundColor: '#E6F4EA',
@@ -133,14 +109,16 @@ const styles = StyleSheet.create({
     borderColor: '#C5221F',
   },
   feedbackLabel: {
-    fontSize: 18,
+    fontSize: 24,
     fontWeight: '800',
     color: '#2D3436',
     marginBottom: 8,
+    textAlign: 'center',
   },
   feedbackCorrectText: {
-    fontSize: 16,
+    fontSize: 18,
     color: '#C5221F',
     fontWeight: '700',
+    textAlign: 'center',
   },
 });

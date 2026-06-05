@@ -204,7 +204,6 @@ export default function QuizScreen() {
                   return prev + digit;
                 })}
                 onBackspace={() => setTypedAnswer(prev => prev.slice(0, -1))}
-                onSubmit={() => handleExactAnswerSubmit(typedAnswer)}
               />
             </View>
           ) : (
@@ -254,13 +253,19 @@ export default function QuizScreen() {
         )}
       </ScrollView>
 
-      {(config.mode === 'group' || showResult) && (
+      {((config.mode === 'group' || showResult) || (config.mode === 'solo' && currentQuestion.type === 'numeric' && !showResult)) && (
         <View style={styles.footer}>
-          <TouchableOpacity style={styles.nextButton} onPress={handleNext}>
-            <Text style={styles.nextButtonText}>
-              {state.currentQuestionIndex + 1 === state.questions.length ? 'Finish' : 'Next Question'}
-            </Text>
-          </TouchableOpacity>
+          {showResult || config.mode === 'group' ? (
+            <TouchableOpacity style={styles.nextButton} onPress={handleNext}>
+              <Text style={styles.nextButtonText}>
+                {state.currentQuestionIndex + 1 === state.questions.length ? 'Finish' : 'Next Question'}
+              </Text>
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity style={styles.submitButton} onPress={() => handleExactAnswerSubmit(typedAnswer)}>
+              <Text style={styles.submitButtonText}>Submit Answer</Text>
+            </TouchableOpacity>
+          )}
         </View>
       )}
     </View>
@@ -442,6 +447,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   nextButtonText: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontWeight: '700',
+  },
+  submitButton: {
+    backgroundColor: '#1a73e8',
+    paddingVertical: 18,
+    borderRadius: 16,
+    alignItems: 'center',
+  },
+  submitButtonText: {
     color: '#FFFFFF',
     fontSize: 18,
     fontWeight: '700',
