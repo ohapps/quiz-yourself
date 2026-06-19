@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert, ActivityIn
 import { Stack, useRouter, useFocusEffect } from 'expo-router';
 import { Dropdown } from 'react-native-element-dropdown';
 import { Category, Question, Difficulty } from '../types/quiz';
-import { getCategories, getQuestions, deleteQuestion } from '../lib/database';
+import { getCategories, getQuestions, deleteQuestion, isSystemContent } from '../lib/database';
 
 export default function ManageQuestionsScreen() {
   const router = useRouter();
@@ -160,12 +160,16 @@ export default function ManageQuestionsScreen() {
                   </View>
                 </View>
                 <View style={styles.headerActions}>
-                  <TouchableOpacity onPress={() => router.push({ pathname: '/add-question', params: { id: q.id } } as any)}>
-                    <Text style={styles.editAction}>Edit</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={() => handleDelete(q.id)}>
-                    <Text style={styles.deleteAction}>Delete</Text>
-                  </TouchableOpacity>
+                  {!isSystemContent(q.userId) && (
+                    <>
+                      <TouchableOpacity onPress={() => router.push({ pathname: '/add-question', params: { id: q.id } } as any)}>
+                        <Text style={styles.editAction}>Edit</Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity onPress={() => handleDelete(q.id)}>
+                        <Text style={styles.deleteAction}>Delete</Text>
+                      </TouchableOpacity>
+                    </>
+                  )}
                 </View>
               </View>
               <Text style={styles.qText}>{q.question}</Text>

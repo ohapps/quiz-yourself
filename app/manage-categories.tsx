@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput, Alert,
 import { Stack, useFocusEffect } from 'expo-router';
 import { Dropdown } from 'react-native-element-dropdown';
 import { Category } from '../types/quiz';
-import { getCategories, deleteCategory, addCategory, updateCategory } from '../lib/database';
+import { getCategories, deleteCategory, addCategory, updateCategory, isSystemContent } from '../lib/database';
 
 export default function ManageCategoriesScreen() {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -143,18 +143,20 @@ export default function ManageCategoriesScreen() {
                       <Text style={styles.catName}>{parent.name}</Text>
                       <Text style={styles.catCount}>{parent.questions.length} questions</Text>
                     </View>
-                    <View style={styles.actions}>
-                      <TouchableOpacity onPress={() => { 
-                        setEditingId(parent.id); 
-                        setEditName(parent.name);
-                        setEditParentId(parent.parentId || null);
-                      }}>
-                        <Text style={styles.editAction}>Edit</Text>
-                      </TouchableOpacity>
-                      <TouchableOpacity onPress={() => handleDelete(parent.id, parent.name)}>
-                        <Text style={styles.deleteAction}>Delete</Text>
-                      </TouchableOpacity>
-                    </View>
+                    {!isSystemContent(parent.userId) && (
+                      <View style={styles.actions}>
+                        <TouchableOpacity onPress={() => { 
+                          setEditingId(parent.id); 
+                          setEditName(parent.name);
+                          setEditParentId(parent.parentId || null);
+                        }}>
+                          <Text style={styles.editAction}>Edit</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => handleDelete(parent.id, parent.name)}>
+                          <Text style={styles.deleteAction}>Delete</Text>
+                        </TouchableOpacity>
+                      </View>
+                    )}
                   </>
                 )}
               </View>
@@ -196,18 +198,20 @@ export default function ManageCategoriesScreen() {
                         </View>
                         <Text style={[styles.catCount, { marginLeft: 20 }]}>{child.questions.length} questions</Text>
                       </View>
-                      <View style={styles.actions}>
-                        <TouchableOpacity onPress={() => { 
-                          setEditingId(child.id); 
-                          setEditName(child.name);
-                          setEditParentId(child.parentId || null);
-                        }}>
-                          <Text style={styles.editAction}>Edit</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => handleDelete(child.id, child.name)}>
-                          <Text style={styles.deleteAction}>Delete</Text>
-                        </TouchableOpacity>
-                      </View>
+                      {!isSystemContent(child.userId) && (
+                        <View style={styles.actions}>
+                          <TouchableOpacity onPress={() => { 
+                            setEditingId(child.id); 
+                            setEditName(child.name);
+                            setEditParentId(child.parentId || null);
+                          }}>
+                            <Text style={styles.editAction}>Edit</Text>
+                          </TouchableOpacity>
+                          <TouchableOpacity onPress={() => handleDelete(child.id, child.name)}>
+                            <Text style={styles.deleteAction}>Delete</Text>
+                          </TouchableOpacity>
+                        </View>
+                      )}
                     </>
                   )}
                 </View>

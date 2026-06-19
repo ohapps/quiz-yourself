@@ -1,37 +1,24 @@
-import { useEffect, useState } from "react";
 import { Stack } from "expo-router";
-import { initializeDatabase, applyContentUpdate } from "../lib/database";
-import { checkForUpdates } from "../lib/sync";
-import { View, ActivityIndicator } from "react-native";
-import { useSetAtom } from 'jotai';
-import { updateResultAtom } from '../store/atoms';
+import { useEffect, useState } from "react";
+import { ActivityIndicator, View } from "react-native";
+import { initializeDatabase } from "../lib/database";
+import { setupPowerSync } from "../lib/powersync/system";
 
 export default function RootLayout() {
-  const [isReady, setIsReady] = useState(false);
-  const setUpdateResult = useSetAtom(updateResultAtom);
+  const [isReady, setIsReady] = useState(false);  
 
   useEffect(() => {
     async function setup() {
       try {
-        // 1. Initialize DB migrations and tables
+        // Initialize legacy local DB (for quiz_history and local-only data)
         await initializeDatabase();
-        
-        // 2. Mark as ready so user can see the app immediately
-        // If they have cached data from a previous session, they can use it.
         setIsReady(true);
 
-        // 3. Check for remote updates in the background
-        // This will populate the DB on the very first run, or update it on subsequent runs.
-        const remoteResult = await checkForUpdates();
-        if (remoteResult.updated) {
-          setUpdateResult({
-            newCategories: remoteResult.newCategories,
-            newQuestions: remoteResult.newQuestions
-          });
-        }
+        // Connect PowerSync for synced data (categories, questions, app state)
+        await setupPowerSync();
       } catch (error) {
-        console.error("Failed to initialize database", error);
-        setIsReady(true); 
+        console.error("Failed to initialize", error);
+        setIsReady(true);
       }
     }
     setup();

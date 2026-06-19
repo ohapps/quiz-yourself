@@ -1,17 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert, ActivityIndicator } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
-import { resetDatabase, getContentVersion } from '../lib/database';
-import { checkForUpdates } from '../lib/sync';
+import { resetDatabase } from '../lib/database';
 
 export default function ManageContentMenu() {
   const router = useRouter();
-  const [version, setVersion] = useState<number | null>(null);
-  const [isSyncing, setIsSyncing] = useState(false);
-
-  useEffect(() => {
-    getContentVersion().then(setVersion);
-  }, []);
 
   const handleResetToDefaults = () => {
     Alert.alert(
@@ -21,32 +14,10 @@ export default function ManageContentMenu() {
         { text: 'Cancel', style: 'cancel' },
         { text: 'Reset', style: 'destructive', onPress: async () => {
           await resetDatabase();
-          const v = await getContentVersion();
-          setVersion(v);
           Alert.alert('Success', 'Database has been reset to defaults.');
         }}
       ]
     );
-  };
-
-  const handleSync = async () => {
-    setIsSyncing(true);
-    try {
-      const result = await checkForUpdates();
-      if (result.updated) {
-        Alert.alert('Success', `Synced successfully. Added ${result.newCategories} categories and ${result.newQuestions} questions.`);
-        const v = await getContentVersion();
-        setVersion(v);
-      } else if (result.error) {
-        Alert.alert('Error', result.error);
-      } else {
-        Alert.alert('Up to date', 'You already have the latest content.');
-      }
-    } catch (error: any) {
-      Alert.alert('Error', error.message || 'Failed to sync content.');
-    } finally {
-      setIsSyncing(false);
-    }
   };
 
   return (
@@ -76,22 +47,6 @@ export default function ManageContentMenu() {
           <Text style={styles.arrow}>›</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity 
-          style={styles.menuItem} 
-          onPress={handleSync}
-          disabled={isSyncing}
-        >
-          <View style={styles.menuContent}>
-            <Text style={styles.menuTitle}>Sync Content</Text>
-            <Text style={styles.menuSubtitle}>Download latest questions from the cloud</Text>
-          </View>
-          {isSyncing ? (
-            <ActivityIndicator size="small" color="#B2BEC3" style={{ marginLeft: 10 }} />
-          ) : (
-            <Text style={styles.arrow}>›</Text>
-          )}
-        </TouchableOpacity>
-
         <View style={styles.divider} />
 
         <TouchableOpacity 
@@ -104,12 +59,6 @@ export default function ManageContentMenu() {
           </View>
           <Text style={[styles.arrow, styles.dangerText]}>›</Text>
         </TouchableOpacity>
-      </View>
-
-      <View style={styles.footer}>
-        <Text style={styles.versionText}>
-          Content Version: {version ?? '...'}
-        </Text>
       </View>
     </View>
   );
@@ -168,17 +117,5 @@ const styles = StyleSheet.create({
   divider: {
     height: 12,
     backgroundColor: '#F5F7FA',
-  },
-  footer: {
-    marginTop: 'auto',
-    alignItems: 'center',
-    paddingBottom: 20,
-  },
-  versionText: {
-    fontSize: 12,
-    color: '#B2BEC3',
-    fontWeight: '600',
-    letterSpacing: 1,
-    textTransform: 'uppercase',
   },
 });
