@@ -1,6 +1,6 @@
 import {
-  PowerSyncBackendConnector,
   AbstractPowerSyncDatabase,
+  PowerSyncBackendConnector,
   UpdateType,
 } from '@powersync/react-native';
 import Constants from 'expo-constants';
