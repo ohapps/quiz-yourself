@@ -3,6 +3,7 @@ import * as Crypto from 'expo-crypto';
 import { Category, Question, Difficulty, QuestionType } from '../types/quiz';
 import { powersync } from './powersync/system';
 import { getDeviceId } from './device-id';
+import { getAuthUserId } from './auth';
 import {
   getCategories as psGetCategories,
   getQuestions as psGetQuestions,
@@ -10,6 +11,12 @@ import {
 } from './powersync/queries';
 
 const DATABASE_NAME = 'quiz_yourself.db';
+
+/** Returns Auth0 user ID if logged in, otherwise device ID */
+async function getCurrentUserId(): Promise<string> {
+  const auth0Id = await getAuthUserId();
+  return auth0Id || await getDeviceId();
+}
 
 // === Local-only database for quiz history ===
 
@@ -46,15 +53,15 @@ export function isSystemContent(userId: string | null | undefined): boolean {
 
 export async function isOwnContent(userId: string | null | undefined): Promise<boolean> {
   if (!userId) return false;
-  const deviceId = await getDeviceId();
-  return userId === deviceId;
+  const currentId = await getCurrentUserId();
+  return userId === currentId;
 }
 
 // === Write operations — stamp userId on user-created content ===
 
 export async function addCategory(name: string, parentId?: string) {
   const id = Crypto.randomUUID();
-  const userId = await getDeviceId();
+  const userId = await getCurrentUserId();
   await powersync.execute(
     'INSERT INTO Category (id, name, parentId, userId) VALUES (?, ?, ?, ?)',
     [id, name, parentId || null, userId]
@@ -83,7 +90,7 @@ export async function deleteCategory(id: string) {
 
 export async function addQuestion(question: Omit<Question, 'id'>, categoryId: string) {
   const id = Crypto.randomUUID();
-  const userId = await getDeviceId();
+  const userId = await getCurrentUserId();
   await powersync.execute(
     'INSERT INTO Question (id, categoryId, question, options, correctAnswer, difficulty, imageUrl, type, userId) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
     [id, categoryId, question.question, JSON.stringify(question.options), question.correctAnswer, question.difficulty, question.imageUrl || null, question.type || 'multiple_choice', userId]
@@ -165,7 +172,7 @@ export async function resetDatabase() {
   await initializeDatabase();
 
   // Delete all user-created content (leaves system content intact)
-  const userId = await getDeviceId();
+  const userId = await getCurrentUserId();
   await powersync.execute('DELETE FROM Question WHERE userId = ?', [userId]);
   await powersync.execute('DELETE FROM Category WHERE userId = ?', [userId]);
 }

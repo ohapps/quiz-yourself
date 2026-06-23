@@ -111,7 +111,7 @@ export default function Index() {
             style={[styles.buttonSmall, styles.buttonTertiary]}
             onPress={() => router.push('/manage-data' as any)}
           >
-            <Text style={styles.buttonTextTertiary}>Manage Content</Text>
+            <Text style={styles.buttonTextTertiary}>Settings</Text>
           </TouchableOpacity>
 
           <TouchableOpacity

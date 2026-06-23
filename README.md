@@ -52,7 +52,7 @@ Join our community of developers creating universal apps.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
 
 Tasks
-- add auth0 authentication 
 - add favorites categories option
 - add abiity to report issue with system generated questions
 - add a progress tracker
+- fix web version
