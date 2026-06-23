@@ -30,7 +30,7 @@ export default function AccountScreen() {
       await fetch(`${getBackendUrl()}/api/auth/migrate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ deviceId, auth0UserId: result.userId }),
+        body: JSON.stringify({ deviceId, auth0UserId: result.userId, auth0Token: result.accessToken }),
       });
       setMigrating(false);
 

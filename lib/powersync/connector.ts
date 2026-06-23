@@ -25,6 +25,8 @@ export class Connector implements PowerSyncBackendConnector {
           return { endpoint: this.powersyncUrl, token };
         }
       }
+      // Auth0 user exists but refresh failed — fall through to device ID
+      // This keeps the app functional offline; user can re-login later
     }
 
     // Fallback to device ID
