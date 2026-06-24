@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
 import { resetDatabase } from '../lib/database';
 
-export default function ManageContentMenu() {
+export default function SettingsScreen() {
   const router = useRouter();
 
   const handleResetToDefaults = () => {
@@ -22,7 +22,7 @@ export default function ManageContentMenu() {
 
   return (
     <View style={styles.container}>
-      <Stack.Screen options={{ title: 'Manage Content' }} />
+      <Stack.Screen options={{ title: 'Settings' }} />
       
       <View style={styles.menuContainer}>
         <TouchableOpacity 
@@ -43,6 +43,19 @@ export default function ManageContentMenu() {
           <View style={styles.menuContent}>
             <Text style={styles.menuTitle}>Edit Questions</Text>
             <Text style={styles.menuSubtitle}>Browse and manage all your trivia questions</Text>
+          </View>
+          <Text style={styles.arrow}>›</Text>
+        </TouchableOpacity>
+
+        <View style={styles.divider} />
+
+        <TouchableOpacity 
+          style={styles.menuItem} 
+          onPress={() => router.push('/account' as any)}
+        >
+          <View style={styles.menuContent}>
+            <Text style={styles.menuTitle}>Account</Text>
+            <Text style={styles.menuSubtitle}>Sign in to sync across devices</Text>
           </View>
           <Text style={styles.arrow}>›</Text>
         </TouchableOpacity>
