@@ -24,14 +24,19 @@ export default function AccountScreen() {
       const deviceId = await getDeviceId();
       const result = await login();
       setAuth(result);
+      setLoading(false);
 
       // Migrate device content to Auth0 user
       setMigrating(true);
-      await fetch(`${getBackendUrl()}/api/auth/migrate`, {
+      const migrateRes = await fetch(`${getBackendUrl()}/api/auth/migrate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ deviceId, auth0UserId: result.userId, auth0Token: result.accessToken }),
       });
+      if (!migrateRes.ok) {
+        const err = await migrateRes.json().catch(() => ({}));
+        throw new Error(err.error || 'Failed to migrate content');
+      }
       setMigrating(false);
 
       // Reconnect PowerSync with new identity
@@ -40,9 +45,9 @@ export default function AccountScreen() {
 
       Alert.alert('Success', 'Logged in! Your content will now sync across devices.');
     } catch (error: any) {
+      setLoading(false);
       Alert.alert('Error', error.message || 'Login failed');
     } finally {
-      setLoading(false);
       setMigrating(false);
     }
   };

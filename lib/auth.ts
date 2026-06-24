@@ -140,6 +140,19 @@ export async function refreshAccessToken(): Promise<string | null> {
 
 export async function logout(): Promise<void> {
   const db = await getDb();
+  const row = await db.getFirstAsync<{ value: string }>(
+    "SELECT value FROM app_metadata WHERE key = 'auth0_refresh_token'"
+  );
+
+  // Revoke refresh token on Auth0 server
+  if (row?.value) {
+    await fetch(discovery.revocationEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `client_id=${AUTH0_CLIENT_ID}&token=${row.value}&token_type_hint=refresh_token`,
+    }).catch(() => {}); // Best-effort — clear local state regardless
+  }
+
   await db.runAsync("DELETE FROM app_metadata WHERE key IN ('auth0_refresh_token', 'auth0_user_id', 'auth0_email')");
 }
 
