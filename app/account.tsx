@@ -22,16 +22,23 @@ export default function AccountScreen() {
     try {
       setLoading(true);
       const deviceId = await getDeviceId();
+
+      // Get device token (PowerSync JWT) before login as proof of device ownership
+      const deviceTokenRes = await fetch(
+        `${getBackendUrl()}/api/auth/token?user_id=${encodeURIComponent(deviceId)}`
+      );
+      const { token: deviceToken } = await deviceTokenRes.json();
+
       const result = await login();
       setAuth(result);
       setLoading(false);
 
-      // Migrate device content to Auth0 user
+      // Migrate device content to Auth0 user with cryptographic proof of device ownership
       setMigrating(true);
       const migrateRes = await fetch(`${getBackendUrl()}/api/auth/migrate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ deviceId, auth0UserId: result.userId, auth0Token: result.accessToken }),
+        body: JSON.stringify({ deviceToken, auth0Token: result.accessToken }),
       });
       if (!migrateRes.ok) {
         const err = await migrateRes.json().catch(() => ({}));
