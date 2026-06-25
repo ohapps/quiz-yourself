@@ -7,7 +7,7 @@ export async function getCategories(): Promise<Category[]> {
     name: string;
     parentId: string | null;
     userId: string | null;
-  }>('SELECT id, name, parentId, userId FROM Category');
+  }>('SELECT id, name, parentId, userId FROM Category ORDER BY name');
 
   const result: Category[] = [];
   for (const cat of cats) {

@@ -5,7 +5,7 @@ import { useAtom } from 'jotai';
 import { Dropdown } from 'react-native-element-dropdown';
 import { quizConfigAtom } from '../store/atoms';
 import { Category } from '../types/quiz';
-import { getCategories } from '../lib/database';
+import { getCategories, getFavoriteCategories, toggleFavorite, isFavorite } from '../lib/database';
 import * as Haptics from 'expo-haptics';
 
 export default function SetupScreen() {
@@ -14,6 +14,7 @@ export default function SetupScreen() {
   const [config, setConfig] = useAtom(quizConfigAtom);
   
   const [categories, setCategories] = useState<Category[]>([]);
+  const [favoriteCategories, setFavoriteCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
   const [categoryFocus, setCategoryFocus] = useState(false);
   const [subCategoryFocus, setSubCategoryFocus] = useState(false);
@@ -22,7 +23,9 @@ export default function SetupScreen() {
   useEffect(() => {
     async function load() {
       const data = await getCategories();
+      const favs = await getFavoriteCategories();
       setCategories(data);
+      setFavoriteCategories(favs);
       
       const topLevelData = data.filter(c => !c.parentId);
 
@@ -45,10 +48,21 @@ export default function SetupScreen() {
   const parentCategories = useMemo(() => categories.filter(c => !c.parentId), [categories]);
   
   // Find which top-level category is currently "active" (either directly or as parent)
+  const [viewingFavorites, setViewingFavorites] = useState(false);
+
+  const favoriteIds = useMemo(() => new Set(favoriteCategories.map(f => f.id)), [favoriteCategories]);
+
+  const handleToggleFavorite = async (categoryId: string) => {
+    await toggleFavorite(categoryId);
+    const favs = await getFavoriteCategories();
+    setFavoriteCategories(favs);
+  };
+
   const activeParentId = useMemo(() => {
+    if (viewingFavorites) return '__favorites__';
     if (!config.category) return null;
     return config.category.parentId || config.category.id;
-  }, [config.category]);
+  }, [config.category, viewingFavorites]);
 
   const subCategories = useMemo(() => {
     if (!activeParentId) return [];
@@ -143,11 +157,16 @@ export default function SetupScreen() {
     );
   }
 
-  const parentDropdownData = parentCategories.map(cat => ({ label: cat.name, value: cat.id }));
-  const subDropdownData = [
-    { label: 'All Sub-categories', value: 'all' },
-    ...subCategories.map(cat => ({ label: cat.name, value: cat.id }))
+  const parentDropdownData = [
+    ...(favoriteCategories.length > 0 ? [{ label: '⭐ Favorites', value: '__favorites__' }] : []),
+    ...parentCategories.map(cat => ({ label: cat.name, value: cat.id })),
   ];
+  const subDropdownData = activeParentId === '__favorites__'
+    ? favoriteCategories.map(cat => ({ label: cat.name, value: cat.id }))
+    : [
+        { label: 'All Sub-categories', value: 'all' },
+        ...subCategories.map(cat => ({ label: cat.name, value: cat.id }))
+      ];
 
   return (
     <KeyboardAvoidingView 
@@ -160,68 +179,104 @@ export default function SetupScreen() {
         <Text style={styles.title}>{mode === 'solo' ? 'Quiz Yourself' : 'Quiz Others'}</Text>
         
         <View style={styles.section}>
-          <View style={styles.labelRow}>
-            <Text style={styles.label}>Main Category</Text>
-            <TouchableOpacity 
-              style={[styles.randomButton, isSpinning && { opacity: 0.5 }]} 
-              onPress={spinCategories}
-              disabled={isSpinning}
-            >
-              <Text style={styles.randomButtonText}>🎲 Randomize</Text>
-            </TouchableOpacity>
-          </View>
-          <Dropdown
-            style={[styles.dropdown, categoryFocus && { borderColor: '#1a73e8' }, isSpinning && styles.dropdownDisabled]}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            iconStyle={styles.iconStyle}
-            data={parentDropdownData}
-            search
-            disable={isSpinning}
-            maxHeight={300}
-            labelField="label"
-            valueField="value"
-            placeholder={!categoryFocus ? 'Select category' : '...'}
-            searchPlaceholder="Search..."
-            value={activeParentId || ''}
-            onFocus={() => setCategoryFocus(true)}
-            onBlur={() => setCategoryFocus(false)}
-            onChange={item => {
-              const selectedCat = categories.find(c => c.id === item.value);
-              setConfig(prev => ({ ...prev, category: selectedCat || null }));
-              setCategoryFocus(false);
-            }}
-          />
-        </View>
-
-        {subCategories.length > 0 && (
-          <View style={styles.section}>
-            <Text style={styles.label}>Sub-category (Optional)</Text>
+          <Text style={styles.label}>Main Category</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
             <Dropdown
-              style={[styles.dropdown, subCategoryFocus && { borderColor: '#1a73e8' }, isSpinning && styles.dropdownDisabled]}
+              style={[styles.dropdown, { flex: 1 }, categoryFocus && { borderColor: '#1a73e8' }, isSpinning && styles.dropdownDisabled]}
               placeholderStyle={styles.placeholderStyle}
               selectedTextStyle={styles.selectedTextStyle}
-              data={subDropdownData}
-              maxHeight={300}
+              inputSearchStyle={styles.inputSearchStyle}
+              iconStyle={styles.iconStyle}
+              data={parentDropdownData}
+              search
               disable={isSpinning}
+              maxHeight={300}
               labelField="label"
               valueField="value"
-              placeholder="All Sub-categories"
-              value={config.category?.parentId ? config.category.id : 'all'}
-              onFocus={() => setSubCategoryFocus(true)}
-              onBlur={() => setSubCategoryFocus(false)}
+              placeholder={!categoryFocus ? 'Select category' : '...'}
+              searchPlaceholder="Search..."
+              value={activeParentId || ''}
+              onFocus={() => setCategoryFocus(true)}
+              onBlur={() => setCategoryFocus(false)}
               onChange={item => {
-                if (item.value === 'all') {
-                  const parentCat = categories.find(c => c.id === activeParentId);
-                  setConfig(prev => ({ ...prev, category: parentCat || null }));
+                if (item.value === '__favorites__') {
+                  setViewingFavorites(true);
+                  setConfig(prev => ({ ...prev, category: favoriteCategories[0] || null }));
                 } else {
-                  const selectedSub = categories.find(c => c.id === item.value);
-                  setConfig(prev => ({ ...prev, category: selectedSub || null }));
+                  setViewingFavorites(false);
+                  const selectedCat = categories.find(c => c.id === item.value);
+                  setConfig(prev => ({ ...prev, category: selectedCat || null }));
                 }
-                setSubCategoryFocus(false);
+                setCategoryFocus(false);
               }}
             />
+            {config.category && activeParentId !== '__favorites__' && (
+              <TouchableOpacity
+                style={{ width: 30, alignItems: 'center' }}
+                onPress={() => handleToggleFavorite(activeParentId!)}
+              >
+                <Text style={{ fontSize: 22 }}>{favoriteIds.has(activeParentId!) ? '⭐' : '☆'}</Text>
+              </TouchableOpacity>
+            )}
+            <TouchableOpacity
+              onPress={spinCategories}
+              disabled={isSpinning}
+              style={{ opacity: isSpinning ? 0.5 : 1 }}
+            >
+              <Text style={{ fontSize: 22 }}>🎲</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        {(subCategories.length > 0 || activeParentId === '__favorites__') && (
+          <View style={styles.section}>
+            <Text style={styles.label}>Sub-category (Optional)</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+              <Dropdown
+                style={[styles.dropdown, { flex: 1 }, subCategoryFocus && { borderColor: '#1a73e8' }, isSpinning && styles.dropdownDisabled]}
+                placeholderStyle={styles.placeholderStyle}
+                selectedTextStyle={styles.selectedTextStyle}
+                data={subDropdownData}
+                maxHeight={300}
+                disable={isSpinning}
+                labelField="label"
+                valueField="value"
+                placeholder="All Sub-categories"
+                value={config.category?.parentId ? config.category.id : 'all'}
+                onFocus={() => setSubCategoryFocus(true)}
+                onBlur={() => setSubCategoryFocus(false)}
+                onChange={item => {
+                  if (item.value === 'all') {
+                    const parentCat = categories.find(c => c.id === activeParentId);
+                    setConfig(prev => ({ ...prev, category: parentCat || null }));
+                  } else {
+                    const selectedSub = categories.find(c => c.id === item.value);
+                    setConfig(prev => ({ ...prev, category: selectedSub || null }));
+                  }
+                  setSubCategoryFocus(false);
+                }}
+              />
+              {config.category?.parentId && (
+                <TouchableOpacity
+                  style={{ width: 30, alignItems: 'center' }}
+                  onPress={() => handleToggleFavorite(config.category!.id)}
+                >
+                  <Text style={{ fontSize: 22 }}>{favoriteIds.has(config.category!.id) ? '⭐' : '☆'}</Text>
+                </TouchableOpacity>
+              )}
+              {subCategories.length > 1 && activeParentId !== '__favorites__' && (
+                <TouchableOpacity
+                  disabled={isSpinning}
+                  style={{ opacity: isSpinning ? 0.5 : 1 }}
+                  onPress={async () => {
+                    const randomSub = subCategories[Math.floor(Math.random() * subCategories.length)];
+                    setConfig(prev => ({ ...prev, category: randomSub }));
+                  }}
+                >
+                  <Text style={{ fontSize: 22 }}>🎲</Text>
+                </TouchableOpacity>
+              )}
+            </View>
           </View>
         )}
 

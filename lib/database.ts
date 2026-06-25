@@ -180,3 +180,51 @@ export async function resetDatabase() {
 export async function applyContentUpdate(_categories: Category[], _version: number) {
   return { newCategories: 0, newQuestions: 0 };
 }
+
+// === Favorites ===
+
+export async function getFavoriteCategories(): Promise<Category[]> {
+  const userId = await getCurrentUserId();
+  const favs = await powersync.getAll<{ categoryId: string }>(
+    'SELECT categoryId FROM Favorite WHERE userId = ?',
+    [userId]
+  );
+  if (favs.length === 0) return [];
+
+  const ids = favs.map(f => f.categoryId);
+  const placeholders = ids.map(() => '?').join(',');
+  const cats = await powersync.getAll<{
+    id: string; name: string; parentId: string | null; userId: string | null;
+  }>(`SELECT id, name, parentId, userId FROM Category WHERE id IN (${placeholders}) ORDER BY name`, ids);
+
+  return cats.map(c => ({ id: c.id, name: c.name, parentId: c.parentId || undefined, userId: c.userId || undefined, questions: [] }));
+}
+
+export async function isFavorite(categoryId: string): Promise<boolean> {
+  const userId = await getCurrentUserId();
+  const row = await powersync.getOptional(
+    'SELECT id FROM Favorite WHERE userId = ? AND categoryId = ?',
+    [userId, categoryId]
+  );
+  return !!row;
+}
+
+export async function toggleFavorite(categoryId: string): Promise<boolean> {
+  const userId = await getCurrentUserId();
+  const existing = await powersync.getOptional<{ id: string }>(
+    'SELECT id FROM Favorite WHERE userId = ? AND categoryId = ?',
+    [userId, categoryId]
+  );
+
+  if (existing) {
+    await powersync.execute('DELETE FROM Favorite WHERE id = ?', [existing.id]);
+    return false;
+  } else {
+    const id = Crypto.randomUUID();
+    await powersync.execute(
+      'INSERT INTO Favorite (id, userId, categoryId) VALUES (?, ?, ?)',
+      [id, userId, categoryId]
+    );
+    return true;
+  }
+}

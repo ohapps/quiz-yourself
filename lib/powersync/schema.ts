@@ -24,9 +24,18 @@ const Question = new Table(
   { indexes: { category: ['categoryId'], user: ['userId'] } }
 );
 
+const Favorite = new Table(
+  {
+    userId: column.text,
+    categoryId: column.text,
+  },
+  { indexes: { user: ['userId'], category: ['categoryId'] } }
+);
+
 export const AppSchema = new Schema({
   Category,
   Question,
+  Favorite,
 });
 
 export type Database = (typeof AppSchema)['types'];

@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput, Alert,
 import { Stack, useFocusEffect } from 'expo-router';
 import { Dropdown } from 'react-native-element-dropdown';
 import { Category } from '../types/quiz';
-import { getCategories, deleteCategory, addCategory, updateCategory, isSystemContent } from '../lib/database';
+import { getCategories, deleteCategory, addCategory, updateCategory, isSystemContent, getFavoriteCategories, toggleFavorite } from '../lib/database';
 
 export default function ManageCategoriesScreen() {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -14,11 +14,14 @@ export default function ManageCategoriesScreen() {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editName, setEditName] = useState('');
   const [editParentId, setEditParentId] = useState<string | null>(null);
+  const [favorites, setFavorites] = useState<Set<string>>(new Set());
 
   const loadCategories = useCallback(async () => {
     setLoading(true);
     const data = await getCategories();
     setCategories(data);
+    const favs = await getFavoriteCategories();
+    setFavorites(new Set(favs.map(f => f.id)));
     setLoading(false);
   }, []);
 
@@ -55,6 +58,15 @@ export default function ManageCategoriesScreen() {
         }}
       ]
     );
+  };
+
+  const handleToggleFavorite = async (id: string) => {
+    const isFav = await toggleFavorite(id);
+    setFavorites(prev => {
+      const next = new Set(prev);
+      if (isFav) next.add(id); else next.delete(id);
+      return next;
+    });
   };
 
   // Organize categories into a tree
@@ -143,20 +155,25 @@ export default function ManageCategoriesScreen() {
                       <Text style={styles.catName}>{parent.name}</Text>
                       <Text style={styles.catCount}>{parent.questions.length} questions</Text>
                     </View>
-                    {!isSystemContent(parent.userId) && (
-                      <View style={styles.actions}>
-                        <TouchableOpacity onPress={() => { 
-                          setEditingId(parent.id); 
-                          setEditName(parent.name);
-                          setEditParentId(parent.parentId || null);
-                        }}>
-                          <Text style={styles.editAction}>Edit</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => handleDelete(parent.id, parent.name)}>
-                          <Text style={styles.deleteAction}>Delete</Text>
-                        </TouchableOpacity>
-                      </View>
-                    )}
+                    <View style={styles.actions}>
+                      <TouchableOpacity onPress={() => handleToggleFavorite(parent.id)}>
+                        <Text style={{ fontSize: 20 }}>{favorites.has(parent.id) ? '⭐' : '☆'}</Text>
+                      </TouchableOpacity>
+                      {!isSystemContent(parent.userId) && (
+                        <>
+                          <TouchableOpacity onPress={() => { 
+                            setEditingId(parent.id); 
+                            setEditName(parent.name);
+                            setEditParentId(parent.parentId || null);
+                          }}>
+                            <Text style={styles.editAction}>Edit</Text>
+                          </TouchableOpacity>
+                          <TouchableOpacity onPress={() => handleDelete(parent.id, parent.name)}>
+                            <Text style={styles.deleteAction}>Delete</Text>
+                          </TouchableOpacity>
+                        </>
+                      )}
+                    </View>
                   </>
                 )}
               </View>
@@ -198,20 +215,25 @@ export default function ManageCategoriesScreen() {
                         </View>
                         <Text style={[styles.catCount, { marginLeft: 20 }]}>{child.questions.length} questions</Text>
                       </View>
-                      {!isSystemContent(child.userId) && (
-                        <View style={styles.actions}>
-                          <TouchableOpacity onPress={() => { 
-                            setEditingId(child.id); 
-                            setEditName(child.name);
-                            setEditParentId(child.parentId || null);
-                          }}>
-                            <Text style={styles.editAction}>Edit</Text>
-                          </TouchableOpacity>
-                          <TouchableOpacity onPress={() => handleDelete(child.id, child.name)}>
-                            <Text style={styles.deleteAction}>Delete</Text>
-                          </TouchableOpacity>
-                        </View>
-                      )}
+                      <View style={styles.actions}>
+                        <TouchableOpacity onPress={() => handleToggleFavorite(child.id)}>
+                          <Text style={{ fontSize: 20 }}>{favorites.has(child.id) ? '⭐' : '☆'}</Text>
+                        </TouchableOpacity>
+                        {!isSystemContent(child.userId) && (
+                          <>
+                            <TouchableOpacity onPress={() => { 
+                              setEditingId(child.id); 
+                              setEditName(child.name);
+                              setEditParentId(child.parentId || null);
+                            }}>
+                              <Text style={styles.editAction}>Edit</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => handleDelete(child.id, child.name)}>
+                              <Text style={styles.deleteAction}>Delete</Text>
+                            </TouchableOpacity>
+                          </>
+                        )}
+                      </View>
                     </>
                   )}
                 </View>
