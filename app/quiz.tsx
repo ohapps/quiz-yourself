@@ -7,6 +7,7 @@ import { quizConfigAtom, quizStateAtom } from '../store/atoms';
 import { markQuestionsAsShown } from '../lib/database';
 import { NumericEntry } from '../components/NumericEntry';
 import { MultipleChoice } from '../components/MultipleChoice';
+import { ReportModal } from '../components/ReportModal';
 
 export default function QuizScreen() {
   const router = useRouter();
@@ -19,6 +20,7 @@ export default function QuizScreen() {
   const [showGroupAnswer, setShowGroupAnswer] = useState(true);
   const [typedAnswer, setTypedAnswer] = useState('');
   const [submittedAnswer, setSubmittedAnswer] = useState<string | null>(null);
+  const [showReportModal, setShowReportModal] = useState(false);
 
   // Initialize quiz state
   useEffect(() => {
@@ -142,6 +144,12 @@ export default function QuizScreen() {
               </View>
             )}
           </View>
+
+          {!currentQuestion.userId && (
+            <TouchableOpacity onPress={() => setShowReportModal(true)} style={styles.reportButton}>
+              <Text style={styles.reportButtonText}>⚠️</Text>
+            </TouchableOpacity>
+          )}
 
           {config.mode === 'group' && (
             <View style={styles.headerTogglesColumn}>
@@ -268,6 +276,12 @@ export default function QuizScreen() {
           )}
         </View>
       )}
+
+      <ReportModal
+        visible={showReportModal}
+        questionId={currentQuestion.id}
+        onClose={() => setShowReportModal(false)}
+      />
     </View>
   );
 }
@@ -407,6 +421,12 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     gap: 6,
     marginRight: 16,
+  },
+  reportButton: {
+    padding: 6,
+  },
+  reportButtonText: {
+    fontSize: 20,
   },
   headerToggleAnswerButton: {
     paddingHorizontal: 8,
