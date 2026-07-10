@@ -15,6 +15,7 @@ export default function RootLayout() {
         setIsReady(true);
 
         // Connect PowerSync for synced data (categories, questions, app state)
+        // This runs in the background — the app must work offline with cached data
         await setupPowerSync();
       } catch (error) {
         console.error("Failed to initialize", error);

@@ -28,18 +28,24 @@ export interface AuthState {
   isLoggedIn: boolean;
 }
 
+let dbInitialized = false;
+
 async function getDb() {
-  return SQLite.openDatabaseAsync(DATABASE_NAME);
+  const db = await SQLite.openDatabaseAsync(DATABASE_NAME);
+  if (!dbInitialized) {
+    await db.execAsync(`
+      CREATE TABLE IF NOT EXISTS app_metadata (
+        key TEXT PRIMARY KEY NOT NULL,
+        value TEXT NOT NULL
+      );
+    `);
+    dbInitialized = true;
+  }
+  return db;
 }
 
 export async function getStoredAuth(): Promise<AuthState> {
   const db = await getDb();
-  await db.execAsync(`
-    CREATE TABLE IF NOT EXISTS app_metadata (
-      key TEXT PRIMARY KEY NOT NULL,
-      value TEXT NOT NULL
-    );
-  `);
 
   const token = await db.getFirstAsync<{ value: string }>(
     "SELECT value FROM app_metadata WHERE key = 'auth0_refresh_token'"
