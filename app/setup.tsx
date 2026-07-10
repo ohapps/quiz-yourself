@@ -6,6 +6,7 @@ import { Dropdown } from 'react-native-element-dropdown';
 import { quizConfigAtom } from '../store/atoms';
 import { Category } from '../types/quiz';
 import { getCategories, getFavoriteCategories, toggleFavorite, isFavorite } from '../lib/database';
+import { powersync } from '../lib/powersync/system';
 import * as Haptics from 'expo-haptics';
 
 export default function SetupScreen() {
@@ -21,9 +22,14 @@ export default function SetupScreen() {
   const [isSpinning, setIsSpinning] = useState(false);
 
   useEffect(() => {
-    async function load() {
+    let disposed = false;
+
+    async function loadCategories() {
       const data = await getCategories();
       const favs = await getFavoriteCategories();
+
+      if (disposed) return;
+
       setCategories(data);
       setFavoriteCategories(favs);
       
@@ -42,7 +48,20 @@ export default function SetupScreen() {
       }
       setLoading(false);
     }
-    load();
+
+    // Load immediately with whatever is available
+    loadCategories();
+
+    // Also subscribe to Category table changes so we re-load when sync delivers data
+    const dispose = powersync.onChangeWithCallback(
+      { onChange: () => { loadCategories(); } },
+      { tables: ['Category'] }
+    );
+
+    return () => {
+      disposed = true;
+      dispose();
+    };
   }, [mode]);
 
   const parentCategories = useMemo(() => categories.filter(c => !c.parentId), [categories]);
