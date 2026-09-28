@@ -56,33 +56,46 @@ export class Connector implements PowerSyncBackendConnector {
     const transaction = await database.getNextCrudTransaction();
     if (!transaction) return;
 
-    for (const op of transaction.crud) {
-      const record = { ...op.opData, id: op.id };
-      const table = op.table;
+    try {
+      for (const op of transaction.crud) {
+        const record = { ...op.opData, id: op.id };
+        const table = op.table;
+        let response: Response;
 
-      switch (op.op) {
-        case UpdateType.PUT:
-          await fetch(`${this.backendUrl}/api/sync/${table}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(record),
-          });
-          break;
-        case UpdateType.PATCH:
-          await fetch(`${this.backendUrl}/api/sync/${table}/${op.id}`, {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(op.opData),
-          });
-          break;
-        case UpdateType.DELETE:
-          await fetch(`${this.backendUrl}/api/sync/${table}/${op.id}`, {
-            method: 'DELETE',
-          });
-          break;
+        switch (op.op) {
+          case UpdateType.PUT:
+            response = await fetch(`${this.backendUrl}/api/sync/${table}`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(record),
+            });
+            break;
+          case UpdateType.PATCH:
+            response = await fetch(`${this.backendUrl}/api/sync/${table}/${op.id}`, {
+              method: 'PATCH',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(op.opData),
+            });
+            break;
+          case UpdateType.DELETE:
+            response = await fetch(`${this.backendUrl}/api/sync/${table}/${op.id}`, {
+              method: 'DELETE',
+            });
+            break;
+          default:
+            continue;
+        }
+
+        if (!response.ok) {
+          const body = await response.text().catch(() => '');
+          throw new Error(`Sync upload failed (${table} ${op.op}): ${response.status} ${body}`);
+        }
       }
-    }
 
-    await transaction.complete();
+      await transaction.complete();
+    } catch (error) {
+      console.error('PowerSync uploadData error:', error);
+      throw error;
+    }
   }
 }
