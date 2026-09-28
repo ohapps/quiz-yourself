@@ -5,7 +5,7 @@ import { useAtom } from 'jotai';
 import { Dropdown } from 'react-native-element-dropdown';
 import { quizConfigAtom } from '../store/atoms';
 import { Category } from '../types/quiz';
-import { getCategories, getFavoriteCategories, toggleFavorite, isFavorite } from '../lib/database';
+import { getCategories, getFavoriteCategories, toggleFavorite } from '../lib/database';
 import { powersync } from '../lib/powersync/system';
 import * as Haptics from 'expo-haptics';
 
@@ -23,58 +23,132 @@ export default function SetupScreen() {
 
   useEffect(() => {
     let disposed = false;
+    let loadId = 0;
+    let favoriteReloadTimer: ReturnType<typeof setTimeout> | null = null;
 
     async function loadCategories() {
-      const data = await getCategories();
-      const favs = await getFavoriteCategories();
+      const thisLoad = ++loadId;
+      try {
+        const data = await getCategories();
 
-      if (disposed) return;
+        if (disposed || thisLoad !== loadId) return;
 
-      setCategories(data);
-      setFavoriteCategories(favs);
-      
-      const topLevelData = data.filter(c => !c.parentId);
+        setCategories(data);
 
-      // Initialize config with the first top-level category if none is selected
-      if (topLevelData.length > 0 && !config.category) {
-        setConfig(prev => ({ 
-          ...prev, 
-          mode: mode || 'solo',
-          category: topLevelData[0],
-          playerCount: mode === 'group' ? 2 : 1
-        }));
-      } else {
-        setConfig(prev => ({ ...prev, mode: mode || 'solo' }));
+        const topLevelData = data.filter(c => !c.parentId);
+
+        setConfig(prev => {
+          if (topLevelData.length > 0 && !prev.category) {
+            return {
+              ...prev,
+              mode: mode || 'solo',
+              category: topLevelData[0],
+              playerCount: mode === 'group' ? 2 : 1,
+            };
+          }
+          return { ...prev, mode: mode || 'solo' };
+        });
+
+        if (data.length > 0 || powersync.currentStatus.hasSynced) {
+          setLoading(false);
+        }
+      } catch (error) {
+        console.error('Failed to load categories', error);
+        if (!disposed && thisLoad === loadId) {
+          setLoading(false);
+        }
       }
-      setLoading(false);
     }
 
-    // Load immediately with whatever is available
-    loadCategories();
+    async function loadFavorites() {
+      try {
+        const favs = await getFavoriteCategories();
+        if (!disposed) setFavoriteCategories(favs);
+      } catch (error) {
+        console.error('Failed to load favorites', error);
+      }
+    }
 
-    // Also subscribe to Category table changes so we re-load when sync delivers data
-    const dispose = powersync.onChangeWithCallback(
+    // Debounce favorite reloads so PowerSync's delete-then-put reconcile
+    // doesn't briefly clear the Favorites dropdown option.
+    function scheduleFavoriteReload() {
+      if (favoriteReloadTimer) clearTimeout(favoriteReloadTimer);
+      favoriteReloadTimer = setTimeout(loadFavorites, 250);
+    }
+
+    loadCategories();
+    loadFavorites();
+
+    const disposeCategoryChange = powersync.onChangeWithCallback(
       { onChange: () => { loadCategories(); } },
       { tables: ['Category'] }
     );
 
+    const disposeFavoriteChange = powersync.onChangeWithCallback(
+      { onChange: () => { scheduleFavoriteReload(); } },
+      { tables: ['Favorite'] }
+    );
+
+    const disposeStatus = powersync.registerListener({
+      statusChanged: (status) => {
+        if (status.hasSynced) {
+          loadCategories();
+          loadFavorites();
+        }
+      },
+    });
+
+    const timeout = setTimeout(() => {
+      if (!disposed) setLoading(false);
+    }, 10000);
+
     return () => {
       disposed = true;
-      dispose();
+      clearTimeout(timeout);
+      if (favoriteReloadTimer) clearTimeout(favoriteReloadTimer);
+      disposeCategoryChange();
+      disposeFavoriteChange();
+      disposeStatus();
     };
-  }, [mode]);
+  }, [mode, setConfig]);
 
   const parentCategories = useMemo(() => categories.filter(c => !c.parentId), [categories]);
   
-  // Find which top-level category is currently "active" (either directly or as parent)
   const [viewingFavorites, setViewingFavorites] = useState(false);
 
   const favoriteIds = useMemo(() => new Set(favoriteCategories.map(f => f.id)), [favoriteCategories]);
 
   const handleToggleFavorite = async (categoryId: string) => {
-    await toggleFavorite(categoryId);
-    const favs = await getFavoriteCategories();
-    setFavoriteCategories(favs);
+    const currentlyFavorite = favoriteIds.has(categoryId);
+
+    // Optimistic UI so the Favorites option doesn't flash away during sync
+    if (currentlyFavorite) {
+      setFavoriteCategories(prev => prev.filter(c => c.id !== categoryId));
+      if (viewingFavorites) {
+        const remaining = favoriteCategories.filter(c => c.id !== categoryId);
+        if (remaining.length === 0) {
+          setViewingFavorites(false);
+        } else if (config.category?.id === categoryId) {
+          setConfig(prev => ({ ...prev, category: remaining[0] }));
+        }
+      }
+    } else {
+      const cat = categories.find(c => c.id === categoryId);
+      if (cat) {
+        setFavoriteCategories(prev =>
+          prev.some(c => c.id === categoryId) ? prev : [...prev, cat]
+        );
+      }
+    }
+
+    try {
+      await toggleFavorite(categoryId);
+    } catch (error) {
+      console.error('Failed to toggle favorite', error);
+      // Roll back optimistic update from source of truth
+      const favs = await getFavoriteCategories();
+      setFavoriteCategories(favs);
+    }
   };
 
   const activeParentId = useMemo(() => {
@@ -194,55 +268,63 @@ export default function SetupScreen() {
       keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
     >
       <Stack.Screen options={{ title: mode === 'solo' ? 'Solo Setup' : 'Group Setup' }} />
-      <ScrollView contentContainerStyle={styles.scrollContent} keyboardShouldPersistTaps="handled">
+      <ScrollView
+        style={styles.scroll}
+        contentContainerStyle={styles.scrollContent}
+        keyboardShouldPersistTaps="handled"
+      >
         <Text style={styles.title}>{mode === 'solo' ? 'Quiz Yourself' : 'Quiz Others'}</Text>
         
         <View style={styles.section}>
           <Text style={styles.label}>Main Category</Text>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-            <Dropdown
-              style={[styles.dropdown, { flex: 1 }, categoryFocus && { borderColor: '#1a73e8' }, isSpinning && styles.dropdownDisabled]}
-              placeholderStyle={styles.placeholderStyle}
-              selectedTextStyle={styles.selectedTextStyle}
-              inputSearchStyle={styles.inputSearchStyle}
-              iconStyle={styles.iconStyle}
-              data={parentDropdownData}
-              search
-              disable={isSpinning}
-              maxHeight={300}
-              labelField="label"
-              valueField="value"
-              placeholder={!categoryFocus ? 'Select category' : '...'}
-              searchPlaceholder="Search..."
-              value={activeParentId || ''}
-              onFocus={() => setCategoryFocus(true)}
-              onBlur={() => setCategoryFocus(false)}
-              onChange={item => {
-                if (item.value === '__favorites__') {
-                  setViewingFavorites(true);
-                  setConfig(prev => ({ ...prev, category: favoriteCategories[0] || null }));
-                } else {
-                  setViewingFavorites(false);
-                  const selectedCat = categories.find(c => c.id === item.value);
-                  setConfig(prev => ({ ...prev, category: selectedCat || null }));
-                }
-                setCategoryFocus(false);
-              }}
-            />
+          <Dropdown
+            style={[styles.dropdown, categoryFocus && { borderColor: '#1a73e8' }, isSpinning && styles.dropdownDisabled]}
+            placeholderStyle={styles.placeholderStyle}
+            selectedTextStyle={styles.selectedTextStyle}
+            inputSearchStyle={styles.inputSearchStyle}
+            iconStyle={styles.iconStyle}
+            data={parentDropdownData}
+            search
+            disable={isSpinning}
+            maxHeight={300}
+            labelField="label"
+            valueField="value"
+            placeholder={!categoryFocus ? 'Select category' : '...'}
+            searchPlaceholder="Search..."
+            value={activeParentId || ''}
+            onFocus={() => setCategoryFocus(true)}
+            onBlur={() => setCategoryFocus(false)}
+            onChange={item => {
+              if (item.value === '__favorites__') {
+                setViewingFavorites(true);
+                setConfig(prev => ({ ...prev, category: favoriteCategories[0] || null }));
+              } else {
+                setViewingFavorites(false);
+                const selectedCat = categories.find(c => c.id === item.value);
+                setConfig(prev => ({ ...prev, category: selectedCat || null }));
+              }
+              setCategoryFocus(false);
+            }}
+          />
+          <View style={styles.dropdownActions}>
             {config.category && activeParentId !== '__favorites__' && (
               <TouchableOpacity
-                style={{ width: 30, alignItems: 'center' }}
+                style={styles.actionButton}
                 onPress={() => handleToggleFavorite(activeParentId!)}
               >
-                <Text style={{ fontSize: 22 }}>{favoriteIds.has(activeParentId!) ? '⭐' : '☆'}</Text>
+                <Text style={styles.actionIcon}>{favoriteIds.has(activeParentId!) ? '⭐' : '☆'}</Text>
+                <Text style={styles.actionLabel}>
+                  {favoriteIds.has(activeParentId!) ? 'Saved as favorite' : 'Save as favorite'}
+                </Text>
               </TouchableOpacity>
             )}
             <TouchableOpacity
+              style={[styles.actionButton, isSpinning && styles.actionButtonDisabled]}
               onPress={spinCategories}
               disabled={isSpinning}
-              style={{ opacity: isSpinning ? 0.5 : 1 }}
             >
-              <Text style={{ fontSize: 22 }}>🎲</Text>
+              <Text style={styles.actionIcon}>🎲</Text>
+              <Text style={styles.actionLabel}>Random select</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -250,52 +332,58 @@ export default function SetupScreen() {
         {(subCategories.length > 0 || activeParentId === '__favorites__') && (
           <View style={styles.section}>
             <Text style={styles.label}>Sub-category (Optional)</Text>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-              <Dropdown
-                style={[styles.dropdown, { flex: 1 }, subCategoryFocus && { borderColor: '#1a73e8' }, isSpinning && styles.dropdownDisabled]}
-                placeholderStyle={styles.placeholderStyle}
-                selectedTextStyle={styles.selectedTextStyle}
-                data={subDropdownData}
-                maxHeight={300}
-                disable={isSpinning}
-                labelField="label"
-                valueField="value"
-                placeholder="All Sub-categories"
-                value={config.category?.parentId ? config.category.id : 'all'}
-                onFocus={() => setSubCategoryFocus(true)}
-                onBlur={() => setSubCategoryFocus(false)}
-                onChange={item => {
-                  if (item.value === 'all') {
-                    const parentCat = categories.find(c => c.id === activeParentId);
-                    setConfig(prev => ({ ...prev, category: parentCat || null }));
-                  } else {
-                    const selectedSub = categories.find(c => c.id === item.value);
-                    setConfig(prev => ({ ...prev, category: selectedSub || null }));
-                  }
-                  setSubCategoryFocus(false);
-                }}
-              />
-              {config.category?.parentId && (
-                <TouchableOpacity
-                  style={{ width: 30, alignItems: 'center' }}
-                  onPress={() => handleToggleFavorite(config.category!.id)}
-                >
-                  <Text style={{ fontSize: 22 }}>{favoriteIds.has(config.category!.id) ? '⭐' : '☆'}</Text>
-                </TouchableOpacity>
-              )}
-              {subCategories.length > 1 && activeParentId !== '__favorites__' && (
-                <TouchableOpacity
-                  disabled={isSpinning}
-                  style={{ opacity: isSpinning ? 0.5 : 1 }}
-                  onPress={async () => {
-                    const randomSub = subCategories[Math.floor(Math.random() * subCategories.length)];
-                    setConfig(prev => ({ ...prev, category: randomSub }));
-                  }}
-                >
-                  <Text style={{ fontSize: 22 }}>🎲</Text>
-                </TouchableOpacity>
-              )}
-            </View>
+            <Dropdown
+              style={[styles.dropdown, subCategoryFocus && { borderColor: '#1a73e8' }, isSpinning && styles.dropdownDisabled]}
+              placeholderStyle={styles.placeholderStyle}
+              selectedTextStyle={styles.selectedTextStyle}
+              data={subDropdownData}
+              maxHeight={300}
+              disable={isSpinning}
+              labelField="label"
+              valueField="value"
+              placeholder="All Sub-categories"
+              value={config.category?.parentId ? config.category.id : 'all'}
+              onFocus={() => setSubCategoryFocus(true)}
+              onBlur={() => setSubCategoryFocus(false)}
+              onChange={item => {
+                if (item.value === 'all') {
+                  const parentCat = categories.find(c => c.id === activeParentId);
+                  setConfig(prev => ({ ...prev, category: parentCat || null }));
+                } else {
+                  const selectedSub = categories.find(c => c.id === item.value);
+                  setConfig(prev => ({ ...prev, category: selectedSub || null }));
+                }
+                setSubCategoryFocus(false);
+              }}
+            />
+            {(config.category?.parentId || (subCategories.length > 1 && activeParentId !== '__favorites__')) && (
+              <View style={styles.dropdownActions}>
+                {config.category?.parentId && (
+                  <TouchableOpacity
+                    style={styles.actionButton}
+                    onPress={() => handleToggleFavorite(config.category!.id)}
+                  >
+                    <Text style={styles.actionIcon}>{favoriteIds.has(config.category!.id) ? '⭐' : '☆'}</Text>
+                    <Text style={styles.actionLabel}>
+                      {favoriteIds.has(config.category!.id) ? 'Saved as favorite' : 'Save as favorite'}
+                    </Text>
+                  </TouchableOpacity>
+                )}
+                {subCategories.length > 1 && activeParentId !== '__favorites__' && (
+                  <TouchableOpacity
+                    style={[styles.actionButton, isSpinning && styles.actionButtonDisabled]}
+                    disabled={isSpinning}
+                    onPress={() => {
+                      const randomSub = subCategories[Math.floor(Math.random() * subCategories.length)];
+                      setConfig(prev => ({ ...prev, category: randomSub }));
+                    }}
+                  >
+                    <Text style={styles.actionIcon}>🎲</Text>
+                    <Text style={styles.actionLabel}>Random select</Text>
+                  </TouchableOpacity>
+                )}
+              </View>
+            )}
           </View>
         )}
 
@@ -380,7 +468,9 @@ export default function SetupScreen() {
             </View>
           </>
         )}
+      </ScrollView>
 
+      <View style={styles.stickyFooter}>
         <TouchableOpacity 
           style={[styles.startButton, isSpinning && { opacity: 0.5 }]} 
           onPress={handleStart}
@@ -388,7 +478,7 @@ export default function SetupScreen() {
         >
           <Text style={styles.startButtonText}>Start Quiz</Text>
         </TouchableOpacity>
-      </ScrollView>
+      </View>
     </KeyboardAvoidingView>
   );
 }
@@ -398,9 +488,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F5F7FA',
   },
+  scroll: {
+    flex: 1,
+  },
   scrollContent: {
     padding: 24,
-    paddingBottom: 60,
+    paddingBottom: 24,
   },
   loadingContainer: {
     flex: 1,
@@ -426,26 +519,6 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 1,
   },
-  labelRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  randomButton: {
-    backgroundColor: '#FFEAA7',
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#FDCB6E',
-  },
-  randomButtonText: {
-    fontSize: 12,
-    fontWeight: '800',
-    color: '#D35400',
-    textTransform: 'uppercase',
-  },
   dropdown: {
     height: 60,
     backgroundColor: 'white',
@@ -457,6 +530,30 @@ const styles = StyleSheet.create({
   dropdownDisabled: {
     backgroundColor: '#F1F2F6',
     opacity: 0.8,
+  },
+  dropdownActions: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 20,
+    marginTop: 12,
+    paddingHorizontal: 4,
+  },
+  actionButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  actionButtonDisabled: {
+    opacity: 0.5,
+  },
+  actionIcon: {
+    fontSize: 15,
+  },
+  actionLabel: {
+    fontSize: 13,
+    fontWeight: '500',
+    color: '#636E72',
+    textDecorationLine: 'underline',
   },
   placeholderStyle: {
     fontSize: 16,
@@ -549,12 +646,19 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#DFE6E9',
   },
+  stickyFooter: {
+    paddingHorizontal: 24,
+    paddingTop: 12,
+    paddingBottom: Platform.OS === 'ios' ? 28 : 16,
+    backgroundColor: '#F5F7FA',
+    borderTopWidth: 1,
+    borderTopColor: '#DFE6E9',
+  },
   startButton: {
     backgroundColor: '#1a73e8',
     paddingVertical: 18,
     borderRadius: 16,
     alignItems: 'center',
-    marginTop: 16,
     shadowColor: '#1a73e8',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,

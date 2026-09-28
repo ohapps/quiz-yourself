@@ -12,13 +12,13 @@ export default function RootLayout() {
       try {
         // Initialize legacy local DB (for quiz_history and local-only data)
         await initializeDatabase();
-        setIsReady(true);
 
-        // Connect PowerSync for synced data (categories, questions, app state)
-        // This runs in the background — the app must work offline with cached data
+        // Connect PowerSync and wait for local DB + first sync (or timeout)
+        // so setup screens don't open against an empty category list.
         await setupPowerSync();
       } catch (error) {
         console.error("Failed to initialize", error);
+      } finally {
         setIsReady(true);
       }
     }
