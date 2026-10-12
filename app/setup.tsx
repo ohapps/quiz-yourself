@@ -5,8 +5,7 @@ import { useAtom } from 'jotai';
 import { Dropdown } from 'react-native-element-dropdown';
 import { quizConfigAtom } from '../store/atoms';
 import { Category } from '../types/quiz';
-import { getCategories, getFavoriteCategories, toggleFavorite } from '../lib/database';
-import { powersync } from '../lib/powersync/system';
+import { getCategories, getFavoriteCategories, onDataChange, toggleFavorite, hasSyncedContent } from '../lib/database';
 import * as Haptics from 'expo-haptics';
 
 export default function SetupScreen() {
@@ -49,7 +48,7 @@ export default function SetupScreen() {
           return { ...prev, mode: mode || 'solo' };
         });
 
-        if (data.length > 0 || powersync.currentStatus.hasSynced) {
+        if (data.length > 0 || (await hasSyncedContent())) {
           setLoading(false);
         }
       } catch (error) {
@@ -69,8 +68,6 @@ export default function SetupScreen() {
       }
     }
 
-    // Debounce favorite reloads so PowerSync's delete-then-put reconcile
-    // doesn't briefly clear the Favorites dropdown option.
     function scheduleFavoriteReload() {
       if (favoriteReloadTimer) clearTimeout(favoriteReloadTimer);
       favoriteReloadTimer = setTimeout(loadFavorites, 250);
@@ -79,23 +76,9 @@ export default function SetupScreen() {
     loadCategories();
     loadFavorites();
 
-    const disposeCategoryChange = powersync.onChangeWithCallback(
-      { onChange: () => { loadCategories(); } },
-      { tables: ['Category'] }
-    );
-
-    const disposeFavoriteChange = powersync.onChangeWithCallback(
-      { onChange: () => { scheduleFavoriteReload(); } },
-      { tables: ['Favorite'] }
-    );
-
-    const disposeStatus = powersync.registerListener({
-      statusChanged: (status) => {
-        if (status.hasSynced) {
-          loadCategories();
-          loadFavorites();
-        }
-      },
+    const unsubscribe = onDataChange(() => {
+      loadCategories();
+      scheduleFavoriteReload();
     });
 
     const timeout = setTimeout(() => {
@@ -106,9 +89,7 @@ export default function SetupScreen() {
       disposed = true;
       clearTimeout(timeout);
       if (favoriteReloadTimer) clearTimeout(favoriteReloadTimer);
-      disposeCategoryChange();
-      disposeFavoriteChange();
-      disposeStatus();
+      unsubscribe();
     };
   }, [mode, setConfig]);
 

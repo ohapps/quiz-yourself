@@ -2,20 +2,19 @@ import { Stack } from "expo-router";
 import { useEffect, useState } from "react";
 import { ActivityIndicator, View } from "react-native";
 import { initializeDatabase } from "../lib/database";
-import { setupPowerSync } from "../lib/powersync/system";
+import { startSyncLifecycle, syncOnLaunch } from "../lib/sync";
 
 export default function RootLayout() {
-  const [isReady, setIsReady] = useState(false);  
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     async function setup() {
       try {
-        // Initialize legacy local DB (for quiz_history and local-only data)
         await initializeDatabase();
-
-        // Connect PowerSync and wait for local DB + first sync (or timeout)
-        // so setup screens don't open against an empty category list.
-        await setupPowerSync();
+        startSyncLifecycle();
+        // Best-effort first sync so screens have content when online;
+        // times out so the app still opens offline with cached data.
+        await syncOnLaunch();
       } catch (error) {
         console.error("Failed to initialize", error);
       } finally {

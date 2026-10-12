@@ -3,13 +3,13 @@ import { View, Text, StyleSheet, TouchableOpacity, Alert, ActivityIndicator } fr
 import { Stack } from 'expo-router';
 import { login, logout, getStoredAuth, AuthState } from '../lib/auth';
 import { getDeviceId } from '../lib/device-id';
-import { setupPowerSync, powersync } from '../lib/powersync/system';
-import { getBackendUrl } from '../lib/config';
+import { enqueueAllQuizHistoryForBackup, migrateLocalUserId } from '../lib/database';
+import { syncNow } from '../lib/sync';
 
 export default function AccountScreen() {
   const [auth, setAuth] = useState<AuthState | null>(null);
   const [loading, setLoading] = useState(true);
-  const [migrating, setMigrating] = useState(false);
+  const [syncing, setSyncing] = useState(false);
 
   useEffect(() => {
     getStoredAuth().then((state) => {
@@ -23,54 +23,43 @@ export default function AccountScreen() {
       setLoading(true);
       const deviceId = await getDeviceId();
 
-      // Get device token (PowerSync JWT) before login as proof of device ownership
-      const deviceTokenRes = await fetch(
-        `${getBackendUrl()}/api/auth/token?user_id=${encodeURIComponent(deviceId)}`
-      );
-      const { token: deviceToken } = await deviceTokenRes.json();
-
       const result = await login();
       setAuth(result);
       setLoading(false);
 
-      // Migrate device content to Auth0 user with cryptographic proof of device ownership
-      setMigrating(true);
-      const migrateRes = await fetch(`${getBackendUrl()}/api/auth/migrate`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ deviceToken, auth0Token: result.accessToken }),
-      });
-      if (!migrateRes.ok) {
-        const err = await migrateRes.json().catch(() => ({}));
-        throw new Error(err.error || 'Failed to migrate content');
-      }
-      setMigrating(false);
+      // Rewrite local ownership from the device ID to the signed-in user, back
+      // up anything recorded while anonymous, then sync.
+      setSyncing(true);
+      await migrateLocalUserId(deviceId, result.userId!);
+      await enqueueAllQuizHistoryForBackup();
+      await syncNow();
+      setSyncing(false);
 
-      // Reconnect PowerSync with new identity
-      await powersync.disconnect();
-      await setupPowerSync();
-
-      Alert.alert('Success', 'Logged in! Your content will now sync across devices.');
+      Alert.alert('Success', 'Logged in! Your content and quiz history will now sync across devices.');
     } catch (error: any) {
       setLoading(false);
       Alert.alert('Error', error.message || 'Login failed');
     } finally {
-      setMigrating(false);
+      setSyncing(false);
     }
   };
 
   const handleLogout = async () => {
-    Alert.alert('Sign Out', 'Your content will remain on this device but won\'t sync to other devices.', [
-      { text: 'Cancel', style: 'cancel' },
-      {
-        text: 'Sign Out', style: 'destructive', onPress: async () => {
-          await logout();
-          setAuth({ accessToken: null, userId: null, email: null, isLoggedIn: false });
-          await powersync.disconnect();
-          await setupPowerSync();
-        }
-      },
-    ]);
+    Alert.alert(
+      'Sign Out',
+      'Your content stays on this device. Cloud backup pauses until you sign in again.',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Sign Out',
+          style: 'destructive',
+          onPress: async () => {
+            await logout();
+            setAuth({ accessToken: null, userId: null, email: null, isLoggedIn: false });
+          },
+        },
+      ]
+    );
   };
 
   if (loading) {
@@ -96,12 +85,12 @@ export default function AccountScreen() {
               <Text style={styles.email}>{auth.email}</Text>
             )}
             <Text style={styles.description}>
-              Your content syncs across all your devices.
+              Your custom categories, questions, and quiz history sync across devices.
             </Text>
-            {migrating && (
-              <View style={styles.migratingRow}>
+            {syncing && (
+              <View style={styles.syncingRow}>
                 <ActivityIndicator size="small" color="#1a73e8" />
-                <Text style={styles.migratingText}>Migrating content...</Text>
+                <Text style={styles.syncingText}>Syncing your content...</Text>
               </View>
             )}
             <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
@@ -110,10 +99,10 @@ export default function AccountScreen() {
           </>
         ) : (
           <>
-            <Text style={styles.title}>Sync Across Devices</Text>
+            <Text style={styles.title}>Backup & Sync</Text>
             <Text style={styles.description}>
-              Sign in to sync your custom categories and questions across all your devices.
-              The app works fully offline — signing in is optional.
+              The app works fully offline. Sign in to back up your custom categories,
+              questions, and quiz history so they sync across your devices.
             </Text>
             <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
               <Text style={styles.loginText}>Sign In</Text>
@@ -202,13 +191,13 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontSize: 16,
   },
-  migratingRow: {
+  syncingRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
     marginBottom: 16,
   },
-  migratingText: {
+  syncingText: {
     color: '#636E72',
     fontSize: 13,
   },
