@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, Modal, Alert, ActivityIndicator } from 'react-native';
-import * as Crypto from 'expo-crypto';
-import { powersync } from '../lib/powersync/system';
-import { getDeviceId } from '../lib/device-id';
-import { getAuthUserId } from '../lib/auth';
+import { addQuestionReport } from '../lib/database';
 
 interface ReportModalProps {
   visible: boolean;
@@ -23,11 +20,7 @@ export function ReportModal({ visible, questionId, onClose }: ReportModalProps) 
 
     setSubmitting(true);
     try {
-      const userId = (await getAuthUserId()) || (await getDeviceId());
-      await powersync.execute(
-        'INSERT INTO QuestionReport (id, questionId, userId, description, createdAt, resolved) VALUES (?, ?, ?, ?, ?, ?)',
-        [Crypto.randomUUID(), questionId, userId, description.trim(), new Date().toISOString(), 0]
-      );
+      await addQuestionReport(questionId, description.trim());
       Alert.alert('Thanks!', 'Your report has been submitted.');
       setDescription('');
       onClose();
